@@ -1,18 +1,12 @@
-'use client'
-import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+"use client"
+import Image from 'next/image'
+import Link from 'next/link';
 
-const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
+import { useEffect, useState } from 'react';
+//import GoogleLoginButton from '../pages/GoogleLoginButton';
+import FirstPost from '../pages/FirstPost';
 
-export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+export function Home() {
   return (
     <div className="bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
@@ -157,5 +151,51 @@ export default function Example() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function Page() {
+  //const [, set] = useState();
+  const [first, setfirst] = useState(0)
+  useEffect(() => {
+    function customSort(arr) {
+      const charPriority = "!@#$%^&*()_+{}[]:;\"'<>,.?/\\|0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      arr.sort((a, b) => {
+        console.log(`a: ${a}, b: ${b}`); // Output a and b values for each comparison
+        const indexA = charPriority.indexOf(a);
+        const indexB = charPriority.indexOf(b);
+        if (indexA !== indexB) return indexA - indexB;
+    
+        // Special handling for '10' vs. other numbers
+        if (!isNaN(a) && !isNaN(b)) {
+          if (parseInt(a, 10) === 10 && parseInt(b, 10) !== 10) return 1;
+          if (parseInt(a, 10) !== 10 && parseInt(b, 10) === 10) return -1;
+        }
+        return 0;
+      });
+      return arr;
+    }
+    
+    // Example usage:
+    const inputArray = ['+', '10', 'A', '@', 'b', '2', 'C', '*', 'a', '!', 'B', '1'];
+    const sortedArray = customSort(inputArray);
+    console.log(sortedArray);
+
+    return () => {
+
+    }
+  }, []);
+
+  return (
+    // <Link href="/about">
+    //   <a>About
+    //   <h1>Hello, Next.js!
+    //   </h1>
+    // </Link>
+    <>
+      <Link id="contact" href="/about">contact</Link>
+      <Link id="contact" href="/contact">contact</Link>
+      <Link id="dashboard" href="/dashboard">dashboard</Link>
+    </>
   )
 }
