@@ -14,16 +14,13 @@ class MyComponent extends Component {
       "%c question1_componentDidMount",
       "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
     );
-    // if (typeof window !== 'undefined') {
-    //   for (var i = 0; i < 3; i++) {
-    //     setTimeout(() => {
-    //       this.setState(prevState => ({
-    //         results: [...prevState.results, i] // 将结果添加到状态中
-    //       }));
-    //     }, 1000 * i);
-    //   }
-    // }
-
+      for (var i = 0; i < 3; i++) {
+        setTimeout(() => {
+          this.setState(prevState => ({
+            results: [...prevState.results, i] // 将结果添加到状态中
+          }));
+        }, 1000 * i);
+      }
   }
 
   render() {
