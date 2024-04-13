@@ -1,4 +1,6 @@
-import Image from "next/image";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link'
+
 import {
   Table,
   TableBody,
@@ -8,13 +10,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import Link from 'next/link'
+
 const links = [
   { href: '/Test1', text: 'Test1' },
   { href: '/stockDashboard', text: 'stockDashboard' },
-  { href: '/payments', text: 'payments' }
+  { href: '/payments', text: 'payments' },
+  { href: '/personalResume', text: 'personalResume' }
+
 
 ];
+
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
