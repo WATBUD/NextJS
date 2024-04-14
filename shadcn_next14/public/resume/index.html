@@ -10,6 +10,9 @@
   <link rel="shortcut icon" href="img/favicon.png" type="image/png" />
 
   <title>Louis - TailwindCSS - Resume</title>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+  <link rel="stylesheet" href="css/custom.css" />
 
   <!-- Icon -->
   <link rel="stylesheet" href="css/lineicons.css" />
@@ -73,95 +76,98 @@
           </button>
 
           <div class="
-                            collapse
-                            navbar-collapse
-                            hidden
-                            lg:block
-                            duration-300
-                            shadow
-                            absolute
-                            top-full
-                            left-0
-                            mt-full
-                            bg-white
-                            z-20
-                            px-5
-                            py-3
-                            w-full
-                            lg:static lg:bg-transparent lg:shadow-none
-                          " id="navbarSupportedContent">
-            <ul class="social-icons flex justify-start">
+                                      collapse
+                                      navbar-collapse
+                                      hidden
+                                      lg:block
+                                      duration-300
+                                      shadow
+                                      absolute
+                                      top-full
+                                      left-0
+                                      mt-full
+                                      bg-white
+                                      z-20
+                                      px-5
+                                      py-3
+                                      w-full
+                                      lg:static lg:bg-transparent lg:shadow-none
+                                    " id="navbarSupportedContent">
+            <ul class="flex justify-start">
               <li class="mr-4">
-                <a href="javascript:void(0)" class="
-                                              flex
-                                              justify-center
-                                              items-center
-                                              w-8
-                                              h-8
-                                              bg-white
-                                              rounded-full
-                                              text-sm text-gray-700
-                                              duration-300
-                                              hover:text-white hover:bg-indigo-500
-                                            ">
-                  <i class="lni lni-facebook-filled" aria-hidden="true"> </i>
+                <a href="https://www.youtube.com/playlist?list=PLqWQtwjE91RyJR2sKrK_-TXHVLCdrJno7" 
+                target="_blank" 
+                class="
+                                                        flex
+                                                        justify-center
+                                                        items-center
+                                                        w-8
+                                                        h-8
+                                                        bg-white
+                                                        rounded-full
+                                                        text-sm text-gray-700
+                                                        duration-300
+                                                        hover:text-white hover:bg-indigo-500
+                                                      ">
+                  <i class="lni lni-youtube" aria-hidden="true"> </i>
                 </a>
               </li>
-
+          
               <li class="mr-4">
-                <a href="javascript:void(0)" class="
-                                              flex
-                                              justify-center
-                                              items-center
-                                              w-8
-                                              h-8
-                                              bg-white
-                                              rounded-full
-                                              text-sm text-gray-700
-                                              duration-300
-                                              hover:text-white hover:bg-indigo-600
-                                            ">
+                <a href="https://www.linkedin.com/in/chih-louis-660160242/" target="_blank" class="
+                                                        flex
+                                                        justify-center
+                                                        items-center
+                                                        w-8
+                                                        h-8
+                                                        bg-white
+                                                        rounded-full
+                                                        text-sm text-gray-700
+                                                        duration-300
+                                                        hover:text-white hover:bg-indigo-600
+                                                      ">
                   <i class="lni lni-linkedin-original" aria-hidden="true">
                   </i>
                 </a>
               </li>
             </ul>
             <ul class="navbar-nav mr-auto justify-center items-center lg:flex">
-
+          
               <li class="nav-item">
                 <a class="page-scroll nav-link active" href="#skills">Skills</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="page-scroll nav-link" href="#feature">feature</a>
+              </li> -->
+              <li class="nav-item">
+                <a class="page-scroll nav-link" href="#team">My Portfolio
+                </a>
               </li>
               <li class="nav-item">
-                <a class="page-scroll nav-link" href="#team">Team</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#pricing">Pricing</a>
+                <a class="nav-link" href="#work experience">work experience</a>
               </li>
               <li class="nav-item">
                 <a class="page-scroll nav-link" href="#contact">Contact</a>
               </li>
               <div class="
-                                              absolute
-                                              header-btn
-                                              hidden
-                                              sm:block sm:absolute sm:right-0 sm:mr-16
-                                              lg:mr-0
-                                            ">
+                                                        absolute
+                                                        header-btn
+                                                        hidden
+                                                        sm:block sm:absolute sm:right-0 sm:mr-16
+                                                        lg:mr-0
+                                                      ">
                 <a class="
-                                                text-blue-600
-                                                border border-blue-600
-                                                px-10
-                                                py-3
-                                                rounded-full
-                                                duration-300
-                                                hover:bg-blue-600 hover:text-white
-                                              " href="#feature">
+                                                          text-blue-600
+                                                          border border-blue-600
+                                                          px-10
+                                                          py-3
+                                                          rounded-full
+                                                          duration-300
+                                                          hover:bg-blue-600 hover:text-white
+                                                        " href="#feature">
                   My program album</a>
               </div>
-
+          
             </ul>
           </div>
 
@@ -175,13 +181,14 @@
 
 
 
-  <!-- Services Section Start -->
+  <!-- Services Section Start         style="margin-top:1.25rem;"-->
   <section id="skills" class="py-24">
     <div class="container px-4">
       <div class="text-center">
-        <h2 class="mb-12 text-4xl text-gray-700 font-bold tracking-wide">
+        <div 
+        class="text-4xl text-blue-600 font-bold tracking-wide">
           Basic Skills
-        </h2>
+        </div>
       </div>
       <div class="flex flex-wrap">
         <!-- Skills item -->
@@ -201,56 +208,28 @@
                   ">
                 Web Development
               </h3>
-              <p class="text-gray-600">
-                ⌨Web/Language Skill:HTML/CSS/JavaScript/.NET/Node.js/React/Angular/PHP/Cshare
-                ⌨Framework:Angular/Winform/.Net(MVC/Webform)/Unity3D/Construct 2/React/React Native
-                ⌨Database:MySql/MSSQL
-                ⌨Computer skill：
-                ☁️Win7/Win10 system operation Office(Excel Word PowerPoint)/Power Query/VBA Macro/Windows Automation
-                Program
-                ☁️Refill system/hardware disassembly/assembly computer
-                ☁️PowerDirector、Adobe Premiere video editing
-                ⌨Development experience:-At least 7 years of software and web related experience-
-                1.PHP+MYSQL+XAMPP Front-end webpage and server setup
-                2.NETWebForm/MVC+MSSQL+IIS Front-end webpage and server setup
-                3.Unity3D+MYSQL+Python+Lua Gaming webpage, mobile game development
-                4.NETCore6+MYSQL/Docker+IIS+React Native FE and BE Server Setup
-                5.Angular FE Webpage and Node BE Server Setup
-                6.Angular/Electron/Typescript/Node.js Computer headset, mouse, keyboard, software design and development
-                7.Develop automated reports and programs(bat/ps1/exe/windows task Scheduler)
-                8.Responsible for developing mobile phone dual-platform app (iOS & Android) with React Native.
-                Maintain existing products, Git and related version control processes and team developers to
-                continuously develop new functions.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Skills item -->
-        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
-          <div class="m-4">
-            <div class="mb-4 text-blue-600 text-5xl">
-              <i class="lni lni-bar-chart"> </i>
-            </div>
-            <div>
-              <h3 class="
-                    text-gray-800
-                    font-semibold
-                    text-lg
-                    block
-                    mb-3
-                    uppercase
-                  ">
-                Graphic Design
-              </h3>
-              <p class="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                perspiciatis dicta labore nulla beatae quaerat quia incidunt
-                laborum aspernatur...
-              </p>
-            </div>
-          </div>
-        </div>
+              <h3 class="text-lg font-semibold mb-2">Programming Language:</h3>
+              <ul class="list-disc pl-6 mb-4">
+                  <li>HTML/CSS/JavaScript/.NET/Node.js/PHP/Cshare</li>
+                  <li>.NET/Node.js/PHP/Cshare</li>
+              </ul>
+              <h3 class="text-lg font-semibold mb-2">Framework:</h3>
+              <ul class="list-disc pl-6 mb-4">
+                  <li>Angular/Winform/.Net(MVC/Webform)</li>
+                  <li>Unity3D/Construct 2/React/React Native</li>
 
+              </ul>
+              <h3 class="text-lg font-semibold mb-2">Database:</h3>
+              <ul class="list-disc pl-6 mb-4">
+                  <li>MySql/MSSQL</li>
+              </ul>
+              <div class="p-4">
+
+            </div>
+            
+            </div>
+          </div>
+        </div>
         <!-- Skills item -->
         <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
           <div class="m-4">
@@ -272,12 +251,15 @@
                     mb-3
                     uppercase
                   ">
-                App Development
+                Computer skill:
               </h3>
               <p class="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                perspiciatis dicta labore nulla beatae quaerat quia incidunt
-                laborum aspernatur...
+                <!-- <h3 class="text-lg font-semibold mb-2">Computer skill:</h3> -->
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Win7/Win10 system operation Office(Excel Word PowerPoint)/Power Query/VBA Macro/Windows Automation Program</li>
+                    <li>Refill system/hardware disassembly/assembly computer</li>
+                    <li>PowerDirector、Adobe Premiere video editing</li>
+                </ul>
               </p>
             </div>
           </div>
@@ -297,12 +279,20 @@
                     mb-3
                     uppercase
                   ">
-                Digital Marketing
+                  Development experience:              
               </h3>
               <p class="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                perspiciatis dicta labore nulla beatae quaerat quia incidunt
-                laborum aspernatur...
+                <!-- <h3 class="text-lg font-semibold mb-2">Development experience:</h3> -->
+                <ul class="list-disc pl-6 mb-4">
+                    <li>PHP+MYSQL+XAMPP Front-end webpage and server setup</li>
+                    <li>.NETWebForm/MVC+MSSQL+IIS Front-end webpage and server setup</li>
+                    <li>Unity3D+MYSQL+Python+Lua Gaming webpage, mobile game development</li>
+                    <li>.NETCore6+MYSQL/Docker+IIS+React Native FE and BE Server Setup</li>
+                    <li>Angular FE Webpage and Node BE Server Setup</li>
+                    <li>Angular/Electron/Typescript/Node.js Computer headset, mouse, keyboard, software design and development</li>
+                    <li>Develop automated reports and programs(bat/ps1/exe/windows task Scheduler)</li>
+                    <li>Responsible for developing mobile phone dual-platform app (iOS & Android) with React Native. Maintain existing products, Git and related version control processes and team developers to continuously develop new functions.</li>
+                </ul>
               </p>
             </div>
           </div>
@@ -310,16 +300,15 @@
       </div>
     </div>
   </section>
-  <!-- Services Section End -->
 
-  <!-- Feature Section Start -->
-  <div id="feature" class="bg-blue-100 py-24">
+
+  <!-- <div id="feature" class="bg-blue-100 py-24">
     <div class="container px-4">
       <div class="flex flex-wrap items-center">
         <div class="w-full lg:w-1/2">
           <div class="mb-5 lg:mb-0">
             <h2 class="mb-12 text-4xl text-gray-700 font-bold tracking-wide">
-              Learn More About Us
+              Learn More for me
             </h2>
 
             <div class="flex flex-wrap">
@@ -390,26 +379,54 @@
             </div>
           </div>
         </div>
-        <div class="w-full lg:w-1/2">
+        <!-- <div class="w-full lg:w-1/2">
           <div class="mx-3 lg:mr-0 lg:ml-3">
             <img src="img/feature/img-1.svg" alt="" />
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
-  </div>
-  <!-- Feature Section End -->
+  </div>  -->
 
-  <!-- Team Section Start -->
-  <section id="team" class="py-24 text-center">
+  <section id="team" class="bg-blue-100 py-24 text-center">
     <div class="container px-4">
       <div class="text-center">
         <h2 class="mb-12 text-4xl text-gray-700 font-bold tracking-wide">
-          My program album
+          My Portfolio
         </h2>
       </div>
       <div class="flex flex-wrap justify-center">
-        <!-- Team Item Starts -->
+        <!-- Item Starts -->
+        <div class="max-w-sm sm:w-1/2 md:w-1/2 lg:w-1/3">
+          <div class="
+                m-3
+                text-center
+                bg-white
+                shadow
+                duration-300
+                group
+                hover:shadow-lg
+              ">
+            <div class="relative">
+              <img class="PortfolioStyle" src="img/Portfolio/GloriousModelO.PNG" alt="" />
+              <div onclick="window.location='https://www.youtube.com/watch?v=9B3cLne5g_g'"
+              style="cursor:pointer;"
+              class="w-full h-full flex items-center justify-center absolute top-0 left-0 bg-white bg-opacity-60 duration-300 opacity-0 group-hover:opacity-100">
+              </div>
+         
+         
+            </div>
+
+            <div class="text-center px-5 py-3">
+              <h3 class="text-gray-800 font-bold uppercase text-lg my-2">
+                E-Sports Mouse Desktop Software
+              </h3>
+              <p>Glorious Model O Wireless Video</p>
+            </div>
+          </div>
+        </div>
+        <!-- Item Ends -->
+        <!-- Item Starts -->
         <div class="max-w-sm sm:w-1/2 md:w-1/2 lg:w-1/3">
           <div class="
                 m-3
@@ -421,224 +438,32 @@
                 hover:shadow-lg
               ">
             <div class="team-img relative">
-              <img class="img-fluid" src="img/team/img1.jpg" alt="" />
-              <div class="
-                    w-full
-                    h-full
-                    flex
-                    items-center
-                    justify-center
-                    absolute
-                    top-0
-                    left-0
-                    bg-white bg-opacity-60
-                    duration-300
-                    opacity-0
-                    group-hover:opacity-100
-                  ">
-                <ul class="flex justify-center">
-                  <li class="mx-1">
-                    <a href="javascript:void(0)" class="social-link hover:bg-indigo-500">
-                      <i class="lni lni-facebook-original" aria-hidden="true">
-                      </i>
-                    </a>
-                  </li>
-                  <li class="mx-1">
-                    <a href="javascript:void(0)" class="social-link hover:bg-blue-400">
-                      <i class="lni lni-twitter-original" aria-hidden="true">
-                      </i>
-                    </a>
-                  </li>
-                  <li class="mx-1">
-                    <a href="javascript:void(0)" class="social-link hover:bg-red-500">
-                      <i class="lni lni-instagram-filled" aria-hidden="true">
-                      </i>
-                    </a>
-                  </li>
-                </ul>
+              <img class="PortfolioStyle" src="img/Portfolio/GamakayMk61.PNG" alt="" />
+              <div onclick="window.location='https://www.youtube.com/watch?v=9B3cLne5g_g'"
+              style="cursor:pointer;"
+              class="w-full h-full flex items-center justify-center absolute top-0 left-0 bg-white bg-opacity-60 duration-300 opacity-0 group-hover:opacity-100">
               </div>
+         
+         
             </div>
+
             <div class="text-center px-5 py-3">
               <h3 class="text-gray-800 font-bold uppercase text-lg my-2">
-                John Doe
+                E-Sports Mouse Desktop Software
               </h3>
-              <p>UX UI Designer</p>
+              <p>Glorious Model O Wireless Video</p>
             </div>
           </div>
         </div>
-        <!-- Team Item Ends -->
-        <!-- Team Item Starts -->
-        <div class="max-w-sm sm:w-1/2 md:w-1/2 lg:w-1/3">
-          <div class="
-                m-3
-                text-center
-                bg-white
-                shadow
-                duration-300
-                group
-                hover:shadow-lg
-              ">
-            <div class="team-img relative">
-              <img class="img-fluid" src="img/team/img2.jpg" alt="" />
-              <div class="
-                    w-full
-                    h-full
-                    flex
-                    items-center
-                    justify-center
-                    absolute
-                    top-0
-                    left-0
-                    bg-white bg-opacity-60
-                    duration-300
-                    opacity-0
-                    group-hover:opacity-100
-                  ">
-                <ul class="flex justify-center">
-                  <li class="mx-1">
-                    <a href="javascript:void(0)" class="social-link hover:bg-indigo-500">
-                      <i class="lni lni-facebook-original" aria-hidden="true">
-                      </i>
-                    </a>
-                  </li>
-                  <li class="mx-1">
-                    <a href="javascript:void(0)" class="social-link hover:bg-blue-400">
-                      <i class="lni lni-twitter-original" aria-hidden="true">
-                      </i>
-                    </a>
-                  </li>
-                  <li class="mx-1">
-                    <a href="javascript:void(0)" class="social-link hover:bg-red-500">
-                      <i class="lni lni-instagram-filled" aria-hidden="true">
-                      </i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="text-center px-5 py-3">
-              <h3 class="text-gray-800 font-bold uppercase text-lg my-2">
-                Sarah Doe
-              </h3>
-              <p>Front-End Developer</p>
-            </div>
-          </div>
-        </div>
-        <!-- Team Item Ends -->
-        <!-- Team Item Starts -->
-        <div class="max-w-sm sm:w-1/2 md:w-1/2 lg:w-1/3">
-          <div class="
-                m-3
-                text-center
-                bg-white
-                shadow
-                duration-300
-                group
-                hover:shadow-lg
-              ">
-            <div class="team-img relative">
-              <img class="img-fluid" src="img/team/img3.jpg" alt="" />
-              <div class="
-                    w-full
-                    h-full
-                    flex
-                    items-center
-                    justify-center
-                    absolute
-                    top-0
-                    left-0
-                    bg-white bg-opacity-60
-                    duration-300
-                    opacity-0
-                    group-hover:opacity-100
-                  ">
-                <ul class="flex justify-center">
-                  <li class="mx-1">
-                    <a href="javascript:void(0)" class="social-link hover:bg-indigo-500">
-                      <i class="lni lni-facebook-original" aria-hidden="true">
-                      </i>
-                    </a>
-                  </li>
-                  <li class="mx-1">
-                    <a href="javascript:void(0)" class="social-link hover:bg-blue-400">
-                      <i class="lni lni-twitter-original" aria-hidden="true">
-                      </i>
-                    </a>
-                  </li>
-                  <li class="mx-1">
-                    <a href="javascript:void(0)" class="social-link hover:bg-red-500">
-                      <i class="lni lni-instagram-filled" aria-hidden="true">
-                      </i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="text-center px-5 py-3">
-              <h3 class="text-gray-800 font-bold uppercase text-lg my-2">
-                Rob Hope
-              </h3>
-              <p>Front-end Developer</p>
-            </div>
-          </div>
-        </div>
-        <!-- Team Item Ends -->
+        <!-- Item Ends -->
       </div>
     </div>
   </section>
-  <!-- Team Section End -->
-
-  <!-- Clients Section Start -->
 
 
-
-  <!-- Clients Section End -->
-
-  <!-- Pricing section Start -->
-  <section id="pricing" class="py-24">
+  <section id="work experience" class="py-24 sadad">
     <div class="container px-4">
       <div class="flex flex-wrap justify-center md:justify-start">
-        <!-- single pricing table starts -->
-        <div class="w-3/4 sm:w-2/3 md:w-1/2 lg:w-1/3">
-          <div class="
-                m-3
-                text-center
-                py-10
-                px-8
-                shadow
-                rounded
-                duration-300
-                hover:shadow-lg hover:bg-blue-100
-                wow
-                fadeInLeft
-              ">
-            <div class="mb-3">
-              <h3 class="text-blue-600 font-bold uppercase text-sm">Basic</h3>
-            </div>
-            <div class="mb-5">
-              <p class="text-gray-700">
-                <span class="font-bold text-2xl">$12.90</span>
-                <span class="font-medium text-sm">/ Month</span>
-              </p>
-            </div>
-            <ul class="mb-16">
-              <li class="text-gray-500 leading-9">Up to 5 projects</li>
-              <li class="text-gray-500 leading-9">Up to 10 collabrators</li>
-              <li class="text-gray-500 leading-9">2gb of storage</li>
-            </ul>
-            <a href="javascript:void(0)" class="
-                  text-white
-                  bg-blue-600
-                  px-10
-                  py-3
-                  rounded-full
-                  duration-300
-                  hover:bg-blue-500
-                ">Get It</a>
-          </div>
-        </div>
-        <!-- single pricing table ends -->
-        <!-- single pricing table starts -->
         <div class="w-3/4 sm:w-2/3 md:w-1/2 lg:w-1/3">
           <div class="
                 m-3
@@ -684,11 +509,6 @@
                 <li>ASP.NET/C#/ASP.NET MVC/SQL/JavaScript/HTML</li>
               </ul>
 
-              <div class="text-lg font-bold mb-4">Development Experience:</div>
-              <ul class="list-disc pl-6 mb-4">
-                <li>Post-loan management system for China Trust Bank</li>
-                <li>Cash flow signing system for Taishin Bank</li>
-              </ul>
 
               <div class="text-lg font-bold mb-4">Bank Website Maintenance and Development:</div>
               <ul class="list-disc pl-6 mb-4">
@@ -704,7 +524,7 @@
               </ul>
 
             </ul>
-            <a href="javascript:void(0)" class="
+            <a href="https://www.104.com.tw/company/13u3sbvs" target="_blank" class="
                   text-white
                   bg-blue-600
                   px-10
@@ -712,99 +532,19 @@
                   rounded-full
                   duration-300
                   hover:bg-blue-500
-                ">Get It</a>
+                ">Go to view</a>
           </div>
         </div>
-        <!-- single pricing table ends -->
-        <!-- single pricing table starts -->
-        <div class="w-3/4 sm:w-2/3 md:w-1/2 lg:w-1/3">
-          <div class="
-                m-3
-                text-center
-                py-10
-                px-8
-                shadow
-                rounded
-                duration-300
-                hover:shadow-lg hover:bg-blue-100
-              ">
-            <div class="mb-3">
-              <h3 class="text-blue-600 font-bold uppercase text-sm">
-                EXPERT
-              </h3>
-            </div>
-            <div class="mb-5">
-              <p class="text-gray-700">
-                <span class="font-bold text-2xl">$89.90</span>
-                <span class="font-medium text-sm">/ Month</span>
-              </p>
-            </div>
-            <ul class="mb-16">
-              <li class="text-gray-500 leading-9">unlimited projects</li>
-              <li class="text-gray-500 leading-9">Unlimited collabrators</li>
-              <li class="text-gray-500 leading-9">Unlimited of storage</li>
-              <li class="text-gray-500 leading-9">Real-time collabration</li>
-              <li class="text-gray-500 leading-9">24x7 Support</li>
-            </ul>
-            <a href="javascript:void(0)" class="
-                  text-white
-                  bg-blue-600
-                  px-10
-                  py-3
-                  rounded-full
-                  duration-300
-                  hover:bg-blue-500
-                ">Get It</a>
-          </div>
-        </div>
-        <!-- single pricing table ends -->
+
       </div>
     </div>
   </section>
-  <!-- Pricing Table Section End -->
 
   <!-- Subscribe Section Start -->
   <section id="Subscribes" class="text-center py-20 bg-blue-100">
     <div class="container px-4">
       <div class="flex justify-center mx-3">
-        <div class="w-full sm:w-3/4 md:w-2/3 lg:w-1/2">
-          <h4 class="mb-3 text-4xl text-gray-700 font-bold tracking-wide">
-            Start For Free
-          </h4>
-          <p class="mb-4 text-gray-600 leading-loose text-sm">
-            Existing customized ideas through client-based deliverables.
-            <br />
-            Compellingly unleash fully tested outsourcing
-          </p>
-          <form for="">
-            <div class="wow fadeInDown">
-              <input type="Email" class="
-                    w-full
-                    mb-5
-                    bg-white
-                    border border-blue-300
-                    rounded-full
-                    px-5
-                    py-3
-                    duration-300
-                    focus:border-blue-600
-                    outline-none
-                  " name="email" placeholder="Email Address" />
-              <button class="
-                    border-0
-                    bg-blue-600
-                    text-white
-                    rounded-full
-                    w-12
-                    h-12
-                    duration-300
-                    hover:opacity-75
-                  " type="submit">
-                <i class="lni lni-arrow-right"> </i>
-              </button>
-            </div>
-          </form>
-        </div>
+      
       </div>
     </div>
   </section>
@@ -969,7 +709,7 @@
 
 
 
-        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4">
+        <!-- <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4">
           <div class="mx-3 mb-8">
             <h3 class="font-bold text-xl text-white mb-5">Company</h3>
             <ul>
@@ -991,17 +731,12 @@
                       hover:text-blue-500
                     ">Mission</a>
               </li>
-              <li>
-                <a href="javascript:void(0)" class="
-                      leading-9
-                      text-gray-100
-                      duration-300
-                      hover:text-blue-500
-                    ">Strategy</a>
-              </li>
+
+
+
             </ul>
           </div>
-        </div>
+        </div> -->
 
 
 
