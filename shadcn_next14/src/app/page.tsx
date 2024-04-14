@@ -15,7 +15,7 @@ const links = [
   { href: '/Test1', text: 'Test1' },
   { href: '/stockDashboard', text: 'stockDashboard' },
   { href: '/payments', text: 'payments' },
-  { href: '/personalResume', text: 'personalResume' }
+  // { href: '/personalResume', text: 'personalResume' }
 
 
 ];
