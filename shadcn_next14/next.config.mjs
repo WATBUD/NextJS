@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    basePath: '/',
+    //basePath: '/public',
     reactStrictMode:true,
     swcMinify:true,
     async rewrites() {
