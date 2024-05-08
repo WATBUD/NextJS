@@ -31,10 +31,10 @@ const App: React.FC = () => {
   const [query, setQuery] = useState<string>('');
   const [filteredData, setFilteredData] = useState<{ en: string; zh: string; index: number }[]>([]);
   const [blockedList, setBlockedList] = useState<number[]>([]);
+  const [showFavoritesListOnly, setShowFavoritesListOnly] = useState<boolean>(false);
   const toggleshowFavoritesListOnly = () => {
     setShowFavoritesListOnly(!showFavoritesListOnly);
   };
-  const [showFavoritesListOnly, setShowFavoritesListOnly] = useState<boolean>(false);
   const toggleStarred = (index: number) => {
     if (blockedList.includes(index)) {
       setBlockedList(blockedList.filter(item => item !== index));
@@ -63,6 +63,13 @@ const App: React.FC = () => {
     setFilteredData(filtered);
   };
   useEffect(() => {
+    console.log(
+      "%c query,showFavoritesListOnly",
+      "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+      "query,showFavoritesListOnly:",
+      query,showFavoritesListOnly
+    );
+    showCustomToast(showFavoritesListOnly?'我的最愛':'全部模式')
     const event = {
       target: {
         value: query
