@@ -4,9 +4,12 @@ import { StarIcon as StarIconOutline } from '@heroicons/react/24/outline'
 //import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid'
 //import { DocumentDuplicateIcon as DocumentDuplicateIconOutline } from '@heroicons/react/24/outline'
 import { DocumentDuplicateIcon as DocumentDuplicateIconSolid } from '@heroicons/react/24/solid'
-import React, { useState,useEffect,useRef,createContext} from 'react';
+import React, { useState,useEffect,useRef,useContext} from 'react';
 import searchListModule from './searchListModule.json';
 import toast, { Renderable, Toast, Toaster, ValueFunction } from 'react-hot-toast';
+import OptionsModal from './optionsModal';
+import { useOptions } from './optionsContext';
+
 const SearchList: React.FC = () => {
   const showCustomToast = (text: string) => {
     toast(text, {
@@ -31,13 +34,12 @@ const SearchList: React.FC = () => {
       },
     });
   };
-  const [showOptionsModal, setShowOptionsModal] = useState(false); 
-
+  
   const [query, setQuery] = useState<string>('');
   const [filteredData, setFilteredData] = useState<{ en: string; zh: string; index: number }[]>([]);
   const [blockedList, setBlockedList] = useState<number[]>([]);
+  const { showFavoritesListOnly,showOptionUI,setshowOptionUI } = useOptions();
 
-  const [showFavoritesListOnly, setShowFavoritesListOnly] = useState<boolean>(false);
   const toggleStarred = (index: number) => {
     if (blockedList.includes(index)) {
       setBlockedList(blockedList.filter(item => item !== index));
@@ -69,7 +71,7 @@ const SearchList: React.FC = () => {
       "%c query,showFavoritesListOnly",
       "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
       "query,showFavoritesListOnly:",
-      showOptionsModal
+      showOptionUI
     );
     showCustomToast(showFavoritesListOnly ? '最愛模式' : '全部模式');
     const event = {
@@ -133,12 +135,12 @@ const SearchList: React.FC = () => {
   return (
       <div className="container mx-auto mt-7 flex flex-col items-center w-[100vw] bg-[#0000]">
         <Toaster />
-        {/* {showOptionsModal && (
+        {showOptionUI && (
           <OptionsModal />
-        )} */}
+        )}
         <div className="flex justify-between w-full items-center mb-2">
           <h1 className="text-2xl font-bold self-center">Sentence Search</h1>
-          <button onClick={() => setShowOptionsModal(true)}
+          <button onClick={() => setshowOptionUI(true)}
             className="px-3 py-2 bg-gray-300 text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           >Options</button>
 
