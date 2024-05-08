@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     //basePath: '/public',
-    reactStrictMode:true,
+    reactStrictMode:false,//會執行兩次render
     swcMinify:true,
     async rewrites() {
         return [

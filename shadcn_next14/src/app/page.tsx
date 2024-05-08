@@ -16,7 +16,7 @@ const links = [
   { href: '/stockDashboard', text: 'stockDashboard' },
   { href: '/payments', text: 'payments' },
   { href: '/resume/index', text: 'personalResume' },
-  { href: '/englishTool', text: 'englishTool' }
+  { href: '/language_practice_tool', text: 'language_practice_tool' }
 
 ];
 
