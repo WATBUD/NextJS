@@ -10,19 +10,30 @@ type OptionsContextType = {
   showFavoritesListOnly: boolean;
   setShowFavoritesListOnly: React.Dispatch<React.SetStateAction<boolean>>;
   showOptionUI: boolean;
-  setshowOptionUI: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowOptionUI: React.Dispatch<React.SetStateAction<boolean>>;
+  //setOptionsState: React.Dispatch<React.SetStateAction<Object>>;
 };
-
+interface OptionsState {
+  showOptionUI: boolean;
+  // 其他属性
+}
 // 創建 Context
 const OptionsContext = createContext<OptionsContextType | undefined>(undefined);
 
 // 提供 Context 的 Component
 export const OptionsProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const [showFavoritesListOnly, setShowFavoritesListOnly] = useState<boolean>(false);
-  const [showOptionUI, setshowOptionUI] = useState<boolean>(false);
+  const [showOptionUI, setShowOptionUI] = useState<boolean>(false);
+
+
+  // const [optionsState, setOptionsState] = useState<OptionsContextType>({ 
+  //   showOpionUI: false ,
+  //   showFavoritesListOnly: false ,
+  // });
+
 
   return (
-    <OptionsContext.Provider value={{ showFavoritesListOnly, setShowFavoritesListOnly,showOptionUI, setshowOptionUI }}>
+    <OptionsContext.Provider value={{ showFavoritesListOnly, setShowFavoritesListOnly,showOptionUI, setShowOptionUI }}>
       {children}
     </OptionsContext.Provider>
   );

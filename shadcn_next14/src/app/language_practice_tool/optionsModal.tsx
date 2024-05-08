@@ -6,7 +6,7 @@ interface OptionsModalProps {
 }
 
 const OptionsModal: React.FC<OptionsModalProps> = () => {
-  const { showFavoritesListOnly, setShowFavoritesListOnly,showOptionUI,setshowOptionUI } = useOptions();
+  const { showFavoritesListOnly, setShowFavoritesListOnly,showOptionUI,setShowOptionUI } = useOptions();
 
   return (
     <div className="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-50 flex justify-center items-center">
@@ -23,7 +23,7 @@ const OptionsModal: React.FC<OptionsModalProps> = () => {
           <label htmlFor="showFavorites" className="text-lg">Show Favorites Only</label>
         </div>
         <div className="flex justify-end">
-          <button className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2" onClick={()=>{setshowOptionUI(!showOptionUI)}}>
+          <button className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2" onClick={()=>{setShowOptionUI(!showOptionUI)}}>
             Close
           </button>
         </div>

@@ -38,7 +38,7 @@ const SearchList: React.FC = () => {
   const [query, setQuery] = useState<string>('');
   const [filteredData, setFilteredData] = useState<{ en: string; zh: string; index: number }[]>([]);
   const [blockedList, setBlockedList] = useState<number[]>([]);
-  const { showFavoritesListOnly,showOptionUI,setshowOptionUI } = useOptions();
+  const { showFavoritesListOnly,showOptionUI,setShowOptionUI } = useOptions();
 
   const toggleStarred = (index: number) => {
     if (blockedList.includes(index)) {
@@ -140,7 +140,7 @@ const SearchList: React.FC = () => {
         )}
         <div className="flex justify-between w-full items-center mb-2">
           <h1 className="text-2xl font-bold self-center">Sentence Search</h1>
-          <button onClick={() => setshowOptionUI(true)}
+          <button onClick={() => setShowOptionUI(true)}
             className="px-3 py-2 bg-gray-300 text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           >Options</button>
 
