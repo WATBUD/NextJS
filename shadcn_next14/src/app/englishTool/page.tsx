@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import React, { useState,useEffect,useRef} from 'react';
 import searchListModule from './searchListModule.json';
@@ -27,16 +28,13 @@ const showCustomToast = (text: string) => {
   });
 };
 const App: React.FC = () => {
-  const [showBlocked, setShowBlocked] = useState<boolean>(false);
   const [query, setQuery] = useState<string>('');
   const [filteredData, setFilteredData] = useState<{ en: string; zh: string; index: number }[]>([]);
   const [blockedList, setBlockedList] = useState<number[]>([]);
-  const toggleShowBlocked = () => {
-    setShowBlocked(!showBlocked);
+  const toggleshowFavoritesListOnly = () => {
+    setShowFavoritesListOnly(!showFavoritesListOnly);
   };
-
-
-
+  const [showFavoritesListOnly, setShowFavoritesListOnly] = useState<boolean>(false);
   const toggleStarred = (index: number) => {
     if (blockedList.includes(index)) {
       setBlockedList(blockedList.filter(item => item !== index));
@@ -49,16 +47,30 @@ const App: React.FC = () => {
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(
+      "%c handleInputChange",
+      "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+      "event:",
+      event
+    );
     const newQuery = event.target.value;
     setQuery(newQuery);
 
     const filtered = searchListModule.filter(item =>
       (item.en.toLowerCase().includes(newQuery.toLowerCase()) || item.zh.toLowerCase().includes(newQuery.toLowerCase()))
-      && !blockedList.includes(item.index)
+      && (!showFavoritesListOnly || blockedList.includes(item.index))
     );
     setFilteredData(filtered);
   };
-
+  useEffect(() => {
+    const event = {
+      target: {
+        value: query
+      }
+    };
+    handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
+  }, [showFavoritesListOnly]);
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -110,8 +122,8 @@ const App: React.FC = () => {
       <Toaster  />
       <div className="flex justify-between w-full items-center mb-2">
         <h1 className="text-2xl font-bold self-center">Sentence Search</h1>
-        <button onClick={toggleShowBlocked} className="px-3 py-2 bg-gray-300 text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-          {showBlocked ? 'Show All' : 'Show Blocked'}
+        <button onClick={toggleshowFavoritesListOnly} className="px-3 py-2 bg-gray-300 text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+          {showFavoritesListOnly ? 'Show All': 'Show Favorites'}
         </button>
       </div>
       <div className="w-[100%] flex flex-col items-center">

@@ -98,5 +98,28 @@
       "index": 20,
       "en": "I will take a look.",
       "zh": "我會看一下"
+  },
+  {
+      "index": 21,
+      "en": "What does this mean?",
+      "zh": "這是什麼意思？"
+  },
+  {
+    "index": 22,
+    "en": "Show favorites list only",
+    "zh": "僅顯示收藏夾列表"
+  },
+  {
+    "index": 23,
+    "en": "I want to ask who got this job QQ?",
+    "zh": "我想問一下誰得到了這個工作 QQ？"
+  },
+  {
+    "index": 24,
+    "en": "Excuse me, are you referring to me?",
+    "zh": "打擾一下，您指的是我嗎？？"
   }
+
+  
+  
 ]
