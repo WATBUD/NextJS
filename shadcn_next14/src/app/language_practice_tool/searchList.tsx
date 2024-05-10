@@ -8,37 +8,39 @@ import React, { useState,useEffect,useRef,useContext} from 'react';
 import searchListModule from './searchListModule.json';
 import toast, { Renderable, Toast, Toaster, ValueFunction } from 'react-hot-toast';
 import OptionsModal from './optionsModal';
-import { useOptions } from './optionsContext';
+import { useOptions,showCustomToast } from './optionsContext';
 
 const SearchList: React.FC = () => {
-  const showCustomToast = (text: string) => {
-    toast(text, {
-      duration: 4000,
-      position: 'top-center',
-      // Styling
-      style: {},
-      className: '',
-      // Custom Icon
-      icon: '❤️',
+  // const showCustomToast = (text: string) => {
+  //   toast(text, {
+  //     duration: 900,
+  //     position: 'top-center',
+  //     //style: { textAlign: 'center' },
+  //     className: '',
+  //     // Custom Icon
+  //     icon: '❤️',
     
-      // Change colors of success/error/loading icon
-      iconTheme: {
-        primary: '#000',
-        secondary: '#fff',
-      },
+  //     // Change colors of success/error/loading icon
+  //     iconTheme: {
+  //       primary: '#000',
+  //       secondary: '#fff',
+  //     },
     
-      // Aria
-      ariaProps: {
-        role: 'status',
-        'aria-live': 'polite',
-      },
-    });
-  };
-  
+  //     // Aria
+  //     ariaProps: {
+  //       role: 'status',
+  //       'aria-live': 'polite',
+  //     },
+  //   });
+  // };
   const [query, setQuery] = useState<string>('');
   const [filteredData, setFilteredData] = useState<{ en: string; zh: string; index: number }[]>([]);
-  const [blockedList, setBlockedList] = useState<number[]>([]);
-  const { showFavoritesListOnly,showOptionUI,setShowOptionUI } = useOptions();
+  const { 
+    showFavoritesListOnly, setShowFavoritesListOnly,
+    showOptionUI,setShowOptionUI,
+    copyTheTextAbove, setCopyTheTextAbove,
+    copyTheTextBelow, setCopyTheTextBelow,
+    blockedList, setBlockedList } = useOptions();
 
   const toggleStarred = (index: number) => {
     if (blockedList.includes(index)) {
@@ -65,6 +67,9 @@ const SearchList: React.FC = () => {
       && (!showFavoritesListOnly || blockedList.includes(item.index))
     );
     setFilteredData(filtered);
+    if(filtered.length<=0 && showFavoritesListOnly){
+      showCustomToast('最愛模式:無收藏名單');   
+    }
   };
   useEffect(() => {
     console.log(
@@ -111,11 +116,10 @@ const SearchList: React.FC = () => {
     document.execCommand('copy');
     document.body.removeChild(textArea);
     //toast.success('Successfully created!');
+    showCustomToast(text);
     showCustomToast('Copied');
   };
-  const handleClose = () => {
-    // 在這裡定義關閉操作的邏輯
-  };
+
   const scrollToTop = () => {
     //   window.scrollTo({
     //     top: 0,
@@ -133,7 +137,7 @@ const SearchList: React.FC = () => {
     }, 15);
   };
   return (
-      <div className="container mx-auto mt-7 flex flex-col items-center w-[100vw] bg-[#0000]">
+      <div className="container mx-auto mt-7 flex flex-col items-center w-[100%] bg-[#0000]">
         <Toaster />
         {showOptionUI && (
           <OptionsModal />
@@ -173,7 +177,18 @@ const SearchList: React.FC = () => {
                     <br />
                     {item.zh}
                   </div>
-                  <button className="bg-[#0000] ml-auto" onClick={() => copyText(item.en + "\n" + item.zh)}>
+                  <button className="bg-[#0000] ml-auto" onClick={() => {
+        
+                    // if (copyTheTextAbove && copyTheTextBelow) {
+                    //   copyText(item.en + "\n" + item.zh);
+                    // } else if (copyTheTextAbove) {
+                    //   copyText(item.en);
+                    // } else if (copyTheTextBelow) {
+                    //   copyText(item.zh);
+                    // }
+                    const textToCopy = copyTheTextAbove && copyTheTextBelow ? item.en + "\n" + item.zh : copyTheTextAbove ? item.en : item.zh;
+                    copyText(textToCopy);
+                    }}>
                     <DocumentDuplicateIconSolid className="h-6 w-6  text-gray-200 fill-current" />
                   </button>
                 </li>

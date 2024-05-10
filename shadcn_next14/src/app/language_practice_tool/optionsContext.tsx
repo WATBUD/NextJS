@@ -1,6 +1,7 @@
 "use client"
 
 // OptionsContext.tsx
+import toast, { Renderable, Toast, Toaster, ValueFunction } from 'react-hot-toast';
 
 import React, { createContext, useContext, useState, PropsWithChildren } from 'react';
 
@@ -11,12 +12,43 @@ type OptionsContextType = {
   setShowFavoritesListOnly: React.Dispatch<React.SetStateAction<boolean>>;
   showOptionUI: boolean;
   setShowOptionUI: React.Dispatch<React.SetStateAction<boolean>>;
+  copyTheTextBelow: boolean; 
+  setCopyTheTextBelow: React.Dispatch<React.SetStateAction<boolean>>;
+  copyTheTextAbove: boolean; 
+  setCopyTheTextAbove: React.Dispatch<React.SetStateAction<boolean>>;
+  blockedList: number[]; 
+  setBlockedList: React.Dispatch<React.SetStateAction<number[]>>;
   //setOptionsState: React.Dispatch<React.SetStateAction<Object>>;
 };
 interface OptionsState {
   showOptionUI: boolean;
   // 其他属性
 }
+export const showCustomToast = (text: string) => {
+  toast(text, {
+    duration: 900,
+    position: 'top-center',
+    //style: { textAlign: 'center' },
+    className: '',
+    // Custom Icon
+    icon: '❤️',
+  
+    // Change colors of success/error/loading icon
+    iconTheme: {
+      primary: '#000',
+      secondary: '#fff',
+    },
+  
+    // Aria
+    ariaProps: {
+      role: 'status',
+      'aria-live': 'polite',
+    },
+  });
+};
+
+
+
 // 創建 Context
 const OptionsContext = createContext<OptionsContextType | undefined>(undefined);
 
@@ -24,16 +56,24 @@ const OptionsContext = createContext<OptionsContextType | undefined>(undefined);
 export const OptionsProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const [showFavoritesListOnly, setShowFavoritesListOnly] = useState<boolean>(false);
   const [showOptionUI, setShowOptionUI] = useState<boolean>(false);
-
+  const [copyTheTextBelow, setCopyTheTextBelow] = useState<boolean>(true); 
+  const [copyTheTextAbove, setCopyTheTextAbove] = useState<boolean>(true); 
+  const [blockedList, setBlockedList] = useState<number[]>([]);
 
   // const [optionsState, setOptionsState] = useState<OptionsContextType>({ 
   //   showOpionUI: false ,
   //   showFavoritesListOnly: false ,
   // });
-
-
+ 
+  
   return (
-    <OptionsContext.Provider value={{ showFavoritesListOnly, setShowFavoritesListOnly,showOptionUI, setShowOptionUI }}>
+    <OptionsContext.Provider value={{ 
+      showFavoritesListOnly, setShowFavoritesListOnly,
+      showOptionUI, setShowOptionUI, 
+      copyTheTextAbove, setCopyTheTextAbove,
+      copyTheTextBelow, setCopyTheTextBelow,
+      blockedList, setBlockedList,
+      }}>
       {children}
     </OptionsContext.Provider>
   );

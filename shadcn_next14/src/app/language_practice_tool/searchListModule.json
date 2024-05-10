@@ -22,7 +22,7 @@
   {
       "index": 5,
       "en": "I'm not used to speaking English",
-      "zh": "我不習慣講英文？"
+      "zh": "我不習慣講英文"
   },
   {
       "index": 6,
@@ -133,5 +133,48 @@
     "index": 27,
     "en": "I like white, it gives me a sense of innocence, optimism and a very sacred feeling",
     "zh": "我喜歡白色，它給我一種純真、樂觀和一種很神聖的感覺"
+  },
+  {
+    "index": 28,
+    "en": "I have several questions about this issue.",
+    "zh": "對於這個問題我有幾個疑問。"
+  },
+  {
+    "index": 29,
+    "en": "Don't worry about this problem.",
+    "zh": "不用擔心這個問題。"
+  },
+  {
+    "index": 30,
+    "en": "I don't want to teach others bad habits.",
+    "zh": "我不想教別人壞習慣。"
+  },
+  {
+    "index": 31,
+    "en": "I haven't opened VRChat in at least a year.",
+    "zh": "我至少有一年沒有打開 VRChat 了。"
+  },
+  {
+    "index": 32,
+    "en": "The most important thing during the interview is to be in a good mood.",
+    "zh": "面試的時候最重要的是心情好。"
+  },
+  {
+    "index": 33,
+    "en": "With this tool, my English skills are bound to improve.",
+    "zh": "有了這個工具，我的英語程度一定會提升。"
+  },
+  {
+    "index": 34,
+    "en": "I'm waiting for you to introduce girls to me.",
+    "zh": "我等著你跟我介紹女孩子。"
+  },
+  {
+    "index": 35,
+    "en": "Did the company you interviewed with last time not accept you?",
+    "zh": "上次面試的公司沒有錄取你嗎？"
   }
+  
+
+
 ]
