@@ -11,36 +11,47 @@ import OptionsModal from './optionsModal';
 import { useOptions,showCustomToast } from './optionsContext';
 
 const SearchList: React.FC = () => {
-  // const showCustomToast = (text: string) => {
-  //   toast(text, {
-  //     duration: 900,
-  //     position: 'top-center',
-  //     //style: { textAlign: 'center' },
-  //     className: '',
-  //     // Custom Icon
-  //     icon: '❤️',
-    
-  //     // Change colors of success/error/loading icon
-  //     iconTheme: {
-  //       primary: '#000',
-  //       secondary: '#fff',
-  //     },
-    
-  //     // Aria
-  //     ariaProps: {
-  //       role: 'status',
-  //       'aria-live': 'polite',
-  //     },
-  //   });
-  // };
   const [query, setQuery] = useState<string>('');
   const [filteredData, setFilteredData] = useState<{ en: string; zh: string; index: number }[]>([]);
+  // const [tt, sett] = useState<boolean>(false);
+  // useEffect(() => {
+  //   console.log(
+  //     "%c useEffect+tt",
+  //     "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+  //     "tt:",
+  //     tt
+  //   );
+  // }, [tt]);
   const { 
     showFavoritesListOnly, setShowFavoritesListOnly,
     showOptionUI,setShowOptionUI,
     copyTheTextAbove, setCopyTheTextAbove,
     copyTheTextBelow, setCopyTheTextBelow,
     blockedList, setBlockedList } = useOptions();
+    const intialCountRef = useRef(0);
+    useEffect(() => {
+      console.log(
+        "%c useEffect+showFavoritesListOnly",
+        "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+        "showFavoritesListOnly:",
+        showFavoritesListOnly,
+        "intialCountRef.current",
+        intialCountRef.current,
+      );
+      if (intialCountRef.current === 0) {
+        intialCountRef.current += 1;
+        showCustomToast(showFavoritesListOnly ? '最愛模式' : '全部模式');
+      }
+      else{
+        showCustomToast(showFavoritesListOnly ? '最愛模式' : '全部模式');
+        const event = {
+          target: {
+            value: query
+          }
+        };
+        handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
+      }
+    }, [showFavoritesListOnly]);
 
   const toggleStarred = (index: number) => {
     if (blockedList.includes(index)) {
@@ -50,9 +61,7 @@ const SearchList: React.FC = () => {
       setBlockedList([...blockedList, index]);
       showCustomToast('已收藏')
     }
-
   };
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(
       "%c handleInputChange",
@@ -71,24 +80,44 @@ const SearchList: React.FC = () => {
       showCustomToast('最愛模式:無收藏名單');   
     }
   };
+
+
   useEffect(() => {
-    console.log(
-      "%c query,showFavoritesListOnly",
-      "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-      "query,showFavoritesListOnly:",
-      showOptionUI
-    );
-    showCustomToast(showFavoritesListOnly ? '最愛模式' : '全部模式');
-    const event = {
-      target: {
-        value: query
+    typeof (Storage) == "undefined" ? console.log("本地存储不可用") : null;
+    if (intialCountRef.current > 1) {
+      localStorage.setItem('blockedList', JSON.stringify(blockedList));
+      console.log(
+        "%c useEffect+blockedList",
+        "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+        "blockedList:",
+        blockedList,
+        'localStorage.getItem_blockedList',
+        localStorage.getItem('blockedList'),
+        "intialCountRef.current",
+        intialCountRef.current,
+      );
+    } else {
+      intialCountRef.current += 1;
+
+    }
+
+  }, [blockedList]);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      const storedBlockedList = localStorage.getItem('blockedList');
+      console.log(
+        "%c useEffect+init",
+        "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+        "storedBlockedList:",
+        storedBlockedList
+      );
+      if (storedBlockedList) {
+        setBlockedList(JSON.parse(storedBlockedList));
       }
-    };
-    handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
-  }, [showFavoritesListOnly]);
-  
-  
-  useEffect(() => {
+
+    }, 500);
+
     //document.title = "language_practice_tool";
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -107,6 +136,7 @@ const SearchList: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
   const copyText = (text: string) => {
     //navigator.clipboard.writeText(text);
     const textArea = document.createElement('textarea');
@@ -148,10 +178,6 @@ const SearchList: React.FC = () => {
             className="px-3 py-2 bg-gray-300 text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           >Options</button>
 
-          {/* <button onClick={toggleshowFavoritesListOnly} 
-        className="px-3 py-2 bg-gray-300 text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-          {showFavoritesListOnly ? 'Show All': 'Show Favorites'}
-        </button> */}
         </div>
         <div className="w-[100%] flex flex-col items-center">
           <div className="flex justify-between w-full items-center mb-2">
