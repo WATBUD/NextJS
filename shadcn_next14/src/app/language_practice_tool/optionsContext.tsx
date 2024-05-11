@@ -16,8 +16,8 @@ type OptionsContextType = {
   setCopyTheTextBelow: React.Dispatch<React.SetStateAction<boolean>>;
   copyTheTextAbove: boolean; 
   setCopyTheTextAbove: React.Dispatch<React.SetStateAction<boolean>>;
-  blockedList: number[]; 
-  setBlockedList: React.Dispatch<React.SetStateAction<number[]>>;
+  favorites: number[]; 
+  setFavorites: React.Dispatch<React.SetStateAction<number[]>>;
   //setOptionsState: React.Dispatch<React.SetStateAction<Object>>;
 };
 interface OptionsState {
@@ -58,7 +58,7 @@ export const OptionsProvider: React.FC<PropsWithChildren<{}>> = ({ children }) =
   const [showOptionUI, setShowOptionUI] = useState<boolean>(false);
   const [copyTheTextBelow, setCopyTheTextBelow] = useState<boolean>(true); 
   const [copyTheTextAbove, setCopyTheTextAbove] = useState<boolean>(true); 
-  const [blockedList, setBlockedList] = useState<number[]>([]);
+  const [favorites, setFavorites] = useState<number[]>([]);
 
   // const [optionsState, setOptionsState] = useState<OptionsContextType>({ 
   //   showOpionUI: false ,
@@ -72,7 +72,7 @@ export const OptionsProvider: React.FC<PropsWithChildren<{}>> = ({ children }) =
       showOptionUI, setShowOptionUI, 
       copyTheTextAbove, setCopyTheTextAbove,
       copyTheTextBelow, setCopyTheTextBelow,
-      blockedList, setBlockedList,
+      favorites, setFavorites,
       }}>
       {children}
     </OptionsContext.Provider>

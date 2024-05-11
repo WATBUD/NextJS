@@ -9,6 +9,7 @@ import searchListModule from './searchListModule.json';
 import toast, { Renderable, Toast, Toaster, ValueFunction } from 'react-hot-toast';
 import OptionsModal from './optionsModal';
 import { useOptions,showCustomToast } from './optionsContext';
+import { set_indexedDB_Data, get_indexedDB_data } from "./indexedDBUtils";
 
 const SearchList: React.FC = () => {
   const [query, setQuery] = useState<string>('');
@@ -27,7 +28,7 @@ const SearchList: React.FC = () => {
     showOptionUI,setShowOptionUI,
     copyTheTextAbove, setCopyTheTextAbove,
     copyTheTextBelow, setCopyTheTextBelow,
-    blockedList, setBlockedList } = useOptions();
+    favorites, setFavorites } = useOptions();
     const intialCountRef = useRef(0);
     useEffect(() => {
       console.log(
@@ -54,11 +55,11 @@ const SearchList: React.FC = () => {
     }, [showFavoritesListOnly]);
 
   const toggleStarred = (index: number) => {
-    if (blockedList.includes(index)) {
-      setBlockedList(blockedList.filter(item => item !== index));
+    if (favorites.includes(index)) {
+      setFavorites(favorites.filter(item => item !== index));
       showCustomToast('已取消收藏')
     } else {
-      setBlockedList([...blockedList, index]);
+      setFavorites([...favorites, index]);
       showCustomToast('已收藏')
     }
   };
@@ -73,7 +74,7 @@ const SearchList: React.FC = () => {
     setQuery(newQuery);
     const filtered = searchListModule.filter(item =>
       (item.en.toLowerCase().includes(newQuery.toLowerCase()) || item.zh.toLowerCase().includes(newQuery.toLowerCase()))
-      && (!showFavoritesListOnly || blockedList.includes(item.index))
+      && (!showFavoritesListOnly || favorites.includes(item.index))
     );
     setFilteredData(filtered);
     if(filtered.length<=0 && showFavoritesListOnly){
@@ -85,36 +86,41 @@ const SearchList: React.FC = () => {
   useEffect(() => {
     typeof (Storage) == "undefined" ? console.log("本地存储不可用") : null;
     if (intialCountRef.current > 1) {
-      localStorage.setItem('blockedList', JSON.stringify(blockedList));
-      console.log(
-        "%c useEffect+blockedList",
-        "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-        "blockedList:",
-        blockedList,
-        'localStorage.getItem_blockedList',
-        localStorage.getItem('blockedList'),
-        "intialCountRef.current",
-        intialCountRef.current,
-      );
+      //localStorage.setItem('favorites', JSON.stringify(favorites));
+      set_indexedDB_Data('favorites','data',favorites, () => {
+        
+      });
+
     } else {
       intialCountRef.current += 1;
 
     }
 
-  }, [blockedList]);
-  
+  }, [favorites]);
+
   useEffect(() => {
     setTimeout(() => {
-      const storedBlockedList = localStorage.getItem('blockedList');
-      console.log(
-        "%c useEffect+init",
-        "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-        "storedBlockedList:",
-        storedBlockedList
-      );
-      if (storedBlockedList) {
-        setBlockedList(JSON.parse(storedBlockedList));
-      }
+      get_indexedDB_data('favorites','data')
+      .then((data) => {
+        if (data !== undefined) {
+          console.log("favorites !== undefined retrieved successfully:", data);
+          setFavorites(data);
+        }
+
+      })
+      .catch((error) => {
+        console.error((error as Error).message);
+      });
+      // console.log(
+      //   "%c useEffect+init",
+      //   "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+      //   "storedBlockedList:",
+      //   storedBlockedList
+      // );
+      // const storedBlockedList = localStorage.getItem('favorites');
+      // if (storedBlockedList) {
+      //   setFavorites(JSON.parse(storedBlockedList));
+      // }
 
     }, 500);
 
@@ -149,6 +155,12 @@ const SearchList: React.FC = () => {
     showCustomToast(text);
     showCustomToast('Copied');
   };
+
+
+
+
+
+
 
   const scrollToTop = () => {
     //   window.scrollTo({
@@ -195,8 +207,8 @@ const SearchList: React.FC = () => {
                 <li key={item.zh} className="border-b border-gray-300 py-2 flex items-center">
                   <button className="bg-[#0000] mr-5" onClick={() => toggleStarred(item.index)}>
                     {/* <StarIcon className="size-6 text-blue-500" /> */}
-                    <StarIconOutline className={`size-6 ${blockedList.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} />
-                    {/* <StarIconSolid className={`size-6 ${blockedList.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
+                    <StarIconOutline className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} />
+                    {/* <StarIconSolid className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
                   </button>
                   <div className="break-word">
                     {item.en}

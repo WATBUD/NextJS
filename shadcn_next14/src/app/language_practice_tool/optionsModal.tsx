@@ -10,7 +10,7 @@ const OptionsModal: React.FC<OptionsModalProps> = () => {
     showOptionUI,setShowOptionUI,
     copyTheTextAbove, setCopyTheTextAbove,
     copyTheTextBelow, setCopyTheTextBelow,
-    blockedList, setBlockedList } = useOptions();
+    favorites, setFavorites } = useOptions();
   return (
     <div className="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-50 flex justify-center items-center">
       <div className="bg-[#fff] w-[80%] max-w-[500px] h-[50%] rounded-lg shadow-lg p-4 flex flex-col items-center">
@@ -47,7 +47,7 @@ const OptionsModal: React.FC<OptionsModalProps> = () => {
         </div>
         <div className="flex justify-end">
           <button className="px-4 py-2 mb-4 mt-4 bg-blue-500 text-white rounded-md" onClick={()=>{
-            setBlockedList([]);
+            setFavorites([]);
             showCustomToast('Clear my favorites')
           }}>
            Clear my favorites
