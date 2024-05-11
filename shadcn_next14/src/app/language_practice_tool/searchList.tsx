@@ -180,10 +180,8 @@ const SearchList: React.FC = () => {
   };
   return (
       <div className="container mx-auto mt-7 flex flex-col items-center w-[100%] bg-[#0000]">
+        <OptionsModal />
         <Toaster />
-        {showOptionUI && (
-          <OptionsModal />
-        )}
         <div className="flex justify-between w-full items-center mb-2">
           <h1 className="text-2xl font-bold self-center">Sentence Search</h1>
           <button onClick={() => setShowOptionUI(true)}
@@ -237,6 +235,7 @@ const SearchList: React.FC = () => {
         <button id="scrollToTopButton" onClick={scrollToTop} className="fixed bottom-4 right-4 px-3 py-2 bg-gray-300 text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 hidden">
           Scroll To Top
         </button>
+
       </div>
   );
 };
