@@ -1,180 +1,231 @@
 [
   {
-      "index": 1,
-      "en": "I will fully cooperate with you",
-      "zh": "我將全力配合您"
+    "index": 1,
+    "en": "I will fully cooperate with you",
+    "zh": "我將全力配合您",
+    "tag": "default"
   },
   {
-      "index": 2,
-      "en": "It's been a while",
-      "zh": "有一陣子了"
+    "index": 2,
+    "en": "It's been a while",
+    "zh": "有一陣子了",
+    "tag": "default"
   },
   {
-      "index": 3,
-      "en": "Shouldn't you go to bed?",
-      "zh": "你不應該去睡覺嗎？"
+    "index": 3,
+    "en": "Shouldn't you go to bed?",
+    "zh": "你不應該去睡覺嗎？",
+    "tag": "default"
   },
   {
-      "index": 4,
-      "en": "How've you been?",
-      "zh": "最近怎麼樣？"
+    "index": 4,
+    "en": "How've you been?",
+    "zh": "最近怎麼樣？",
+    "tag": "default"
   },
   {
-      "index": 5,
-      "en": "I'm not used to speaking English",
-      "zh": "我不習慣講英文"
+    "index": 5,
+    "en": "I'm not used to speaking English",
+    "zh": "我不習慣講英文",
+    "tag": "default"
   },
   {
-      "index": 6,
-      "en": "I will watch movies and comics to study",
-      "zh": "我會看電影與漫畫學習"
+    "index": 6,
+    "en": "I will watch movies and comics to study",
+    "zh": "我會看電影與漫畫學習",
+    "tag": "default"
   },
   {
-      "index": 7,
-      "en": "But I think I still need someone to talk to me",
-      "zh": "但我認為我還是需要人跟我講話"
+    "index": 7,
+    "en": "But I think I still need someone to talk to me",
+    "zh": "但我認為我還是需要人跟我講話",
+    "tag": "default"
   },
   {
-      "index": 8,
-      "en": "Because we have more than 10 kinds of projects",
-      "zh": "因為我們有10種以上的專案"
+    "index": 8,
+    "en": "Because we have more than 10 kinds of projects",
+    "zh": "因為我們有10種以上的專案",
+    "tag": "default"
   },
   {
-      "index": 9,
-      "en": "It will take a lot of time",
-      "zh": "這會花很多時間"
+    "index": 9,
+    "en": "It will take a lot of time",
+    "zh": "這會花很多時間",
+    "tag": "default"
   },
   {
-      "index": 10,
-      "en": "Sorry, I forgot, I can't answer you",
-      "zh": "對不起，我忘記了，我不能回答你"
+    "index": 10,
+    "en": "Sorry, I forgot, I can't answer you",
+    "zh": "對不起，我忘記了，我不能回答你",
+    "tag": "default"
   },
   {
-      "index": 11,
-      "en": "Thanks for talking to me",
-      "zh": "謝謝你與我交談"
+    "index": 11,
+    "en": "Thanks for talking to me",
+    "zh": "謝謝你與我交談",
+    "tag": "default"
   },
   {
-      "index": 12,
-      "en": "I do not know what to say",
-      "zh": "我不知該說什麼"
+    "index": 12,
+    "en": "I do not know what to say",
+    "zh": "我不知該說什麼",
+    "tag": "default"
   },
   {
-      "index": 13,
-      "en": "I have no AWS experience",
-      "zh": "我沒有AWS的經驗"
+    "index": 13,
+    "en": "I have no AWS experience",
+    "zh": "我沒有AWS的經驗",
+    "tag": "default"
   },
   {
-      "index": 14,
-      "en": "But I said it badly",
-      "zh": "但我說的很差"
+    "index": 14,
+    "en": "But I said it badly",
+    "zh": "但我說的很差",
+    "tag": "default"
   },
   {
-      "index": 15,
-      "en": "May I ask some questions?",
-      "zh": "我可以請問一些問題嗎？"
+    "index": 15,
+    "en": "May I ask some questions?",
+    "zh": "我可以請問一些問題嗎？",
+    "tag": "default"
   },
   {
-      "index": 16,
-      "en": "It is hard to say",
-      "zh": "這個不好說"
+    "index": 16,
+    "en": "It is hard to say",
+    "zh": "這個不好說",
+    "tag": "default"
   },
   {
-      "index": 17,
-      "en": "You are a special girl to me",
-      "zh": "對我來說你是個很特別女孩"
+    "index": 17,
+    "en": "You are a special girl to me",
+    "zh": "對我來說你是個很特別女孩",
+    "tag": "default"
   },
   {
-      "index": 18,
-      "en": "If there really is no way, I suggest...",
-      "zh": "如果真的沒有辦法,我建議..."
+    "index": 18,
+    "en": "If there really is no way, I suggest...",
+    "zh": "如果真的沒有辦法,我建議...",
+    "tag": "default"
   },
   {
-      "index": 19,
-      "en": "I can only speak some simple English",
-      "zh": "我只能說一些簡單的英文"
+    "index": 19,
+    "en": "I can only speak some simple English",
+    "zh": "我只能說一些簡單的英文",
+    "tag": "default"
   },
   {
-      "index": 20,
-      "en": "I will take a look.",
-      "zh": "我會看一下"
+    "index": 20,
+    "en": "I will take a look.",
+    "zh": "我會看一下",
+    "tag": "default"
   },
   {
-      "index": 21,
-      "en": "What does this mean?",
-      "zh": "這是什麼意思？"
+    "index": 21,
+    "en": "What does this mean?",
+    "zh": "這是什麼意思？",
+    "tag": "default"
   },
   {
     "index": 22,
     "en": "Show favorites list only",
-    "zh": "僅顯示收藏夾列表"
+    "zh": "僅顯示收藏夾列表",
+    "tag": "default"
   },
   {
     "index": 23,
     "en": "I want to ask who got this job QQ?",
-    "zh": "我想問一下誰得到了這個工作 QQ？"
+    "zh": "我想問一下誰得到了這個工作 QQ？",
+    "tag": "default"
   },
   {
     "index": 24,
     "en": "Excuse me, are you referring to me?",
-    "zh": "打擾一下，您指的是我嗎？？"
+    "zh": "打擾一下，您指的是我嗎？？",
+    "tag": "default"
   },
   {
     "index": 25,
     "en": "I practice English very hard.",
-    "zh": "我非常努力地練習英語。"
+    "zh": "我非常努力地練習英語。",
+    "tag": "default"
   },
   {
     "index": 26,
     "en": "This is what I created from scratch",
-    "zh": "這是我從頭開始創建的"
+    "zh": "這是我從頭開始創建的",
+    "tag": "default"
   },
   {
     "index": 27,
     "en": "I like white, it gives me a sense of innocence, optimism and a very sacred feeling",
-    "zh": "我喜歡白色，它給我一種純真、樂觀和一種很神聖的感覺"
+    "zh": "我喜歡白色，它給我一種純真、樂觀和一種很神聖的感覺",
+    "tag": "default"
   },
   {
     "index": 28,
     "en": "I have several questions about this issue.",
-    "zh": "對於這個問題我有幾個疑問。"
+    "zh": "對於這個問題我有幾個疑問。",
+    "tag": "default"
   },
   {
     "index": 29,
     "en": "Don't worry about this problem.",
-    "zh": "不用擔心這個問題。"
+    "zh": "不用擔心這個問題。",
+    "tag": "default"
   },
   {
     "index": 30,
     "en": "I don't want to teach others bad habits.",
-    "zh": "我不想教別人壞習慣。"
+    "zh": "我不想教別人壞習慣。",
+    "tag": "default"
   },
   {
     "index": 31,
     "en": "I haven't opened VRChat in at least a year.",
-    "zh": "我至少有一年沒有打開 VRChat 了。"
+    "zh": "我至少有一年沒有打開 VRChat 了。",
+    "tag": "default"
   },
   {
     "index": 32,
     "en": "The most important thing during the interview is to be in a good mood.",
-    "zh": "面試的時候最重要的是心情好。"
+    "zh": "面試的時候最重要的是心情好。",
+    "tag": "default"
   },
   {
     "index": 33,
     "en": "With this tool, my English skills are bound to improve.",
-    "zh": "有了這個工具，我的英語程度一定會提升。"
+    "zh": "有了這個工具，我的英語程度一定會提升。",
+    "tag": "default"
   },
   {
     "index": 34,
     "en": "I'm waiting for you to introduce girls to me.",
-    "zh": "我等著你跟我介紹女孩子。"
+    "zh": "我等著你跟我介紹女孩子。",
+    "tag": "default"
   },
   {
     "index": 35,
     "en": "Did the company you interviewed with last time not accept you?",
-    "zh": "上次面試的公司沒有錄取你嗎？"
+    "zh": "上次面試的公司沒有錄取你嗎？",
+    "tag": "default"
+  },
+  {
+    "index": 36,
+    "en": "Don't hesitate, just take off with no regrets?",
+    "zh": "來一次遠走高飛 再猶豫就別後悔？",
+    "tag": "default"
+  },
+  {
+    "index": 37,
+    "en": "Always placing other's priorities first, leaving myself for last",
+    "zh": "任何事都為別人 自己擺在最後面",
+    "tag": "default"
+  },
+  {
+    "index": 38,
+    "en": "If I only have the frontend without backend server support, what methods can I use to store data on the client side?",
+    "zh": "如果我只有前端，沒有後端服務器支援，那麼我可以使用什麼方法在客戶端存儲資料?",
+    "tag": "program"
   }
-  
-
 
 ]
