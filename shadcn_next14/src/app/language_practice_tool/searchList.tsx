@@ -1,19 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-"use client"
-import { StarIcon as StarIconOutline } from '@heroicons/react/24/outline'
+"use client";
+import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
 //import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid'
 //import { DocumentDuplicateIcon as DocumentDuplicateIconOutline } from '@heroicons/react/24/outline'
-import { DocumentDuplicateIcon as DocumentDuplicateIconSolid } from '@heroicons/react/24/solid'
-import React, { useState,useEffect,useRef,useContext} from 'react';
-import searchListModule from './searchListModule.json';
-import toast, { Renderable, Toast, Toaster, ValueFunction } from 'react-hot-toast';
-import OptionsModal from './optionsModal';
-import { useOptions,showCustomToast } from './optionsContext';
+import { DocumentDuplicateIcon as DocumentDuplicateIconSolid } from "@heroicons/react/24/solid";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import searchListModule from "./searchListModule.json";
+import toast, {
+  Renderable,
+  Toast,
+  Toaster,
+  ValueFunction,
+} from "react-hot-toast";
+import OptionsModal from "./optionsModal";
+import { useOptions, showCustomToast } from "./optionsContext";
 import { set_indexedDB_Data, get_indexedDB_data } from "./indexedDBUtils";
 
 const SearchList: React.FC = () => {
-  const [query, setQuery] = useState<string>('');
-  const [filteredData, setFilteredData] = useState<{ en: string; zh: string; index: number }[]>([]);
+  const [query, setQuery] = useState<string>("");
+  const [filteredData, setFilteredData] = useState<
+    { en: string; zh: string; index: number }[]
+  >([]);
   // const [tt, sett] = useState<boolean>(false);
   // useEffect(() => {
   //   console.log(
@@ -23,44 +30,49 @@ const SearchList: React.FC = () => {
   //     tt
   //   );
   // }, [tt]);
-  const { 
-    showFavoritesListOnly, setShowFavoritesListOnly,
-    showOptionUI,setShowOptionUI,
-    copyTheTextAbove, setCopyTheTextAbove,
-    copyTheTextBelow, setCopyTheTextBelow,
-    favorites, setFavorites } = useOptions();
-    const intialCountRef = useRef(0);
-    useEffect(() => {
-      console.log(
-        "%c useEffect+showFavoritesListOnly",
-        "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-        "showFavoritesListOnly:",
-        showFavoritesListOnly,
-        "intialCountRef.current",
-        intialCountRef.current,
-      );
-      if (intialCountRef.current === 0) {
-        intialCountRef.current += 1;
-        showCustomToast(showFavoritesListOnly ? '最愛模式' : '全部模式');
-      }
-      else{
-        showCustomToast(showFavoritesListOnly ? '最愛模式' : '全部模式');
-        const event = {
-          target: {
-            value: query
-          }
-        };
-        handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
-      }
-    }, [showFavoritesListOnly]);
+  const {
+    showFavoritesListOnly,
+    setShowFavoritesListOnly,
+    showOptionUI,
+    setShowOptionUI,
+    copyTheTextAbove,
+    setCopyTheTextAbove,
+    copyTheTextBelow,
+    setCopyTheTextBelow,
+    favorites,
+    setFavorites,
+  } = useOptions();
+  const intialCountRef = useRef(0);
+  useEffect(() => {
+    console.log(
+      "%c useEffect+showFavoritesListOnly",
+      "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+      "showFavoritesListOnly:",
+      showFavoritesListOnly,
+      "intialCountRef.current",
+      intialCountRef.current,
+    );
+    if (intialCountRef.current === 0) {
+      intialCountRef.current += 1;
+      showCustomToast(showFavoritesListOnly ? "最愛模式" : "全部模式");
+    } else {
+      showCustomToast(showFavoritesListOnly ? "最愛模式" : "全部模式");
+      const event = {
+        target: {
+          value: query,
+        },
+      };
+      handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
+    }
+  }, [showFavoritesListOnly]);
 
   const toggleStarred = (index: number) => {
     if (favorites.includes(index)) {
-      setFavorites(favorites.filter(item => item !== index));
-      showCustomToast('已取消收藏')
+      setFavorites(favorites.filter((item) => item !== index));
+      showCustomToast("已取消收藏");
     } else {
       setFavorites([...favorites, index]);
-      showCustomToast('已收藏')
+      showCustomToast("已收藏");
     }
   };
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,49 +80,47 @@ const SearchList: React.FC = () => {
       "%c handleInputChange",
       "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
       "event:",
-      event
+      event,
     );
     const newQuery = event.target.value;
     setQuery(newQuery);
-    const filtered = searchListModule.filter(item =>
-      (item.en.toLowerCase().includes(newQuery.toLowerCase()) || item.zh.toLowerCase().includes(newQuery.toLowerCase()))
-      && (!showFavoritesListOnly || favorites.includes(item.index))
+    const filtered = searchListModule.filter(
+      (item) =>
+        (item.en.toLowerCase().includes(newQuery.toLowerCase()) ||
+          item.zh.toLowerCase().includes(newQuery.toLowerCase())) &&
+        (!showFavoritesListOnly || favorites.includes(item.index)),
     );
     setFilteredData(filtered);
-    if(filtered.length<=0 && showFavoritesListOnly){
-      showCustomToast('最愛模式:無收藏名單');   
+    if (filtered.length <= 0 && showFavoritesListOnly) {
+      showCustomToast("最愛模式:無收藏名單");
     }
   };
 
-
   useEffect(() => {
-    typeof (Storage) == "undefined" ? console.log("本地存储不可用") : null;
+    typeof Storage == "undefined" ? console.log("本地存储不可用") : null;
     if (intialCountRef.current > 1) {
       //localStorage.setItem('favorites', JSON.stringify(favorites));
-      set_indexedDB_Data('favorites','data',favorites, () => {
-        
-      });
-
+      set_indexedDB_Data("favorites", "data", favorites, () => {});
     } else {
       intialCountRef.current += 1;
-
     }
-
   }, [favorites]);
 
   useEffect(() => {
     setTimeout(() => {
-      get_indexedDB_data('favorites','data')
-      .then((data) => {
-        if (data !== undefined) {
-          console.log("favorites !== undefined retrieved successfully:", data);
-          setFavorites(data);
-        }
-
-      })
-      .catch((error) => {
-        console.error((error as Error).message);
-      });
+      get_indexedDB_data("favorites", "data")
+        .then((data) => {
+          if (data !== undefined) {
+            console.log(
+              "favorites !== undefined retrieved successfully:",
+              data,
+            );
+            setFavorites(data);
+          }
+        })
+        .catch((error) => {
+          console.error((error as Error).message);
+        });
       // console.log(
       //   "%c useEffect+init",
       //   "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
@@ -121,46 +131,39 @@ const SearchList: React.FC = () => {
       // if (storedBlockedList) {
       //   setFavorites(JSON.parse(storedBlockedList));
       // }
-
     }, 500);
 
     //document.title = "language_practice_tool";
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const scrollToTopButton = document.getElementById('scrollToTopButton');
+      const scrollToTopButton = document.getElementById("scrollToTopButton");
       if (scrollToTopButton) {
         if (scrollTop > 200) {
-          scrollToTopButton.style.display = 'block';
+          scrollToTopButton.style.display = "block";
         } else {
-          scrollToTopButton.style.display = 'none';
+          scrollToTopButton.style.display = "none";
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   const copyText = (text: string) => {
     //navigator.clipboard.writeText(text);
-    const textArea = document.createElement('textarea');
+    const textArea = document.createElement("textarea");
     textArea.value = text;
     document.body.appendChild(textArea);
     textArea.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(textArea);
     //toast.success('Successfully created!');
     showCustomToast(text);
-    showCustomToast('Copied');
+    showCustomToast("Copied");
   };
-
-
-
-
-
-
 
   const scrollToTop = () => {
     //   window.scrollTo({
@@ -179,42 +182,55 @@ const SearchList: React.FC = () => {
     }, 15);
   };
   return (
-      <div className="container mx-auto mt-7 flex flex-col items-center w-[100%] bg-[#0000]">
-        <OptionsModal />
-        <Toaster />
-        <div className="flex justify-between w-full items-center mb-2">
-          <h1 className="text-2xl font-bold self-center">Sentence Search</h1>
-          <button onClick={() => setShowOptionUI(true)}
-            className="px-3 py-2 bg-gray-300 text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-          >Options</button>
-
+    <div className="container mx-auto mt-7 block w-[100%] items-center bg-[#0000]">
+      <OptionsModal />
+      <Toaster />
+      <div id="navbar" className="mb-2 flex w-full flex-col sticky top-0 z-10">
+        <div className="mb-2 flex w-full items-center justify-between">
+          <h1 className="self-center text-2xl font-bold">Sentence Search</h1>
+          <button
+            onClick={() => setShowOptionUI(true)}
+            className="rounded-md bg-gray-300 px-3 py-2 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+          >
+            Options
+          </button>
         </div>
-        <div className="w-[100%] flex flex-col items-center">
-          <div className="flex justify-between w-full items-center mb-2">
+        <div className="flex w-full">
             <input
               type="text"
               placeholder="Search..."
               value={query}
               onChange={handleInputChange}
-              className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-[100%]"
+              className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             />
-          </div>
-          {query && (
-            <ul className="mt-2 self-start px-1 w-[100%] bg-[#0000]">
-              {filteredData.map(item => (
-                <li key={item.zh} className="border-b border-gray-300 py-2 flex items-center">
-                  <button className="bg-[#0000] mr-5" onClick={() => toggleStarred(item.index)}>
-                    {/* <StarIcon className="size-6 text-blue-500" /> */}
-                    <StarIconOutline className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} />
-                    {/* <StarIconSolid className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
-                  </button>
-                  <div className="break-word">
-                    {item.en}
-                    <br />
-                    {item.zh}
-                  </div>
-                  <button className="bg-[#0000] ml-auto" onClick={() => {
-        
+        </div>
+      </div>
+      <div className="flex w-[100%] flex-col items-center">
+        {query && (
+          <ul className="mt-2 w-[100%] self-start bg-[#0000] px-1">
+            {filteredData.map((item) => (
+              <li
+                key={item.zh}
+                className="flex items-center border-b border-gray-300 py-2"
+              >
+                <button
+                  className="mr-5 bg-[#0000]"
+                  onClick={() => toggleStarred(item.index)}
+                >
+                  {/* <StarIcon className="size-6 text-blue-500" /> */}
+                  <StarIconOutline
+                    className={`size-6 ${favorites.includes(item.index) ? "fill-current text-yellow-400" : "stroke-current text-gray-400"}`}
+                  />
+                  {/* <StarIconSolid className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
+                </button>
+                <div className="break-word">
+                  {item.en}
+                  <br />
+                  {item.zh}
+                </div>
+                <button
+                  className="ml-auto bg-[#0000]"
+                  onClick={() => {
                     // if (copyTheTextAbove && copyTheTextBelow) {
                     //   copyText(item.en + "\n" + item.zh);
                     // } else if (copyTheTextAbove) {
@@ -222,21 +238,30 @@ const SearchList: React.FC = () => {
                     // } else if (copyTheTextBelow) {
                     //   copyText(item.zh);
                     // }
-                    const textToCopy = copyTheTextAbove && copyTheTextBelow ? item.en + "\n" + item.zh : copyTheTextAbove ? item.en : item.zh;
+                    const textToCopy =
+                      copyTheTextAbove && copyTheTextBelow
+                        ? item.en + "\n" + item.zh
+                        : copyTheTextAbove
+                          ? item.en
+                          : item.zh;
                     copyText(textToCopy);
-                    }}>
-                    <DocumentDuplicateIconSolid className="h-6 w-6  text-gray-200 fill-current" />
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <button id="scrollToTopButton" onClick={scrollToTop} className="fixed bottom-4 right-4 px-3 py-2 bg-gray-300 text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 hidden">
-          Scroll To Top
-        </button>
-
+                  }}
+                >
+                  <DocumentDuplicateIconSolid className="h-6 w-6  fill-current text-gray-200" />
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
+      <button
+        id="scrollToTopButton"
+        onClick={scrollToTop}
+        className="fixed bottom-4 right-4 hidden rounded-md bg-gray-300 px-3 py-2 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+      >
+        Scroll To Top
+      </button>
+    </div>
   );
 };
 
