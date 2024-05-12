@@ -185,7 +185,7 @@ const SearchList: React.FC = () => {
     <div className="container mx-auto mt-7 block w-[100%] items-center bg-[#0000]">
       <OptionsModal />
       <Toaster />
-      <div id="navbar" className="mb-2 flex w-full flex-col sticky top-0 z-10">
+      <div id="navbar" className="mb-2 flex w-full flex-col sticky top-0 z-2">
         <div className="mb-2 flex w-full items-center justify-between">
           <h1 className="self-center text-2xl font-bold">Sentence Search</h1>
           <button
