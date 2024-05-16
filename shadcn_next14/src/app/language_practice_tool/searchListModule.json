@@ -223,9 +223,107 @@
   },
   {
     "index": 38,
+    "en": "Can you give me some tips for improving my programming skills?",
+    "zh": "你能給我一些提高編程技能的建議嗎？",
+    "tag": "program"
+  },
+  {
+    "index": 39,
+    "en": "How can I prepare for a technical interview?",
+    "zh": "我該如何為技術面試做準備？",
+    "tag": "program"
+  },
+  {
+    "index": 40,
     "en": "If I only have the frontend without backend server support, what methods can I use to store data on the client side?",
     "zh": "如果我只有前端，沒有後端服務器支援，那麼我可以使用什麼方法在客戶端存儲資料?",
     "tag": "program"
-  }
+  },
+  {
+    "index": 41,
+    "en": "Of course, as long as you're brave enough to try.",
+    "zh": "當然可以，只要你敢嘗試。",
+    "tag": "answer"
+  },
+  {
+    "index": 42,
+    "en": "Sure, why not? Anything's possible if you're brave enough.",
+    "zh": "當然可以，為什麼不呢？只要你足夠勇敢，一切皆有可能。",
+    "tag": "answer"
+  },
+  {
+    "index": 43,
+    "en": "Well, that depends. Are you ready for a little adventure?",
+    "zh": "這取決於情況。你準備好迎接一點冒險了嗎？",
+    "tag": "answer"
+  },
+  {
+    "index": 44,
+    "en": "In my heart, Casper, my senior, is the most awesome.",
+    "zh": "在我心裡，我的學長 Casper 是最香的。",
+    "tag": "praise,compliment"
+  },
+  {
+    "index": 45,
+    "en": "Now, when I'm confessing my feelings to you.",
+    "zh": "現在，當我向你坦白我的感情時。",
+    "tag": "emotion,feeling"
+  },
+  {
+    "index": 46,
+    "en": "I also think so.",
+    "zh": "我也是這樣想。",
+    "tag": "agree"
+  },
+  {
+    "index": 47,
+    "en": "Please introduce me to a girl who can save me years of struggle.",
+    "zh": "請介紹一個能讓我少奮鬥幾年的女孩。",
+    "tag": "request"
+  },
+  {
+    "index": 48,
+    "en": "Every day, I'm doing my best.",
+    "zh": "每一天，我都在盡我最大的努力。",
+    "tag": "answer"
+ },
+ {
+    "index": 49,
+    "en": "I specially created a web application to learn English.",
+    "zh": "我為了學英文特地做了一個網頁應用程式。",
+    "tag": "statement"
+ },
+ {
+    "index": 50,
+    "en": "The triggers for my PTSD are usually not subjects, but people and teachers.",
+    "zh": "觸發我的創傷後壓力症候群的通常不是主題，而是人和老師。",
+    "tag": "statement"
+},
+{
+    "index": 51,
+    "en": "Good evening, Big Rabbit.",
+    "zh": "晚上好，大兔子。",
+    "tag": "greeting"
+},
+{
+    "index": 52,
+    "en": "Modify the copy function prompt message.",
+    "zh": "修改複製功能的提示訊息。",
+    "tag": "Modify"
+},
+{
+    "index": 53,
+    "en": "Incorporate several new sentences into the JSON file.",
+    "zh": "將幾個新句子納入 JSON 檔案中。",
+    "tag": "Modify"
+}
+
+
+
+
+
+
+
+
 
 ]

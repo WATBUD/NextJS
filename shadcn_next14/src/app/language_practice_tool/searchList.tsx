@@ -153,16 +153,22 @@ const SearchList: React.FC = () => {
   }, []);
 
   const copyText = (text: string) => {
+    if(text.includes('未選擇複製條件')){
+      showCustomToast(text);
+    }
+    else{
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      //toast.success('Successfully created!');
+      showCustomToast(text);
+      showCustomToast("Copied");
+    }
     //navigator.clipboard.writeText(text);
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textArea);
-    //toast.success('Successfully created!');
-    showCustomToast(text);
-    showCustomToast("Copied");
+
   };
 
   const scrollToTop = () => {
@@ -231,19 +237,16 @@ const SearchList: React.FC = () => {
                 <button
                   className="ml-auto bg-[#0000]"
                   onClick={() => {
-                    // if (copyTheTextAbove && copyTheTextBelow) {
-                    //   copyText(item.en + "\n" + item.zh);
-                    // } else if (copyTheTextAbove) {
-                    //   copyText(item.en);
-                    // } else if (copyTheTextBelow) {
-                    //   copyText(item.zh);
-                    // }
                     const textToCopy =
-                      copyTheTextAbove && copyTheTextBelow
-                        ? item.en + "\n" + item.zh
-                        : copyTheTextAbove
-                          ? item.en
-                          : item.zh;
+                    !copyTheTextAbove && !copyTheTextBelow
+                    ? 'No copy conditions selected\n(未選擇複製條件)'
+                    : copyTheTextAbove && copyTheTextBelow
+                    ? item.en + "\n" + item.zh
+                    : copyTheTextBelow
+                    ? item.zh
+                    : copyTheTextAbove
+                    ? item.en
+                    : 'No copy conditions selected';
                     copyText(textToCopy);
                   }}
                 >
