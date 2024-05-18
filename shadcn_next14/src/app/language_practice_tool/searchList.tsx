@@ -3,10 +3,10 @@
 import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
 //import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid'
 //import { DocumentDuplicateIcon as DocumentDuplicateIconOutline } from '@heroicons/react/24/outline'
-import { DocumentDuplicateIcon as DocumentDuplicateIconSolid
-,SpeakerWaveIcon } from "@heroicons/react/24/solid";
-
-
+import { 
+DocumentDuplicateIcon as DocumentDuplicateIconSolid,
+SpeakerWaveIcon 
+} from "@heroicons/react/24/solid";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import searchListModule from "./searchListModule.json";
 import toast, {
@@ -18,11 +18,12 @@ import toast, {
 import OptionsModal from "./optionsModal";
 import { useOptions, showCustomToast } from "./optionsContext";
 import { set_indexedDB_Data, get_indexedDB_data } from "./indexedDBUtils";
+import './optionsModal.css'; 
 
 const SearchList: React.FC = () => {
   const [query, setQuery] = useState<string>("");
   const [filteredData, setFilteredData] = useState<
-    { en: string; zh: string; index: number }[]
+    { en: string; zh: string; index: number; tag: string }[]
   >([]);
   // const [tt, sett] = useState<boolean>(false);
   // useEffect(() => {
@@ -213,12 +214,12 @@ const SearchList: React.FC = () => {
       if (window.scrollY !== 0) {
         window.scrollBy(0, scrollStep);
       } else {
-        clearInterval(scrollInterval);
+        clearInterval(scrollInterval); 
       }
     }, 15);
   };
   return (
-    <div className="container mx-auto mt-7 block w-[100%] items-center bg-[#0000]">
+    <div id="MainScreenUI" className={`container mx-auto mt-7 block w-full items-center bg-transparent${!showOptionUI ? ' show' : ''}`}>
       <OptionsModal />
       <Toaster />
       <div id="navbar" className="mb-2 flex w-full flex-col sticky top-0 z-2">

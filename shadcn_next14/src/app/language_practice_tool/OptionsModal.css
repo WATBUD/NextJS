@@ -1,4 +1,6 @@
-/* OptionsModal.css */
+:root {
+  --transition-duration: 0.5s;
+}
 .OptionsModal {
   position: fixed;
   top: 0;
@@ -12,11 +14,24 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition: right 0.4s ease;
+  transition: right var(--transition-duration) ease;
 }
 
 
 .OptionsModal.show {
-  right: 0;
-  transition: right 0.4s ease; 
+  right: 0%;
+  transition: right var(--transition-duration) ease;
+}
+
+
+
+#MainScreenUI{
+  position: fixed;
+  left: -100%;
+  transition: left var(--transition-duration) ease; 
+}
+
+#MainScreenUI.show {
+  left: 0%;
+  transition: left var(--transition-duration) ease; 
 }

@@ -334,7 +334,20 @@
     "en": "No special reason, just studying for work.",
     "zh": "沒有特別的原因，只是為工作學習。",
     "tag": "Study"
+},
+{
+    "index": 57,
+    "en": "Modify CSS styles and layout.",
+    "zh": "修改 CSS 樣式和佈局。",
+    "tag": "Development"
+},
+{
+    "index": 58,
+    "en": "Add voice translation feature.",
+    "zh": "添加語音翻譯功能。",
+    "tag": "Feature"
 }
+
 
 
 ]
