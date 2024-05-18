@@ -43,13 +43,10 @@ const SearchList: React.FC = () => {
     databaseHasBeenLoaded,
     setDatabaseHasBeenLoaded,
   } = useOptions();
-  const intialCountRef = useRef(0);
   useEffect(() => {
     console.log(
       "%c useEffect+showFavoritesListOnly",
       "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-      "intialCountRef.current",
-      intialCountRef.current,
     );
     if (databaseHasBeenLoaded) {
       showCustomToast(configOptions.showFavoritesListOnly ? "最愛模式" : "全部模式");
@@ -208,73 +205,87 @@ const SearchList: React.FC = () => {
 
   };
   return (
-    <div id="MainScreenUI" className={`container mx-auto mt-7 block w-full items-center bg-transparent${!showOptionUI ? ' show' : ''}`}>
+    <div className="w-full flex flex-col items-center mr-5">
+      <div
+        id="MainScreenUI"
+        className={`mt-7 flex flex-col items-center bg-transparent${!showOptionUI ? " show" : ""}`}
+      >
+        <div id="navbar" className=" max-w-[980px] mb-2 flex w-full flex-col sticky top-0 z-2">
+          <div className="mb-2 flex w-full items-center justify-between">
+            <h1 className="self-center text-2xl font-bold">Sentence Search</h1>
+            <button
+              onClick={() => setShowOptionUI(true)}
+              className="rounded-md bg-gray-300 px-3 py-2 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+            >
+              Options
+            </button>
+          </div>
+          <div className="flex w-full">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={query}
+              onChange={handleInputChange}
+              className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+            />
+          </div>
+        </div>
+        <div className="max-w-[85%]  flex w-[100%] flex-col items-center">
+          {query && (
+            <ul className="mt-2 bg-[#0000] flex flex-col">
+              {filteredData.map((item) => (
+                <li
+                  key={item.zh}
+                  className="flex items-center border-b border-gray-300 py-2 flex-grow-[1]"
+                >
+                  <button
+                    className="mr-5 bg-[#0000]"
+                    onClick={() => toggleStarred(item.index)}
+                  >
+                    {/* <StarIcon className="size-6 text-blue-500" /> */}
+                    <StarIconOutline
+                      className={`size-6 ${favorites.includes(item.index) ? "fill-current text-yellow-400" : "stroke-current text-gray-400"}`}
+                    />
+                    {/* <StarIconSolid className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
+                  </button>
+                  <div className="break-word flex-grow-[1] bg-[#0000]">
+                    {item.en}
+                    <br />
+                    {item.zh}
+                  </div>
+                  <div className="flex justify-end flex-grow-[1]">
+                    <button
+                      className=""
+                      onClick={() => {
+                        translateTextAndSpeak(item.en);
+                      }}
+                    >
+                      <SpeakerWaveIcon className="h-6 w-6 fill-current text-gray-200" />
+                    </button>
+                    <button
+                      className="ml-2"
+                      onClick={() => {
+                        copyText(item);
+                      }}
+                    >
+                      <DocumentDuplicateIconSolid className="h-6 w-6 fill-current text-gray-200" />
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <button
+          id="scrollToTopButton"
+          onClick={scrollToTop}
+          className="fixed bottom-4 right-4 hidden rounded-md bg-gray-300 px-3 py-2 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+        >
+          Scroll To Top
+        </button>
+      </div>
       <OptionsModal />
       <Toaster />
-      <div id="navbar" className="mb-2 flex w-full flex-col sticky top-0 z-2">
-        <div className="mb-2 flex w-full items-center justify-between">
-          <h1 className="self-center text-2xl font-bold">Sentence Search</h1>
-          <button
-            onClick={() => setShowOptionUI(true)}
-            className="rounded-md bg-gray-300 px-3 py-2 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-          >
-            Options
-          </button>
-        </div>
-        <div className="flex w-full">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={query}
-            onChange={handleInputChange}
-            className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-          />
-        </div>
-      </div>
-      <div className="flex w-[100%] flex-col items-center">
-        {query && (
-          <ul className="mt-2 bg-[#0000] px-1 flex flex-col">
-            {filteredData.map((item) => (
-              <li
-                key={item.zh}
-                className="flex items-center border-b border-gray-300 py-2"
-              >
-                <button
-                  className="mr-5 bg-[#0000]"
-                  onClick={() => toggleStarred(item.index)}
-                >
-                  {/* <StarIcon className="size-6 text-blue-500" /> */}
-                  <StarIconOutline
-                    className={`size-6 ${favorites.includes(item.index) ? "fill-current text-yellow-400" : "stroke-current text-gray-400"}`}
-                  />
-                  {/* <StarIconSolid className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
-                </button>
-                <div className="break-word w-[80%] bg-[#0000]">
-                  {item.en}
-                  <br />
-                  {item.zh}
-                </div>
-                <div className="flex justify-end">
-                  <button className="rounded" onClick={() => { translateTextAndSpeak(item.en)}}>
-                    <SpeakerWaveIcon className="h-6 w-6 fill-current text-gray-200" />
-                  </button>
-                  <button
-                    className="rounded" onClick={() => {copyText(item);}}>
-                    <DocumentDuplicateIconSolid className="h-6 w-6 fill-current text-gray-200" />
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <button
-        id="scrollToTopButton"
-        onClick={scrollToTop}
-        className="fixed bottom-4 right-4 hidden rounded-md bg-gray-300 px-3 py-2 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-      >
-        Scroll To Top
-      </button>
     </div>
   );
 };
