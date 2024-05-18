@@ -5,25 +5,23 @@ import toast, { Renderable, Toast, Toaster, ValueFunction } from 'react-hot-toas
 
 import React, { createContext, useContext, useState, PropsWithChildren } from 'react';
 
-// 定義 Context
 type OptionsContextType = {
-  // 定義你的 options 和 setOptions
-  showFavoritesListOnly: boolean;
-  setShowFavoritesListOnly: React.Dispatch<React.SetStateAction<boolean>>;
   showOptionUI: boolean;
   setShowOptionUI: React.Dispatch<React.SetStateAction<boolean>>;
-  copyTheTextBelow: boolean; 
-  setCopyTheTextBelow: React.Dispatch<React.SetStateAction<boolean>>;
-  copyTheTextAbove: boolean; 
-  setCopyTheTextAbove: React.Dispatch<React.SetStateAction<boolean>>;
   favorites: number[]; 
   setFavorites: React.Dispatch<React.SetStateAction<number[]>>;
-  //setOptionsState: React.Dispatch<React.SetStateAction<Object>>;
+  configOptions: {
+    copyTheTextBelow: boolean;
+    copyTheTextAbove: boolean;
+    showFavoritesListOnly: boolean;
+  };
+  setConfigOptions: React.Dispatch<React.SetStateAction<{
+    copyTheTextBelow: boolean;
+    copyTheTextAbove: boolean;
+    showFavoritesListOnly: boolean;
+  }>>;
 };
-interface OptionsState {
-  showOptionUI: boolean;
-  // 其他属性
-}
+
 export const showCustomToast = (text: string) => {
   toast(text, {
     duration: 900,
@@ -49,30 +47,23 @@ export const showCustomToast = (text: string) => {
 
 
 
-// 創建 Context
 const OptionsContext = createContext<OptionsContextType | undefined>(undefined);
 
-// 提供 Context 的 Component
 export const OptionsProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-  const [showFavoritesListOnly, setShowFavoritesListOnly] = useState<boolean>(false);
   const [showOptionUI, setShowOptionUI] = useState<boolean>(false);
-  const [copyTheTextBelow, setCopyTheTextBelow] = useState<boolean>(true); 
-  const [copyTheTextAbove, setCopyTheTextAbove] = useState<boolean>(true); 
+  const [configOptions, setConfigOptions] = useState({
+    copyTheTextBelow: true,
+    copyTheTextAbove: true,
+    showFavoritesListOnly:false,
+  });
   const [favorites, setFavorites] = useState<number[]>([]);
-
-  // const [optionsState, setOptionsState] = useState<OptionsContextType>({ 
-  //   showOpionUI: false ,
-  //   showFavoritesListOnly: false ,
-  // });
  
   
   return (
     <OptionsContext.Provider value={{ 
-      showFavoritesListOnly, setShowFavoritesListOnly,
       showOptionUI, setShowOptionUI, 
-      copyTheTextAbove, setCopyTheTextAbove,
-      copyTheTextBelow, setCopyTheTextBelow,
       favorites, setFavorites,
+      configOptions,setConfigOptions,
       }}>
       {children}
     </OptionsContext.Provider>

@@ -11,15 +11,10 @@ interface OptionsModalProps {
 
 const OptionsModal: React.FC<OptionsModalProps> = () => {
   const {
-    showFavoritesListOnly,
-    setShowFavoritesListOnly,
     showOptionUI,
     setShowOptionUI,
-    copyTheTextAbove,
-    setCopyTheTextAbove,
-    copyTheTextBelow,
-    setCopyTheTextBelow,
-    favorites,
+    configOptions,
+    setConfigOptions,
     setFavorites,
   } = useOptions();
 
@@ -45,9 +40,12 @@ const OptionsModal: React.FC<OptionsModalProps> = () => {
           <input
             type="checkbox"
             id="showFavorites"
-            checked={showFavoritesListOnly}
+            checked={configOptions.showFavoritesListOnly}
             onChange={() => {
-              setShowFavoritesListOnly(!showFavoritesListOnly);
+              setConfigOptions(prevOptions => ({
+                ...prevOptions,
+                showFavoritesListOnly: !prevOptions.showFavoritesListOnly,
+              }));
             }}
             className="mr-2 w-5 h-5"
           />
@@ -59,9 +57,12 @@ const OptionsModal: React.FC<OptionsModalProps> = () => {
           <input
             type="checkbox"
             id="copyTheTextAbove"
-            checked={copyTheTextAbove}
+            checked={configOptions.copyTheTextAbove}
             onChange={() => {
-              setCopyTheTextAbove(!copyTheTextAbove);
+              setConfigOptions(prevOptions => ({
+                ...prevOptions,
+                copyTheTextAbove: !prevOptions.copyTheTextAbove,
+              }));
             }}
             className="mr-2 w-5 h-5"
           />
@@ -73,9 +74,12 @@ const OptionsModal: React.FC<OptionsModalProps> = () => {
           <input
             type="checkbox"
             id="copyTheTextAbove"
-            checked={copyTheTextBelow}
+            checked={configOptions.copyTheTextBelow}
             onChange={() => {
-              setCopyTheTextBelow(!copyTheTextBelow);
+              setConfigOptions(prevOptions => ({
+                ...prevOptions,
+                copyTheTextBelow: !prevOptions.copyTheTextBelow,
+              }));
             }}
             className="mr-2 w-5 h-5"
           />

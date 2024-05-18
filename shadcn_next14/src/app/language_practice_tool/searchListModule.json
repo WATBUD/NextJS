@@ -346,7 +346,14 @@
     "en": "Add voice translation feature.",
     "zh": "添加語音翻譯功能。",
     "tag": "Feature"
+},
+{
+    "index": 59,
+    "en": "Convert a standalone useState boolean to a useState object.",
+    "zh": "將獨立的 useState 布爾值轉換為一個 useState 對象。",
+    "tag": "React"
 }
+
 
 
 

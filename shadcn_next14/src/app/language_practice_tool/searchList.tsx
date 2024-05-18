@@ -35,32 +35,24 @@ const SearchList: React.FC = () => {
   //   );
   // }, [tt]);
   const {
-    showFavoritesListOnly,
-    setShowFavoritesListOnly,
     showOptionUI,
     setShowOptionUI,
-    copyTheTextAbove,
-    setCopyTheTextAbove,
-    copyTheTextBelow,
-    setCopyTheTextBelow,
     favorites,
-    setFavorites,
+    setFavorites,configOptions
   } = useOptions();
   const intialCountRef = useRef(0);
   useEffect(() => {
     console.log(
       "%c useEffect+showFavoritesListOnly",
       "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-      "showFavoritesListOnly:",
-      showFavoritesListOnly,
       "intialCountRef.current",
       intialCountRef.current,
     );
     if (intialCountRef.current === 0) {
       intialCountRef.current += 1;
-      showCustomToast(showFavoritesListOnly ? "最愛模式" : "全部模式");
+      showCustomToast(configOptions.showFavoritesListOnly ? "最愛模式" : "全部模式");
     } else {
-      showCustomToast(showFavoritesListOnly ? "最愛模式" : "全部模式");
+      showCustomToast(configOptions.showFavoritesListOnly ? "最愛模式" : "全部模式");
       const event = {
         target: {
           value: query,
@@ -68,7 +60,7 @@ const SearchList: React.FC = () => {
       };
       handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
     }
-  }, [showFavoritesListOnly]);
+  }, [configOptions.showFavoritesListOnly]);
 
   const toggleStarred = (index: number) => {
     if (favorites.includes(index)) {
@@ -92,10 +84,10 @@ const SearchList: React.FC = () => {
       (item) =>
         (item.en.toLowerCase().includes(newQuery.toLowerCase()) ||
           item.zh.toLowerCase().includes(newQuery.toLowerCase())) &&
-        (!showFavoritesListOnly || favorites.includes(item.index)),
+        (!configOptions.showFavoritesListOnly || favorites.includes(item.index)),
     );
     setFilteredData(filtered);
-    if (filtered.length <= 0 && showFavoritesListOnly) {
+    if (filtered.length <= 0 && configOptions.showFavoritesListOnly) {
       showCustomToast("最愛模式:無收藏名單");
     }
   };
