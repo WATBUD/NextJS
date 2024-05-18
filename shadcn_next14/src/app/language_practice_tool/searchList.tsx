@@ -210,7 +210,7 @@ const SearchList: React.FC = () => {
         id="MainScreenUI"
         className={`mt-7 flex flex-col items-center bg-transparent${!showOptionUI ? " show" : ""}`}
       >
-        <div id="navbar" className=" max-w-[980px] mb-2 flex w-full flex-col sticky top-0 z-2">
+        <div id="navbar" className="max-w-[980px] w-[86%] mb-2 flex flex-col sticky top-0 z-2">
           <div className="mb-2 flex w-full items-center justify-between">
             <h1 className="self-center text-2xl font-bold">Sentence Search</h1>
             <button
