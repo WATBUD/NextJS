@@ -46,6 +46,26 @@ export const showCustomToast = (text: string) => {
 };
 
 
+export function translateTextAndSpeak(text: string='') {
+  console.log(`enter translateTextAndSpeak ${text}`);
+  const utterance_input = new SpeechSynthesisUtterance(text);
+  //const utterance_input = new SpeechSynthesisUtterance(`You pressed ${text}`);
+  utterance_input.lang = "en-US";
+  utterance_input.volume = 1;
+  //const synth = window.speechSynthesis;
+  let voices = speechSynthesis.getVoices();
+  //console.log(`voices ${JSON.stringify(voices)}`);
+  console.dir(voices);
+  if(voices[2]){
+    utterance_input.voice = voices[1];
+  }
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utterance_input);
+}
+
+
+
+
 
 const OptionsContext = createContext<OptionsContextType | undefined>(undefined);
 

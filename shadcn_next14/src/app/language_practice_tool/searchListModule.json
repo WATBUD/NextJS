@@ -352,7 +352,14 @@
     "en": "Convert a standalone useState boolean to a useState object.",
     "zh": "將獨立的 useState 布爾值轉換為一個 useState 對象。",
     "tag": "React"
+},
+{
+    "index": 60,
+    "en": "Move the function to a shared file.",
+    "zh": "將函數移動到共享文件。",
+    "tag": "Code organization"
 }
+
 
 
 

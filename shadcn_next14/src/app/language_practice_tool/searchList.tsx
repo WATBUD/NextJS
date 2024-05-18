@@ -16,7 +16,7 @@ import toast, {
   ValueFunction,
 } from "react-hot-toast";
 import OptionsModal from "./optionsModal";
-import { useOptions, showCustomToast } from "./optionsContext";
+import { useOptions, showCustomToast,translateTextAndSpeak } from "./optionsContext";
 import { set_indexedDB_Data, get_indexedDB_data } from "./indexedDBUtils";
 import './optionsModal.css'; 
 
@@ -151,13 +151,13 @@ const SearchList: React.FC = () => {
   const copyText = (item:any) => {
     
     const text =
-    !copyTheTextAbove && !copyTheTextBelow
+    !configOptions.copyTheTextAbove && !configOptions.copyTheTextBelow
     ? 'No copy conditions selected\n(未選擇複製條件)'
-    : copyTheTextAbove && copyTheTextBelow
+    : configOptions.copyTheTextAbove && configOptions.copyTheTextBelow
     ? item.en + "\n" + item.zh
-    : copyTheTextBelow
+    : configOptions.copyTheTextBelow
     ? item.zh
-    : copyTheTextAbove
+    : configOptions.copyTheTextAbove
     ? item.en
     : 'No copy conditions selected';
 
@@ -178,22 +178,7 @@ const SearchList: React.FC = () => {
     //navigator.clipboard.writeText(text);
 
   };
-  function translateTextAndSpeak(text: string='') {
-    console.log(`enter translateTextAndSpeak ${text}`);
-    const utterance_input = new SpeechSynthesisUtterance(text);
-    //const utterance_input = new SpeechSynthesisUtterance(`You pressed ${text}`);
-    utterance_input.lang = "en-US";
-    utterance_input.volume = 1;
-    //const synth = window.speechSynthesis;
-    let voices = speechSynthesis.getVoices();
-    //console.log(`voices ${JSON.stringify(voices)}`);
-    console.dir(voices);
-    if(voices[2]){
-      utterance_input.voice = voices[1];
-    }
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utterance_input);
-  }
+
   const scrollToTop = () => {
     //   window.scrollTo({
     //     top: 0,
