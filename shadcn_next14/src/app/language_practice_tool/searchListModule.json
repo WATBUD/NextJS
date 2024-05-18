@@ -358,7 +358,14 @@
     "en": "Move the function to a shared file.",
     "zh": "將函數移動到共享文件。",
     "tag": "Code organization"
+},
+{
+    "index": 61,
+    "en": "I added (Promise.all and db_usestate) to check if the data has been loaded.",
+    "zh": "我添加了（Promise.all 和 db_usestate）來檢查數據是否已加載。",
+    "tag": "Development"
 }
+
 
 
 

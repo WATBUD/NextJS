@@ -1,4 +1,4 @@
-export function set_indexedDB_Data(storeName = 'default',keyName='myCustomKey', data: any[], callback?: () => void) {
+export function set_indexedDB_Data(storeName = 'default',keyName='myCustomKey', data: any, callback?: () => void) {
     const openRequest = indexedDB.open("nextDatabase", 1);
     openRequest.onsuccess = (event) => {
         const db = (event.target as IDBOpenDBRequest).result;
@@ -27,7 +27,7 @@ export function set_indexedDB_Data(storeName = 'default',keyName='myCustomKey', 
 }
 
 export function get_indexedDB_data(storeName = 'default',keyName='myCustomKey') {
-    return new Promise<any[] | undefined>((resolve, reject) => {
+    return new Promise<any | undefined>((resolve, reject) => {
         const openRequest = indexedDB.open("nextDatabase", 1);
         openRequest.onupgradeneeded = (event) => {
             const db = (event.target as IDBOpenDBRequest).result;

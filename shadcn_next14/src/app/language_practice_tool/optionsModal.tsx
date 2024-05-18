@@ -6,7 +6,7 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 
 
 interface OptionsModalProps {
-  // onClose: () => void; // 不再需要
+
 }
 
 const OptionsModal: React.FC<OptionsModalProps> = () => {

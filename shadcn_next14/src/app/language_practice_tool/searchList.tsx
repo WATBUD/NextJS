@@ -38,7 +38,10 @@ const SearchList: React.FC = () => {
     showOptionUI,
     setShowOptionUI,
     favorites,
-    setFavorites,configOptions
+    setFavorites,configOptions,
+    setConfigOptions,
+    databaseHasBeenLoaded,
+    setDatabaseHasBeenLoaded,
   } = useOptions();
   const intialCountRef = useRef(0);
   useEffect(() => {
@@ -48,10 +51,7 @@ const SearchList: React.FC = () => {
       "intialCountRef.current",
       intialCountRef.current,
     );
-    if (intialCountRef.current === 0) {
-      intialCountRef.current += 1;
-      showCustomToast(configOptions.showFavoritesListOnly ? "最愛模式" : "全部模式");
-    } else {
+    if (databaseHasBeenLoaded) {
       showCustomToast(configOptions.showFavoritesListOnly ? "最愛模式" : "全部模式");
       const event = {
         target: {
@@ -93,53 +93,51 @@ const SearchList: React.FC = () => {
   };
 
   useEffect(() => {
-    typeof Storage == "undefined" ? console.log("本地存储不可用") : null;
-    if (intialCountRef.current > 1) {
-      //localStorage.setItem('favorites', JSON.stringify(favorites));
-      set_indexedDB_Data("favorites", "data", favorites, () => {});
-    } else {
-      intialCountRef.current += 1;
+    if(!databaseHasBeenLoaded){
+      Promise.all([
+        get_indexedDB_data("favorites", "configOptions"),
+        get_indexedDB_data("favorites", "data")
+      ])
+      .then(([configOptionsData, favoritesData]) => {
+        if (configOptionsData !== undefined) {
+          console.log("favorites/configOptions retrieved successfully:", configOptionsData);
+          setConfigOptions(configOptionsData);
+        }
+        if (favoritesData !== undefined) {
+          console.log("favorites/data retrieved successfully:", favoritesData);
+          setFavorites(favoritesData);
+        }
+        setDatabaseHasBeenLoaded(true);
+      })
+      .catch((error) => {
+        console.error((error as Error).message);
+      });
     }
-  }, [favorites]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      get_indexedDB_data("favorites", "data")
-        .then((data) => {
-          if (data !== undefined) {
-            console.log(
-              "favorites !== undefined retrieved successfully:",
-              data,
-            );
-            setFavorites(data);
-          }
-        })
-        .catch((error) => {
-          console.error((error as Error).message);
-        });
-      // console.log(
-      //   "%c useEffect+init",
-      //   "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-      //   "storedBlockedList:",
-      //   storedBlockedList
-      // );
-      // const storedBlockedList = localStorage.getItem('favorites');
-      // if (storedBlockedList) {
-      //   setFavorites(JSON.parse(storedBlockedList));
-      // }
-    }, 500);
+    // setTimeout(() => {
+     
+    //   // console.log(
+    //   //   "%c useEffect+init",
+    //   //   "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+    //   //   "storedBlockedList:",
+    //   //   storedBlockedList
+    //   // );
+    //   // const storedBlockedList = localStorage.getItem('favorites');
+    //   // if (storedBlockedList) {
+    //   //   setFavorites(JSON.parse(storedBlockedList));
+    //   // }
+    // }, 500);
 
     //document.title = "language_practice_tool";
     const handleScroll = () => {
       const mainScreenUI = document.getElementById("MainScreenUI");
       const scrollToTopButton = document.getElementById("scrollToTopButton");
       if (mainScreenUI && scrollToTopButton) {
-        console.log(
-          "%c handleScroll",
-          "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-          "mainScreenUI.scrollTop:",
-          mainScreenUI.scrollTop
-        );
+        // console.log(
+        //   "%c handleScroll",
+        //   "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+        //   "mainScreenUI.scrollTop:",
+        //   mainScreenUI.scrollTop
+        // );
         if (scrollToTopButton) {
           if (mainScreenUI.scrollTop > 200) {
             scrollToTopButton.style.display = "block";
