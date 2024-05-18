@@ -1,7 +1,5 @@
 import React from 'react';
 import { useOptions, showCustomToast } from './optionsContext';
-// import './optionsModal.css'; 
-
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 
 
