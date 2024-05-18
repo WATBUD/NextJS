@@ -131,21 +131,33 @@ const SearchList: React.FC = () => {
 
     //document.title = "language_practice_tool";
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
+      const mainScreenUI = document.getElementById("MainScreenUI");
       const scrollToTopButton = document.getElementById("scrollToTopButton");
-      if (scrollToTopButton) {
-        if (scrollTop > 200) {
-          scrollToTopButton.style.display = "block";
-        } else {
-          scrollToTopButton.style.display = "none";
+      if (mainScreenUI && scrollToTopButton) {
+        console.log(
+          "%c handleScroll",
+          "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+          "mainScreenUI.scrollTop:",
+          mainScreenUI.scrollTop
+        );
+        if (scrollToTopButton) {
+          if (mainScreenUI.scrollTop > 200) {
+            scrollToTopButton.style.display = "block";
+          } else {
+            scrollToTopButton.style.display = "none";
+          }
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    const mainScreenUI = document.getElementById('MainScreenUI');
+    if (mainScreenUI) {
+      mainScreenUI.addEventListener('scroll', handleScroll);
+
+      return () => {
+        mainScreenUI.removeEventListener('scroll', handleScroll);
+      };
+    }
   }, []);
 
   const copyText = (item:any) => {
@@ -180,20 +192,22 @@ const SearchList: React.FC = () => {
   };
 
   const scrollToTop = () => {
-    //   window.scrollTo({
-    //     top: 0,
-    //     behavior: 'smooth',
-    //   });
-    const scrollDuration = 150; // 滾動時間為 500 毫秒
-    const scrollStep = -window.scrollY / (scrollDuration / 15);
 
-    const scrollInterval = setInterval(() => {
-      if (window.scrollY !== 0) {
-        window.scrollBy(0, scrollStep);
-      } else {
-        clearInterval(scrollInterval); 
-      }
-    }, 15);
+    const mainScreenUI = document.getElementById("MainScreenUI");
+
+    if(mainScreenUI){
+      const scrollDuration = 300;
+      const scrollStep = -mainScreenUI.scrollTop / (scrollDuration / 15);
+  
+      const scrollInterval = setInterval(() => {
+        if (mainScreenUI.scrollTop !== 0) {
+          mainScreenUI.scrollBy(0, scrollStep);
+        } else {
+          clearInterval(scrollInterval); 
+        }
+      }, 15);
+    }
+
   };
   return (
     <div id="MainScreenUI" className={`container mx-auto mt-7 block w-full items-center bg-transparent${!showOptionUI ? ' show' : ''}`}>
