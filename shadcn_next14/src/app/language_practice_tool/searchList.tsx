@@ -18,7 +18,7 @@ import toast, {
 import OptionsModal from "./optionsModal";
 import { useOptions, showCustomToast,translateTextAndSpeak } from "./optionsContext";
 import { set_indexedDB_Data, get_indexedDB_data } from "./indexedDBUtils";
-import './optionsModal.css'; 
+import './shareContext.css'; 
 
 const SearchList: React.FC = () => {
   const [query, setQuery] = useState<string>("");
