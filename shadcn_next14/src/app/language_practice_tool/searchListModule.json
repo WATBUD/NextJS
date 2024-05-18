@@ -316,14 +316,25 @@
     "en": "Incorporate several new sentences into the JSON file.",
     "zh": "將幾個新句子納入 JSON 檔案中。",
     "tag": "Modify"
+},
+{
+    "index": 54,
+    "en": "You are gorgeous.",
+    "zh": "你真漂亮。",
+    "tag": "Compliment"
+},
+{
+    "index": 55,
+    "en": "I switched my phone and computer to English mode to practice English.",
+    "zh": "我將手機和電腦切換到英文模式來練習英文。",
+    "tag": "Practice"
+},
+{
+    "index": 56,
+    "en": "No special reason, just studying for work.",
+    "zh": "沒有特別的原因，只是為工作學習。",
+    "tag": "Study"
 }
-
-
-
-
-
-
-
 
 
 ]

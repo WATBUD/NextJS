@@ -1,6 +1,6 @@
 import React from 'react';
 import { useOptions, showCustomToast } from './optionsContext';
-import './OptionsModal.css'; // 引入包含過渡效果或動畫的 CSS 檔案
+import './optionsModal.css'; // 引入包含過渡效果或動畫的 CSS 檔案
 
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 

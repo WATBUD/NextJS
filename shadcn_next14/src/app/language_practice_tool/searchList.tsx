@@ -3,7 +3,10 @@
 import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
 //import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid'
 //import { DocumentDuplicateIcon as DocumentDuplicateIconOutline } from '@heroicons/react/24/outline'
-import { DocumentDuplicateIcon as DocumentDuplicateIconSolid } from "@heroicons/react/24/solid";
+import { DocumentDuplicateIcon as DocumentDuplicateIconSolid
+,SpeakerWaveIcon } from "@heroicons/react/24/solid";
+
+
 import React, { useState, useEffect, useRef, useContext } from "react";
 import searchListModule from "./searchListModule.json";
 import toast, {
@@ -152,7 +155,19 @@ const SearchList: React.FC = () => {
     };
   }, []);
 
-  const copyText = (text: string) => {
+  const copyText = (item:any) => {
+    
+    const text =
+    !copyTheTextAbove && !copyTheTextBelow
+    ? 'No copy conditions selected\n(未選擇複製條件)'
+    : copyTheTextAbove && copyTheTextBelow
+    ? item.en + "\n" + item.zh
+    : copyTheTextBelow
+    ? item.zh
+    : copyTheTextAbove
+    ? item.en
+    : 'No copy conditions selected';
+
     if(text.includes('未選擇複製條件')){
       showCustomToast(text);
     }
@@ -170,7 +185,22 @@ const SearchList: React.FC = () => {
     //navigator.clipboard.writeText(text);
 
   };
-
+  function translateTextAndSpeak(text: string='') {
+    console.log(`enter translateTextAndSpeak ${text}`);
+    const utterance_input = new SpeechSynthesisUtterance(text);
+    //const utterance_input = new SpeechSynthesisUtterance(`You pressed ${text}`);
+    utterance_input.lang = "en-US";
+    utterance_input.volume = 1;
+    //const synth = window.speechSynthesis;
+    let voices = speechSynthesis.getVoices();
+    //console.log(`voices ${JSON.stringify(voices)}`);
+    console.dir(voices);
+    if(voices[2]){
+      utterance_input.voice = voices[1];
+    }
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utterance_input);
+  }
   const scrollToTop = () => {
     //   window.scrollTo({
     //     top: 0,
@@ -202,18 +232,18 @@ const SearchList: React.FC = () => {
           </button>
         </div>
         <div className="flex w-full">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={query}
-              onChange={handleInputChange}
-              className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-            />
+          <input
+            type="text"
+            placeholder="Search..."
+            value={query}
+            onChange={handleInputChange}
+            className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+          />
         </div>
       </div>
       <div className="flex w-[100%] flex-col items-center">
         {query && (
-          <ul className="mt-2 w-[100%] self-start bg-[#0000] px-1">
+          <ul className="mt-2 bg-[#0000] px-1 flex flex-col">
             {filteredData.map((item) => (
               <li
                 key={item.zh}
@@ -229,29 +259,20 @@ const SearchList: React.FC = () => {
                   />
                   {/* <StarIconSolid className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
                 </button>
-                <div className="break-word">
+                <div className="break-word w-[80%] bg-[#0000]">
                   {item.en}
                   <br />
                   {item.zh}
                 </div>
-                <button
-                  className="ml-auto bg-[#0000]"
-                  onClick={() => {
-                    const textToCopy =
-                    !copyTheTextAbove && !copyTheTextBelow
-                    ? 'No copy conditions selected\n(未選擇複製條件)'
-                    : copyTheTextAbove && copyTheTextBelow
-                    ? item.en + "\n" + item.zh
-                    : copyTheTextBelow
-                    ? item.zh
-                    : copyTheTextAbove
-                    ? item.en
-                    : 'No copy conditions selected';
-                    copyText(textToCopy);
-                  }}
-                >
-                  <DocumentDuplicateIconSolid className="h-6 w-6  fill-current text-gray-200" />
-                </button>
+                <div className="flex justify-end">
+                  <button className="rounded" onClick={() => { translateTextAndSpeak(item.en)}}>
+                    <SpeakerWaveIcon className="h-6 w-6 fill-current text-gray-200" />
+                  </button>
+                  <button
+                    className="rounded" onClick={() => {copyText(item);}}>
+                    <DocumentDuplicateIconSolid className="h-6 w-6 fill-current text-gray-200" />
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
