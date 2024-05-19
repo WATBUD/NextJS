@@ -5,7 +5,8 @@ import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
 //import { DocumentDuplicateIcon as DocumentDuplicateIconOutline } from '@heroicons/react/24/outline'
 import { 
 DocumentDuplicateIcon as DocumentDuplicateIconSolid,
-SpeakerWaveIcon 
+SpeakerWaveIcon,
+ChevronDoubleUpIcon
 } from "@heroicons/react/24/solid";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import searchListModule from "./searchListModule.json";
@@ -15,6 +16,7 @@ import toast, {
   Toaster,
   ValueFunction,
 } from "react-hot-toast";
+
 import OptionsModal from "./optionsModal";
 import { useOptions, showCustomToast,translateTextAndSpeak } from "./optionsContext";
 import { set_indexedDB_Data, get_indexedDB_data } from "./indexedDBUtils";
@@ -137,7 +139,7 @@ const SearchList: React.FC = () => {
         // );
         if (scrollToTopButton) {
           if (mainScreenUI.scrollTop > 200) {
-            scrollToTopButton.style.display = "block";
+            scrollToTopButton.style.display = "flex";
           } else {
             scrollToTopButton.style.display = "none";
           }
@@ -208,14 +210,17 @@ const SearchList: React.FC = () => {
     <div className="w-full flex flex-col items-center mr-5">
       <div
         id="MainScreenUI"
-        className={`mt-7 flex flex-col items-center bg-transparent${!showOptionUI ? " show" : ""}`}
+        className={`flex flex-col items-center bg-transparent${!showOptionUI ? " show" : ""}`}
       >
-        <div id="navbar" className="max-w-[980px] w-[86%] mb-2 flex flex-col sticky top-0 z-2">
+        <div
+          id="navbar"
+          className="max-w-[980px] w-[86%] mb-2 flex flex-col sticky top-0 z-2"
+        >
           <div className="mb-2 flex w-full items-center justify-between">
             <h1 className="self-center text-2xl font-bold">Sentence Search</h1>
             <button
               onClick={() => setShowOptionUI(true)}
-              className="rounded-md bg-gray-300 px-3 py-2 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+              className="rounded-md px-3 py-2 bg-blue-500 text-white shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             >
               Options
             </button>
@@ -233,6 +238,15 @@ const SearchList: React.FC = () => {
         <div className="max-w-[85%]  flex w-[100%] flex-col items-center">
           {query && (
             <ul className="mt-2 bg-[#0000] flex flex-col">
+              <button
+                id="scrollToTopButton"
+                onClick={scrollToTop}
+                className="fixed bottom-8 self-end hidden rounded-md px-3 py-2 text-yellow-50  shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                style={{backgroundColor:'rgba(45, 114, 210,0.3)'}}
+              >
+                <ChevronDoubleUpIcon className="h-6 w-6 fill-current text-yellow-50 mr-2" />
+                Top
+              </button>
               {filteredData.map((item) => (
                 <li
                   key={item.zh}
@@ -276,13 +290,6 @@ const SearchList: React.FC = () => {
             </ul>
           )}
         </div>
-        <button
-          id="scrollToTopButton"
-          onClick={scrollToTop}
-          className="fixed bottom-4 right-4 hidden rounded-md bg-gray-300 px-3 py-2 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-        >
-          Scroll To Top
-        </button>
       </div>
       <OptionsModal />
       <Toaster />

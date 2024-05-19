@@ -364,7 +364,44 @@
     "en": "I added (Promise.all and db_usestate) to check if the data has been loaded.",
     "zh": "我添加了（Promise.all 和 db_usestate）來檢查數據是否已加載。",
     "tag": "Development"
+},
+{
+    "index": 62,
+    "en": "Long time no see, how have you been?",
+    "zh": "好久不見，你過得怎麼樣？",
+    "tag": "Life"
+},
+{
+    "index": 63,
+    "en": "Because I've had a slight cold recently.",
+    "zh": "因為我最近有點感冒。",
+    "tag": "Life"
+},
+{
+    "index": 64,
+    "en": "Yes, I was born in Taiwan.",
+    "zh": "是的，我出生在台灣。",
+    "tag": "Personal"
+},
+{
+    "index": 65,
+    "en": "You are my idol.",
+    "zh": "你是我的偶像。",
+    "tag": "Compliment"
+},
+{
+    "index": 66,
+    "en": "I'm really a rookie, I never pretend to be otherwise.",
+    "zh": "我真的是個新手，我從不假裝不是。",
+    "tag": "Personal"
 }
+
+
+
+
+
+
+
 
 
 
