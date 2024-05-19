@@ -235,9 +235,9 @@ const SearchList: React.FC = () => {
             />
           </div>
         </div>
-        <div className="max-w-[85%]  flex w-[100%] flex-col items-center">
+        <div className="max-w-[980px] w-[86%] flex flex-col items-center">
           {query && (
-            <ul className="mt-2 bg-[#0000] flex flex-col">
+            <ul className="flex flex-col mt-2 bg-[#0000]">
               <button
                 id="scrollToTopButton"
                 onClick={scrollToTop}
@@ -250,7 +250,7 @@ const SearchList: React.FC = () => {
               {filteredData.map((item) => (
                 <li
                   key={item.zh}
-                  className="flex items-center border-b border-gray-300 py-2 flex-grow-[1]"
+                  className="flex w-[100%] items-center border-b border-gray-300 py-2"
                 >
                   <button
                     className="mr-5 bg-[#0000]"
