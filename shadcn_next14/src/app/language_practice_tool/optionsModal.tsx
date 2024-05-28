@@ -1,7 +1,8 @@
 import React from 'react';
-import { useOptions, showCustomToast } from './optionsContext';
+import { useOptions } from './optionsContext';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 
+import { showCustomToast } from '../common/sharedFunction';
 
 interface OptionsModalProps {
 

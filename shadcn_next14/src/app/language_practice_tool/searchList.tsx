@@ -16,9 +16,10 @@ import toast, {
   Toaster,
   ValueFunction,
 } from "react-hot-toast";
-
 import OptionsModal from "./optionsModal";
-import { useOptions, showCustomToast,translateTextAndSpeak } from "./optionsContext";
+import { useOptions } from "./optionsContext";
+import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
+
 import { set_indexedDB_Data, get_indexedDB_data } from "./indexedDBUtils";
 import './shareContext.css'; 
 

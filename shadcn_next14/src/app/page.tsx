@@ -16,7 +16,10 @@ const links = [
   { href: '/stockDashboard', text: 'stockDashboard' },
   { href: '/payments', text: 'payments' },
   { href: '/resume/index', text: 'personalResume' },
-  { href: '/language_practice_tool', text: 'language_practice_tool' }
+  { href: '/language_practice_tool', text: 'language_practice_tool' },
+  { href: '/language_practice_tool_Redux', text: 'language_practice_tool_Redux' }
+
+
 
 ];
 
