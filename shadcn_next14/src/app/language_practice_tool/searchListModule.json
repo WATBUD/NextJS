@@ -512,9 +512,118 @@
 {
   "index": 86,
   "en": "The side project I started two weeks ago.",
-  "zh": "我兩週前開始的業餘專案。",
+  "zh": "我兩週前開始的個人專案。",
   "tag": "Work"
+},
+{
+  "index": 87,
+  "en": "I started this side project because I wanted to learn English.",
+  "zh": "我開始這個個人專案是因為我想學習英語。",
+  "tag": "Learning"
+},
+{
+  "index": 88,
+  "en": "Well america hiring is very strategic",
+  "zh": "美國的招募非常具有戰略意義",
+  "tag": "Work"
+},
+{
+  "index": 89,
+  "en": "See you next time, hope to see you again, thank you for sharing today",
+  "zh": "下次見，希望再次見到你，感謝你今天的分享",
+  "tag": "Goodbye"
+},
+{
+  "index": 90,
+  "en": "Shan is now a full-stack engineer, previously had PM experience, lives in Taiwan, and is 30 years old this year.",
+  "zh": "Shan 現在是全端工程師，之前有 PM 經歷，住在台灣，今年 30 歲。",
+  "tag": "Personal"
+},
+{
+  "index": 91,
+  "en": "We should hang out together next time.",
+  "zh": "下次我們應該一起出去玩。",
+  "tag": "Social"
+},
+{
+  "index": 92,
+  "en": "Let's hang out together.",
+  "zh": "我們一起出去玩吧。",
+  "tag": "Social"
+},
+{
+  "index": 93,
+  "en": "Sometimes on call is required, sometimes it isn't.",
+  "zh": "有時需要隨叫隨到，有時則不需要。",
+  "tag": "Work"
+},
+{
+  "index": 94,
+  "en": "I really enjoy playing games.",
+  "zh": "我很喜歡玩遊戲。",
+  "tag": "Hobby"
+},
+{
+  "index": 95,
+  "en": "Whether it’s mobile games, computer games or tabletop games, I play them all.",
+  "zh": "無論是手機遊戲、電腦遊戲或是桌遊戲，我都玩。",
+  "tag": "Hobby"
+},
+{
+  "index": 96,
+  "en": "Me too. I get off work late.",
+  "zh": "我和你一樣。我下班很晚。",
+  "tag": "Work"
+},
+{
+  "index": 97,
+  "en": "I'm not gay, I like girls, girls like you.",
+  "zh": "我不是同性戀，我喜歡女孩，我喜歡像你這樣的女孩。",
+  "tag": "Personal"
+},
+{
+  "index": 98,
+  "en": "I speak softly because I want to be gentle with you.",
+  "zh": "我說話輕聲是因為我想對你溫柔。",
+  "tag": "Personal"
+},
+{
+  "index": 99,
+  "en": "So you really like him?",
+  "zh": "所以妳很喜歡他嗎?",
+  "tag": "Question"
+},
+{
+  "index": 100,
+  "en": "I understand how you feel.",
+  "zh": "我理解你的感受。",
+  "tag": "Empathy"
+},
+{
+  "index": 101,
+  "en": "I'm watching a short video and chatting with you.",
+  "zh": "我在看短影片，一邊跟你聊天。",
+  "tag": "Activity"
+},
+{
+  "index": 102,
+  "en": "I do both.",
+  "zh": "我兩者都做。",
+  "tag": "Activity"
+},
+{
+  "index": 103,
+  "en": "I ride my motorcycle first and then take the subway.",
+  "zh": "我先騎摩托車，然後搭地鐵。",
+  "tag": "Transport"
+},
+{
+  "index": 104,
+  "en": "Haha XD Is this the point?",
+  "zh": "哈哈XD這是重點嗎？",
+  "tag": "Humor"
 }
+
 
 
 
