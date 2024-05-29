@@ -11,7 +11,7 @@ SpeakerWaveIcon,
 ChevronDoubleUpIcon
 } from "@heroicons/react/24/solid";
 import React, { useState, useEffect, useRef, useContext } from "react";
-import language_data_sheet from "../Common/language_data_sheet.json";
+import language_data_sheet from "../common/language_data_sheet.json";
 import toast, {
   Renderable,
   Toast,
