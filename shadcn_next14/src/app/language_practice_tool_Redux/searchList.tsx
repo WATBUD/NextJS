@@ -24,7 +24,7 @@ import { useOptions } from "./redux/optionsReducer";
 
 
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
-import { set_indexedDB_Data, get_indexedDB_data } from "./indexedDBUtils";
+import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import './shareContext.css'; 
 const SearchList: React.FC = () => {
   const [query, setQuery] = useState<string>("");
