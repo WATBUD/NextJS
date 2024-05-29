@@ -72,21 +72,7 @@ export const useOptions = () => {
   const dispatchSetFavorites = (favorites: number[]) => {
     dispatch(setFavorites(favorites));
   };
-  useEffect(() => {
-    console.log(
-      "%c optionsReducer+useEffect+showFavoritesListOnly",
-      "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold"
-    );
-    if (optionsState.databaseHasBeenLoaded) {
-      set_indexedDB_Data("favorites", "configOptions", optionsState.configOptions, () => {});
-    }
-  }, [optionsState.configOptions]);
 
-  useEffect(() => {
-    if (optionsState.databaseHasBeenLoaded) {
-      set_indexedDB_Data("favorites", "data", optionsState.favorites, () => {});
-    } 
-  }, [optionsState.favorites]);
   return {
     ...optionsState,
     setShowOptionUI: dispatchSetShowOptionUI,

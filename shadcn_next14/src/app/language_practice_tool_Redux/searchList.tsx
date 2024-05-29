@@ -53,6 +53,26 @@ const SearchList: React.FC = () => {
 
   useEffect(() => {
     console.log(
+      "%c optionsReducer+useEffect+showFavoritesListOnly",
+      "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold"
+    );
+    if (databaseHasBeenLoaded) {
+      set_indexedDB_Data("favorites", "configOptions", configOptions, () => {});
+    }
+  }, [configOptions]);
+
+  useEffect(() => {
+    console.log(
+      "%c useEffect+optionsState.favorites",
+      "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold"
+    );
+    if (databaseHasBeenLoaded) {
+      set_indexedDB_Data("favorites", "data", favorites, () => {});
+    } 
+  }, [favorites]);
+
+  useEffect(() => {
+    console.log(
       "%c useEffect+showFavoritesListOnly",
       "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
     );
