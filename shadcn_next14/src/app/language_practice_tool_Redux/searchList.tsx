@@ -3,6 +3,8 @@
 import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
 //import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid'
 //import { DocumentDuplicateIcon as DocumentDuplicateIconOutline } from '@heroicons/react/24/outline'
+
+
 import { 
 DocumentDuplicateIcon as DocumentDuplicateIconSolid,
 SpeakerWaveIcon,
@@ -17,12 +19,13 @@ import toast, {
   ValueFunction,
 } from "react-hot-toast";
 import OptionsModal from "./optionsModal";
-import { useOptions } from "./optionsContext";
-import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
+import { useOptions } from "./redux/optionsReducer";
 
+
+
+import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
 import { set_indexedDB_Data, get_indexedDB_data } from "./indexedDBUtils";
 import './shareContext.css'; 
-
 const SearchList: React.FC = () => {
   const [query, setQuery] = useState<string>("");
   const [filteredData, setFilteredData] = useState<
@@ -39,13 +42,15 @@ const SearchList: React.FC = () => {
   // }, [tt]);
   const {
     showOptionUI,
-    setShowOptionUI,
-    favorites,
-    setFavorites,configOptions,
-    setConfigOptions,
     databaseHasBeenLoaded,
+    configOptions,
+    favorites,
+    setFavorites,
     setDatabaseHasBeenLoaded,
+    setConfigOptions,
+    setShowOptionUI,
   } = useOptions();
+
   useEffect(() => {
     console.log(
       "%c useEffect+showFavoritesListOnly",
@@ -64,7 +69,7 @@ const SearchList: React.FC = () => {
 
   const toggleStarred = (index: number) => {
     if (favorites.includes(index)) {
-      setFavorites(favorites.filter((item) => item !== index));
+      setFavorites(favorites.filter((item: any) => item !== index));
       showCustomToast("已取消收藏");
     } else {
       setFavorites([...favorites, index]);
@@ -220,7 +225,15 @@ const SearchList: React.FC = () => {
           <div className="mb-2 flex w-full items-center justify-between">
             <h1 className="self-center text-2xl font-bold">Sentence Search</h1>
             <button
-              onClick={() => setShowOptionUI(true)}
+              onClick={() => {
+                console.log(
+                  "%c searchList+onClick",
+                  "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+                  showOptionUI
+                );
+                setShowOptionUI(true)
+              
+              }}
               className="rounded-md px-3 py-2 bg-blue-500 text-white shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             >
               Options

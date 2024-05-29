@@ -30,7 +30,6 @@ export const metadata: Metadata = {
 const App: React.FC = () => {
   return (
     <div>
-      {/* 这里是你的内容 */}
       <OptionsProvider>
         <SearchList />
       </OptionsProvider>
