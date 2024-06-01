@@ -622,7 +622,207 @@
   "en": "Haha XD Is this the point?",
   "zh": "哈哈XD這是重點嗎？",
   "tag": "Humor"
+},
+{
+  "index": 105,
+  "en": "No one wants to talk, let’s start writing programs",
+  "zh": "沒人願意說話，我們開始寫程序吧",
+  "tag": "Humor"
+},
+{
+  "index": 106,
+  "en": "Did you have a good day?",
+  "zh": "你今天過得愉快嗎？",
+  "tag": "Conversation"
+},
+{
+  "index": 107,
+  "en": "I need seniors to guide me",
+  "zh": "我需要前輩來指導我",
+  "tag": "Request"
+},
+{
+  "index": 108,
+  "en": "Because many job vacancies require you to know redux, but I think it is not easy to use it and write it.",
+  "zh": "因為很多職缺都要求你會redux，但我覺得用它、寫它並不容易。",
+  "tag": "Tech"
+},
+{
+  "index": 109,
+  "en": "I want to know the advantages and disadvantages of redux",
+  "zh": "我想知道redux的優點和缺點",
+  "tag": "Tech"
+},
+{
+  "index": 110,
+  "en": "Do you still want to keep in touch with him?",
+  "zh": "你還想和他保持聯絡嗎？",
+  "tag": "Relationship"
+},
+{
+  "index": 111,
+  "en": "I think you are the best when you are yourself.",
+  "zh": "我認為做你自己,你就是最好的",
+  "tag": "Encouragement"
+},
+{
+  "index": 112,
+  "en": "I noticed you were very emotional.",
+  "zh": "我注意到你非常情緒化。",
+  "tag": "Observation"
+},
+{
+  "index": 113,
+  "en": "I'm trying my best to chat with you using GOOGLE Translate",
+  "zh": "我正在努力使用 GOOGLE 翻譯與您聊天",
+  "tag": "Effort"
+},
+{
+  "index": 114,
+  "en": "Yes, I listened to your recording carefully",
+  "zh": "是的，我仔細聽了你的錄音",
+  "tag": "Confirmation"
+},
+{
+  "index": 115,
+  "en": "Yes, I can feel your displeasure.",
+  "zh": "是的，我能感受到你的不悅",
+  "tag": "Empathy"
+},
+{
+  "index": 116,
+  "en": "Can you try to chat without using the Translate app?",
+  "zh": "您可以嘗試在不使用翻譯應用程式的情況下聊天嗎？",
+  "tag": "Request"
+},
+{
+  "index": 117,
+  "en": "I'm trying my best to take notes and study English",
+  "zh": "我正在盡力做筆記和學習英語",
+  "tag": "Effort"
+},
+{
+  "index": 118,
+  "en": "I will put the English notes into my programming project",
+  "zh": "我會把英文筆記放到我的程式設計專案中",
+  "tag": "Tech"
+},
+{
+  "index": 119,
+  "en": "Oh thank you, you are an angel",
+  "zh": "噢，謝謝你，你是天使",
+  "tag": "Gratitude"
+},
+{
+  "index": 120,
+  "en": "I think you are doing very well so don't worry",
+  "zh": "我認為你做得很好所以不用擔心",
+  "tag": "Encouragement"
+},
+{
+  "index": 121,
+  "en": "This sentence is too long and difficult",
+  "zh": "這句話太長太難了",
+  "tag": "Observation"
+},
+{
+  "index": 122,
+  "en": "I can still understand what you are saying means You are actually doing fine. I think what you need to do more is to practice on the fluency and your grammar and pronunciation on certain words",
+  "zh": "我仍然能理解你所說的話意味著你實際上做得很好。我認為你需要做的更多的是練習流利度以及某些單字的語法和發音",
+  "tag": "Advice"
+},
+{
+  "index": 123,
+  "en": "Are there no earthquakes in Singapore?",
+  "zh": "新加坡沒有地震嗎？",
+  "tag": "Inquiry"
+},
+{
+  "index": 124,
+  "en": "Anything serious like catastrophe happens to Singapore that means to Earth is going to bye-bye",
+  "zh": "任何像災難這樣嚴重的事情發生在新加坡，就意味著地球將要再見了",
+  "tag": "Humor"
+},
+{
+  "index": 125,
+  "en": "If you encounter a disaster in the future, remember to tell me and I will write a suicide note.",
+  "zh": "如果以後遇到災難，記得告訴我，我會寫遺書。",
+  "tag": "Dark Humor"
+},
+{
+  "index": 126,
+  "en": "I am easy to take care of and only eat two meals a day.",
+  "zh": "我很容易照顧，一天只吃兩餐。",
+  "tag": "Statement"
+},
+{
+  "index": 127,
+  "en": "It may depend on how much is your salary in Taiwan dollars?",
+  "zh": "可能要看你的薪水是多少台幣？",
+  "tag": "Inquiry"
+},
+{
+  "index": 128,
+  "en": "Well, after all, there are differences in salaries between different professions.",
+  "zh": "嗯，畢竟不同職業之間的薪資是有差異的。",
+  "tag": "Statement"
+},
+{
+  "index": 129,
+  "en": "The reason why I say that the salary in Singapore is very high, Because among the people I know, almost all Taiwanese engineers who go to work in Singapore earn more than NT$2 million.",
+  "zh": "我之所以說新加坡的薪水很高，因為我認識的人中，幾乎所有去新加坡工作的台灣工程師的收入都超過新台幣200萬元。",
+  "tag": "Statement"
+},
+{
+  "index": 130,
+  "en": "Okay, no problem, I'll wait for you to come to Taiwan",
+  "zh": "好的，沒問題，我等你來台灣",
+  "tag": "Promise"
+},
+{
+  "index": 131,
+  "en": "How long do you expect the trial period to be?",
+  "zh": "您預計試用期多長？",
+  "tag": "Inquiry"
+},
+{
+  "index": 132,
+  "en": "I will wait for you to stabilize and let you go to work",
+  "zh": "我會等你穩定下來讓你去上班",
+  "tag": "Promise"
+},
+{
+  "index": 133,
+  "en": "No problem, I will take care of you for three months first",
+  "zh": "沒問題，我先照顧你三個月",
+  "tag": "Promise"
+},
+{
+  "index": 134,
+  "en": "I think anything is possible",
+  "zh": "我認為一切皆有可能",
+  "tag": "Optimism"
+},
+{
+  "index": 135,
+  "en": "Because I am a person who likes hugging very much",
+  "zh": "因為我是一個很喜歡擁抱的人",
+  "tag": "Statement"
+},
+{
+  "index": 136,
+  "en": "Do you think I will believe that you are only three years old?",
+  "zh": "你以為我會相信你才三歲嗎？",
+  "tag": "Humor"
+},
+{
+  "index": 137,
+  "en": "Well, I believe you, only today",
+  "zh": "好吧，我相信你，只有今天",
+  "tag": "Humor"
 }
+
+
 
 
 
