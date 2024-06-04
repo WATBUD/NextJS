@@ -286,559 +286,977 @@
     "en": "Every day, I'm doing my best.",
     "zh": "每一天，我都在盡我最大的努力。",
     "tag": "answer"
- },
- {
+  },
+  {
     "index": 49,
     "en": "I specially created a web application to learn English.",
     "zh": "我為了學英文特地做了一個網頁應用程式。",
     "tag": "statement"
- },
- {
+  },
+  {
     "index": 50,
     "en": "The triggers for my PTSD are usually not subjects, but people and teachers.",
     "zh": "觸發我的創傷後壓力症候群的通常不是主題，而是人和老師。",
     "tag": "statement"
-},
-{
+  },
+  {
     "index": 51,
     "en": "Good evening, Big Rabbit.",
     "zh": "晚上好，大兔子。",
     "tag": "greeting"
-},
-{
+  },
+  {
     "index": 52,
     "en": "Modify the copy function prompt message.",
     "zh": "修改複製功能的提示訊息。",
     "tag": "Modify"
-},
-{
+  },
+  {
     "index": 53,
     "en": "Incorporate several new sentences into the JSON file.",
     "zh": "將幾個新句子納入 JSON 檔案中。",
     "tag": "Modify"
-},
-{
+  },
+  {
     "index": 54,
     "en": "You are gorgeous.",
     "zh": "你真漂亮。",
     "tag": "Compliment"
-},
-{
+  },
+  {
     "index": 55,
     "en": "I switched my phone and computer to English mode to practice English.",
     "zh": "我將手機和電腦切換到英文模式來練習英文。",
     "tag": "Practice"
-},
-{
+  },
+  {
     "index": 56,
     "en": "No special reason, just studying for work.",
     "zh": "沒有特別的原因，只是為工作學習。",
     "tag": "Study"
-},
-{
+  },
+  {
     "index": 57,
     "en": "Modify CSS styles and layout.",
     "zh": "修改 CSS 樣式和佈局。",
     "tag": "Development"
-},
-{
+  },
+  {
     "index": 58,
     "en": "Add voice translation feature.",
     "zh": "添加語音翻譯功能。",
     "tag": "Feature"
-},
-{
+  },
+  {
     "index": 59,
     "en": "Convert a standalone useState boolean to a useState object.",
     "zh": "將獨立的 useState 布爾值轉換為一個 useState 對象。",
     "tag": "React"
-},
-{
+  },
+  {
     "index": 60,
     "en": "Move the function to a shared file.",
     "zh": "將函數移動到共享文件。",
     "tag": "Code organization"
-},
-{
+  },
+  {
     "index": 61,
     "en": "I added (Promise.all and db_usestate) to check if the data has been loaded.",
     "zh": "我添加了（Promise.all 和 db_usestate）來檢查數據是否已加載。",
     "tag": "Development"
-},
-{
+  },
+  {
     "index": 62,
     "en": "Long time no see, how have you been?",
     "zh": "好久不見，你過得怎麼樣？",
     "tag": "Life"
-},
-{
+  },
+  {
     "index": 63,
     "en": "Because I've had a slight cold recently.",
     "zh": "因為我最近有點感冒。",
     "tag": "Life"
-},
-{
+  },
+  {
     "index": 64,
     "en": "Yes, I was born in Taiwan.",
     "zh": "是的，我出生在台灣。",
     "tag": "Personal"
-},
-{
+  },
+  {
     "index": 65,
     "en": "You are my idol.",
     "zh": "你是我的偶像。",
     "tag": "Compliment"
-},
-{
+  },
+  {
     "index": 66,
     "en": "I'm really a rookie, I never pretend to be otherwise.",
     "zh": "我真的是個新手，我從不假裝不是。",
     "tag": "Personal"
-},
-{
-  "index": 67,
-  "en": "Okay, let's practice English together!",
-  "zh": "好喔，我們一起練習英文吧！",
-  "tag": "Encouragement"
-},
-{
-  "index": 68,
-  "en": "Is it possible to work fully remotely at [Hsu Shen]'s company?",
-  "zh": "在[徐深]的公司可以完全遠距工作嗎?",
-  "tag": "Work"
-},
-{
-  "index": 69,
-  "en": "I believe this may cause problems, I recommend synchronizing the names.",
-  "zh": "我相信這可能會引起問題,我建議同步名稱。",
-  "tag": "Recommendation"
-},
-{
-  "index": 70,
-  "en": "Trust me, you are better than me.",
-  "zh": "相信我，你比我更好。",
-  "tag": "Compliment"
-},
-{
-  "index": 71,
-  "en": "I'm dead, you're so good at guessing.",
-  "zh": "笑死，你猜得太準了。",
-  "tag": "Humor"
-},
-{
-  "index": 72,
-  "en": "Education in Taiwan involves too much rote learning.",
-  "zh": "台灣的教育涉及太多的死記硬背。",
-  "tag": "Education"
-},
-{
-  "index": 73,
-  "en": "Did your job interview go well last time?",
-  "zh": "你上次的面試順利嗎？",
-  "tag": "Work"
-},
-{
-  "index": 74,
-  "en": "Last time, I remember you asked a question about unit testing in C#.",
-  "zh": "上次，我記得你問了一個關於 C# 單元測試的問題。",
-  "tag": "Work"
-},
-{
-  "index": 75,
-  "en": "i can hear your voice",
-  "zh": "我聽得到你的聲音",
-  "tag": "Communication"
-},
-{
-  "index": 76,
-  "en": "Do you enjoy coding, or do you just see it as a job?",
-  "zh": "您喜歡編碼，還是只是將其視為一份工作？",
-  "tag": "Personal"
-},
-{
-  "index": 77,
-  "en": "If my English sounds weird, please let me know!",
-  "zh": "如果有說的英文很奇怪請跟我說XD",
-  "tag": "Communication"
-},
-{
-  "index": 78,
-  "en": "If someone say something impolite, you could say this~",
-  "zh": "如果有人說了不禮貌的話，你可以這麼說~",
-  "tag": "Communication"
-},
-{
-  "index": 79,
-  "en": "I have 8 years of software engineering experience. I currently mainly do [React Native] mobile front-end work.",
-  "zh": "我有 8 年的軟體工程經驗。我目前主要做【React Native】移動前端工作。",
-  "tag": "Work"
-},
-{
-  "index": 80,
-  "en": "i also have many side projects XD",
-  "zh": "我還有很多自己的專案 XD",
-  "tag": "Work"
-},
-{
-  "index": 81,
-  "en": "Thanks to Teacher Ning for inviting Shan to DC.",
-  "zh": "感謝寧老師邀請單來DC。",
-  "tag": "Appreciation"
-},
-{
-  "index": 82,
-  "en": "I have a question",
-  "zh": "我有個問題",
-  "tag": "Question"
-},
-{
-  "index": 83,
-  "en": "Really, everyone is so talented, they know English.",
-  "zh": "真的，每個人都很有才華，他們都懂英文。",
-  "tag": "Appreciation"
-},
-{
-  "index": 84,
-  "en": "Do you play games in your leisure time?",
-  "zh": "你閒暇時玩遊戲嗎？",
-  "tag": "Hobby"
-},
-{
-  "index": 85,
-  "en": "For example, do you play mobile games, computer games, or board games?",
-  "zh": "例如，您玩手機遊戲、電腦遊戲還是棋盤遊戲？",
-  "tag": "Hobby"
-},
-{
-  "index": 86,
-  "en": "The side project I started two weeks ago.",
-  "zh": "我兩週前開始的個人專案。",
-  "tag": "Work"
-},
-{
-  "index": 87,
-  "en": "I started this side project because I wanted to learn English.",
-  "zh": "我開始這個個人專案是因為我想學習英語。",
-  "tag": "Learning"
-},
-{
-  "index": 88,
-  "en": "Well america hiring is very strategic",
-  "zh": "美國的招募非常具有戰略意義",
-  "tag": "Work"
-},
-{
-  "index": 89,
-  "en": "See you next time, hope to see you again, thank you for sharing today",
-  "zh": "下次見，希望再次見到你，感謝你今天的分享",
-  "tag": "Goodbye"
-},
-{
-  "index": 90,
-  "en": "Shan is now a full-stack engineer, previously had PM experience, lives in Taiwan, and is 30 years old this year.",
-  "zh": "Shan 現在是全端工程師，之前有 PM 經歷，住在台灣，今年 30 歲。",
-  "tag": "Personal"
-},
-{
-  "index": 91,
-  "en": "We should hang out together next time.",
-  "zh": "下次我們應該一起出去玩。",
-  "tag": "Social"
-},
-{
-  "index": 92,
-  "en": "Let's hang out together.",
-  "zh": "我們一起出去玩吧。",
-  "tag": "Social"
-},
-{
-  "index": 93,
-  "en": "Sometimes on call is required, sometimes it isn't.",
-  "zh": "有時需要隨叫隨到，有時則不需要。",
-  "tag": "Work"
-},
-{
-  "index": 94,
-  "en": "I really enjoy playing games.",
-  "zh": "我很喜歡玩遊戲。",
-  "tag": "Hobby"
-},
-{
-  "index": 95,
-  "en": "Whether it’s mobile games, computer games or tabletop games, I play them all.",
-  "zh": "無論是手機遊戲、電腦遊戲或是桌遊戲，我都玩。",
-  "tag": "Hobby"
-},
-{
-  "index": 96,
-  "en": "Me too. I get off work late.",
-  "zh": "我和你一樣。我下班很晚。",
-  "tag": "Work"
-},
-{
-  "index": 97,
-  "en": "I'm not gay, I like girls, girls like you.",
-  "zh": "我不是同性戀，我喜歡女孩，我喜歡像你這樣的女孩。",
-  "tag": "Personal"
-},
-{
-  "index": 98,
-  "en": "I speak softly because I want to be gentle with you.",
-  "zh": "我說話輕聲是因為我想對你溫柔。",
-  "tag": "Personal"
-},
-{
-  "index": 99,
-  "en": "So you really like him?",
-  "zh": "所以妳很喜歡他嗎?",
-  "tag": "Question"
-},
-{
-  "index": 100,
-  "en": "I understand how you feel.",
-  "zh": "我理解你的感受。",
-  "tag": "Empathy"
-},
-{
-  "index": 101,
-  "en": "I'm watching a short video and chatting with you.",
-  "zh": "我在看短影片，一邊跟你聊天。",
-  "tag": "Activity"
-},
-{
-  "index": 102,
-  "en": "I do both.",
-  "zh": "我兩者都做。",
-  "tag": "Activity"
-},
-{
-  "index": 103,
-  "en": "I ride my motorcycle first and then take the subway.",
-  "zh": "我先騎摩托車，然後搭地鐵。",
-  "tag": "Transport"
-},
-{
-  "index": 104,
-  "en": "Haha XD Is this the point?",
-  "zh": "哈哈XD這是重點嗎？",
-  "tag": "Humor"
-},
-{
-  "index": 105,
-  "en": "No one wants to talk, let’s start writing programs",
-  "zh": "沒人願意說話，我們開始寫程序吧",
-  "tag": "Humor"
-},
-{
-  "index": 106,
-  "en": "Did you have a good day?",
-  "zh": "你今天過得愉快嗎？",
-  "tag": "Conversation"
-},
-{
-  "index": 107,
-  "en": "I need seniors to guide me",
-  "zh": "我需要前輩來指導我",
-  "tag": "Request"
-},
-{
-  "index": 108,
-  "en": "Because many job vacancies require you to know redux, but I think it is not easy to use it and write it.",
-  "zh": "因為很多職缺都要求你會redux，但我覺得用它、寫它並不容易。",
-  "tag": "Tech"
-},
-{
-  "index": 109,
-  "en": "I want to know the advantages and disadvantages of redux",
-  "zh": "我想知道redux的優點和缺點",
-  "tag": "Tech"
-},
-{
-  "index": 110,
-  "en": "Do you still want to keep in touch with him?",
-  "zh": "你還想和他保持聯絡嗎？",
-  "tag": "Relationship"
-},
-{
-  "index": 111,
-  "en": "I think you are the best when you are yourself.",
-  "zh": "我認為做你自己,你就是最好的",
-  "tag": "Encouragement"
-},
-{
-  "index": 112,
-  "en": "I noticed you were very emotional.",
-  "zh": "我注意到你非常情緒化。",
-  "tag": "Observation"
-},
-{
-  "index": 113,
-  "en": "I'm trying my best to chat with you using GOOGLE Translate",
-  "zh": "我正在努力使用 GOOGLE 翻譯與您聊天",
-  "tag": "Effort"
-},
-{
-  "index": 114,
-  "en": "Yes, I listened to your recording carefully",
-  "zh": "是的，我仔細聽了你的錄音",
-  "tag": "Confirmation"
-},
-{
-  "index": 115,
-  "en": "Yes, I can feel your displeasure.",
-  "zh": "是的，我能感受到你的不悅",
-  "tag": "Empathy"
-},
-{
-  "index": 116,
-  "en": "Can you try to chat without using the Translate app?",
-  "zh": "您可以嘗試在不使用翻譯應用程式的情況下聊天嗎？",
-  "tag": "Request"
-},
-{
-  "index": 117,
-  "en": "I'm trying my best to take notes and study English",
-  "zh": "我正在盡力做筆記和學習英語",
-  "tag": "Effort"
-},
-{
-  "index": 118,
-  "en": "I will put the English notes into my programming project",
-  "zh": "我會把英文筆記放到我的程式設計專案中",
-  "tag": "Tech"
-},
-{
-  "index": 119,
-  "en": "Oh thank you, you are an angel",
-  "zh": "噢，謝謝你，你是天使",
-  "tag": "Gratitude"
-},
-{
-  "index": 120,
-  "en": "I think you are doing very well so don't worry",
-  "zh": "我認為你做得很好所以不用擔心",
-  "tag": "Encouragement"
-},
-{
-  "index": 121,
-  "en": "This sentence is too long and difficult",
-  "zh": "這句話太長太難了",
-  "tag": "Observation"
-},
-{
-  "index": 122,
-  "en": "I can still understand what you are saying means You are actually doing fine. I think what you need to do more is to practice on the fluency and your grammar and pronunciation on certain words",
-  "zh": "我仍然能理解你所說的話意味著你實際上做得很好。我認為你需要做的更多的是練習流利度以及某些單字的語法和發音",
-  "tag": "Advice"
-},
-{
-  "index": 123,
-  "en": "Are there no earthquakes in Singapore?",
-  "zh": "新加坡沒有地震嗎？",
-  "tag": "Inquiry"
-},
-{
-  "index": 124,
-  "en": "Anything serious like catastrophe happens to Singapore that means to Earth is going to bye-bye",
-  "zh": "任何像災難這樣嚴重的事情發生在新加坡，就意味著地球將要再見了",
-  "tag": "Humor"
-},
-{
-  "index": 125,
-  "en": "If you encounter a disaster in the future, remember to tell me and I will write a suicide note.",
-  "zh": "如果以後遇到災難，記得告訴我，我會寫遺書。",
-  "tag": "Dark Humor"
-},
-{
-  "index": 126,
-  "en": "I am easy to take care of and only eat two meals a day.",
-  "zh": "我很容易照顧，一天只吃兩餐。",
-  "tag": "Statement"
-},
-{
-  "index": 127,
-  "en": "It may depend on how much is your salary in Taiwan dollars?",
-  "zh": "可能要看你的薪水是多少台幣？",
-  "tag": "Inquiry"
-},
-{
-  "index": 128,
-  "en": "Well, after all, there are differences in salaries between different professions.",
-  "zh": "嗯，畢竟不同職業之間的薪資是有差異的。",
-  "tag": "Statement"
-},
-{
-  "index": 129,
-  "en": "The reason why I say that the salary in Singapore is very high, Because among the people I know, almost all Taiwanese engineers who go to work in Singapore earn more than NT$2 million.",
-  "zh": "我之所以說新加坡的薪水很高，因為我認識的人中，幾乎所有去新加坡工作的台灣工程師的收入都超過新台幣200萬元。",
-  "tag": "Statement"
-},
-{
-  "index": 130,
-  "en": "Okay, no problem, I'll wait for you to come to Taiwan",
-  "zh": "好的，沒問題，我等你來台灣",
-  "tag": "Promise"
-},
-{
-  "index": 131,
-  "en": "How long do you expect the trial period to be?",
-  "zh": "您預計試用期多長？",
-  "tag": "Inquiry"
-},
-{
-  "index": 132,
-  "en": "I will wait for you to stabilize and let you go to work",
-  "zh": "我會等你穩定下來讓你去上班",
-  "tag": "Promise"
-},
-{
-  "index": 133,
-  "en": "No problem, I will take care of you for three months first",
-  "zh": "沒問題，我先照顧你三個月",
-  "tag": "Promise"
-},
-{
-  "index": 134,
-  "en": "I think anything is possible",
-  "zh": "我認為一切皆有可能",
-  "tag": "Optimism"
-},
-{
-  "index": 135,
-  "en": "Because I am a person who likes hugging very much",
-  "zh": "因為我是一個很喜歡擁抱的人",
-  "tag": "Statement"
-},
-{
-  "index": 136,
-  "en": "Do you think I will believe that you are only three years old?",
-  "zh": "你以為我會相信你才三歲嗎？",
-  "tag": "Humor"
-},
-{
-  "index": 137,
-  "en": "Well, I believe you, only today",
-  "zh": "好吧，我相信你，只有今天",
-  "tag": "Humor"
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  },
+  {
+    "index": 67,
+    "en": "Okay, let's practice English together!",
+    "zh": "好喔，我們一起練習英文吧！",
+    "tag": "Encouragement"
+  },
+  {
+    "index": 68,
+    "en": "Is it possible to work fully remotely at [Hsu Shen]'s company?",
+    "zh": "在[徐深]的公司可以完全遠距工作嗎?",
+    "tag": "Work"
+  },
+  {
+    "index": 69,
+    "en": "I believe this may cause problems, I recommend synchronizing the names.",
+    "zh": "我相信這可能會引起問題,我建議同步名稱。",
+    "tag": "Recommendation"
+  },
+  {
+    "index": 70,
+    "en": "Trust me, you are better than me.",
+    "zh": "相信我，你比我更好。",
+    "tag": "Compliment"
+  },
+  {
+    "index": 71,
+    "en": "I'm dead, you're so good at guessing.",
+    "zh": "笑死，你猜得太準了。",
+    "tag": "Humor"
+  },
+  {
+    "index": 72,
+    "en": "Education in Taiwan involves too much rote learning.",
+    "zh": "台灣的教育涉及太多的死記硬背。",
+    "tag": "Education"
+  },
+  {
+    "index": 73,
+    "en": "Did your job interview go well last time?",
+    "zh": "你上次的面試順利嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 74,
+    "en": "Last time, I remember you asked a question about unit testing in C#.",
+    "zh": "上次，我記得你問了一個關於 C# 單元測試的問題。",
+    "tag": "Work"
+  },
+  {
+    "index": 75,
+    "en": "i can hear your voice",
+    "zh": "我聽得到你的聲音",
+    "tag": "Communication"
+  },
+  {
+    "index": 76,
+    "en": "Do you enjoy coding, or do you just see it as a job?",
+    "zh": "您喜歡編碼，還是只是將其視為一份工作？",
+    "tag": "Personal"
+  },
+  {
+    "index": 77,
+    "en": "If my English sounds weird, please let me know!",
+    "zh": "如果有說的英文很奇怪請跟我說XD",
+    "tag": "Communication"
+  },
+  {
+    "index": 78,
+    "en": "If someone say something impolite, you could say this~",
+    "zh": "如果有人說了不禮貌的話，你可以這麼說~",
+    "tag": "Communication"
+  },
+  {
+    "index": 79,
+    "en": "I have 8 years of software engineering experience. I currently mainly do [React Native] mobile front-end work.",
+    "zh": "我有 8 年的軟體工程經驗。我目前主要做【React Native】移動前端工作。",
+    "tag": "Work"
+  },
+  {
+    "index": 80,
+    "en": "i also have many side projects XD",
+    "zh": "我還有很多自己的專案 XD",
+    "tag": "Work"
+  },
+  {
+    "index": 81,
+    "en": "Thanks to Teacher Ning for inviting Shan to DC.",
+    "zh": "感謝寧老師邀請單來DC。",
+    "tag": "Appreciation"
+  },
+  {
+    "index": 82,
+    "en": "I have a question",
+    "zh": "我有個問題",
+    "tag": "Question"
+  },
+  {
+    "index": 83,
+    "en": "Really, everyone is so talented, they know English.",
+    "zh": "真的，每個人都很有才華，他們都懂英文。",
+    "tag": "Appreciation"
+  },
+  {
+    "index": 84,
+    "en": "Do you play games in your leisure time?",
+    "zh": "你閒暇時玩遊戲嗎？",
+    "tag": "Hobby"
+  },
+  {
+    "index": 85,
+    "en": "For example, do you play mobile games, computer games, or board games?",
+    "zh": "例如，您玩手機遊戲、電腦遊戲還是棋盤遊戲？",
+    "tag": "Hobby"
+  },
+  {
+    "index": 86,
+    "en": "The side project I started two weeks ago.",
+    "zh": "我兩週前開始的個人專案。",
+    "tag": "Work"
+  },
+  {
+    "index": 87,
+    "en": "I started this side project because I wanted to learn English.",
+    "zh": "我開始這個個人專案是因為我想學習英語。",
+    "tag": "Learning"
+  },
+  {
+    "index": 88,
+    "en": "Well america hiring is very strategic",
+    "zh": "美國的招募非常具有戰略意義",
+    "tag": "Work"
+  },
+  {
+    "index": 89,
+    "en": "See you next time, hope to see you again, thank you for sharing today",
+    "zh": "下次見，希望再次見到你，感謝你今天的分享",
+    "tag": "Goodbye"
+  },
+  {
+    "index": 90,
+    "en": "Shan is now a full-stack engineer, previously had PM experience, lives in Taiwan, and is 30 years old this year.",
+    "zh": "Shan 現在是全端工程師，之前有 PM 經歷，住在台灣，今年 30 歲。",
+    "tag": "Personal"
+  },
+  {
+    "index": 91,
+    "en": "We should hang out together next time.",
+    "zh": "下次我們應該一起出去玩。",
+    "tag": "Social"
+  },
+  {
+    "index": 92,
+    "en": "Let's hang out together.",
+    "zh": "我們一起出去玩吧。",
+    "tag": "Social"
+  },
+  {
+    "index": 93,
+    "en": "Sometimes on call is required, sometimes it isn't.",
+    "zh": "有時需要隨叫隨到，有時則不需要。",
+    "tag": "Work"
+  },
+  {
+    "index": 94,
+    "en": "I really enjoy playing games.",
+    "zh": "我很喜歡玩遊戲。",
+    "tag": "Hobby"
+  },
+  {
+    "index": 95,
+    "en": "Whether it’s mobile games, computer games or tabletop games, I play them all.",
+    "zh": "無論是手機遊戲、電腦遊戲或是桌遊戲，我都玩。",
+    "tag": "Hobby"
+  },
+  {
+    "index": 96,
+    "en": "Me too. I get off work late.",
+    "zh": "我和你一樣。我下班很晚。",
+    "tag": "Work"
+  },
+  {
+    "index": 97,
+    "en": "I'm not gay, I like girls, girls like you.",
+    "zh": "我不是同性戀，我喜歡女孩，我喜歡像你這樣的女孩。",
+    "tag": "Personal"
+  },
+  {
+    "index": 98,
+    "en": "I speak softly because I want to be gentle with you.",
+    "zh": "我說話輕聲是因為我想對你溫柔。",
+    "tag": "Personal"
+  },
+  {
+    "index": 99,
+    "en": "So you really like him?",
+    "zh": "所以妳很喜歡他嗎?",
+    "tag": "Question"
+  },
+  {
+    "index": 100,
+    "en": "I understand how you feel.",
+    "zh": "我理解你的感受。",
+    "tag": "Empathy"
+  },
+  {
+    "index": 101,
+    "en": "I'm watching a short video and chatting with you.",
+    "zh": "我在看短影片，一邊跟你聊天。",
+    "tag": "Activity"
+  },
+  {
+    "index": 102,
+    "en": "I do both.",
+    "zh": "我兩者都做。",
+    "tag": "Activity"
+  },
+  {
+    "index": 103,
+    "en": "I ride my motorcycle first and then take the subway.",
+    "zh": "我先騎摩托車，然後搭地鐵。",
+    "tag": "Transport"
+  },
+  {
+    "index": 104,
+    "en": "Haha XD Is this the point?",
+    "zh": "哈哈XD這是重點嗎？",
+    "tag": "Humor"
+  },
+  {
+    "index": 105,
+    "en": "No one wants to talk, let’s start writing programs",
+    "zh": "沒人願意說話，我們開始寫程序吧",
+    "tag": "Humor"
+  },
+  {
+    "index": 106,
+    "en": "Did you have a good day?",
+    "zh": "你今天過得愉快嗎？",
+    "tag": "Conversation"
+  },
+  {
+    "index": 107,
+    "en": "I need seniors to guide me",
+    "zh": "我需要前輩來指導我",
+    "tag": "Request"
+  },
+  {
+    "index": 108,
+    "en": "Because many job vacancies require you to know redux, but I think it is not easy to use it and write it.",
+    "zh": "因為很多職缺都要求你會redux，但我覺得用它、寫它並不容易。",
+    "tag": "Tech"
+  },
+  {
+    "index": 109,
+    "en": "I want to know the advantages and disadvantages of redux",
+    "zh": "我想知道redux的優點和缺點",
+    "tag": "Tech"
+  },
+  {
+    "index": 110,
+    "en": "Do you still want to keep in touch with him?",
+    "zh": "你還想和他保持聯絡嗎？",
+    "tag": "Relationship"
+  },
+  {
+    "index": 111,
+    "en": "I think you are the best when you are yourself.",
+    "zh": "我認為做你自己,你就是最好的",
+    "tag": "Encouragement"
+  },
+  {
+    "index": 112,
+    "en": "I noticed you were very emotional.",
+    "zh": "我注意到你非常情緒化。",
+    "tag": "Observation"
+  },
+  {
+    "index": 113,
+    "en": "I'm trying my best to chat with you using GOOGLE Translate",
+    "zh": "我正在努力使用 GOOGLE 翻譯與您聊天",
+    "tag": "Effort"
+  },
+  {
+    "index": 114,
+    "en": "Yes, I listened to your recording carefully",
+    "zh": "是的，我仔細聽了你的錄音",
+    "tag": "Confirmation"
+  },
+  {
+    "index": 115,
+    "en": "Yes, I can feel your displeasure.",
+    "zh": "是的，我能感受到你的不悅",
+    "tag": "Empathy"
+  },
+  {
+    "index": 116,
+    "en": "Can you try to chat without using the Translate app?",
+    "zh": "您可以嘗試在不使用翻譯應用程式的情況下聊天嗎？",
+    "tag": "Request"
+  },
+  {
+    "index": 117,
+    "en": "I'm trying my best to take notes and study English",
+    "zh": "我正在盡力做筆記和學習英語",
+    "tag": "Effort"
+  },
+  {
+    "index": 118,
+    "en": "I will put the English notes into my programming project",
+    "zh": "我會把英文筆記放到我的程式設計專案中",
+    "tag": "Tech"
+  },
+  {
+    "index": 119,
+    "en": "Oh thank you, you are an angel",
+    "zh": "噢，謝謝你，你是天使",
+    "tag": "Gratitude"
+  },
+  {
+    "index": 120,
+    "en": "I think you are doing very well so don't worry",
+    "zh": "我認為你做得很好所以不用擔心",
+    "tag": "Encouragement"
+  },
+  {
+    "index": 121,
+    "en": "This sentence is too long and difficult",
+    "zh": "這句話太長太難了",
+    "tag": "Observation"
+  },
+  {
+    "index": 122,
+    "en": "I can still understand what you are saying means You are actually doing fine. I think what you need to do more is to practice on the fluency and your grammar and pronunciation on certain words",
+    "zh": "我仍然能理解你所說的話意味著你實際上做得很好。我認為你需要做的更多的是練習流利度以及某些單字的語法和發音",
+    "tag": "Advice"
+  },
+  {
+    "index": 123,
+    "en": "Are there no earthquakes in Singapore?",
+    "zh": "新加坡沒有地震嗎？",
+    "tag": "Inquiry"
+  },
+  {
+    "index": 124,
+    "en": "Anything serious like catastrophe happens to Singapore that means to Earth is going to bye-bye",
+    "zh": "任何像災難這樣嚴重的事情發生在新加坡，就意味著地球將要再見了",
+    "tag": "Humor"
+  },
+  {
+    "index": 125,
+    "en": "If you encounter a disaster in the future, remember to tell me and I will write a suicide note.",
+    "zh": "如果以後遇到災難，記得告訴我，我會寫遺書。",
+    "tag": "Dark Humor"
+  },
+  {
+    "index": 126,
+    "en": "I am easy to take care of and only eat two meals a day.",
+    "zh": "我很容易照顧，一天只吃兩餐。",
+    "tag": "Statement"
+  },
+  {
+    "index": 127,
+    "en": "It may depend on how much is your salary in Taiwan dollars?",
+    "zh": "可能要看你的薪水是多少台幣？",
+    "tag": "Inquiry"
+  },
+  {
+    "index": 128,
+    "en": "Well, after all, there are differences in salaries between different professions.",
+    "zh": "嗯，畢竟不同職業之間的薪資是有差異的。",
+    "tag": "Statement"
+  },
+  {
+    "index": 129,
+    "en": "The reason why I say that the salary in Singapore is very high, Because among the people I know, almost all Taiwanese engineers who go to work in Singapore earn more than NT$2 million.",
+    "zh": "我之所以說新加坡的薪水很高，因為我認識的人中，幾乎所有去新加坡工作的台灣工程師的收入都超過新台幣200萬元。",
+    "tag": "Statement"
+  },
+  {
+    "index": 130,
+    "en": "Okay, no problem, I'll wait for you to come to Taiwan",
+    "zh": "好的，沒問題，我等你來台灣",
+    "tag": "Promise"
+  },
+  {
+    "index": 131,
+    "en": "How long do you expect the trial period to be?",
+    "zh": "您預計試用期多長？",
+    "tag": "Inquiry"
+  },
+  {
+    "index": 132,
+    "en": "I will wait for you to stabilize and let you go to work",
+    "zh": "我會等你穩定下來讓你去上班",
+    "tag": "Promise"
+  },
+  {
+    "index": 133,
+    "en": "No problem, I will take care of you for three months first",
+    "zh": "沒問題，我先照顧你三個月",
+    "tag": "Promise"
+  },
+  {
+    "index": 134,
+    "en": "I think anything is possible",
+    "zh": "我認為一切皆有可能",
+    "tag": "Optimism"
+  },
+  {
+    "index": 135,
+    "en": "Because I am a person who likes hugging very much",
+    "zh": "因為我是一個很喜歡擁抱的人",
+    "tag": "Statement"
+  },
+  {
+    "index": 136,
+    "en": "Do you think I will believe that you are only three years old?",
+    "zh": "你以為我會相信你才三歲嗎？",
+    "tag": "Humor"
+  },
+  {
+    "index": 137,
+    "en": "Well, I believe you, only today",
+    "zh": "好吧，我相信你，只有今天",
+    "tag": "Humor"
+  },
+  {
+    "index": 138,
+    "en": "So many new friends showed up at this event.",
+    "zh": "這次活動吸引了許多新朋友。",
+    "tag": "Social"
+  },
+  {
+    "index": 139,
+    "en": "I'm learning OPA, it's so difficult QQ",
+    "zh": "我正在學OPA，好難啊QQ",
+    "tag": "Struggle"
+  },
+  {
+    "index": 140,
+    "en": "No problem, the capable should be the teacher. Senior, please teach me JAVA.",
+    "zh": "沒問題，達者為師。請前輩教我JAVA。",
+    "tag": "Request"
+  },
+  {
+    "index": 141,
+    "en": "Just buy it, Action is better than thinking in heart only",
+    "zh": "買就對了,心動不如行動",
+    "tag": "Encouragement"
+  },
+  {
+    "index": 142,
+    "en": "I will be updating the .md file and tutorials here gradually. If anyone feels there are areas that need modification, feel free to help make changes together.",
+    "zh": "我這邊陸續會更新.md檔跟教學,大家如果覺得有地方修改可以一起幫忙改",
+    "tag": "Announcement"
+  },
+  {
+    "index": 143,
+    "en": "I strive to become the husband who can support you financially.? Haha",
+    "zh": "我努力成為能養你的老公?哈哈",
+    "tag": "Humor"
+  },
+  {
+    "index": 144,
+    "en": "I just finished being busy, sweetheart. Goodnight.",
+    "zh": "我剛忙完,寶貝晚安",
+    "tag": "End of Day"
+  },
+  {
+    "index": 145,
+    "en": "Welcome to the world of Java.",
+    "zh": "歡迎來到Java的世界。",
+    "tag": "Java"
+  },
+  {
+    "index": 146,
+    "en": "I think you need someone to warm you.",
+    "zh": "我想你需要一個人溫暖你。",
+    "tag": "Comfort"
+  },
+  {
+    "index": 147,
+    "en": "Do you have your mother's phone number?",
+    "zh": "你有你媽的電話嗎？",
+    "tag": "Family"
+  },
+  {
+    "index": 148,
+    "en": "My current company does not accept remote work.",
+    "zh": "我現在的公司不接受遠程工作。",
+    "tag": "Work"
+  },
+  {
+    "index": 149,
+    "en": "No, I just have a room to myself.",
+    "zh": "不，只是我自己有一個房間。",
+    "tag": "Personal Space"
+  },
+  {
+    "index": 150,
+    "en": "I think your home is big XD?",
+    "zh": "我覺得你家很大XD？",
+    "tag": "Home"
+  },
+  {
+    "index": 151,
+    "en": "Does your family rent or own a home?",
+    "zh": "你的家人租房還是買房？",
+    "tag": "Housing"
+  },
+  {
+    "index": 152,
+    "en": "I’m just a tenant.",
+    "zh": "我只是一個租戶。",
+    "tag": "Living Situation"
+  },
+  {
+    "index": 153,
+    "en": "Let me think about it. How many brothers and sisters do you have?",
+    "zh": "讓我想想。你有幾個兄弟姊妹？",
+    "tag": "Family"
+  },
+  {
+    "index": 154,
+    "en": "Is buying a house in Singapore permanent?",
+    "zh": "在新加坡買房子是永久的嗎？",
+    "tag": "Housing"
+  },
+  {
+    "index": 155,
+    "en": "I was just thinking why 'flat' instead of 'apartment'.",
+    "zh": "我只是在想為什麼用“flat”而不是“apartment”。",
+    "tag": "Language"
+  },
+  {
+    "index": 156,
+    "en": "Looks pretty good. If our sister moves out, tell me (X).",
+    "zh": "看起來還不錯。如果我們姐姐搬出去了,告訴我（X）。",
+    "tag": "Family"
+  },
+  {
+    "index": 157,
+    "en": "Only after updating and logging in can you enter the invite friend page.",
+    "zh": "更新並登入後才能進入邀請好友頁面。",
+    "tag": "Technology"
+  },
+  {
+    "index": 158,
+    "en": "I uploaded some sample files including [Integrate with Go API] [Integrate with REST API].",
+    "zh": "我上傳了一些範例文件，包括[與Go API整合][與REST API整合]。",
+    "tag": "Work"
+  },
+  {
+    "index": 159,
+    "en": "My 'GPT-4' upgrade has also been purchased.",
+    "zh": "我的“GPT-4”升級也已購買。",
+    "tag": "Technology"
+  },
+  {
+    "index": 160,
+    "en": "It may be necessary to discuss whether we are sure to only rely on the [Go] framework? Or would we consider relying on REST API?",
+    "zh": "可能有必要討論我們是否確定只依賴[Go]框架？或者我們會考慮依賴REST API？",
+    "tag": "Technology"
+  },
+  {
+    "index": 161,
+    "en": "The software is great, but the company won't let me work remotely, which makes me miserable.",
+    "zh": "軟體很棒，但是公司不讓我遠程工作，這讓我很痛苦。",
+    "tag": "Work"
+  },
+  {
+    "index": 162,
+    "en": "I just told him directly that the salary is higher than my previous job.",
+    "zh": "我都直接跟他說比我前一份工作薪水高就行。",
+    "tag": "Work"
+  },
+  {
+    "index": 163,
+    "en": "I can introduce it to you if you want.",
+    "zh": "如果你願意的話我可以介紹給你。",
+    "tag": "Offer"
+  },
+  {
+    "index": 164,
+    "en": "Which company?",
+    "zh": "哪家公司？",
+    "tag": "Work"
+  },
+  {
+    "index": 165,
+    "en": "I don't argue about salary, I just look at how much the company adds. If it was lower or only +1k3k, I would consider not going.",
+    "zh": "我不爭論薪資，只看公司加多少。如果更低或只有+1k3k，我會考慮不去。",
+    "tag": "Work"
+  },
+  {
+    "index": 166,
+    "en": "I noticed XD I'm currently in sync with Jacky and using the latest development branch.",
+    "zh": "我有注意到 XD 我目前與 Jacky 同步並使用最新的開發分支。",
+    "tag": "Work"
+  },
+  {
+    "index": 167,
+    "en": "If we are sure that our product will not use other frameworks or languages to call OPA server in the future, then we will use [Integrate with Go API].",
+    "zh": "如果我們確定我們的產品以後不會使用其他框架或語言來呼叫 OPA 伺服器，那麼我們就會使用【與Go API整合】。",
+    "tag": "Technology"
+  },
+  {
+    "index": 168,
+    "en": "Because the two writing methods are different, one is through Integrate with REST API.",
+    "zh": "因為兩種寫法不同，一種是透過Integrate with REST API。",
+    "tag": "Technology"
+  },
+  {
+    "index": 169,
+    "en": "OK, Because the official has a direct call to the REST API XD, That's why I want to confirm with you.",
+    "zh": "OK，因為官方有直接呼叫 REST API 的 XD，所以想跟你確認一下。",
+    "tag": "Technology"
+  },
+  {
+    "index": 170,
+    "en": "Why are you at home?",
+    "zh": "你為什麼在家？",
+    "tag": "Personal"
+  },
+  {
+    "index": 171,
+    "en": "You know what? It's because you didn't sleep with me.",
+    "zh": "你知道嗎？那是因為你沒有跟我睡。",
+    "tag": "Humor"
+  },
+  {
+    "index": 172,
+    "en": "Was it my fault all along XD?",
+    "zh": "一直以來都是我的錯嗎XD？",
+    "tag": "Humor"
+  },
+  {
+    "index": 173,
+    "en": "Does your company provide paid leave?",
+    "zh": "貴公司提供有薪休假嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 174,
+    "en": "Then you can still be a thief of 13 days' salary.",
+    "zh": "那你還可以當 13 天工資的小偷。",
+    "tag": "Humor"
+  },
+  {
+    "index": 175,
+    "en": "Ask her to let my wife continue to rest at home.",
+    "zh": "求她讓我老婆繼續在家休息。",
+    "tag": "Family"
+  },
+  {
+    "index": 176,
+    "en": "Didn’t you say you have a salary?",
+    "zh": "你不是說你有薪水嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 177,
+    "en": "I tell your boss, it's okay, I can go to work instead of you.",
+    "zh": "我告訴你老闆，沒關係，我可以代替你去上班。",
+    "tag": "Support"
+  },
+  {
+    "index": 178,
+    "en": "I have fresh liver.",
+    "zh": "我有新鮮的肝臟。",
+    "tag": "Humor"
+  },
+  {
+    "index": 179,
+    "en": "I can only sleep with you around my arms.",
+    "zh": "我只能抱著你入睡。",
+    "tag": "Affection"
+  },
+  {
+    "index": 180,
+    "en": "Hmm I think you don't have to say 「on site」.",
+    "zh": "嗯，我想你不必說“現場”。",
+    "tag": "Communication"
+  },
+  {
+    "index": 181,
+    "en": "I mean to accompany me via voice call.",
+    "zh": "我的意思是透過語音通話陪伴我。",
+    "tag": "Communication"
+  },
+  {
+    "index": 182,
+    "en": "But you can't feel my warmth just by my voice.",
+    "zh": "但僅憑我的聲音你無法感受到我的溫暖。",
+    "tag": "Affection"
+  },
+  {
+    "index": 183,
+    "en": "I feel like I'm going to get a knock on the door from my family.XDD.",
+    "zh": "我感覺我的家人會來敲門。",
+    "tag": "Humor"
+  },
+  {
+    "index": 184,
+    "en": "What time do you go to bed?",
+    "zh": "你什麼時候睡覺？",
+    "tag": "Personal"
+  },
+  {
+    "index": 185,
+    "en": "I have a meeting until eleven today.",
+    "zh": "我今天有一個會議要開到十一點。",
+    "tag": "Work"
+  },
+  {
+    "index": 186,
+    "en": "No, I think it will be noisy.",
+    "zh": "不，我覺得會很吵。",
+    "tag": "Environment"
+  },
+  {
+    "index": 187,
+    "en": "Not yet, I still have two hours left before I get off work.",
+    "zh": "還沒有，距離下班還有兩個小時。",
+    "tag": "Work"
+  },
+  {
+    "index": 188,
+    "en": "Because today is the birthday of the Malaysian head of state?",
+    "zh": "因為今天是馬來西亞國家元首的生日？",
+    "tag": "Culture"
+  },
+  {
+    "index": 189,
+    "en": "What has that got to do with you@@?",
+    "zh": "這和你有什麼關係@@？",
+    "tag": "Curiosity"
+  },
+  {
+    "index": 190,
+    "en": "Because I'm alone in Taiwan, I need to commute to the office for an hour every day, and I work remotely with colleagues from Malaysia using Teams.",
+    "zh": "因為我獨自一人在台灣，我需要每天花一個小時通勤到辦公室，使用 Teams 與馬來西亞的同事遠距工作。",
+    "tag": "Work"
+  },
+  {
+    "index": 191,
+    "en": "The colleagues I work with are all Malaysians.",
+    "zh": "和我一起工作的同事都是馬來西亞人。",
+    "tag": "Work"
+  },
+  {
+    "index": 192,
+    "en": "So, with all the [PM/QA/IT/BE] on leave today, I'm the salary thief.",
+    "zh": "所以，今天所有的 [PM/QA/IT/BE] 都休假了，我就是薪資小偷。",
+    "tag": "Humor"
+  },
+  {
+    "index": 193,
+    "en": "No way, the company requires me to go to the company to work remotely with my Malaysian colleagues.",
+    "zh": "沒辦法,公司要求我到公司使用遠端去和我的馬來西亞同事一起工作。",
+    "tag": "Work"
+  },
+  {
+    "index": 194,
+    "en": "Ok, I'm going to learn to read official documents.",
+    "zh": "好的，我去學習看官方文檔。",
+    "tag": "Learning"
+  },
+  {
+    "index": 195,
+    "en": "We don't use this term.",
+    "zh": "我們不使用這個術語。",
+    "tag": "Communication"
+  },
+  {
+    "index": 196,
+    "en": "Let's chat later.",
+    "zh": "我們稍後再聊吧。",
+    "tag": "Communication"
+  },
+  {
+    "index": 195,
+    "en": "We don't use this term.",
+    "zh": "我們不使用這個術語。",
+    "tag": "Communication"
+  },
+  {
+    "index": 196,
+    "en": "I want to learn English because I need to use it for my work.",
+    "zh": "我想學英文是因為我工作會需要用。",
+    "tag": "Learning"
+  },
+  {
+    "index": 197,
+    "en": "I just want to ask if you fall asleep?",
+    "zh": "我只想問你睡著了嗎？",
+    "tag": "Communication"
+  },
+  {
+    "index": 198,
+    "en": "I remember showing you my English project.",
+    "zh": "我記得我有給你看過我的英文專案。",
+    "tag": "Communication"
+  },
+  {
+    "index": 199,
+    "en": "But there's no one around me in Taiwan who speaks English.",
+    "zh": "但是我在台灣身邊沒人講英文。",
+    "tag": "Communication"
+  },
+  {
+    "index": 200,
+    "en": "I think your approach is great, and I agree with what you're thinking.",
+    "zh": "我覺得你的做法很棒,我跟你想的一樣。",
+    "tag": "Communication"
+  },
+  {
+    "index": 201,
+    "en": "I'll brush my teeth if you fall asleep",
+    "zh": "如果你睡著了我就刷牙",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 202,
+    "en": "I'm working on this project right now.",
+    "zh": "我現在在做這個專案",
+    "tag": "Work"
+  },
+  {
+    "index": 203,
+    "en": "Because I'm not smart enough.",
+    "zh": "因為我不夠聰明",
+    "tag": "Personal"
+  },
+  {
+    "index": 204,
+    "en": "You don't have to be so serious.",
+    "zh": "你不必那麼認真",
+    "tag": "Communication"
+  },
+  {
+    "index": 205,
+    "en": "What time do you want to sleep?",
+    "zh": "你想什麼時候睡覺？",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 206,
+    "en": "What time do you have to get up for work?",
+    "zh": "你幾點要起床上班？",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 207,
+    "en": "Okay, I'm going to brush my teeth. You go to sleep early.",
+    "zh": "好吧，我去刷牙。你早點睡吧。",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 208,
+    "en": "Sweet dreams",
+    "zh": "祝你有個好夢",
+    "tag": "Daily Life"
+  }
 ]
