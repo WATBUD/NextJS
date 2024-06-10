@@ -1258,5 +1258,245 @@
     "en": "Sweet dreams",
     "zh": "祝你有個好夢",
     "tag": "Daily Life"
+  },
+  {
+    "index": 209,
+    "en": "I just arrived at the company",
+    "zh": "我剛到公司",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 210,
+    "en": "Which part of this is good?",
+    "zh": "這邊的不錯是指什麼部分＠＠？",
+    "tag": "Communication"
+  },
+  {
+    "index": 211,
+    "en": "I am a slacker",
+    "zh": "我是一個薪水小偷",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 212,
+    "en": "Hi, my supervisor wants me to track [代收代付]. Is there anything else that needs to be changed? If not, we are ready to deploy UAT into the environment to complete this order",
+    "zh": "你好，我的主管要我追蹤[代收代付]。還有什麼需要改變的嗎？如果沒有，我們準備將 UAT 部署到環境中來完成此訂單",
+    "tag": "Work"
+  },
+  {
+    "index": 213,
+    "en": "Reorganizing Project Architecture",
+    "zh": "重整專案結構",
+    "tag": "Work"
+  },
+  {
+    "index": 214,
+    "en": "There's a company event after 5 PM today.",
+    "zh": "今天下午5點以後公司有活動。",
+    "tag": "Work"
+  },
+  {
+    "index": 215,
+    "en": "End the interview directly (x",
+    "zh": "直接結束面試（x",
+    "tag": "Work"
+  },
+  {
+    "index": 216,
+    "en": "I didn't type; I copied it using a program I wrote.",
+    "zh": "我沒有打字；我用我寫的程式複製了它XD。",
+    "tag": "Work"
+  },
+  {
+    "index": 217,
+    "en": "They have been interviewing for a long time.",
+    "zh": "他們已經面試了很久了。",
+    "tag": "Work"
+  },
+  {
+    "index": 218,
+    "en": "My Genshin Impact still hasn't finished downloading the update.",
+    "zh": "我的 Genshin Impact 仍未完成更新下載。",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 219,
+    "en": "There should be only [Iterator] in java",
+    "zh": "java中應該只有[Iterator]",
+    "tag": "Work"
+  },
+  {
+    "index": 220,
+    "en": "I need to set up Actions secrets and variables. Please grant me the necessary permissions, and I will configure them when I have time.",
+    "zh": "我需要設Actions secrets and variables,麻煩開權限給我,我有空再設定",
+    "tag": "Work"
+  },
+  {
+    "index": 221,
+    "en": "It doesn't matter, just use it if you have time haha",
+    "zh": "沒關係，有時間就用吧哈哈",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 222,
+    "en": "I'm almost off work, so I'll take some time to practice GCP. XD",
+    "zh": "我快下班了，所以抽點時間練習一下gcp XD",
+    "tag": "Work"
+  },
+  {
+    "index": 223,
+    "en": "I tested it on my own go project and it works.",
+    "zh": "我測我自己的go project是可以的",
+    "tag": "Work"
+  },
+  {
+    "index": 224,
+    "en": "But I still need permissions to test our Mai Today project since my project is just a Hello World app. XD",
+    "zh": "但還需要權限來測試我們的 mai Today 項目,畢竟我的專案只有hello world XD",
+    "tag": "Work"
+  },
+  {
+    "index": 225,
+    "en": "I need setting permissions to enter.",
+    "zh": "我需要setting的權限才能進去",
+    "tag": "Work"
+  },
+  {
+    "index": 226,
+    "en": "Although I could hardcode it, it's not recommended. XD",
+    "zh": "雖然可以寫死 但不建議XD",
+    "tag": "Work"
+  },
+  {
+    "index": 227,
+    "en": "Because I saw that L is also using secrets.",
+    "zh": "因為我看到(Ｌ)也是用secrets",
+    "tag": "Work"
+  },
+  {
+    "index": 228,
+    "en": "When I read your resume, I already decided that you are my idol.",
+    "zh": "當我讀你的履歷那一刻,我已經決定你是我的偶像",
+    "tag": "Work"
+  },
+  {
+    "index": 229,
+    "en": "No need, your work experience alone is already enough.",
+    "zh": "不用,你工作經驗就已經足夠了",
+    "tag": "Work"
+  },
+  {
+    "index": 230,
+    "en": "I just directly say that I don't know.",
+    "zh": "我都直接說我不會",
+    "tag": "Work"
+  },
+  {
+    "index": 231,
+    "en": "If you've already been in the industry for a while, don't bother pursuing further education. If you're just starting out, you might consider it.",
+    "zh": "如果已經在業界一段時間了就不要補學歷,如果剛出社會可以考慮補學歷",
+    "tag": "Work"
+  },
+  {
+    "index": 232,
+    "en": "You need to be sure that when I say it, you'll understand xdd.",
+    "zh": "你要確定我講出來你會聽得懂xdd",
+    "tag": "Communication"
+  },
+  {
+    "index": 233,
+    "en": "But here, everyone speaks Chinese, and I'm the only one who stands out.",
+    "zh": "可是這裡大家都講中文,只有我是異類",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 234,
+    "en": "I'm too embarrassed to interrupt everyone here.",
+    "zh": "我不好意思打擾這裡大家說話",
+    "tag": "Communication"
+  },
+  {
+    "index": 235,
+    "en": "As long as the company is in dire need of people, they don't really care whether you're experienced or not.",
+    "zh": "只要公司足夠缺人,他們根本不在意是否資深",
+    "tag": "Work"
+  },
+  {
+    "index": 236,
+    "en": "You're welcome to teach me how to code.",
+    "zh": "歡迎教我如何寫程式",
+    "tag": "Work"
+  },
+  {
+    "index": 237,
+    "en": "Only kids make choices; I want to learn everything.",
+    "zh": "小孩子才做選擇,我全都要學",
+    "tag": "Work"
+  },
+  {
+    "index": 238,
+    "en": "This is like the countless ways to cook food; there's no saying what is absolutely good or absolutely bad.",
+    "zh": "這就像是食物料理方法百百種,沒有說決對的好或決對的壞",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 239,
+    "en": "I no longer actively send out my resume; I just wait for headhunters to contact me.",
+    "zh": "我現在也已經不主動履歷了,都是等獵頭找我",
+    "tag": "Work"
+  },
+  {
+    "index": 240,
+    "en": "We need to be proactive to create opportunities.",
+    "zh": "我們要主動才會有機會",
+    "tag": "Work"
+  },
+  {
+    "index": 241,
+    "en": "It's okay, you can speak for ten minutes on both Sunday and Monday.",
+    "zh": "沒關係,你可以禮拜天跟星期一各講十分鐘",
+    "tag": "Work"
+  },
+  {
+    "index": 242,
+    "en": "I'm just using GPT (x)",
+    "zh": "我只是在用GPT(x",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 243,
+    "en": "No, I'm quite old.",
+    "zh": "英文怎麼說",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 244,
+    "en": "Maybe, take a guess.",
+    "zh": "可能有,你猜猜",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 245,
+    "en": "I was programming yesterday and went to sleep at 4 AM.",
+    "zh": "我昨天在寫程式呀,到四點去睡叫了",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 246,
+    "en": "Did you go out for Dragon Boat Festival?",
+    "zh": "你端午節有出去玩嗎?",
+    "tag": "Daily Life"
+  },
+  {
+    "index": 247,
+    "en": "Everyone needs to discuss how to start the server. Currently, the program on [GIT] cannot start the server.",
+    "zh": "需要大家一起討論如何啟動伺服器,目前[GIT]上的程式無法啟動伺服器",
+    "tag": "Work"
+  },
+  {
+    "index": 248,
+    "en": "Move the leetcode files to the leetcode folder.",
+    "zh": "將leetcode檔案移到leetcode資料夾中。",
+    "tag": "Work"
   }
 ]
