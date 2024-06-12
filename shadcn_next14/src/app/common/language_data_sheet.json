@@ -1498,5 +1498,84 @@
     "en": "Move the leetcode files to the leetcode folder.",
     "zh": "將leetcode檔案移到leetcode資料夾中。",
     "tag": "Work"
+  },
+  {
+    "index": 249,
+    "en": "Modify the route import process.",
+    "zh": "修改route 匯入流程",
+    "tag": "Work"
+  },
+  {
+    "index": 250,
+    "en": "I've been setting up CI/CD for them for several days.",
+    "zh": "我已經幫他們弄CICD 弄了好幾天",
+    "tag": "Work"
+  },
+  {
+    "index": 251,
+    "en": "Every day is a grind.",
+    "zh": "每天都是苦差事。",
+    "tag": "Work"
+  },
+  {
+    "index": 252,
+    "en": "I helped set up Docker and GCP CI/CD, and now I also need to help with MongoDB.",
+    "zh": "我幫忙弄了docker跟GCP[CI CD],現在還要幫忙想mongoDB",
+    "tag": "Work"
+  },
+  {
+    "index": 253,
+    "en": "If you don't quit, the anxiety won't be there.",
+    "zh": "如果你不放棄，焦慮就不會存在。",
+    "tag": "Personal"
+  },
+  {
+    "index": 254,
+    "en": "You're the only front-end developer on stage, XD.",
+    "zh": "你是舞台上唯一的前端開發人員，XD。",
+    "tag": "Work"
+  },
+  {
+    "index": 255,
+    "en": "This isn't like the Rabbit I know.",
+    "zh": "這不像我認識的兔大",
+    "tag": "Personal"
+  },
+  {
+    "index": 256,
+    "en": "A lot of people who don't usually show up are here today.",
+    "zh": "今天出現了很多平常不會出現的人",
+    "tag": "Personal"
+  },
+  {
+    "index": 257,
+    "en": "No compare no despair",
+    "zh": "沒有比較沒有絕望(傷害)",
+    "tag": "Personal"
+  },
+  {
+    "index": 258,
+    "en": "For now this is what you expecting right?",
+    "zh": "現在這就是你所期待的，對嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 259,
+    "en": "Please provide me with a simple example of MongoDB.",
+    "zh": "請給我一個簡易的mongoDB範例",
+    "tag": "Work"
+  },
+  {
+    "index": 260,
+    "en": "Will it rain in a while?",
+    "zh": "等一下會下雨嗎?",
+    "tag": "Personal"
+  },
+  {
+    "index": 261,
+    "en": "I'm very old",
+    "zh": "我已經很老了",
+    "tag": "Personal"
   }
+  
 ]
