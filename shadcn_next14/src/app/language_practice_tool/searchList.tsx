@@ -20,6 +20,8 @@ import OptionsModal from "./optionsModal";
 import { useOptions } from "./optionsContext";
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
 
+import { scrollToTop,handleScroll } from "../common/languageComponent";
+
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import './shareContext.css'; 
 
@@ -126,36 +128,7 @@ const SearchList: React.FC = () => {
     //   //   setFavorites(JSON.parse(storedBlockedList));
     //   // }
     // }, 500);
-
-    //document.title = "language_practice_tool";
-    const handleScroll = () => {
-      const mainScreenUI = document.getElementById("MainScreenUI");
-      const scrollToTopButton = document.getElementById("scrollToTopButton");
-      if (mainScreenUI && scrollToTopButton) {
-        // console.log(
-        //   "%c handleScroll",
-        //   "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-        //   "mainScreenUI.scrollTop:",
-        //   mainScreenUI.scrollTop
-        // );
-        if (scrollToTopButton) {
-          if (mainScreenUI.scrollTop > 200) {
-            scrollToTopButton.style.display = "flex";
-          } else {
-            scrollToTopButton.style.display = "none";
-          }
-        }
-      }
-    };
-
-    const mainScreenUI = document.getElementById('MainScreenUI');
-    if (mainScreenUI) {
-      mainScreenUI.addEventListener('scroll', handleScroll);
-
-      return () => {
-        mainScreenUI.removeEventListener('scroll', handleScroll);
-      };
-    }
+    handleScroll();
   }, []);
 
   const copyText = (item:any) => {
@@ -189,24 +162,7 @@ const SearchList: React.FC = () => {
 
   };
 
-  const scrollToTop = () => {
 
-    const mainScreenUI = document.getElementById("MainScreenUI");
-
-    if(mainScreenUI){
-      const scrollDuration = 300;
-      const scrollStep = -mainScreenUI.scrollTop / (scrollDuration / 15);
-  
-      const scrollInterval = setInterval(() => {
-        if (mainScreenUI.scrollTop !== 0) {
-          mainScreenUI.scrollBy(0, scrollStep);
-        } else {
-          clearInterval(scrollInterval); 
-        }
-      }, 15);
-    }
-
-  };
   return (
     <div className="w-full flex flex-col items-center mr-5">
       <div
