@@ -2081,8 +2081,325 @@
     "zh": "是,對的,就是这样,它就在那,而那我在這裡",
     "tag": "Personal"
 }
-
-  
+,
+{
+  "index": 346,
+  "en": "Would you mind communicating with me in English?",
+  "zh": "您介意用英語和我交流嗎？",
+  "tag": "Personal"
+},
+{
+  "index": 347,
+  "en": "Could you please help me improve my English?",
+  "zh": "您可以幫助我提升我的英語嗎？",
+  "tag": "Personal"
+},
+{
+  "index": 348,
+  "en": "If the work location is very close to my house, then I will have more time to do my own things.",
+  "zh": "如果工作的地點離我家很近 那我會有更多時間做自己的事情",
+  "tag": "Work"
+},
+{
+  "index": 349,
+  "en": "I have thought about it a lot",
+  "zh": "我考慮了很多",
+  "tag": "Personal"
+},
+{
+  "index": 350,
+  "en": "I can speak a little English",
+  "zh": "我會一點英語",
+  "tag": "Personal"
+},
+{
+  "index": 351,
+  "en": "I can only speak some simple English",
+  "zh": "我只能說一些簡單的英文",
+  "tag": "Personal"
+},
+{
+  "index": 352,
+  "en": "The distance is about 2 kilometers, and it takes about 5 minutes by motorcycle.",
+  "zh": "距離大約是2公里，騎摩托車大約需要5分鐘。",
+  "tag": "Personal"
+},
+{
+  "index": 353,
+  "en": "You sing very well",
+  "zh": "你唱歌很好聽",
+  "tag": "Personal"
+},
+{
+  "index": 354,
+  "en": "Thank you for really calling me home.",
+  "zh": "謝謝你真的叫我回家。",
+  "tag": "Personal"
+},
+{
+  "index": 355,
+  "en": "I can chat with you in English.",
+  "zh": "我可以用英語和你聊天。",
+  "tag": "Personal"
+},
+{
+  "index": 356,
+  "en": "I am trying to answer you in English.",
+  "zh": "我正在努力用英文回答你。",
+  "tag": "Personal"
+},
+{
+  "index": 357,
+  "en": "That's great!",
+  "zh": "那太棒了！",
+  "tag": "Personal"
+},
+{
+  "index": 358,
+  "en": "Don't hesitate to ask me any questions.",
+  "zh": "不要猶豫，問我任何問題。",
+  "tag": "Personal"
+},
+{
+  "index": 359,
+  "en": "Have you ever had a boyfriend?",
+  "zh": "你有交過男朋友嗎？",
+  "tag": "Personal"
+},
+{
+  "index": 360,
+  "en": "Do you usually like to sing English or Chinese songs?",
+  "zh": "你平常喜歡唱英文歌還是中文歌呢？",
+  "tag": "Personal"
+},
+{
+  "index": 361,
+  "en": "I need some time to process",
+  "zh": "我需要一些時間處理",
+  "tag": "Work"
+},
+{
+  "index": 362,
+  "en": "Because the environment has been upgraded",
+  "zh": "因為環境升級了",
+  "tag": "Work"
+},
+{
+  "index": 363,
+  "en": "We need to optimize the image",
+  "zh": "我們需要優化圖片",
+  "tag": "Work"
+},
+{
+  "index": 364,
+  "en": "I play games and talk to foreigners.",
+  "zh": "我有玩遊戲並且跟外國人交談。",
+  "tag": "Personal"
+},
+{
+  "index": 365,
+  "en": "I play VRChat and talk to foreigners.",
+  "zh": "我有玩VRChat並且跟外國人交談。",
+  "tag": "Personal"
+},
+{
+  "index": 366,
+  "en": "VRChat is a game that uses virtual reality for voice communication.",
+  "zh": "VRChat是一個可以使用虛擬實境進行語音交流的遊戲。",
+  "tag": "Personal"
+},
+{
+  "index": 367,
+  "en": "How to communicate with colleagues?",
+  "zh": "如何與同事交流？",
+  "tag": "Work"
+},
+{
+  "index": 368,
+  "en": "If I can't solve the problem by myself, I will ask my colleagues how to solve it better.",
+  "zh": "如果我無法自己解決問題，我會請教同事，看看怎麼解決得更好。",
+  "tag": "Work"
+},
+{
+  "index": 369,
+  "en": "I'm just telling the truth.",
+  "zh": "我只是說實話。",
+  "tag": "Personal"
+},
+{
+  "index": 370,
+  "en": "I just think you're charming when you talk.",
+  "zh": "我只是覺得你說話的時候很有魅力。",
+  "tag": "Personal"
+},
+{
+  "index": 371,
+  "en": "I just think you are so beautiful.",
+  "zh": "我只是覺得你非常美麗。",
+  "tag": "Personal"
+},
+{
+  "index": 372,
+  "en": "I will use my time after work and vacation to study by myself.",
+  "zh": "我會利用下班和休假的時間自學。",
+  "tag": "Personal"
+},
+{
+  "index": 373,
+  "en": "I will also make YouTube teaching videos.",
+  "zh": "我也會製作YouTube教學視頻。",
+  "tag": "Personal"
+},
+{
+  "index": 374,
+  "en": "I will chat with my engineer friend about programming.",
+  "zh": "我會和我的工程師朋友聊程式設計。",
+  "tag": "Work"
+},
+{
+  "index": 375,
+  "en": "I have checked a lot of information from the internet.",
+  "zh": "我查了很多網上的資訊。",
+  "tag": "Personal"
+},
+{
+  "index": 376,
+  "en": "I will use Google Translate to learn English, and sometimes I will play VRChat to chat with foreigners.",
+  "zh": "我會用Google翻譯來學英語，有時候我會玩VRChat與外國人聊天。",
+  "tag": "Personal"
+},
+{
+  "index": 377,
+  "en": "I want to find someone to speak English with for communication.",
+  "zh": "我想找個人用英語交流。",
+  "tag": "Personal"
+},
+{
+  "index": 378,
+  "en": "I haven't used it for a long time, but I believe I can learn quickly.",
+  "zh": "我已經很久沒用了，但我相信我可以很快學會。",
+  "tag": "Personal"
+},
+{
+  "index": 379,
+  "en": "Thank you very much for asking me, is it convenient to ask the salary range for this position?",
+  "zh": "非常感謝您詢問我，請問方便詢問這個職位的薪資範圍嗎？",
+  "tag": "Work"
+},
+{
+  "index": 380,
+  "en": "My salary here is relatively high now, and I'm waiting for my year-end bonus. I probably wouldn't have considered this job, thank you for the opportunity.",
+  "zh": "我目前這裡的薪水相對較高，而且我正在等待我的年終獎金。我可能不會考慮這份工作，謝謝您提供這個機會。",
+  "tag": "Work"
+},
+{
+  "index": 381,
+  "en": "My hobby is that I love singing and listening to music very much. In my free time, I like to watch movies/anime, play computer games/mobile games, and sometimes I write programs.",
+  "zh": "我的愛好是非常喜歡唱歌和聽音樂。在空閒時間，我喜歡看電影/動漫，玩電腦遊戲/手機遊戲，有時候我會寫程式。",
+  "tag": "Personal"
+},
+{
+  "index": 382,
+  "en": "Like Mission Impossible, First Blood, et cetera.",
+  "zh": "比如《不可能的任務》和《第一滴血》等等。",
+  "tag": "Personal"
+},
+{
+  "index": 383,
+  "en": "Entity Framework is Microsoft's program for interacting between .NET and databases.",
+  "zh": "Entity Framework是微軟用來在.NET和數據庫之間進行交互的程式。",
+  "tag": "Work"
+},
+{
+  "index": 384,
+  "en": "I don't know English grammar.",
+  "zh": "我不會英文的文法。",
+  "tag": "Personal"
+},
+{
+  "index": 385,
+  "en": "I will watch movies and comics to study.",
+  "zh": "我會看電影與漫畫學習。",
+  "tag": "Personal"
+},
+{
+  "index": 386,
+  "en": "But I think I still need someone to talk to me.",
+  "zh": "但我認為我還是需要人跟我講話。",
+  "tag": "Personal"
+},
+{
+  "index": 387,
+  "en": "Because we have more than 10 kinds of projects.",
+  "zh": "因為我們有10種以上的專案。",
+  "tag": "Work"
+},
+{
+  "index": 388,
+  "en": "It will take a lot of time.",
+  "zh": "這會花很多時間。",
+  "tag": "Work"
+},
+{
+  "index": 389,
+  "en": "Sorry, I forgot, I can't answer you.",
+  "zh": "抱歉，我忘記了，不能回答你。",
+  "tag": "Personal"
+},
+{
+  "index": 390,
+  "en": "Thanks for talking to me.",
+  "zh": "謝謝你與我交談。",
+  "tag": "Personal"
+},
+{
+  "index": 391,
+  "en": "I do not know what to say.",
+  "zh": "我不知該說什麼。",
+  "tag": "Personal"
+},
+{
+  "index": 392,
+  "en": "I have no (AWS) experience.",
+  "zh": "我沒有(AWS)的經驗。",
+  "tag": "Work"
+},
+{
+  "index": 393,
+  "en": "But I said it badly.",
+  "zh": "但我說得很差。",
+  "tag": "Personal"
+},
+{
+  "index": 394,
+  "en": "May I ask some questions?",
+  "zh": "我可以請問一些問題嗎？",
+  "tag": "Personal"
+},
+{
+  "index": 395,
+  "en": "It is hard to say.",
+  "zh": "這個不好說。",
+  "tag": "Personal"
+},
+{
+  "index": 396,
+  "en": "I don't know how to say this, but...",
+  "zh": "我不知道該怎麼說，但...",
+  "tag": "Personal"
+},
+{
+  "index": 397,
+  "en": "You are a special girl to me.",
+  "zh": "對我來說你是個很特別的女孩。",
+  "tag": "Personal"
+},
+{
+  "index": 398,
+  "en": "Maybe you can teach me English",
+  "zh": "也許你可以教我英語",
+  "tag": "Personal"
+}
   
   
 ]
