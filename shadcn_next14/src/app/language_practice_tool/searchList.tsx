@@ -20,7 +20,7 @@ import OptionsModal from "./optionsModal";
 import { useOptions } from "./optionsContext";
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
 
-import { scrollToTop,handleScroll } from "../common/languageComponent";
+import { scrollToTop,handleScroll,checkDuplicates } from "../common/languageComponent";
 
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import '../common/languageComponent.css'; 
@@ -30,15 +30,12 @@ const SearchList: React.FC = () => {
   const [filteredData, setFilteredData] = useState<
     { en: string; zh: string; index: number; tag: string }[]
   >([]);
-  // const [tt, sett] = useState<boolean>(false);
-  // useEffect(() => {
-  //   console.log(
-  //     "%c useEffect+tt",
-  //     "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-  //     "tt:",
-  //     tt
-  //   );
-  // }, [tt]);
+  const [tt, sett] = useState<boolean>(false);
+  useEffect(() => {
+
+    checkDuplicates();
+
+  }, []);
   const {
     showOptionUI,
     setShowOptionUI,

@@ -2,6 +2,7 @@
 "use client"
 
 import type { Metadata } from "next";
+import language_data_sheet from "../common/language_data_sheet.json";
 
 export const CommonMetadata: Metadata = {
   title: "language_practice_tool",
@@ -23,6 +24,35 @@ export const CommonMetadata: Metadata = {
     Don't let language be a barrier to your learning. Let the 'Language Practice Tool' assist you in effortlessly mastering multiple languages, expanding your horizons, and navigating through the multilingual world with ease!
   `,
 };
+
+
+
+
+
+export const checkDuplicates = () => {
+  const zhMap = new Map();
+  const duplicates: { zh: string; indices: any[]; }[] = [];
+  
+  language_data_sheet.forEach((item: { zh: any; index: any; }) => {
+    if (zhMap.has(item.zh) && zhMap.get(item.zh) !== item.index) {
+      duplicates.push({
+        zh: item.zh,
+        indices: [zhMap.get(item.zh), item.index]
+      });
+    } else {
+      zhMap.set(item.zh, item.index);
+    }
+  });
+  
+  console.log(
+    "%c checkDuplicates",
+    "color:#DDDD00;font-family:system-ui;font-size:2rem;font-weight:bold",
+    "duplicates:",
+    duplicates
+  );
+}
+
+
 
 
 

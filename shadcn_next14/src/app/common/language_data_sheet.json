@@ -85,9 +85,9 @@
   },
   {
     "index": 15,
-    "en": "May I ask some questions?",
-    "zh": "我可以請問一些問題嗎？",
-    "tag": "default"
+    "en": "I don't know how to say this, but...",
+    "zh": "我不知道該怎麼說，但...",
+    "tag": "Personal"
   },
   {
     "index": 16,
@@ -109,10 +109,10 @@
   },
   {
     "index": 19,
-    "en": "I can only speak some simple English",
-    "zh": "我只能說一些簡單的英文",
-    "tag": "default"
-  },
+    "en": "You are a special girl to me.",
+    "zh": "對我來說你是個很特別的女孩。",
+    "tag": "Personal"
+  }
   {
     "index": 20,
     "en": "I will take a look.",
@@ -1573,8 +1573,8 @@
   },
   {
     "index": 261,
-    "en": "I'm very old",
-    "zh": "我已經很老了",
+    "en": "Maybe you can teach me English",
+    "zh": "也許你可以教我英語",
     "tag": "Personal"
   },
   {
@@ -2381,25 +2381,6 @@
   "en": "It is hard to say.",
   "zh": "這個不好說。",
   "tag": "Personal"
-},
-{
-  "index": 396,
-  "en": "I don't know how to say this, but...",
-  "zh": "我不知道該怎麼說，但...",
-  "tag": "Personal"
-},
-{
-  "index": 397,
-  "en": "You are a special girl to me.",
-  "zh": "對我來說你是個很特別的女孩。",
-  "tag": "Personal"
-},
-{
-  "index": 398,
-  "en": "Maybe you can teach me English",
-  "zh": "也許你可以教我英語",
-  "tag": "Personal"
 }
-  
   
 ]
