@@ -23,7 +23,7 @@ import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction'
 import { scrollToTop,handleScroll } from "../common/languageComponent";
 
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
-import './shareContext.css'; 
+import '../common/languageComponent.css'; 
 
 const SearchList: React.FC = () => {
   const [query, setQuery] = useState<string>("");

@@ -26,7 +26,7 @@ import { scrollToTop,handleScroll } from "../common/languageComponent";
 
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
-import './shareContext.css'; 
+import '../common/languageComponent.css'; 
 const SearchList: React.FC = () => {
   const [query, setQuery] = useState<string>("");
   const [filteredData, setFilteredData] = useState<
