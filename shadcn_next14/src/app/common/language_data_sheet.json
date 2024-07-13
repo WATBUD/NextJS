@@ -1576,6 +1576,513 @@
     "en": "I'm very old",
     "zh": "我已經很老了",
     "tag": "Personal"
-  }
+  },
+  {
+    "index": 262,
+    "en": "I'm very old",
+    "zh": "我已經很老了",
+    "tag": "Personal"
+  },
+  {
+    "index": 263,
+    "en": "How’s your day",
+    "zh": "你今天過得如何？",
+    "tag": "Personal"
+  },
+  {
+    "index": 264,
+    "en": "Is this thing difficult to achieve@@?",
+    "zh": "這件事很難達到嗎@@?",
+    "tag": "Personal"
+  },
+  {
+    "index": 265,
+    "en": "I'm chatting with an online friend.",
+    "zh": "我在跟網友聊天",
+    "tag": "Personal"
+  },
+  {
+    "index": 266,
+    "en": "Can i get post",
+    "zh": "我可以過去嗎?",
+    "tag": "Personal"
+  },
+  {
+    "index": 267,
+    "en": "Can i get around you?",
+    "zh": "我可以繞過你嗎?",
+    "tag": "Personal"
+  },
+  {
+    "index": 268,
+    "en": "i'm in a hurry",
+    "zh": "我趕時間",
+    "tag": "Personal"
+  },
+  {
+    "index": 269,
+    "en": "so to clarify",
+    "zh": "確認一下",
+    "tag": "Work"
+  },
+  {
+    "index": 270,
+    "en": "I hate the world ,but i love you",
+    "zh": "我恨這個世界,但我愛你",
+    "tag": "Personal"
+  },
+  {
+    "index": 271,
+    "en": "Because of you, I started to love the world",
+    "zh": "因為你,我開始愛上這個世界",
+    "tag": "Personal"
+  },
+  {
+    "index": 272,
+    "en": "I love the world, but I love you more.",
+    "zh": "我愛這個世界,但我更愛妳",
+    "tag": "Personal"
+  },
+  {
+    "index": 273,
+    "en": "shallow",
+    "zh": "膚淺",
+    "tag": "Personal"
+  },
+  {
+    "index": 274,
+    "en": "so i was like",
+    "zh": "我就想說",
+    "tag": "Personal"
+  },
+  {
+    "index": 275,
+    "en": "why are you here today",
+    "zh": "你今天怎麼會來?",
+    "tag": "Personal"
+  },
+  {
+    "index": 276,
+    "en": "Do you recognize this guy",
+    "zh": "你認識這個人嗎?",
+    "tag": "Personal"
+  },
+  {
+    "index": 277,
+    "en": "is it me?",
+    "zh": "那是...我嗎?",
+    "tag": "Personal"
+  },
+  {
+    "index": 278,
+    "en": "At that time, I was just thinking, I have to tell him that I can't write it.",
+    "zh": "那時候後我就在想,只好跟他說我寫不出來了",
+    "tag": "Personal"
+  },
+  {
+    "index": 279,
+    "en": "Then you had no choice but to tell him: I can't write it, LOL.",
+    "zh": "那你只好跟他說:我寫不出來ＸＤ",
+    "tag": "Personal"
+  },
+  {
+    "index": 280,
+    "en": "When I saw DDD, I thought it was Domain-Driven Design.",
+    "zh": "看到DDD,讓我以為是Domain-driven design",
+    "tag": "Work"
+  },
+  {
+    "index": 281,
+    "en": "It's all thanks to Eric's excellent teaching",
+    "zh": "這一切都歸功於Eric的出色教學",
+    "tag": "Work"
+  },
+  {
+    "index": 282,
+    "en": "Is it wrong to share a pot with others?",
+    "zh": "跟別人共享用一個鍋錯了嗎？",
+    "tag": "Personal"
+  },
+  {
+    "index": 283,
+    "en": "My English is so bad, are you sure I can do it?",
+    "zh": "我英文那麼糟糕 你要確定我可以耶？",
+    "tag": "Personal"
+  },
+  {
+    "index": 284,
+    "en": "Don't worry, we don't know what your persona is.",
+    "zh": "放心,我們不知道你的人設是什麼",
+    "tag": "Personal"
+  },
+  {
+    "index": 285,
+    "en": "what a relief hearing you say that, thanks bro",
+    "zh": "聽你這麼說真讓人鬆了一口氣，謝了兄弟",
+    "tag": "Personal"
+  },
+  {
+    "index": 286,
+    "en": "You're welcome, feel free to ask any questions about Vietnam.",
+    "zh": "不客氣,請盡量發問關於越南的問題 英文怎麼說",
+    "tag": "Personal"
+  },
+  {
+    "index": 287,
+    "en": "No, I have never been abroad in my life",
+    "zh": "沒有,我這輩子沒出國過",
+    "tag": "Personal"
+  },
+  {
+    "index": 288,
+    "en": "Please tell me the location, where in Taipei has a high cost-performance ratio, thanks brother",
+    "zh": "請跟我講地點,台北哪裡CP值高,謝謝兄弟",
+    "tag": "Personal"
+  },
+  {
+    "index": 289,
+    "en": "You can interact with Vietnamese people without going abroad.",
+    "zh": "你可以不用出國就可以和越南人交流。",
+    "tag": "Personal"
+  },
+  {
+    "index": 290,
+    "en": "What just appeared? I didn't see it",
+    "zh": "剛剛有出現什麼?我沒有看到",
+    "tag": "Personal"
+  },
+  {
+    "index": 291,
+    "en": "What price range of services do you usually buy?",
+    "zh": "你通常都買什麼價位的服務?",
+    "tag": "Personal"
+  },
+  {
+    "index": 292,
+    "en": "agree, though couldn't tell which the weird part is",
+    "zh": "同意，雖然不知道哪個是奇怪的部分",
+    "tag": "Personal"
+  },
+  {
+    "index": 293,
+    "en": "do not chat strange topic lol",
+    "zh": "不要聊奇怪的話題哈哈",
+    "tag": "Personal"
+  },
+  {
+    "index": 294,
+    "en": "I am just practicing English QQ",
+    "zh": "我只是在練習英文QQ",
+    "tag": "Personal"
+  },
+  {
+    "index": 295,
+    "en": "It's time to show real skill",
+    "zh": "是時候表演真正的技術了",
+    "tag": "Personal"
+  },
+  {
+    "index": 296,
+    "en": "Why is your cooperation needed to catch the affair?",
+    "zh": "為什麼需要你的配合才能抓到這件事",
+    "tag": "Personal"
+  },
+  {
+    "index": 297,
+    "en": "Is the other person a man or a woman?",
+    "zh": "對方是男生女生？",
+    "tag": "Personal"
+  },
+  {
+    "index": 298,
+    "en": "First, see if the other person is a man or a woman. If it's a woman, tell her: 'Your husband cheated on you, so you should cheat on him too. That way, it's fair.'",
+    "zh": "先看對方是男生女生,如果是女生,跟她說:你老公背叛你那你也背叛回去,這樣就公平了",
+    "tag": "Personal"
+  },
+  {
+    "index": 299,
+    "en": "I believe anything is possible as long as you want it; even a sparrow can become a phoenix.",
+    "zh": "我覺得什麼都可以,只要你想,麻雀也能變鳳凰 英文怎麼說",
+    "tag": "Personal"
+  },
+  {
+    "index": 300,
+    "en": "I think it's not that you can't find a husband; as long as you want, men from all over the world can become your husband.",
+    "zh": "我認為你不是找不到老公,只要你想,世界各地的男生都能成為你的老公",
+    "tag": "Personal"
+  },
+  {
+    "index": 301,
+    "en": "Incidentally, does anyone have an idea regarding the Python module? Is it singleton?",
+    "zh": "順便問一下，有人對 Python 模組有了解嗎？是單例嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 302,
+    "en": "Looks like we can't speak here XD?",
+    "zh": "看來我們在這裡不能說話XD？",
+    "tag": "Personal"
+},
+{
+    "index": 303,
+    "en": "I had thought about it, but I want to chat with you more than anything.",
+    "zh": "我有想過,但我想跟你聊天勝於一切",
+    "tag": "Personal"
+},
+{
+    "index": 304,
+    "en": "Because I thought maybe your English is actually very good.",
+    "zh": "因為我想說不定你英文非常好",
+    "tag": "Personal"
+},
+{
+    "index": 305,
+    "en": "okay, I get back to you after I test the version",
+    "zh": "好的，我測試版本後回覆你",
+    "tag": "Work"
+},
+{
+    "index": 306,
+    "en": "Does this test work? I just tested it on my iOS, and it works fine.",
+    "zh": "這個測試可以嗎？我剛測我的iOS正常",
+    "tag": "Work"
+},
+{
+    "index": 307,
+    "en": "No worries, you can let me know when you're free.",
+    "zh": "沒關係,你先忙,有空再告知我",
+    "tag": "Personal"
+},
+{
+    "index": 308,
+    "en": "I am still testing other ticket",
+    "zh": "我還在測試其他單子",
+    "tag": "Work"
+},
+{
+    "index": 309,
+    "en": "New feature: Press F5 to start debug mode from a file.",
+    "zh": "新增功能:按下F5 從檔案啟動debug 模式",
+    "tag": "Work"
+},
+{
+    "index": 310,
+    "en": "The build log contains detailed failure reasons, which is why I emphasized last time that we need to carefully check everything before uploading @@",
+    "zh": "build log上有寫詳細的失敗原因,所以我上次才會強調我們上傳要仔細檢查@@",
+    "tag": "Work"
+},
+{
+    "index": 311,
+    "en": "case-insensitive file name collision",
+    "zh": "不區分大小寫的檔名衝突",
+    "tag": "Work"
+},
+{
+    "index": 312,
+    "en": "Teach me how to score 900 on TOEIC and I'll treat you to a meal.",
+    "zh": "教我多益如何900 我請你吃飯",
+    "tag": "Personal"
+},
+{
+    "index": 313,
+    "en": "No I'm just kidding",
+    "zh": "沒有我只是開玩笑",
+    "tag": "Personal"
+},
+{
+    "index": 314,
+    "en": "I believe you can meet all three of these requirements XD?",
+    "zh": "我相信你這三點都能做到XD?",
+    "tag": "Personal"
+},
+{
+    "index": 315,
+    "en": "I am not qualified because of the second point la",
+    "zh": "因為第二點我不合格",
+    "tag": "Personal"
+},
+{
+    "index": 316,
+    "en": "I believe you can do it. Just bring out your frontend cleaner skills.",
+    "zh": "我相信你可以的 把你當前端 cleaner 的功力拿出來",
+    "tag": "Work"
+},
+{
+    "index": 317,
+    "en": "Master, you cant keep kidding, lets TOEIC 900 together",
+    "zh": "主人，你別開玩笑了，一起考托業900吧",
+    "tag": "Personal"
+},
+{
+    "index": 318,
+    "en": "I modified the create function to include an index checking mechanism and removed the return of the ID.",
+    "zh": "我修改了create的功能 加入了index檢查機制並且移除回傳id 英文怎麼說",
+    "tag": "Work"
+},
+{
+    "index": 319,
+    "en": "The following content may contain suicide or self-harm topics.",
+    "zh": "以下內容可能包含自殺或自殘的主題。",
+    "tag": "Personal"
+},
+{
+    "index": 320,
+    "en": "you always have a choice so choose the better side of it",
+    "zh": "你總是可以有選擇所以選擇更好的一面",
+    "tag": "Personal"
+},
+{
+    "index": 321,
+    "en": "Specify the device height percentage when embedding a webview.",
+    "zh": "新增嵌入webview時指定裝置的高度百分比",
+    "tag": "Work"
+},
+{
+    "index": 322,
+    "en": "I heard that you all might also have this issue.",
+    "zh": "聽說大家可能也有這個問題。",
+    "tag": "Work"
+},
+{
+    "index": 323,
+    "en": "Could you please check and see if it has been resolved on your devices as well?",
+    "zh": "您能否檢查一下您的裝置上是否也已解決該問題？",
+    "tag": "Work"
+},
+{
+    "index": 324,
+    "en": "This feature has been deployed to the SIT environment. If you have time, please take a look. Thank you.",
+    "zh": "此功能已部署至 SIT 环境，如果你有空的话，再麻烦看一下。谢谢。",
+    "tag": "Work"
+},
+{
+    "index": 325,
+    "en": "Maybe you can first go to the database, then disconnect from the network, and then click on the database options to check the network connection error UI.",
+    "zh": "也許你可以先到資料庫,然後斷網再點擊資料庫的選項查看網路連接錯誤UI",
+    "tag": "Work"
+},
+{
+    "index": 326,
+    "en": "Maybe we can learn English together.",
+    "zh": "或許我們可以一起學習英文",
+    "tag": "Personal"
+},
+{
+    "index": 327,
+    "en": "I have uploaded the initial version of the UI and am awaiting the backend to implement the API in order to proceed with the integration of the logic.",
+    "zh": "我已經上傳了 UI 的初始版本，正在等待後端實作 API做邏輯整合",
+    "tag": "Work"
+},
+{
+    "index": 328,
+    "en": "Use DSL syntax in Goa to migrate the Folder API to OpenAPI documentation.",
+    "zh": "在goa中使用DSL語法將folder api遷移至Openapi文檔",
+    "tag": "Work"
+},
+{
+    "index": 329,
+    "en": "Discuss the implementation process of the board API with William.",
+    "zh": "與William 討論board API的實作流程",
+    "tag": "Work"
+},
+{
+    "index": 330,
+    "en": "Implement defensive programming for the Folder API, including optimizations to prevent errors and checks for duplicate values.",
+    "zh": "對 Folder API 進行防呆優化，包括檢查重複值等防範式編程。",
+    "tag": "Work"
+},
+{
+    "index": 331,
+    "en": "Other methods of verification",
+    "zh": "其他方式的验证方法",
+    "tag": "Work"
+},
+{
+    "index": 332,
+    "en": "Too many incorrect attempts at answering security questions",
+    "zh": "回答安全問題錯誤次數過多",
+    "tag": "Work"
+},
+{
+    "index": 333,
+    "en": "We gotta break this news to him.",
+    "zh": "我們得把這個消息告訴她",
+    "tag": "Personal"
+},
+{
+    "index": 334,
+    "en": "we miss you",
+    "zh": "我們想你",
+    "tag": "Personal"
+},
+{
+    "index": 335,
+    "en": "We might play games together this weekend.",
+    "zh": "這個週末我們可能會一起玩遊戲。",
+    "tag": "Personal"
+},
+{
+    "index": 336,
+    "en": "I spent a lot of time just to understand the exam questions.",
+    "zh": "我花了很多時間試著理解考試問題。",
+    "tag": "Personal"
+},
+{
+    "index": 337,
+    "en": "But I only want to work with you.",
+    "zh": "可是我只想跟你一起工作",
+    "tag": "Personal"
+},
+{
+    "index": 338,
+    "en": "So, what are you doing now?",
+    "zh": "所以你現在在做什麼？",
+    "tag": "Personal"
+},
+{
+    "index": 339,
+    "en": "So, are you going out with him tomorrow?",
+    "zh": "所以你明天要跟他一起出去玩嗎？",
+    "tag": "Personal"
+},
+{
+    "index": 340,
+    "en": "That's not a reason",
+    "zh": "那不是理由",
+    "tag": "Personal"
+},
+{
+    "index": 341,
+    "en": "What are you thoughts toward remote work? Pros and cons?",
+    "zh": "您對遠距工作有何看法？優點和缺點？",
+    "tag": "Work"
+},
+{
+    "index": 342,
+    "en": "So, will you give me your account or not?",
+    "zh": "所以你要不要給我你的帳號？",
+    "tag": "Personal"
+},
+{
+    "index": 343,
+    "en": "What do you want to say?",
+    "zh": "你想說什麼？",
+    "tag": "Personal"
+},
+{
+    "index": 344,
+    "en": "I need to say goodbye to you; I'm getting off work.",
+    "zh": "我需要跟你說88了我要下班了",
+    "tag": "Personal"
+},
+{
+    "index": 345,
+    "en": "yeah,right,that's the way it is ,it's down there and i'm in here",
+    "zh": "是,對的,就是这样,它就在那,而那我在這裡",
+    "tag": "Personal"
+}
+
+  
+  
   
 ]
