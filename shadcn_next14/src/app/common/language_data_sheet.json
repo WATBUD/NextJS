@@ -1466,7 +1466,7 @@
   {
     "index": 243,
     "en": "No, I'm quite old.",
-    "zh": "英文怎麼說",
+    "zh": "不，我已經很老了。",
     "tag": "Daily Life"
   },
   {
@@ -2381,6 +2381,311 @@
   "en": "It is hard to say.",
   "zh": "這個不好說。",
   "tag": "Personal"
-}
-  
+},
+  {
+    "index": 395,
+    "en": "I am wondering if you are feeling any better.",
+    "zh": "我正在想你心情有沒有好一點",
+    "tag": "Personal"
+  },
+  {
+    "index": 396,
+    "en": "Can you speak more clearly?",
+    "zh": "你可以講得更清楚嗎？",
+    "tag": "Personal"
+  },
+  {
+    "index": 397,
+    "en": "What's the matter?",
+    "zh": "怎麼了？",
+    "tag": "Personal"
+  },
+  {
+    "index": 398,
+    "en": "What should I call you?",
+    "zh": "我該怎麼稱呼你？",
+    "tag": "Personal"
+  },
+  {
+    "index": 399,
+    "en": "Can I add you as a friend?",
+    "zh": "我可以加你好友嗎？",
+    "tag": "Personal"
+  },
+  {
+    "index": 400,
+    "en": "Are you still there?",
+    "zh": "你還在嗎？",
+    "tag": "Personal"
+  },
+  {
+    "index": 401,
+    "en": "Why is the time so short?",
+    "zh": "為什麼時間那麼短？",
+    "tag": "Personal"
+  },
+  {
+    "index": 402,
+    "en": "Can I meet you?",
+    "zh": "我想認識你可以嗎？",
+    "tag": "Personal"
+  },
+  {
+    "index": 403,
+    "en": "Can you tell me which details it is?",
+    "zh": "可以告訴我是哪個細節嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 404,
+    "en": "Is that better?",
+    "zh": "有好點了嗎？",
+    "tag": "Personal"
+  },
+  {
+    "index": 405,
+    "en": "Can you give me some time?",
+    "zh": "可以給我一點時間嗎？",
+    "tag": "Personal"
+  },
+  {
+    "index": 406,
+    "en": "Do you have any other questions?",
+    "zh": "你還有別的問題嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 407,
+    "en": "To update the customer service page to determine which page to return based on the incoming parameters.",
+    "zh": "更新客服頁面,根據傳入的參數決定要返回哪個頁面",
+    "tag": "Work"
+  },
+  {
+    "index": 408,
+    "en": "When nativeEvent does not exist, the optional chaining operator (?.) prevents an error.",
+    "zh": "當nativeEvent 不存在時 防止error",
+    "tag": "Work"
+  },
+  {
+    "index": 409,
+    "en": "Replace the 'more' text with an image icon.",
+    "zh": "修改「更多」文字 為圖片icon",
+    "tag": "Work"
+  },
+  {
+    "index": 410,
+    "en": "Modify the operations to be performed when the API login is successful or fails.",
+    "zh": "修改當api登入成功或失敗時的的操作",
+    "tag": "Work"
+  },
+  {
+    "index": 411,
+    "en": "I often think about the meaning of life.",
+    "zh": "我常在思考人生有什麼意義",
+    "tag": "Personal"
+  },
+  {
+    "index": 412,
+    "en": "I have no experience. Will the senior accept me?",
+    "zh": "我沒有經驗 前輩肯收嗎?",
+    "tag": "Work"
+  },
+  {
+    "index": 413,
+    "en": "I am so sad. I really shouldn't have come into this world.",
+    "zh": "太難過了 我果然不該來到這世界",
+    "tag": "Personal"
+  },
+  {
+    "index": 414,
+    "en": "Wow, you have so many project files! @@",
+    "zh": "哇,你的專案項目檔案真多@@",
+    "tag": "Work"
+  },
+  {
+    "index": 415,
+    "en": "Please help me modify this interface as well, thank you.",
+    "zh": "這個介面請幫我改掉 謝謝",
+    "tag": "Work"
+  },
+  {
+    "index": 416,
+    "en": "The first version of the chat room architecture has been uploaded.",
+    "zh": "上傳了第一版的聊天室架構",
+    "tag": "Work"
+  },
+  {
+    "index": 417,
+    "en": "Update project architecture",
+    "zh": "更新專案架構",
+    "tag": "Work"
+  },
+  {
+    "index": 418,
+    "en": "Why suddenly studying mysql workbench?",
+    "zh": "為什麼突然在研究 mysql workbench",
+    "tag": "Work"
+  },
+  {
+    "index": 419,
+    "en": "Report: Our company in Taiwan will be having a dinner gathering today, and we will not be in the office after 5:40 PM. Just letting you know",
+    "zh": "報告:我們台灣今日公司聚餐5:40後不在公司 告知你一聲",
+    "tag": "Work"
+  },
+  {
+    "index": 420,
+    "en": "Does this mean that these are the screens displayed when the URLs are not working, and MC is asking me if we need to change the displayed screens?",
+    "zh": "這個意思是說:這些是網址無法使用的情況下的畫面,mc是請我詢問,我們需要改顯示的畫面嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 421,
+    "en": "I’ve decided to practice my English with you.",
+    "zh": "我決定我要來跟你練英文XD",
+    "tag": "Personal"
+  },
+  {
+    "index": 422,
+    "en": "I can't do it; I can only rely on translation to learn.",
+    "zh": "我辦不到, 我只能依靠翻譯學習",
+    "tag": "Personal"
+  },
+  {
+    "index": 423,
+    "en": "Is the grammar better this way? Haha",
+    "zh": "這樣文法是不是比較好一點?haha",
+    "tag": "Personal"
+  },
+  {
+    "index": 424,
+    "en": "In Taiwan, no one speaks English in daily life, so my English is very poor.",
+    "zh": "在台灣生活中沒人講英文,所以我英文很爛XD",
+    "tag": "Personal"
+  },
+  {
+    "index": 425,
+    "en": "I heard you on a call with Benson.",
+    "zh": "我聽到你跟Benson有通話",
+    "tag": "Personal"
+  },
+  {
+    "index": 426,
+    "en": "These four screens are just displayed when our domain is unavailable XD. So we're just waiting for Liho to confirm what he wants to display when it’s down.",
+    "zh": "這四個畫面就只是當我們域名無法使用的時候顯示的XD 所以我們只是等liho確認壞掉的時候他想顯示什麼",
+    "tag": "Work"
+  },
+  {
+    "index": 427,
+    "en": "Welcome to Taiwan! If you come, I'll take you to a KTV to sing.",
+    "zh": "歡迎來台灣玩,你來的話我請你去ktv唱歌",
+    "tag": "Personal"
+  },
+  {
+    "index": 428,
+    "en": "I remember that when I played '全民Party' and 'WePlay,' a lot of people were singing.",
+    "zh": "我記得我玩「全民party」跟「weplay」很多人唱歌啊？",
+    "tag": "Personal"
+  },
+  {
+    "index": 429,
+    "en": "I'm actually an average singer; I just really love singing.",
+    "zh": "我唱歌其實很普通,我只是很愛唱歌",
+    "tag": "Personal"
+  },
+  {
+    "index": 430,
+    "en": "No worries, I'll teach you how to sing when the time comes.",
+    "zh": "沒關係,到時候我教你唱歌",
+    "tag": "Personal"
+  },
+  {
+    "index": 431,
+    "en": "Or you can eat while listening to me sing",
+    "zh": "或者你吃東西聽我唱(X",
+    "tag": "Personal"
+  },
+  {
+    "index": 432,
+    "en": "I don't mind, but I don't use WeChat. In Taiwan, we all use LINE.",
+    "zh": "不介意,但我沒在用微信我們台灣都用line",
+    "tag": "Personal"
+  },
+  {
+    "index": 433,
+    "en": "I have an account, but I never log in. Hahaha.",
+    "zh": "我有帳號但都沒再登入hahaha",
+    "tag": "Personal"
+  },
+  {
+    "index": 434,
+    "en": "Does your country not use LINE?",
+    "zh": "你們國家不用line嗎？",
+    "tag": "Personal"
+  },
+  {
+    "index": 435,
+    "en": "Ok, I've added you.",
+    "zh": "ok,我加你了",
+    "tag": "Personal"
+  },
+  {
+    "index": 436,
+    "en": "Hi, long time no see.",
+    "zh": "hi,好久不見",
+    "tag": "Personal"
+  },
+  {
+    "index": 437,
+    "en": "No problem XD, we can meet up when you come to Taiwan to have fun.",
+    "zh": "小事XD 等你來台灣玩我們可以見面",
+    "tag": "Personal"
+  },
+  {
+    "index": 438,
+    "en": "Last time I heard that Taiwan is very cheap, haha. Currency exchange rates.",
+    "zh": "上次聽說我們台灣很便宜哈哈 幣值轉換",
+    "tag": "Personal"
+  },
+  {
+    "index": 439,
+    "en": "Traveling abroad should mainly be about experiencing exotic food and different cultures, right? XD",
+    "zh": "出國應該主要是體驗異國美食跟異國文化XD?",
+    "tag": "Personal"
+  },
+  {
+    "index": 440,
+    "en": "No worries, when you come, I'll treat you to delicious food and singing.XD",
+    "zh": "沒事,你來的還我請你吃美食跟唱歌",
+    "tag": "Personal"
+  },
+  {
+    "index": 441,
+    "en": "I look better in person than in photos (X",
+    "zh": "我是本人比照片好看的(X",
+    "tag": "Personal"
+  },
+  {
+    "index": 442,
+    "en": "I would like to help you brush your hair.",
+    "zh": "我會想幫妳梳頭髮",
+    "tag": "Personal"
+  },
+  {
+    "index": 443,
+    "en": "Then I'll take you to Tom's World (湯姆熊) to have fun XD",
+    "zh": "那我會帶你去湯姆熊玩XD",
+    "tag": "Personal"
+  },
+  {
+    "index": 444,
+    "en": "Okay XD, I'll be waiting for your hair to grow long.",
+    "zh": "好喔XD我等你頭髮長長",
+    "tag": "Personal"
+  },
+  {
+    "index": 445,
+    "en": "I can find a photo of myself to show you XD.",
+    "zh": "我可以找我的照片給你看XD",
+    "tag": "Personal"
+  }
 ]
