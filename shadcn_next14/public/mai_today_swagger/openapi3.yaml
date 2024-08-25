@@ -7,6 +7,42 @@ servers:
     - url: https://dev.api.mai.today/
     - url: http://localhost:8080
 paths:
+    /{channel}/addUserToChatroom:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Add User to Chatroom by ID'
+            operationId: chatroom#receiveAddUserToChatroom
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AddUserToChatroomResult'
+                            example:
+                                command:
+                                    type: addUserToChatroom
+                                data:
+                                    chatroomId: "123456"
+                                    message: User added successfully
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
     /{channel}/createBase:
         get:
             tags:
@@ -40,17 +76,57 @@ paths:
                                 data:
                                     id: 669071b8a650a662b82285ca
                                     info:
-                                        baseId: EbZvovBKbFogJeRem5oj2S
+                                        base_id: EbZvovBKbFogJeRem5oj2S
                                         color: '#FF5733'
                                         deleted_at: null
                                         id: EbZvovBKbFogJeRem5oj2S
                                         logo: http://example.com/logo.png
                                         name: 基地 A
-                                    navState:
-                                        baseId: 669071b8a650a662b82285ca
+                                    nav_state:
+                                        base_id: 669071b8a650a662b82285ca
                                         deleted_at: "2024-01-01T11:53:54Z"
                                         id: 669071b8a650a662b82285ca
                                         index: 0
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/createBoard:
+        get:
+            tags:
+                - Board
+            summary: '[WebSocket] 創造一個新的版'
+            operationId: Board#receiveCreateBoard
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/CreateBoardResult'
+                            example:
+                                command:
+                                    type: createBoard
+                                data:
+                                    id: 669071b8a650a662b82285ca
+                                    info:
+                                        color: '#FF5733'
+                                        id: 669071b8a650a662b82285ca
+                                        logo: http://example.com/logo.png
+                                        name: 版 A
                                 timestamp: 1719188007000000000
             security:
                 - JWT_header_Authorization: []
@@ -86,16 +162,13 @@ paths:
                                     type: createChatroom
                                 data:
                                     avatar: https://example.com/avatar.png
-                                    baseId: base123
+                                    baseId: 669c07250b20ee76727169b0
                                     boardId: uuid
                                     chatroomId: "123456"
-                                    createdAt: "2024-01-01T00:00:00Z"
-                                    members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
+                                    createdAt: "2024-01-01T11:53:54Z"
                                     title: Chat Room 1
-                                    updatedAt: "2024-01-02T00:00:00Z"
+                                    type: private
+                                    updatedAt: "2024-01-01T11:53:54Z"
                                 timestamp: 1719188007000000000
             security:
                 - JWT_header_Authorization: []
@@ -174,16 +247,16 @@ paths:
                                 command:
                                     type: deleteBase
                                 data:
-                                    baseId: 669071b8a650a662b82285ca
+                                    base_id: 669071b8a650a662b82285ca
                                 timestamp: 1719188007000000000
             security:
                 - JWT_header_Authorization: []
-    /{channel}/deleteChatroom:
+    /{channel}/deleteBoard:
         get:
             tags:
-                - chatroom
-            summary: '[WebSocket] Delete a chatroom by ID'
-            operationId: chatroom#receiveDeleteChatroom
+                - Board
+            summary: '[WebSocket] 删除指定的版'
+            operationId: Board#receiveDeleteBoard
             parameters:
                 - name: channel
                   in: path
@@ -204,22 +277,12 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/CreateChatroomResult'
+                                $ref: '#/components/schemas/DeleteBoardResult'
                             example:
                                 command:
-                                    type: deleteChatroom
+                                    type: deleteBoard
                                 data:
-                                    avatar: https://example.com/avatar.png
-                                    baseId: base123
-                                    boardId: uuid
-                                    chatroomId: "123456"
-                                    createdAt: "2024-01-01T00:00:00Z"
-                                    members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
-                                    title: Chat Room 1
-                                    updatedAt: "2024-01-02T00:00:00Z"
+                                    boardID: 669071b8a650a662b82285ca
                                 timestamp: 1719188007000000000
             security:
                 - JWT_header_Authorization: []
@@ -267,6 +330,166 @@ paths:
                                 timestamp: 1719188007000000000
             security:
                 - JWT_header_Authorization: []
+    /{channel}/getChatroomMembers:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Get chatroom members'
+            operationId: chatroom#receiveGetChatroomMembers
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetChatroomMembersResult'
+                            example:
+                                command:
+                                    type: getChatroomMembers
+                                data:
+                                    members:
+                                        - avatar: https://example.com/avatar.jpg
+                                          nickname: JohnDoe
+                                          userId: user123
+                                        - avatar: https://example.com/avatar.jpg
+                                          nickname: JohnDoe
+                                          userId: user123
+                                        - avatar: https://example.com/avatar.jpg
+                                          nickname: JohnDoe
+                                          userId: user123
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/getMessages:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Retrieve messages for a chatroom'
+            operationId: chatroom#receiveGetMessages
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetMessagesResult'
+                            example:
+                                command:
+                                    type: getMessages
+                                data:
+                                    messages:
+                                        - command:
+                                            type: message
+                                          data:
+                                            avatar: https://example.com/avatar.png
+                                            chatroomId: chatroom456
+                                            createdAt: "2024-01-01T11:53:54Z"
+                                            data: Hello, world!
+                                            id: msg123
+                                            nickname: text
+                                            senderId: user789
+                                            type: text
+                                            updatedAt: "2024-01-01T11:53:54Z"
+                                          timestamp: 1719188007000000000
+                                        - command:
+                                            type: message
+                                          data:
+                                            avatar: https://example.com/avatar.png
+                                            chatroomId: chatroom456
+                                            createdAt: "2024-01-01T11:53:54Z"
+                                            data: Hello, world!
+                                            id: msg123
+                                            nickname: text
+                                            senderId: user789
+                                            type: text
+                                            updatedAt: "2024-01-01T11:53:54Z"
+                                          timestamp: 1719188007000000000
+                                        - command:
+                                            type: message
+                                          data:
+                                            avatar: https://example.com/avatar.png
+                                            chatroomId: chatroom456
+                                            createdAt: "2024-01-01T11:53:54Z"
+                                            data: Hello, world!
+                                            id: msg123
+                                            nickname: text
+                                            senderId: user789
+                                            type: text
+                                            updatedAt: "2024-01-01T11:53:54Z"
+                                          timestamp: 1719188007000000000
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/listBoard:
+        get:
+            tags:
+                - Board
+            summary: '[WebSocket] 取得指定父層的子版'
+            operationId: Board#receiveListBoard
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetListByParentIDResult'
+                            example:
+                                command:
+                                    type: getListByParentID
+                                data:
+                                    - color: '#FF5733'
+                                      id: 669071b8a650a662b82285ca
+                                      logo: http://example.com/logo.png
+                                      name: 版 A
+                                    - color: '#FF5733'
+                                      id: 669071b8a650a662b82285ca
+                                      logo: http://example.com/logo.png
+                                      name: 版 A
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
     /{channel}/listChatrooms:
         get:
             tags:
@@ -295,32 +518,31 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/ListChatroomsResult'
                             example:
-                                command:
-                                    type: listChatrooms
                                 data:
                                     - avatar: https://example.com/avatar.png
-                                      baseId: base123
+                                      baseId: 669c07250b20ee76727169b0
                                       boardId: uuid
                                       chatroomId: "123456"
-                                      createdAt: "2024-01-01T00:00:00Z"
-                                      members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
+                                      createdAt: "2024-01-01T11:53:54Z"
                                       title: Chat Room 1
-                                      updatedAt: "2024-01-02T00:00:00Z"
+                                      type: private
+                                      updatedAt: "2024-01-01T11:53:54Z"
                                     - avatar: https://example.com/avatar.png
-                                      baseId: base123
+                                      baseId: 669c07250b20ee76727169b0
                                       boardId: uuid
                                       chatroomId: "123456"
-                                      createdAt: "2024-01-01T00:00:00Z"
-                                      members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
+                                      createdAt: "2024-01-01T11:53:54Z"
                                       title: Chat Room 1
-                                      updatedAt: "2024-01-02T00:00:00Z"
-                                timestamp: 1719188007000000000
+                                      type: private
+                                      updatedAt: "2024-01-01T11:53:54Z"
+                                    - avatar: https://example.com/avatar.png
+                                      baseId: 669c07250b20ee76727169b0
+                                      boardId: uuid
+                                      chatroomId: "123456"
+                                      createdAt: "2024-01-01T11:53:54Z"
+                                      title: Chat Room 1
+                                      type: private
+                                      updatedAt: "2024-01-01T11:53:54Z"
             security:
                 - JWT_header_Authorization: []
     /{channel}/listFolders:
@@ -384,6 +606,52 @@ paths:
                                       position: 1
                                       type: type123
                                       updatedAt: "2024-01-02T00:00:00Z"
+                                    - baseId: base123
+                                      createdAt: "2024-01-01T00:00:00Z"
+                                      data:
+                                        color: red
+                                        name: My Folder
+                                      folderId: "123456"
+                                      parentId: parent123
+                                      position: 1
+                                      type: type123
+                                      updatedAt: "2024-01-02T00:00:00Z"
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/removeUserFromChatroom:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Remove User from Chatroom by ID'
+            operationId: chatroom#receiveRemoveUserFromChatroom
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/RemoveUserFromChatroomResult'
+                            example:
+                                command:
+                                    type: removeUserFromChatroom
+                                data:
+                                    chatroomId: "123456"
+                                    message: User removed successfully
                                 timestamp: 1719188007000000000
             security:
                 - JWT_header_Authorization: []
@@ -418,18 +686,96 @@ paths:
                                 command:
                                     type: reorderBaseNavState
                                 data:
-                                    - baseId: EbZvovBKbFogJeRem5oj2S
+                                    - base_id: EbZvovBKbFogJeRem5oj2S
                                       deleted_at: null
                                       id: EbZvovBKbFogJeRem5oj7a
                                       index: 0
-                                    - baseId: EbZvovBKbFogJeRem5oj3S
+                                    - base_id: EbZvovBKbFogJeRem5oj3S
                                       deleted_at: null
                                       id: EbZvovBKbFogJeRem5oj7b
                                       index: 1
-                                    - baseId: EbZvovBKbFogJeRem5oj4S
+                                    - base_id: EbZvovBKbFogJeRem5oj4S
                                       deleted_at: null
                                       id: EbZvovBKbFogJeRem5oj7c
                                       index: 2
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/reorderBoardNavStates:
+        get:
+            tags:
+                - Board
+            summary: '[WebSocket] 變更版的順序'
+            operationId: Board#receiveReorderBoardNavStates
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/DeleteBoardResult'
+                            example:
+                                command:
+                                    type: reorderBoardNavState
+                                data:
+                                    boardID: 669071b8a650a662b82285ca
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/sendMessage:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Send a message to a chatroom'
+            operationId: chatroom#receiveSendMessage
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/MessageResult'
+                            example:
+                                command:
+                                    type: sendMessage
+                                data:
+                                    avatar: https://example.com/avatar.png
+                                    chatroomId: chatroom456
+                                    createdAt: "2024-01-01T11:53:54Z"
+                                    data: Hello, world!
+                                    id: msg123
+                                    nickname: text
+                                    senderId: user789
+                                    type: text
+                                    updatedAt: "2024-01-01T11:53:54Z"
                                 timestamp: 1719188007000000000
             security:
                 - JWT_header_Authorization: []
@@ -464,35 +810,35 @@ paths:
                                 command:
                                     type: sync
                                 data:
-                                    baseInfos:
-                                        - baseId: EbZvovBKbFogJeRem5oj2S
+                                    base_infos:
+                                        - base_id: EbZvovBKbFogJeRem5oj2S
                                           color: '#FF5733'
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj2S
                                           logo: http://example.com/logo.png
                                           name: 基地 A
-                                        - baseId: EbZvovBKbFogJeRem5oj3S
+                                        - base_id: EbZvovBKbFogJeRem5oj3S
                                           color: '#FF5733'
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj3S
                                           logo: http://example.com/logo.png
                                           name: 基地 B
-                                        - baseId: EbZvovBKbFogJeRem5oj4S
+                                        - base_id: EbZvovBKbFogJeRem5oj4S
                                           color: '#FF5733'
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj4S
                                           logo: http://example.com/logo.png
                                           name: 基地 C
-                                    baseNavStates:
-                                        - baseId: EbZvovBKbFogJeRem5oj2S
+                                    base_nav_states:
+                                        - base_id: EbZvovBKbFogJeRem5oj2S
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj7a
                                           index: 0
-                                        - baseId: EbZvovBKbFogJeRem5oj3S
+                                        - base_id: EbZvovBKbFogJeRem5oj3S
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj7b
                                           index: 1
-                                        - baseId: EbZvovBKbFogJeRem5oj4S
+                                        - base_id: EbZvovBKbFogJeRem5oj4S
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj7c
                                           index: 2
@@ -530,12 +876,50 @@ paths:
                                 command:
                                     type: updateBaseInfo
                                 data:
-                                    baseId: EbZvovBKbFogJeRem5oj2S
+                                    base_id: EbZvovBKbFogJeRem5oj2S
                                     color: '#FF5733'
                                     deleted_at: null
                                     id: EbZvovBKbFogJeRem5oj2S
                                     logo: http://example.com/logo.png
                                     name: 基地 A
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/updateBoardInfo:
+        get:
+            tags:
+                - Board
+            summary: '[WebSocket] 更新版資訊'
+            operationId: Board#receiveUpdateBoardInfo
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UpdateBoardInfoResult'
+                            example:
+                                command:
+                                    type: updateBoardInfo
+                                data:
+                                    color: '#FF5733'
+                                    id: 669071b8a650a662b82285ca
+                                    logo: http://example.com/logo.png
+                                    name: 版 A
                                 timestamp: 1719188007000000000
             security:
                 - JWT_header_Authorization: []
@@ -571,16 +955,13 @@ paths:
                                     type: updateChatroom
                                 data:
                                     avatar: https://example.com/avatar.png
-                                    baseId: base123
+                                    baseId: 669c07250b20ee76727169b0
                                     boardId: uuid
                                     chatroomId: "123456"
-                                    createdAt: "2024-01-01T00:00:00Z"
-                                    members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
+                                    createdAt: "2024-01-01T11:53:54Z"
                                     title: Chat Room 1
-                                    updatedAt: "2024-01-02T00:00:00Z"
+                                    type: private
+                                    updatedAt: "2024-01-01T11:53:54Z"
                                 timestamp: 1719188007000000000
             security:
                 - JWT_header_Authorization: []
@@ -628,6 +1009,80 @@ paths:
                                 timestamp: 1719188007000000000
             security:
                 - JWT_header_Authorization: []
+    /{channel}/userMutedChatRoom:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Mute User in Chatroom by ID'
+            operationId: chatroom#receiveUserMutedChatRoom
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserMutedChatRoomResult'
+                            example:
+                                command:
+                                    type: userMutedChatRoom
+                                data:
+                                    chatroomId: "123456"
+                                    mute: true
+                                    userId: user789
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/userPinnedChatRoom:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Pin User in Chatroom by ID'
+            operationId: chatroom#receiveUserPinnedChatRoom
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 使用者識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserPinnedChatRoomResult'
+                            example:
+                                command:
+                                    type: userPinnedChatRoom
+                                data:
+                                    chatroomId: "123456"
+                                    pin: true
+                                    userId: user789
+                                timestamp: 1719188007000000000
+            security:
+                - JWT_header_Authorization: []
     /base:
         post:
             tags:
@@ -658,14 +1113,14 @@ paths:
                                 data:
                                     id: 669071b8a650a662b82285ca
                                     info:
-                                        baseId: EbZvovBKbFogJeRem5oj2S
+                                        base_id: EbZvovBKbFogJeRem5oj2S
                                         color: '#FF5733'
                                         deleted_at: null
                                         id: EbZvovBKbFogJeRem5oj2S
                                         logo: http://example.com/logo.png
                                         name: 基地 A
-                                    navState:
-                                        baseId: 669071b8a650a662b82285ca
+                                    nav_state:
+                                        base_id: 669071b8a650a662b82285ca
                                         deleted_at: "2024-01-01T11:53:54Z"
                                         id: 669071b8a650a662b82285ca
                                         index: 0
@@ -713,7 +1168,7 @@ paths:
                                 command:
                                     type: deleteBase
                                 data:
-                                    baseId: 669071b8a650a662b82285ca
+                                    base_id: 669071b8a650a662b82285ca
                                 timestamp: 1719188007000000000
                 "401":
                     description: 'invalid token: token 無效'
@@ -782,7 +1237,7 @@ paths:
                                 command:
                                     type: updateBaseInfo
                                 data:
-                                    baseId: EbZvovBKbFogJeRem5oj2S
+                                    base_id: EbZvovBKbFogJeRem5oj2S
                                     color: '#FF5733'
                                     deleted_at: null
                                     id: EbZvovBKbFogJeRem5oj2S
@@ -819,6 +1274,68 @@ paths:
                     description: 伺服器發生錯誤
             security:
                 - JWT_header_Authorization: []
+    /base/list:
+        get:
+            tags:
+                - Base
+            summary: 取得基地列表
+            operationId: Base#GetBaseList
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetBaseListResult'
+                            example:
+                                command:
+                                    type: getBaseList
+                                data:
+                                    base_infos:
+                                        - base_id: EbZvovBKbFogJeRem5oj2S
+                                          color: '#FF5733'
+                                          deleted_at: null
+                                          id: EbZvovBKbFogJeRem5oj2S
+                                          logo: http://example.com/logo.png
+                                          name: 基地 A
+                                        - base_id: EbZvovBKbFogJeRem5oj3S
+                                          color: '#FF5733'
+                                          deleted_at: null
+                                          id: EbZvovBKbFogJeRem5oj3S
+                                          logo: http://example.com/logo.png
+                                          name: 基地 B
+                                        - base_id: EbZvovBKbFogJeRem5oj4S
+                                          color: '#FF5733'
+                                          deleted_at: null
+                                          id: EbZvovBKbFogJeRem5oj4S
+                                          logo: http://example.com/logo.png
+                                          name: 基地 C
+                                    base_nav_states:
+                                        - base_id: EbZvovBKbFogJeRem5oj2S
+                                          deleted_at: null
+                                          id: EbZvovBKbFogJeRem5oj7a
+                                          index: 0
+                                        - base_id: EbZvovBKbFogJeRem5oj3S
+                                          deleted_at: null
+                                          id: EbZvovBKbFogJeRem5oj7b
+                                          index: 1
+                                        - base_id: EbZvovBKbFogJeRem5oj4S
+                                          deleted_at: null
+                                          id: EbZvovBKbFogJeRem5oj7c
+                                          index: 2
+                                timestamp: 1719188007000000000
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
     /base/nav-state/reorder:
         put:
             tags:
@@ -833,7 +1350,7 @@ paths:
                             $ref: '#/components/schemas/ReorderBaseNavStatesRequestBody'
                         example:
                             id: 669071b8a650a662b82285ca
-                            newIndex: 0
+                            new_index: 0
             responses:
                 "200":
                     description: 操作成功
@@ -845,15 +1362,15 @@ paths:
                                 command:
                                     type: reorderBaseNavState
                                 data:
-                                    - baseId: EbZvovBKbFogJeRem5oj2S
+                                    - base_id: EbZvovBKbFogJeRem5oj2S
                                       deleted_at: null
                                       id: EbZvovBKbFogJeRem5oj7a
                                       index: 0
-                                    - baseId: EbZvovBKbFogJeRem5oj3S
+                                    - base_id: EbZvovBKbFogJeRem5oj3S
                                       deleted_at: null
                                       id: EbZvovBKbFogJeRem5oj7b
                                       index: 1
-                                    - baseId: EbZvovBKbFogJeRem5oj4S
+                                    - base_id: EbZvovBKbFogJeRem5oj4S
                                       deleted_at: null
                                       id: EbZvovBKbFogJeRem5oj7c
                                       index: 2
@@ -872,67 +1389,42 @@ paths:
                     description: 伺服器發生錯誤
             security:
                 - JWT_header_Authorization: []
-    /chatrooms:
-        get:
+    /board:
+        post:
             tags:
-                - chatroom
-            summary: List all chatrooms
-            operationId: chatroom#ListChatrooms
+                - Board
+            summary: 創造一個新的版
+            operationId: Board#CreateBoard
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/CreateBoardRequestBody'
+                        example:
+                            baseID: 669071b8a650a662b82285ca
+                            color: '#FF5733'
+                            logo: http://example.com/logo.png
+                            name: 版 A
+                            parentID: 669071b8a650a662b82285ca
+                            position: 0
             responses:
                 "200":
                     description: 操作成功
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/ListChatroomsResult'
+                                $ref: '#/components/schemas/CreateBoardResult'
                             example:
                                 command:
-                                    type: listChatrooms
+                                    type: createBoard
                                 data:
-                                    - avatar: https://example.com/avatar.png
-                                      baseId: base123
-                                      boardId: uuid
-                                      chatroomId: "123456"
-                                      createdAt: "2024-01-01T00:00:00Z"
-                                      members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
-                                      title: Chat Room 1
-                                      updatedAt: "2024-01-02T00:00:00Z"
-                                    - avatar: https://example.com/avatar.png
-                                      baseId: base123
-                                      boardId: uuid
-                                      chatroomId: "123456"
-                                      createdAt: "2024-01-01T00:00:00Z"
-                                      members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
-                                      title: Chat Room 1
-                                      updatedAt: "2024-01-02T00:00:00Z"
-                                    - avatar: https://example.com/avatar.png
-                                      baseId: base123
-                                      boardId: uuid
-                                      chatroomId: "123456"
-                                      createdAt: "2024-01-01T00:00:00Z"
-                                      members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
-                                      title: Chat Room 1
-                                      updatedAt: "2024-01-02T00:00:00Z"
-                                    - avatar: https://example.com/avatar.png
-                                      baseId: base123
-                                      boardId: uuid
-                                      chatroomId: "123456"
-                                      createdAt: "2024-01-01T00:00:00Z"
-                                      members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
-                                      title: Chat Room 1
-                                      updatedAt: "2024-01-02T00:00:00Z"
+                                    id: 669071b8a650a662b82285ca
+                                    info:
+                                        color: '#FF5733'
+                                        id: 669071b8a650a662b82285ca
+                                        logo: http://example.com/logo.png
+                                        name: 版 A
                                 timestamp: 1719188007000000000
                 "400":
                     description: 參數錯誤
@@ -948,6 +1440,162 @@ paths:
                     description: 伺服器發生錯誤
             security:
                 - JWT_header_Authorization: []
+    /board/{id}:
+        delete:
+            tags:
+                - Board
+            summary: 删除指定的版
+            operationId: Board#DeleteBoard
+            parameters:
+                - name: id
+                  in: path
+                  description: 識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/DeleteBoardResult'
+                            example:
+                                command:
+                                    type: deleteBoard
+                                data:
+                                    boardID: 669071b8a650a662b82285ca
+                                timestamp: 1719188007000000000
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+    /board/{id}/nav-state:
+        put:
+            tags:
+                - Board
+            summary: 變更版的順序
+            operationId: Board#ReorderBoardNavStates
+            parameters:
+                - name: id
+                  in: path
+                  description: 識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ReorderBoardNavStatesRequestBody'
+                        example:
+                            parentID: 669071b8a650a662b82285ca
+                            position: 0
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/DeleteBoardResult'
+                            example:
+                                command:
+                                    type: reorderBoardNavState
+                                data:
+                                    boardID: 669071b8a650a662b82285ca
+                                timestamp: 1719188007000000000
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+    /board/info/{id}:
+        put:
+            tags:
+                - Board
+            summary: 更新版資訊
+            operationId: Board#UpdateBoardInfo
+            parameters:
+                - name: id
+                  in: path
+                  description: 識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UpdateBoardInfoRequestBody'
+                        example:
+                            color: '#FF5733'
+                            logo: http://example.com/logo.png
+                            name: 版 A
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UpdateBoardInfoResult'
+                            example:
+                                command:
+                                    type: updateBoardInfo
+                                data:
+                                    color: '#FF5733'
+                                    id: 669071b8a650a662b82285ca
+                                    logo: http://example.com/logo.png
+                                    name: 版 A
+                                timestamp: 1719188007000000000
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+    /chatroom:
         post:
             tags:
                 - chatroom
@@ -960,19 +1608,10 @@ paths:
                         schema:
                             $ref: '#/components/schemas/CreateChatroomRequestBody'
                         example:
-                            chatroom:
-                                avatar: https://example.com/avatar.png
-                                baseId: base123
-                                boardId: base123
-                                chatroomId: "123456"
-                                createdAt: "2024-01-01T00:00:00Z"
-                                members:
-                                    - Commodi et maxime consectetur neque blanditiis qui.
-                                    - Est accusamus autem accusantium.
-                                    - Dolore maxime non.
-                                    - Odit eligendi velit vitae deleniti quia.
-                                title: Chat Room 1
-                                updatedAt: "2024-01-02T00:00:00Z"
+                            avatar: https://example.com/avatar.png
+                            baseId: base123
+                            boardId: board123
+                            title: Chat Room 1
             responses:
                 "200":
                     description: 操作成功
@@ -985,16 +1624,13 @@ paths:
                                     type: createChatroom
                                 data:
                                     avatar: https://example.com/avatar.png
-                                    baseId: base123
+                                    baseId: 669c07250b20ee76727169b0
                                     boardId: uuid
                                     chatroomId: "123456"
-                                    createdAt: "2024-01-01T00:00:00Z"
-                                    members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
+                                    createdAt: "2024-01-01T11:53:54Z"
                                     title: Chat Room 1
-                                    updatedAt: "2024-01-02T00:00:00Z"
+                                    type: private
+                                    updatedAt: "2024-01-01T11:53:54Z"
                                 timestamp: 1719188007000000000
                 "400":
                     description: 參數錯誤
@@ -1010,12 +1646,12 @@ paths:
                     description: 伺服器發生錯誤
             security:
                 - JWT_header_Authorization: []
-    /chatrooms/{chatroomId}:
+    /chatroom/{chatroomId}:
         delete:
             tags:
                 - chatroom
-            summary: Delete a chatroom by ID
-            operationId: chatroom#DeleteChatroom
+            summary: Remove User from Chatroom by ID
+            operationId: chatroom#RemoveUserFromChatroom
             parameters:
                 - name: chatroomId
                   in: path
@@ -1026,28 +1662,27 @@ paths:
                     description: Chatroom identifier
                     example: "123456"
                   example: "123456"
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/RemoveUserFromChatroomRequestBody'
+                        example:
+                            userId: user789
             responses:
                 "200":
                     description: 操作成功
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/CreateChatroomResult'
+                                $ref: '#/components/schemas/RemoveUserFromChatroomResult'
                             example:
                                 command:
-                                    type: deleteChatroom
+                                    type: removeUserFromChatroom
                                 data:
-                                    avatar: https://example.com/avatar.png
-                                    baseId: base123
-                                    boardId: uuid
                                     chatroomId: "123456"
-                                    createdAt: "2024-01-01T00:00:00Z"
-                                    members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
-                                    title: Chat Room 1
-                                    updatedAt: "2024-01-02T00:00:00Z"
+                                    message: User removed successfully
                                 timestamp: 1719188007000000000
                 "401":
                     description: 'invalid token: token 無效'
@@ -1081,21 +1716,10 @@ paths:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/CreateChatroomRequestBody'
+                            $ref: '#/components/schemas/UpdateChatroomRequestBody'
                         example:
-                            chatroom:
-                                avatar: https://example.com/avatar.png
-                                baseId: base123
-                                boardId: base123
-                                chatroomId: "123456"
-                                createdAt: "2024-01-01T00:00:00Z"
-                                members:
-                                    - Commodi et maxime consectetur neque blanditiis qui.
-                                    - Est accusamus autem accusantium.
-                                    - Dolore maxime non.
-                                    - Odit eligendi velit vitae deleniti quia.
-                                title: Chat Room 1
-                                updatedAt: "2024-01-02T00:00:00Z"
+                            avatar: https://example.com/avatar.png
+                            title: Chat Room 1
             responses:
                 "200":
                     description: 操作成功
@@ -1108,17 +1732,424 @@ paths:
                                     type: updateChatroom
                                 data:
                                     avatar: https://example.com/avatar.png
-                                    baseId: base123
+                                    baseId: 669c07250b20ee76727169b0
                                     boardId: uuid
                                     chatroomId: "123456"
-                                    createdAt: "2024-01-01T00:00:00Z"
-                                    members:
-                                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                                        - Ipsum quis saepe.
-                                        - Cum repellat tempora eum.
+                                    createdAt: "2024-01-01T11:53:54Z"
                                     title: Chat Room 1
-                                    updatedAt: "2024-01-02T00:00:00Z"
+                                    type: private
+                                    updatedAt: "2024-01-01T11:53:54Z"
                                 timestamp: 1719188007000000000
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/{chatroomId}/add-user:
+        post:
+            tags:
+                - chatroom
+            summary: Add User to Chatroom by ID
+            operationId: chatroom#AddUserToChatroom
+            parameters:
+                - name: chatroomId
+                  in: path
+                  description: Chatroom identifier
+                  required: true
+                  schema:
+                    type: string
+                    description: Chatroom identifier
+                    example: "123456"
+                  example: "123456"
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AddUserToChatroomResult'
+                            example:
+                                command:
+                                    type: addUserToChatroom
+                                data:
+                                    chatroomId: "123456"
+                                    message: User added successfully
+                                timestamp: 1719188007000000000
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/{chatroomId}/members:
+        get:
+            tags:
+                - chatroom
+            summary: Get chatroom members
+            operationId: chatroom#GetChatroomMembers
+            parameters:
+                - name: chatroomId
+                  in: path
+                  description: Identifier of the chatroom
+                  required: true
+                  schema:
+                    type: string
+                    description: Identifier of the chatroom
+                    example: chatroom456
+                  example: chatroom456
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetChatroomMembersResult'
+                            example:
+                                command:
+                                    type: getChatroomMembers
+                                data:
+                                    members:
+                                        - avatar: https://example.com/avatar.jpg
+                                          nickname: JohnDoe
+                                          userId: user123
+                                        - avatar: https://example.com/avatar.jpg
+                                          nickname: JohnDoe
+                                          userId: user123
+                                        - avatar: https://example.com/avatar.jpg
+                                          nickname: JohnDoe
+                                          userId: user123
+                                timestamp: 1719188007000000000
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/{chatroomId}/messages:
+        get:
+            tags:
+                - chatroom
+            summary: Retrieve messages for a chatroom
+            operationId: chatroom#GetMessages
+            parameters:
+                - name: page
+                  in: query
+                  description: Page number
+                  allowEmptyValue: true
+                  required: true
+                  schema:
+                    type: integer
+                    description: Page number
+                    example: 1
+                    format: int64
+                  example: 1
+                - name: pageSize
+                  in: query
+                  description: Page size for pagination
+                  allowEmptyValue: true
+                  required: true
+                  schema:
+                    type: integer
+                    description: Page size for pagination
+                    example: 10
+                    format: int64
+                  example: 10
+                - name: chatroomId
+                  in: path
+                  description: Identifier of the chatroom
+                  required: true
+                  schema:
+                    type: string
+                    description: Identifier of the chatroom
+                    example: chatroom456
+                  example: chatroom456
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetMessagesResult'
+                            example:
+                                command:
+                                    type: getMessages
+                                data:
+                                    messages:
+                                        - command:
+                                            type: message
+                                          data:
+                                            avatar: https://example.com/avatar.png
+                                            chatroomId: chatroom456
+                                            createdAt: "2024-01-01T11:53:54Z"
+                                            data: Hello, world!
+                                            id: msg123
+                                            nickname: text
+                                            senderId: user789
+                                            type: text
+                                            updatedAt: "2024-01-01T11:53:54Z"
+                                          timestamp: 1719188007000000000
+                                        - command:
+                                            type: message
+                                          data:
+                                            avatar: https://example.com/avatar.png
+                                            chatroomId: chatroom456
+                                            createdAt: "2024-01-01T11:53:54Z"
+                                            data: Hello, world!
+                                            id: msg123
+                                            nickname: text
+                                            senderId: user789
+                                            type: text
+                                            updatedAt: "2024-01-01T11:53:54Z"
+                                          timestamp: 1719188007000000000
+                                        - command:
+                                            type: message
+                                          data:
+                                            avatar: https://example.com/avatar.png
+                                            chatroomId: chatroom456
+                                            createdAt: "2024-01-01T11:53:54Z"
+                                            data: Hello, world!
+                                            id: msg123
+                                            nickname: text
+                                            senderId: user789
+                                            type: text
+                                            updatedAt: "2024-01-01T11:53:54Z"
+                                          timestamp: 1719188007000000000
+                                timestamp: 1719188007000000000
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+        post:
+            tags:
+                - chatroom
+            summary: Send a message to a chatroom
+            operationId: chatroom#SendMessage
+            parameters:
+                - name: chatroomId
+                  in: path
+                  description: Identifier of the chatroom
+                  required: true
+                  schema:
+                    type: string
+                    description: Identifier of the chatroom
+                    example: chatroom456
+                  example: chatroom456
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SendMessageRequestBody'
+                        example:
+                            data: Hello, world!
+                            type: text
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/MessageResult'
+                            example:
+                                command:
+                                    type: sendMessage
+                                data:
+                                    avatar: https://example.com/avatar.png
+                                    chatroomId: chatroom456
+                                    createdAt: "2024-01-01T11:53:54Z"
+                                    data: Hello, world!
+                                    id: msg123
+                                    nickname: text
+                                    senderId: user789
+                                    type: text
+                                    updatedAt: "2024-01-01T11:53:54Z"
+                                timestamp: 1719188007000000000
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/{chatroomId}/user-muted-chatroom:
+        put:
+            tags:
+                - chatroom
+            summary: Mute User in Chatroom by ID
+            operationId: chatroom#UserMutedChatRoom
+            parameters:
+                - name: chatroomId
+                  in: path
+                  description: Chatroom identifier
+                  required: true
+                  schema:
+                    type: string
+                    description: Chatroom identifier
+                    example: "123456"
+                  example: "123456"
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UserMutedChatRoomRequestBody'
+                        example:
+                            mute: true
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserMutedChatRoomResult'
+                            example:
+                                command:
+                                    type: userMutedChatRoom
+                                data:
+                                    chatroomId: "123456"
+                                    mute: true
+                                    userId: user789
+                                timestamp: 1719188007000000000
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/{chatroomId}/user-pinned-chatroom:
+        put:
+            tags:
+                - chatroom
+            summary: Pin User in Chatroom by ID
+            operationId: chatroom#UserPinnedChatRoom
+            parameters:
+                - name: chatroomId
+                  in: path
+                  description: Chatroom identifier
+                  required: true
+                  schema:
+                    type: string
+                    description: Chatroom identifier
+                    example: "123456"
+                  example: "123456"
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UserPinnedChatRoomRequestBody'
+                        example:
+                            pin: true
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserPinnedChatRoomResult'
+                            example:
+                                command:
+                                    type: userPinnedChatRoom
+                                data:
+                                    chatroomId: "123456"
+                                    pin: true
+                                    userId: user789
+                                timestamp: 1719188007000000000
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/room:
+        get:
+            tags:
+                - chatroom
+            summary: List all chatrooms
+            operationId: chatroom#ListChatrooms
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ListChatroomsResult'
+                            example:
+                                data:
+                                    - avatar: https://example.com/avatar.png
+                                      baseId: 669c07250b20ee76727169b0
+                                      boardId: uuid
+                                      chatroomId: "123456"
+                                      createdAt: "2024-01-01T11:53:54Z"
+                                      title: Chat Room 1
+                                      type: private
+                                      updatedAt: "2024-01-01T11:53:54Z"
+                                    - avatar: https://example.com/avatar.png
+                                      baseId: 669c07250b20ee76727169b0
+                                      boardId: uuid
+                                      chatroomId: "123456"
+                                      createdAt: "2024-01-01T11:53:54Z"
+                                      title: Chat Room 1
+                                      type: private
+                                      updatedAt: "2024-01-01T11:53:54Z"
+                                    - avatar: https://example.com/avatar.png
+                                      baseId: 669c07250b20ee76727169b0
+                                      boardId: uuid
+                                      chatroomId: "123456"
+                                      createdAt: "2024-01-01T11:53:54Z"
+                                      title: Chat Room 1
+                                      type: private
+                                      updatedAt: "2024-01-01T11:53:54Z"
                 "400":
                     description: 參數錯誤
                 "401":
@@ -1170,16 +2201,6 @@ paths:
                                       position: 1
                                       type: type123
                                       updatedAt: "2024-01-02T00:00:00Z"
-                                    - baseId: base123
-                                      createdAt: "2024-01-01T00:00:00Z"
-                                      data:
-                                        color: red
-                                        name: My Folder
-                                      folderId: "123456"
-                                      parentId: parent123
-                                      position: 1
-                                      type: type123
-                                      updatedAt: "2024-01-02T00:00:00Z"
                                 timestamp: 1719188007000000000
                 "400":
                     description: 參數錯誤
@@ -1207,17 +2228,12 @@ paths:
                         schema:
                             $ref: '#/components/schemas/CreateFolderRequestBody'
                         example:
-                            folder:
-                                baseId: base123
-                                createdAt: "2024-01-01T00:00:00Z"
-                                data:
-                                    color: red
-                                    name: My Folder
-                                folderId: "123456"
-                                parentId: parent123
-                                position: 1
-                                type: type123
-                                updatedAt: "2024-01-02T00:00:00Z"
+                            baseId: base123
+                            data:
+                                color: red
+                                name: My Folder
+                            parentId: parent123
+                            position: 1
             responses:
                 "200":
                     description: 操作成功
@@ -1326,17 +2342,12 @@ paths:
                         schema:
                             $ref: '#/components/schemas/CreateFolderRequestBody'
                         example:
-                            folder:
-                                baseId: base123
-                                createdAt: "2024-01-01T00:00:00Z"
-                                data:
-                                    color: red
-                                    name: My Folder
-                                folderId: "123456"
-                                parentId: parent123
-                                position: 1
-                                type: type123
-                                updatedAt: "2024-01-02T00:00:00Z"
+                            baseId: base123
+                            data:
+                                color: red
+                                name: My Folder
+                            parentId: parent123
+                            position: 1
             responses:
                 "200":
                     description: 操作成功
@@ -1358,6 +2369,62 @@ paths:
                                     position: 1
                                     type: type123
                                     updatedAt: "2024-01-02T00:00:00Z"
+                                timestamp: 1719188007000000000
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: 'invalid token: token 無效'
+                    content:
+                        application/vnd.goa.error:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            example:
+                                message: token 過期
+                "500":
+                    description: 伺服器發生錯誤
+            security:
+                - JWT_header_Authorization: []
+    /listBoard/{parentID}:
+        get:
+            tags:
+                - Board
+            summary: 取得指定父層的子版
+            operationId: Board#ListBoard
+            parameters:
+                - name: parentID
+                  in: path
+                  description: 上一級基地/資料夾的識別碼
+                  required: true
+                  schema:
+                    type: string
+                    description: 上一級基地/資料夾的識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                  example: 669071b8a650a662b82285ca
+            responses:
+                "200":
+                    description: 操作成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetListByParentIDResult'
+                            example:
+                                command:
+                                    type: getListByParentID
+                                data:
+                                    - color: '#FF5733'
+                                      id: 669071b8a650a662b82285ca
+                                      logo: http://example.com/logo.png
+                                      name: 版 A
+                                    - color: '#FF5733'
+                                      id: 669071b8a650a662b82285ca
+                                      logo: http://example.com/logo.png
+                                      name: 版 A
+                                    - color: '#FF5733'
+                                      id: 669071b8a650a662b82285ca
+                                      logo: http://example.com/logo.png
+                                      name: 版 A
                                 timestamp: 1719188007000000000
                 "400":
                     description: 參數錯誤
@@ -1421,35 +2488,35 @@ paths:
                                 command:
                                     type: sync
                                 data:
-                                    baseInfos:
-                                        - baseId: EbZvovBKbFogJeRem5oj2S
+                                    base_infos:
+                                        - base_id: EbZvovBKbFogJeRem5oj2S
                                           color: '#FF5733'
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj2S
                                           logo: http://example.com/logo.png
                                           name: 基地 A
-                                        - baseId: EbZvovBKbFogJeRem5oj3S
+                                        - base_id: EbZvovBKbFogJeRem5oj3S
                                           color: '#FF5733'
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj3S
                                           logo: http://example.com/logo.png
                                           name: 基地 B
-                                        - baseId: EbZvovBKbFogJeRem5oj4S
+                                        - base_id: EbZvovBKbFogJeRem5oj4S
                                           color: '#FF5733'
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj4S
                                           logo: http://example.com/logo.png
                                           name: 基地 C
-                                    baseNavStates:
-                                        - baseId: EbZvovBKbFogJeRem5oj2S
+                                    base_nav_states:
+                                        - base_id: EbZvovBKbFogJeRem5oj2S
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj7a
                                           index: 0
-                                        - baseId: EbZvovBKbFogJeRem5oj3S
+                                        - base_id: EbZvovBKbFogJeRem5oj3S
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj7b
                                           index: 1
-                                        - baseId: EbZvovBKbFogJeRem5oj4S
+                                        - base_id: EbZvovBKbFogJeRem5oj4S
                                           deleted_at: null
                                           id: EbZvovBKbFogJeRem5oj7c
                                           index: 2
@@ -1468,10 +2535,52 @@ paths:
                 - JWT_header_Authorization: []
 components:
     schemas:
+        AddUserResultData:
+            type: object
+            properties:
+                chatroomId:
+                    type: string
+                    description: Chatroom identifier
+                    example: "123456"
+                message:
+                    type: string
+                    description: Message indicating the result of the operation
+                    example: User added successfully
+            description: Result of adding a user to a chatroom
+            example:
+                chatroomId: "123456"
+                message: User added successfully
+            required:
+                - chatroomId
+                - message
+        AddUserToChatroomResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    $ref: '#/components/schemas/AddUserResultData'
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            example:
+                command:
+                    type: addUserToChatroom
+                data:
+                    chatroomId: "123456"
+                    message: User added successfully
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
         BaseInfo:
             type: object
             properties:
-                baseId:
+                base_id:
                     type: string
                     description: 基地識別碼
                     example: 669071b8a650a662b82285ca
@@ -1508,7 +2617,7 @@ components:
                     maxLength: 128
             description: 基地資訊
             example:
-                baseId: EbZvovBKbFogJeRem5oj2S
+                base_id: EbZvovBKbFogJeRem5oj2S
                 color: '#FF5733'
                 deleted_at: null
                 id: EbZvovBKbFogJeRem5oj2S
@@ -1516,14 +2625,13 @@ components:
                 name: 基地 A
             required:
                 - id
-                - baseId
+                - base_id
                 - color
-                - logo
                 - name
         BaseNavState:
             type: object
             properties:
-                baseId:
+                base_id:
                     type: string
                     description: 基地識別碼
                     example: 669071b8a650a662b82285ca
@@ -1549,84 +2657,82 @@ components:
                     minimum: 1
             description: 基地導覽列狀態
             example:
-                baseId: 669071b8a650a662b82285ca
+                base_id: 669071b8a650a662b82285ca
                 deleted_at: "2024-01-01T11:53:54Z"
                 id: 669071b8a650a662b82285ca
                 index: 0
             required:
                 - id
-                - baseId
+                - base_id
                 - index
-        Chatroom:
+        BoardInfo:
+            type: object
+            properties:
+                color:
+                    type: string
+                    description: 版颜色
+                    example: '#FF5733'
+                    minLength: 1
+                    maxLength: 16
+                id:
+                    type: string
+                    description: 識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                logo:
+                    type: string
+                    description: 版Logo的 URL
+                    example: http://example.com/logo.png
+                    minLength: 1
+                    maxLength: 1024
+                name:
+                    type: string
+                    description: 名稱
+                    example: 版 A
+                    minLength: 1
+                    maxLength: 128
+            description: 版資訊
+            example:
+                color: '#FF5733'
+                id: 669071b8a650a662b82285ca
+                logo: http://example.com/logo.png
+                name: 版 A
+            required:
+                - id
+                - color
+                - logo
+                - name
+        ChatroomMemberResult:
             type: object
             properties:
                 avatar:
                     type: string
-                    description: Chatroom avatar
-                    example: https://example.com/avatar.png
-                baseId:
+                    description: Avatar URL of the user
+                    example: https://example.com/avatar.jpg
+                nickname:
                     type: string
-                    description: Base identifier
-                    example: base123
-                boardId:
+                    description: Nickname of the user
+                    example: JohnDoe
+                userId:
                     type: string
-                    description: Board identifier
-                    example: base123
-                chatroomId:
-                    type: string
-                    description: Chatroom identifier
-                    example: "123456"
-                createdAt:
-                    type: string
-                    description: Time of creation
-                    example: "2024-01-01T00:00:00Z"
-                members:
-                    type: array
-                    items:
-                        type: string
-                        example: Hic dolorem et quia non magni.
-                    description: List of members in the chatroom
-                    example:
-                        - Assumenda eos fugit reiciendis laboriosam ratione eligendi.
-                        - Impedit et officiis.
-                        - Modi quia perspiciatis beatae.
-                        - Iusto dignissimos et illo consectetur illum.
-                title:
-                    type: string
-                    description: Title of the chatroom
-                    example: Chat Room 1
-                updatedAt:
-                    type: string
-                    description: Time of update
-                    example: "2024-01-02T00:00:00Z"
-            description: Chatroom information.
+                    description: Identifier of the user
+                    example: user123
             example:
-                avatar: https://example.com/avatar.png
-                baseId: base123
-                boardId: base123
-                chatroomId: "123456"
-                createdAt: "2024-01-01T00:00:00Z"
-                members:
-                    - Et consectetur.
-                    - Voluptates molestias doloremque maxime quidem.
-                title: Chat Room 1
-                updatedAt: "2024-01-02T00:00:00Z"
+                avatar: https://example.com/avatar.jpg
+                nickname: JohnDoe
+                userId: user123
             required:
-                - chatroomId
-                - baseId
-                - title
-                - createdAt
-                - updatedAt
-                - members
+                - userId
                 - avatar
-                - boardId
+                - nickname
         Command:
             type: object
             properties:
                 type:
                     type: string
                     description: 類型
-                    example: sync
+                    example: deleteBase
                     enum:
                         - sync
                         - createBase
@@ -1635,7 +2741,7 @@ components:
                         - updateBaseInfo
             description: 指令
             example:
-                type: sync
+                type: createBase
             required:
                 - type
         CreateBaseRequestBody:
@@ -1673,7 +2779,6 @@ components:
                 name: 基地 A
             required:
                 - color
-                - logo
                 - name
         CreateBaseResult:
             type: object
@@ -1694,14 +2799,14 @@ components:
                 data:
                     id: 669071b8a650a662b82285ca
                     info:
-                        baseId: EbZvovBKbFogJeRem5oj2S
+                        base_id: EbZvovBKbFogJeRem5oj2S
                         color: '#FF5733'
                         deleted_at: null
                         id: EbZvovBKbFogJeRem5oj2S
                         logo: http://example.com/logo.png
                         name: 基地 A
-                    navState:
-                        baseId: 669071b8a650a662b82285ca
+                    nav_state:
+                        base_id: 669071b8a650a662b82285ca
                         deleted_at: "2024-01-01T11:53:54Z"
                         id: 669071b8a650a662b82285ca
                         index: 0
@@ -1721,54 +2826,163 @@ components:
                     maxLength: 24
                 info:
                     $ref: '#/components/schemas/BaseInfo'
-                navState:
+                nav_state:
                     $ref: '#/components/schemas/BaseNavState'
             example:
                 id: 669071b8a650a662b82285ca
                 info:
-                    baseId: EbZvovBKbFogJeRem5oj2S
+                    base_id: EbZvovBKbFogJeRem5oj2S
                     color: '#FF5733'
                     deleted_at: null
                     id: EbZvovBKbFogJeRem5oj2S
                     logo: http://example.com/logo.png
                     name: 基地 A
-                navState:
-                    baseId: 669071b8a650a662b82285ca
+                nav_state:
+                    base_id: 669071b8a650a662b82285ca
                     deleted_at: "2024-01-01T11:53:54Z"
                     id: 669071b8a650a662b82285ca
                     index: 0
             required:
                 - id
                 - info
-                - navState
+                - nav_state
+        CreateBoardRequestBody:
+            type: object
+            properties:
+                baseID:
+                    type: string
+                    description: 基地別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                color:
+                    type: string
+                    description: 版颜色
+                    example: '#FF5733'
+                    minLength: 1
+                    maxLength: 16
+                logo:
+                    type: string
+                    description: 版Logo的 URL
+                    example: http://example.com/logo.png
+                    minLength: 1
+                    maxLength: 1024
+                name:
+                    type: string
+                    description: 名稱
+                    example: 版 A
+                    minLength: 1
+                    maxLength: 128
+                parentID:
+                    type: string
+                    description: 上一級基地/資料夾的識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                position:
+                    type: integer
+                    description: 順序
+                    default: 0
+                    example: 0
+                    format: int64
+            example:
+                baseID: 669071b8a650a662b82285ca
+                color: '#FF5733'
+                logo: http://example.com/logo.png
+                name: 版 A
+                parentID: 669071b8a650a662b82285ca
+                position: 0
+            required:
+                - baseID
+                - parentID
+                - name
+                - color
+                - logo
+                - position
+        CreateBoardResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    $ref: '#/components/schemas/CreateBoardResultData'
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            example:
+                command:
+                    type: createBoard
+                data:
+                    id: 669071b8a650a662b82285ca
+                    info:
+                        color: '#FF5733'
+                        id: 669071b8a650a662b82285ca
+                        logo: http://example.com/logo.png
+                        name: 版 A
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
+        CreateBoardResultData:
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: 識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                info:
+                    $ref: '#/components/schemas/BoardInfo'
+            example:
+                id: 669071b8a650a662b82285ca
+                info:
+                    color: '#FF5733'
+                    id: 669071b8a650a662b82285ca
+                    logo: http://example.com/logo.png
+                    name: 版 A
+            required:
+                - id
+                - info
         CreateChatroomRequestBody:
             type: object
             properties:
-                chatroom:
-                    $ref: '#/components/schemas/Chatroom'
+                avatar:
+                    type: string
+                    description: Chatroom avatar
+                    example: https://example.com/avatar.png
+                baseId:
+                    type: string
+                    description: Base identifier
+                    example: base123
+                boardId:
+                    type: string
+                    description: Board identifier
+                    example: board123
+                title:
+                    type: string
+                    description: Title of the chatroom
+                    example: Chat Room 1
+            description: Chatroom information.
             example:
-                chatroom:
-                    avatar: https://example.com/avatar.png
-                    baseId: base123
-                    boardId: base123
-                    chatroomId: "123456"
-                    createdAt: "2024-01-01T00:00:00Z"
-                    members:
-                        - Commodi et maxime consectetur neque blanditiis qui.
-                        - Est accusamus autem accusantium.
-                        - Dolore maxime non.
-                        - Odit eligendi velit vitae deleniti quia.
-                    title: Chat Room 1
-                    updatedAt: "2024-01-02T00:00:00Z"
+                avatar: https://example.com/avatar.png
+                baseId: base123
+                boardId: board123
+                title: Chat Room 1
             required:
-                - chatroom
+                - baseId
+                - title
         CreateChatroomResult:
             type: object
             properties:
                 command:
                     $ref: '#/components/schemas/Command'
                 data:
-                    $ref: '#/components/schemas/Createchatroomresultdata'
+                    $ref: '#/components/schemas/CreateChatroomResultData'
                 timestamp:
                     type: integer
                     description: 時間戳記
@@ -1780,40 +2994,104 @@ components:
                     type: createChatroom
                 data:
                     avatar: https://example.com/avatar.png
-                    baseId: base123
+                    baseId: 669c07250b20ee76727169b0
                     boardId: uuid
                     chatroomId: "123456"
-                    createdAt: "2024-01-01T00:00:00Z"
-                    members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
+                    createdAt: "2024-01-01T11:53:54Z"
                     title: Chat Room 1
-                    updatedAt: "2024-01-02T00:00:00Z"
+                    type: private
+                    updatedAt: "2024-01-01T11:53:54Z"
                 timestamp: 1719188007000000000
             required:
                 - command
                 - timestamp
                 - data
+        CreateChatroomResultData:
+            type: object
+            properties:
+                avatar:
+                    type: string
+                    description: Chatroom avatar
+                    example: https://example.com/avatar.png
+                baseId:
+                    type: string
+                    description: Base identifier
+                    example: 669c07250b20ee76727169b0
+                boardId:
+                    type: string
+                    description: Board identifier
+                    example: uuid
+                chatroomId:
+                    type: string
+                    description: Chatroom identifier
+                    example: "123456"
+                createdAt:
+                    type: string
+                    description: Time of creation
+                    example: "2024-01-01T11:53:54Z"
+                    format: date-time
+                title:
+                    type: string
+                    description: Title of the chatroom
+                    example: Chat Room 1
+                type:
+                    type: string
+                    description: Type of the chatroom
+                    example: private
+                updatedAt:
+                    type: string
+                    description: Time of update
+                    example: "2024-01-01T11:53:54Z"
+                    format: date-time
+            description: Create Chatroom Result Data
+            example:
+                avatar: https://example.com/avatar.png
+                baseId: 669c07250b20ee76727169b0
+                boardId: uuid
+                chatroomId: "123456"
+                createdAt: "2024-01-01T11:53:54Z"
+                title: Chat Room 1
+                type: private
+                updatedAt: "2024-01-01T11:53:54Z"
+            required:
+                - chatroomId
+                - baseId
+                - title
+                - createdAt
+                - updatedAt
+                - avatar
+                - boardId
+                - type
         CreateFolderRequestBody:
             type: object
             properties:
-                folder:
-                    $ref: '#/components/schemas/Folder'
+                baseId:
+                    type: string
+                    description: Base identifier
+                    example: base123
+                data:
+                    $ref: '#/components/schemas/FolderData'
+                parentId:
+                    type: string
+                    description: Parent identifier
+                    example: parent123
+                position:
+                    type: number
+                    description: Position of the folder
+                    example: 1
+                    format: double
             example:
-                folder:
-                    baseId: base123
-                    createdAt: "2024-01-01T00:00:00Z"
-                    data:
-                        color: red
-                        name: My Folder
-                    folderId: "123456"
-                    parentId: parent123
-                    position: 1
-                    type: type123
-                    updatedAt: "2024-01-02T00:00:00Z"
+                baseId: base123
+                data:
+                    color: red
+                    name: My Folder
+                parentId: parent123
+                position: 1
             required:
-                - folder
+                - baseId
+                - parentId
+                - data
+                - position
         CreateFolderResult:
             type: object
             properties:
@@ -1846,71 +3124,6 @@ components:
                 - command
                 - timestamp
                 - data
-        Createchatroomresultdata:
-            type: object
-            properties:
-                avatar:
-                    type: string
-                    description: Chatroom avatar
-                    example: https://example.com/avatar.png
-                baseId:
-                    type: string
-                    description: Base identifier
-                    example: base123
-                boardId:
-                    type: string
-                    description: Board identifier
-                    example: uuid
-                chatroomId:
-                    type: string
-                    description: Chatroom identifier
-                    example: "123456"
-                createdAt:
-                    type: string
-                    description: Time of creation
-                    example: "2024-01-01T00:00:00Z"
-                members:
-                    type: array
-                    items:
-                        type: string
-                        example: Et qui quis.
-                    description: List of members in the chatroom
-                    example:
-                        - Aliquam et doloremque eaque animi doloremque.
-                        - Enim neque.
-                        - Consequatur laboriosam.
-                        - Fugiat repudiandae temporibus aliquam pariatur expedita dignissimos.
-                title:
-                    type: string
-                    description: Title of the chatroom
-                    example: Chat Room 1
-                updatedAt:
-                    type: string
-                    description: Time of update
-                    example: "2024-01-02T00:00:00Z"
-            description: Create Chatroom Result Data
-            example:
-                avatar: https://example.com/avatar.png
-                baseId: base123
-                boardId: uuid
-                chatroomId: "123456"
-                createdAt: "2024-01-01T00:00:00Z"
-                members:
-                    - Praesentium molestiae quae laborum voluptatibus.
-                    - Sed facilis cum.
-                    - Aliquid voluptas repudiandae.
-                    - Fuga porro error.
-                title: Chat Room 1
-                updatedAt: "2024-01-02T00:00:00Z"
-            required:
-                - chatroomId
-                - baseId
-                - title
-                - createdAt
-                - updatedAt
-                - members
-                - avatar
-                - boardId
         Createfolderresultdata:
             type: object
             properties:
@@ -1965,6 +3178,7 @@ components:
                 - updatedAt
                 - data
                 - type
+                - position
         DeleteBaseResult:
             type: object
             properties:
@@ -1982,7 +3196,7 @@ components:
                 command:
                     type: deleteBase
                 data:
-                    baseId: 669071b8a650a662b82285ca
+                    base_id: 669071b8a650a662b82285ca
                 timestamp: 1719188007000000000
             required:
                 - command
@@ -1991,16 +3205,52 @@ components:
         DeleteBaseResultData:
             type: object
             properties:
-                baseId:
+                base_id:
                     type: string
                     description: 基地識別碼
                     example: 669071b8a650a662b82285ca
                     minLength: 24
                     maxLength: 24
             example:
-                baseId: 669071b8a650a662b82285ca
+                base_id: 669071b8a650a662b82285ca
             required:
-                - baseId
+                - base_id
+        DeleteBoardResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    $ref: '#/components/schemas/DeleteBoardResultData'
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            example:
+                command:
+                    type: deleteBoard
+                data:
+                    boardID: 669071b8a650a662b82285ca
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
+        DeleteBoardResultData:
+            type: object
+            properties:
+                boardID:
+                    type: string
+                    description: 版識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+            example:
+                boardID: 669071b8a650a662b82285ca
+            required:
+                - boardID
         Error:
             type: object
             properties:
@@ -2029,11 +3279,11 @@ components:
                     description: Is the error a timeout?
                     example: false
             example:
-                fault: false
+                fault: true
                 id: 123abc
                 message: parameter 'p' must be an integer
                 name: bad_request
-                temporary: false
+                temporary: true
                 timeout: true
             required:
                 - name
@@ -2042,60 +3292,6 @@ components:
                 - temporary
                 - timeout
                 - fault
-        Folder:
-            type: object
-            properties:
-                baseId:
-                    type: string
-                    description: Base identifier
-                    example: base123
-                createdAt:
-                    type: string
-                    description: Time of creation
-                    example: "2024-01-01T00:00:00Z"
-                data:
-                    $ref: '#/components/schemas/FolderData'
-                folderId:
-                    type: string
-                    description: Folder identifier
-                    example: "123456"
-                parentId:
-                    type: string
-                    description: Parent identifier
-                    example: parent123
-                position:
-                    type: number
-                    description: Position of the folder
-                    example: 1
-                    format: double
-                type:
-                    type: string
-                    description: Type of the folder
-                    example: type123
-                updatedAt:
-                    type: string
-                    description: Time of update
-                    example: "2024-01-02T00:00:00Z"
-            description: Folder information.
-            example:
-                baseId: base123
-                createdAt: "2024-01-01T00:00:00Z"
-                data:
-                    color: red
-                    name: My Folder
-                folderId: "123456"
-                parentId: parent123
-                position: 1
-                type: type123
-                updatedAt: "2024-01-02T00:00:00Z"
-            required:
-                - folderId
-                - baseId
-                - parentId
-                - createdAt
-                - updatedAt
-                - data
-                - type
         FolderData:
             type: object
             properties:
@@ -2114,61 +3310,13 @@ components:
             required:
                 - color
                 - name
-        ListChatroomsResult:
+        GetBaseListResult:
             type: object
             properties:
                 command:
                     $ref: '#/components/schemas/Command'
                 data:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Createchatroomresultdata'
-                    description: 資料
-                    example:
-                        - avatar: https://example.com/avatar.png
-                          baseId: base123
-                          boardId: uuid
-                          chatroomId: "123456"
-                          createdAt: "2024-01-01T00:00:00Z"
-                          members:
-                            - Mollitia illum quia aperiam suscipit quis exercitationem.
-                            - Ipsum quis saepe.
-                            - Cum repellat tempora eum.
-                          title: Chat Room 1
-                          updatedAt: "2024-01-02T00:00:00Z"
-                        - avatar: https://example.com/avatar.png
-                          baseId: base123
-                          boardId: uuid
-                          chatroomId: "123456"
-                          createdAt: "2024-01-01T00:00:00Z"
-                          members:
-                            - Mollitia illum quia aperiam suscipit quis exercitationem.
-                            - Ipsum quis saepe.
-                            - Cum repellat tempora eum.
-                          title: Chat Room 1
-                          updatedAt: "2024-01-02T00:00:00Z"
-                        - avatar: https://example.com/avatar.png
-                          baseId: base123
-                          boardId: uuid
-                          chatroomId: "123456"
-                          createdAt: "2024-01-01T00:00:00Z"
-                          members:
-                            - Mollitia illum quia aperiam suscipit quis exercitationem.
-                            - Ipsum quis saepe.
-                            - Cum repellat tempora eum.
-                          title: Chat Room 1
-                          updatedAt: "2024-01-02T00:00:00Z"
-                        - avatar: https://example.com/avatar.png
-                          baseId: base123
-                          boardId: uuid
-                          chatroomId: "123456"
-                          createdAt: "2024-01-01T00:00:00Z"
-                          members:
-                            - Mollitia illum quia aperiam suscipit quis exercitationem.
-                            - Ipsum quis saepe.
-                            - Cum repellat tempora eum.
-                          title: Chat Room 1
-                          updatedAt: "2024-01-02T00:00:00Z"
+                    $ref: '#/components/schemas/GetBaseListResultData'
                 timestamp:
                     type: integer
                     description: 時間戳記
@@ -2177,45 +3325,354 @@ components:
                     minimum: 1.719188007e+18
             example:
                 command:
-                    type: listChatrooms
+                    type: getBaseList
                 data:
-                    - avatar: https://example.com/avatar.png
-                      baseId: base123
-                      boardId: uuid
-                      chatroomId: "123456"
-                      createdAt: "2024-01-01T00:00:00Z"
-                      members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
-                      title: Chat Room 1
-                      updatedAt: "2024-01-02T00:00:00Z"
-                    - avatar: https://example.com/avatar.png
-                      baseId: base123
-                      boardId: uuid
-                      chatroomId: "123456"
-                      createdAt: "2024-01-01T00:00:00Z"
-                      members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
-                      title: Chat Room 1
-                      updatedAt: "2024-01-02T00:00:00Z"
-                    - avatar: https://example.com/avatar.png
-                      baseId: base123
-                      boardId: uuid
-                      chatroomId: "123456"
-                      createdAt: "2024-01-01T00:00:00Z"
-                      members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
-                      title: Chat Room 1
-                      updatedAt: "2024-01-02T00:00:00Z"
+                    base_infos:
+                        - base_id: EbZvovBKbFogJeRem5oj2S
+                          color: '#FF5733'
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj2S
+                          logo: http://example.com/logo.png
+                          name: 基地 A
+                        - base_id: EbZvovBKbFogJeRem5oj3S
+                          color: '#FF5733'
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj3S
+                          logo: http://example.com/logo.png
+                          name: 基地 B
+                        - base_id: EbZvovBKbFogJeRem5oj4S
+                          color: '#FF5733'
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj4S
+                          logo: http://example.com/logo.png
+                          name: 基地 C
+                    base_nav_states:
+                        - base_id: EbZvovBKbFogJeRem5oj2S
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj7a
+                          index: 0
+                        - base_id: EbZvovBKbFogJeRem5oj3S
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj7b
+                          index: 1
+                        - base_id: EbZvovBKbFogJeRem5oj4S
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj7c
+                          index: 2
                 timestamp: 1719188007000000000
             required:
                 - command
                 - timestamp
+                - data
+        GetBaseListResultData:
+            type: object
+            properties:
+                base_infos:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/BaseInfo'
+                    example:
+                        - base_id: EbZvovBKbFogJeRem5oj2S
+                          color: '#FF5733'
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj2S
+                          logo: http://example.com/logo.png
+                          name: 基地 A
+                        - base_id: EbZvovBKbFogJeRem5oj3S
+                          color: '#FF5733'
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj3S
+                          logo: http://example.com/logo.png
+                          name: 基地 B
+                        - base_id: EbZvovBKbFogJeRem5oj4S
+                          color: '#FF5733'
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj4S
+                          logo: http://example.com/logo.png
+                          name: 基地 C
+                base_nav_states:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/BaseNavState'
+                    example:
+                        - base_id: EbZvovBKbFogJeRem5oj2S
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj7a
+                          index: 0
+                        - base_id: EbZvovBKbFogJeRem5oj3S
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj7b
+                          index: 1
+                        - base_id: EbZvovBKbFogJeRem5oj4S
+                          deleted_at: null
+                          id: EbZvovBKbFogJeRem5oj7c
+                          index: 2
+            example:
+                base_infos:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
+                      color: '#FF5733'
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj2S
+                      logo: http://example.com/logo.png
+                      name: 基地 A
+                    - base_id: EbZvovBKbFogJeRem5oj3S
+                      color: '#FF5733'
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj3S
+                      logo: http://example.com/logo.png
+                      name: 基地 B
+                    - base_id: EbZvovBKbFogJeRem5oj4S
+                      color: '#FF5733'
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj4S
+                      logo: http://example.com/logo.png
+                      name: 基地 C
+                base_nav_states:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj7a
+                      index: 0
+                    - base_id: EbZvovBKbFogJeRem5oj3S
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj7b
+                      index: 1
+                    - base_id: EbZvovBKbFogJeRem5oj4S
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj7c
+                      index: 2
+            required:
+                - base_infos
+                - base_nav_states
+        GetChatroomMembersResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    $ref: '#/components/schemas/GetChatroomMembersResultData'
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            example:
+                command:
+                    type: getChatroomMembers
+                data:
+                    members:
+                        - avatar: https://example.com/avatar.jpg
+                          nickname: JohnDoe
+                          userId: user123
+                        - avatar: https://example.com/avatar.jpg
+                          nickname: JohnDoe
+                          userId: user123
+                        - avatar: https://example.com/avatar.jpg
+                          nickname: JohnDoe
+                          userId: user123
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
+        GetChatroomMembersResultData:
+            type: object
+            properties:
+                members:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ChatroomMemberResult'
+                    description: List of chatroom members
+                    example:
+                        - avatar: https://example.com/avatar.jpg
+                          nickname: JohnDoe
+                          userId: user123
+                        - avatar: https://example.com/avatar.jpg
+                          nickname: JohnDoe
+                          userId: user123
+                        - avatar: https://example.com/avatar.jpg
+                          nickname: JohnDoe
+                          userId: user123
+                        - avatar: https://example.com/avatar.jpg
+                          nickname: JohnDoe
+                          userId: user123
+            description: Result of getting chatroom members
+            example:
+                members:
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+            required:
+                - members
+        GetListByParentIDResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/BoardInfo'
+                    description: 資料
+                    example:
+                        - color: '#FF5733'
+                          id: 669071b8a650a662b82285ca
+                          logo: http://example.com/logo.png
+                          name: 版 A
+                        - color: '#FF5733'
+                          id: 669071b8a650a662b82285ca
+                          logo: http://example.com/logo.png
+                          name: 版 A
+                        - color: '#FF5733'
+                          id: 669071b8a650a662b82285ca
+                          logo: http://example.com/logo.png
+                          name: 版 A
+                        - color: '#FF5733'
+                          id: 669071b8a650a662b82285ca
+                          logo: http://example.com/logo.png
+                          name: 版 A
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            example:
+                command:
+                    type: getListByParentID
+                data:
+                    - color: '#FF5733'
+                      id: 669071b8a650a662b82285ca
+                      logo: http://example.com/logo.png
+                      name: 版 A
+                    - color: '#FF5733'
+                      id: 669071b8a650a662b82285ca
+                      logo: http://example.com/logo.png
+                      name: 版 A
+                    - color: '#FF5733'
+                      id: 669071b8a650a662b82285ca
+                      logo: http://example.com/logo.png
+                      name: 版 A
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
+        GetMessagesResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    $ref: '#/components/schemas/Messages'
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            example:
+                command:
+                    type: getMessages
+                data:
+                    messages:
+                        - command:
+                            type: message
+                          data:
+                            avatar: https://example.com/avatar.png
+                            chatroomId: chatroom456
+                            createdAt: "2024-01-01T11:53:54Z"
+                            data: Hello, world!
+                            id: msg123
+                            nickname: text
+                            senderId: user789
+                            type: text
+                            updatedAt: "2024-01-01T11:53:54Z"
+                          timestamp: 1719188007000000000
+                        - command:
+                            type: message
+                          data:
+                            avatar: https://example.com/avatar.png
+                            chatroomId: chatroom456
+                            createdAt: "2024-01-01T11:53:54Z"
+                            data: Hello, world!
+                            id: msg123
+                            nickname: text
+                            senderId: user789
+                            type: text
+                            updatedAt: "2024-01-01T11:53:54Z"
+                          timestamp: 1719188007000000000
+                        - command:
+                            type: message
+                          data:
+                            avatar: https://example.com/avatar.png
+                            chatroomId: chatroom456
+                            createdAt: "2024-01-01T11:53:54Z"
+                            data: Hello, world!
+                            id: msg123
+                            nickname: text
+                            senderId: user789
+                            type: text
+                            updatedAt: "2024-01-01T11:53:54Z"
+                          timestamp: 1719188007000000000
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
+        ListChatroomsResult:
+            type: object
+            properties:
+                data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/CreateChatroomResultData'
+                    description: List of chatrooms
+                    example:
+                        - avatar: https://example.com/avatar.png
+                          baseId: 669c07250b20ee76727169b0
+                          boardId: uuid
+                          chatroomId: "123456"
+                          createdAt: "2024-01-01T11:53:54Z"
+                          title: Chat Room 1
+                          type: private
+                          updatedAt: "2024-01-01T11:53:54Z"
+                        - avatar: https://example.com/avatar.png
+                          baseId: 669c07250b20ee76727169b0
+                          boardId: uuid
+                          chatroomId: "123456"
+                          createdAt: "2024-01-01T11:53:54Z"
+                          title: Chat Room 1
+                          type: private
+                          updatedAt: "2024-01-01T11:53:54Z"
+            example:
+                data:
+                    - avatar: https://example.com/avatar.png
+                      baseId: 669c07250b20ee76727169b0
+                      boardId: uuid
+                      chatroomId: "123456"
+                      createdAt: "2024-01-01T11:53:54Z"
+                      title: Chat Room 1
+                      type: private
+                      updatedAt: "2024-01-01T11:53:54Z"
+                    - avatar: https://example.com/avatar.png
+                      baseId: 669c07250b20ee76727169b0
+                      boardId: uuid
+                      chatroomId: "123456"
+                      createdAt: "2024-01-01T11:53:54Z"
+                      title: Chat Room 1
+                      type: private
+                      updatedAt: "2024-01-01T11:53:54Z"
+            required:
                 - data
         ListFoldersResult:
             type: object
@@ -2228,6 +3685,16 @@ components:
                         $ref: '#/components/schemas/Createfolderresultdata'
                     description: 資料
                     example:
+                        - baseId: base123
+                          createdAt: "2024-01-01T00:00:00Z"
+                          data:
+                            color: red
+                            name: My Folder
+                          folderId: "123456"
+                          parentId: parent123
+                          position: 1
+                          type: type123
+                          updatedAt: "2024-01-02T00:00:00Z"
                         - baseId: base123
                           createdAt: "2024-01-01T00:00:00Z"
                           data:
@@ -2293,6 +3760,271 @@ components:
                 - command
                 - timestamp
                 - data
+        Message:
+            type: object
+            properties:
+                avatar:
+                    type: string
+                    description: avatar
+                    example: https://example.com/avatar.png
+                chatroomId:
+                    type: string
+                    description: Identifier of the chatroom
+                    example: chatroom456
+                createdAt:
+                    type: string
+                    description: Time of creation
+                    example: "2024-01-01T11:53:54Z"
+                    format: date-time
+                data:
+                    type: string
+                    description: Content of the message
+                    example: Hello, world!
+                id:
+                    type: string
+                    description: Unique identifier for the message
+                    example: msg123
+                nickname:
+                    type: string
+                    description: nickname
+                    example: text
+                senderId:
+                    type: string
+                    description: Identifier of the sender
+                    example: user789
+                type:
+                    type: string
+                    description: Type of the message
+                    example: text
+                updatedAt:
+                    type: string
+                    description: Time of update
+                    example: "2024-01-01T11:53:54Z"
+                    format: date-time
+            description: Message data
+            example:
+                avatar: https://example.com/avatar.png
+                chatroomId: chatroom456
+                createdAt: "2024-01-01T11:53:54Z"
+                data: Hello, world!
+                id: msg123
+                nickname: text
+                senderId: user789
+                type: text
+                updatedAt: "2024-01-01T11:53:54Z"
+            required:
+                - id
+                - chatroomId
+                - senderId
+                - type
+                - data
+                - createdAt
+                - updatedAt
+                - avatar
+                - nickname
+        MessageResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    $ref: '#/components/schemas/Message'
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            description: WebSocket 的通用資料負載
+            example:
+                command:
+                    type: message
+                data:
+                    avatar: https://example.com/avatar.png
+                    chatroomId: chatroom456
+                    createdAt: "2024-01-01T11:53:54Z"
+                    data: Hello, world!
+                    id: msg123
+                    nickname: text
+                    senderId: user789
+                    type: text
+                    updatedAt: "2024-01-01T11:53:54Z"
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
+        Messages:
+            type: object
+            properties:
+                messages:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/MessageResult'
+                    description: List of messages
+                    example:
+                        - command:
+                            type: message
+                          data:
+                            avatar: https://example.com/avatar.png
+                            chatroomId: chatroom456
+                            createdAt: "2024-01-01T11:53:54Z"
+                            data: Hello, world!
+                            id: msg123
+                            nickname: text
+                            senderId: user789
+                            type: text
+                            updatedAt: "2024-01-01T11:53:54Z"
+                          timestamp: 1719188007000000000
+                        - command:
+                            type: message
+                          data:
+                            avatar: https://example.com/avatar.png
+                            chatroomId: chatroom456
+                            createdAt: "2024-01-01T11:53:54Z"
+                            data: Hello, world!
+                            id: msg123
+                            nickname: text
+                            senderId: user789
+                            type: text
+                            updatedAt: "2024-01-01T11:53:54Z"
+                          timestamp: 1719188007000000000
+                        - command:
+                            type: message
+                          data:
+                            avatar: https://example.com/avatar.png
+                            chatroomId: chatroom456
+                            createdAt: "2024-01-01T11:53:54Z"
+                            data: Hello, world!
+                            id: msg123
+                            nickname: text
+                            senderId: user789
+                            type: text
+                            updatedAt: "2024-01-01T11:53:54Z"
+                          timestamp: 1719188007000000000
+                        - command:
+                            type: message
+                          data:
+                            avatar: https://example.com/avatar.png
+                            chatroomId: chatroom456
+                            createdAt: "2024-01-01T11:53:54Z"
+                            data: Hello, world!
+                            id: msg123
+                            nickname: text
+                            senderId: user789
+                            type: text
+                            updatedAt: "2024-01-01T11:53:54Z"
+                          timestamp: 1719188007000000000
+            description: List of messages
+            example:
+                messages:
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+            required:
+                - messages
+        RemoveUserFromChatroomRequestBody:
+            type: object
+            properties:
+                userId:
+                    type: string
+                    description: User identifier
+                    example: user789
+            example:
+                userId: user789
+            required:
+                - userId
+        RemoveUserFromChatroomResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    $ref: '#/components/schemas/RemoveUserResultData'
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            example:
+                command:
+                    type: removeUserFromChatroom
+                data:
+                    chatroomId: "123456"
+                    message: User removed successfully
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
+        RemoveUserResultData:
+            type: object
+            properties:
+                chatroomId:
+                    type: string
+                    description: Chatroom identifier
+                    example: "123456"
+                message:
+                    type: string
+                    description: Message indicating the result of the operation
+                    example: User removed successfully
+            description: Result of removing a user from a chatroom
+            example:
+                chatroomId: "123456"
+                message: User removed successfully
+            required:
+                - chatroomId
+                - message
         ReorderBaseNavStateResult:
             type: object
             properties:
@@ -2304,15 +4036,15 @@ components:
                         $ref: '#/components/schemas/BaseNavState'
                     description: 資料
                     example:
-                        - baseId: EbZvovBKbFogJeRem5oj2S
+                        - base_id: EbZvovBKbFogJeRem5oj2S
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj7a
                           index: 0
-                        - baseId: EbZvovBKbFogJeRem5oj3S
+                        - base_id: EbZvovBKbFogJeRem5oj3S
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj7b
                           index: 1
-                        - baseId: EbZvovBKbFogJeRem5oj4S
+                        - base_id: EbZvovBKbFogJeRem5oj4S
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj7c
                           index: 2
@@ -2326,15 +4058,15 @@ components:
                 command:
                     type: reorderBaseNavState
                 data:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7a
                       index: 0
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7b
                       index: 1
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7c
                       index: 2
@@ -2352,7 +4084,7 @@ components:
                     example: 669071b8a650a662b82285ca
                     minLength: 24
                     maxLength: 24
-                newIndex:
+                new_index:
                     type: integer
                     description: 新的順序
                     default: 1
@@ -2361,10 +4093,48 @@ components:
                     minimum: 1
             example:
                 id: 669071b8a650a662b82285ca
-                newIndex: 0
+                new_index: 0
             required:
                 - id
-                - newIndex
+                - new_index
+        ReorderBoardNavStatesRequestBody:
+            type: object
+            properties:
+                parentID:
+                    type: string
+                    description: 上一級基地/資料夾的識別碼
+                    example: 669071b8a650a662b82285ca
+                    minLength: 24
+                    maxLength: 24
+                position:
+                    type: integer
+                    description: 新的順序
+                    default: 0
+                    example: 0
+                    format: int64
+            example:
+                parentID: 669071b8a650a662b82285ca
+                position: 0
+            required:
+                - parentID
+                - position
+        SendMessageRequestBody:
+            type: object
+            properties:
+                data:
+                    type: string
+                    description: Content of the message
+                    example: Hello, world!
+                type:
+                    type: string
+                    description: Type of the message
+                    example: text
+            example:
+                data: Hello, world!
+                type: text
+            required:
+                - type
+                - data
         SignInRequestBody:
             type: object
             properties:
@@ -2380,76 +4150,76 @@ components:
         SyncPayloadData:
             type: object
             properties:
-                baseInfos:
+                base_infos:
                     type: array
                     items:
                         $ref: '#/components/schemas/BaseInfo'
                     example:
-                        - baseId: EbZvovBKbFogJeRem5oj2S
+                        - base_id: EbZvovBKbFogJeRem5oj2S
                           color: '#FF5733'
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj2S
                           logo: http://example.com/logo.png
                           name: 基地 A
-                        - baseId: EbZvovBKbFogJeRem5oj3S
+                        - base_id: EbZvovBKbFogJeRem5oj3S
                           color: '#FF5733'
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj3S
                           logo: http://example.com/logo.png
                           name: 基地 B
-                        - baseId: EbZvovBKbFogJeRem5oj4S
+                        - base_id: EbZvovBKbFogJeRem5oj4S
                           color: '#FF5733'
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj4S
                           logo: http://example.com/logo.png
                           name: 基地 C
-                baseNavStates:
+                base_nav_states:
                     type: array
                     items:
                         $ref: '#/components/schemas/BaseNavState'
                     example:
-                        - baseId: EbZvovBKbFogJeRem5oj2S
+                        - base_id: EbZvovBKbFogJeRem5oj2S
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj7a
                           index: 0
-                        - baseId: EbZvovBKbFogJeRem5oj3S
+                        - base_id: EbZvovBKbFogJeRem5oj3S
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj7b
                           index: 1
-                        - baseId: EbZvovBKbFogJeRem5oj4S
+                        - base_id: EbZvovBKbFogJeRem5oj4S
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj7c
                           index: 2
             example:
-                baseInfos:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                base_infos:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj2S
                       logo: http://example.com/logo.png
                       name: 基地 A
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj3S
                       logo: http://example.com/logo.png
                       name: 基地 B
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj4S
                       logo: http://example.com/logo.png
                       name: 基地 C
-                baseNavStates:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                base_nav_states:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7a
                       index: 0
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7b
                       index: 1
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7c
                       index: 2
@@ -2481,35 +4251,35 @@ components:
                 command:
                     type: sync
                 data:
-                    baseInfos:
-                        - baseId: EbZvovBKbFogJeRem5oj2S
+                    base_infos:
+                        - base_id: EbZvovBKbFogJeRem5oj2S
                           color: '#FF5733'
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj2S
                           logo: http://example.com/logo.png
                           name: 基地 A
-                        - baseId: EbZvovBKbFogJeRem5oj3S
+                        - base_id: EbZvovBKbFogJeRem5oj3S
                           color: '#FF5733'
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj3S
                           logo: http://example.com/logo.png
                           name: 基地 B
-                        - baseId: EbZvovBKbFogJeRem5oj4S
+                        - base_id: EbZvovBKbFogJeRem5oj4S
                           color: '#FF5733'
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj4S
                           logo: http://example.com/logo.png
                           name: 基地 C
-                    baseNavStates:
-                        - baseId: EbZvovBKbFogJeRem5oj2S
+                    base_nav_states:
+                        - base_id: EbZvovBKbFogJeRem5oj2S
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj7a
                           index: 0
-                        - baseId: EbZvovBKbFogJeRem5oj3S
+                        - base_id: EbZvovBKbFogJeRem5oj3S
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj7b
                           index: 1
-                        - baseId: EbZvovBKbFogJeRem5oj4S
+                        - base_id: EbZvovBKbFogJeRem5oj4S
                           deleted_at: null
                           id: EbZvovBKbFogJeRem5oj7c
                           index: 2
@@ -2545,7 +4315,6 @@ components:
                 name: 基地 A
             required:
                 - color
-                - logo
                 - name
         UpdateBaseInfoResult:
             type: object
@@ -2564,7 +4333,7 @@ components:
                 command:
                     type: updateBaseInfo
                 data:
-                    baseId: EbZvovBKbFogJeRem5oj2S
+                    base_id: EbZvovBKbFogJeRem5oj2S
                     color: '#FF5733'
                     deleted_at: null
                     id: EbZvovBKbFogJeRem5oj2S
@@ -2575,6 +4344,198 @@ components:
                 - command
                 - timestamp
                 - data
+        UpdateBoardInfoRequestBody:
+            type: object
+            properties:
+                color:
+                    type: string
+                    description: 版颜色
+                    example: '#FF5733'
+                    minLength: 1
+                    maxLength: 16
+                logo:
+                    type: string
+                    description: 版Logo的 URL
+                    example: http://example.com/logo.png
+                    minLength: 1
+                    maxLength: 1024
+                name:
+                    type: string
+                    description: 名稱
+                    example: 版 A
+                    minLength: 1
+                    maxLength: 128
+            example:
+                color: '#FF5733'
+                logo: http://example.com/logo.png
+                name: 版 A
+            required:
+                - color
+                - logo
+                - name
+        UpdateBoardInfoResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    $ref: '#/components/schemas/BoardInfo'
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            example:
+                command:
+                    type: updateBoardInfo
+                data:
+                    color: '#FF5733'
+                    id: 669071b8a650a662b82285ca
+                    logo: http://example.com/logo.png
+                    name: 版 A
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
+        UpdateChatroomRequestBody:
+            type: object
+            properties:
+                avatar:
+                    type: string
+                    description: Chatroom avatar
+                    example: https://example.com/avatar.png
+                title:
+                    type: string
+                    description: Title of the chatroom
+                    example: Chat Room 1
+            example:
+                avatar: https://example.com/avatar.png
+                title: Chat Room 1
+            required:
+                - title
+                - avatar
+        UserMutedChatRoomRequestBody:
+            type: object
+            properties:
+                mute:
+                    type: boolean
+                    description: Mute
+                    example: true
+            example:
+                mute: true
+            required:
+                - mute
+        UserMutedChatRoomResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    $ref: '#/components/schemas/UserMutedChatroomResultData'
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            example:
+                command:
+                    type: userMutedChatRoom
+                data:
+                    chatroomId: "123456"
+                    mute: true
+                    userId: user789
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
+        UserMutedChatroomResultData:
+            type: object
+            properties:
+                chatroomId:
+                    type: string
+                    description: Chatroom identifier
+                    example: "123456"
+                mute:
+                    type: boolean
+                    description: Mute
+                    example: true
+                userId:
+                    type: string
+                    description: User identifier
+                    example: user789
+            description: Result of muting a user in a chatroom
+            example:
+                chatroomId: "123456"
+                mute: true
+                userId: user789
+            required:
+                - chatroomId
+                - userId
+                - mute
+        UserPinnedChatRoomRequestBody:
+            type: object
+            properties:
+                pin:
+                    type: boolean
+                    description: Pin
+                    example: true
+            example:
+                pin: true
+            required:
+                - pin
+        UserPinnedChatRoomResult:
+            type: object
+            properties:
+                command:
+                    $ref: '#/components/schemas/Command'
+                data:
+                    $ref: '#/components/schemas/UserPinnedChatroomResultData'
+                timestamp:
+                    type: integer
+                    description: 時間戳記
+                    example: 1719188007000000000
+                    format: int64
+                    minimum: 1.719188007e+18
+            example:
+                command:
+                    type: userPinnedChatRoom
+                data:
+                    chatroomId: "123456"
+                    pin: true
+                    userId: user789
+                timestamp: 1719188007000000000
+            required:
+                - command
+                - timestamp
+                - data
+        UserPinnedChatroomResultData:
+            type: object
+            properties:
+                chatroomId:
+                    type: string
+                    description: Chatroom identifier
+                    example: "123456"
+                pin:
+                    type: boolean
+                    description: Pin status
+                    example: true
+                userId:
+                    type: string
+                    description: User identifier
+                    example: user789
+            description: Result of pinning a user in a chatroom
+            example:
+                chatroomId: "123456"
+                pin: true
+                userId: user789
+            required:
+                - chatroomId
+                - userId
+                - pin
     securitySchemes:
         JWT_header_Authorization:
             type: http
@@ -2584,6 +4545,8 @@ tags:
       description: 認證
     - name: Base
       description: 基地
+    - name: Board
+      description: 版
     - name: chatroom
       description: The chatroom service provides operations for managing chatrooms.
     - name: folder

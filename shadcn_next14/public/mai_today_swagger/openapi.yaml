@@ -13,6 +13,39 @@ produces:
     - application/xml
     - application/gob
 paths:
+    /{channel}/addUserToChatroom:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Add User to Chatroom by ID'
+            operationId: chatroom#receiveAddUserToChatroom
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomReceiveAddUserToChatroomOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
     /{channel}/createBase:
         get:
             tags:
@@ -38,6 +71,39 @@ paths:
                     description: 操作成功
                     schema:
                         $ref: '#/definitions/BaseReceiveCreateBaseOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/createBoard:
+        get:
+            tags:
+                - Board
+            summary: '[WebSocket] 創造一個新的版'
+            operationId: Board#receiveCreateBoard
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/BoardReceiveCreateBoardOKResponseBody'
                         required:
                             - command
                             - timestamp
@@ -145,12 +211,12 @@ paths:
                 - https
             security:
                 - JWT_header_Authorization: []
-    /{channel}/deleteChatroom:
+    /{channel}/deleteBoard:
         get:
             tags:
-                - chatroom
-            summary: '[WebSocket] Delete a chatroom by ID'
-            operationId: chatroom#receiveDeleteChatroom
+                - Board
+            summary: '[WebSocket] 删除指定的版'
+            operationId: Board#receiveDeleteBoard
             parameters:
                 - name: channel
                   in: path
@@ -169,7 +235,7 @@ paths:
                 "200":
                     description: 操作成功
                     schema:
-                        $ref: '#/definitions/ChatroomReceiveDeleteChatroomOKResponseBody'
+                        $ref: '#/definitions/BoardReceiveDeleteBoardOKResponseBody'
                         required:
                             - command
                             - timestamp
@@ -211,6 +277,105 @@ paths:
                 - https
             security:
                 - JWT_header_Authorization: []
+    /{channel}/getChatroomMembers:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Get chatroom members'
+            operationId: chatroom#receiveGetChatroomMembers
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomReceiveGetChatroomMembersOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/getMessages:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Retrieve messages for a chatroom'
+            operationId: chatroom#receiveGetMessages
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomReceiveGetMessagesOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/listBoard:
+        get:
+            tags:
+                - Board
+            summary: '[WebSocket] 取得指定父層的子版'
+            operationId: Board#receiveListBoard
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/BoardReceiveListBoardOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
     /{channel}/listChatrooms:
         get:
             tags:
@@ -237,8 +402,6 @@ paths:
                     schema:
                         $ref: '#/definitions/ChatroomReceiveListChatroomsOKResponseBody'
                         required:
-                            - command
-                            - timestamp
                             - data
             schemes:
                 - https
@@ -277,6 +440,39 @@ paths:
                 - https
             security:
                 - JWT_header_Authorization: []
+    /{channel}/removeUserFromChatroom:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Remove User from Chatroom by ID'
+            operationId: chatroom#receiveRemoveUserFromChatroom
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomReceiveRemoveUserFromChatroomOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
     /{channel}/reorderBaseNavStates:
         get:
             tags:
@@ -302,6 +498,72 @@ paths:
                     description: 操作成功
                     schema:
                         $ref: '#/definitions/BaseReceiveReorderBaseNavStatesOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/reorderBoardNavStates:
+        get:
+            tags:
+                - Board
+            summary: '[WebSocket] 變更版的順序'
+            operationId: Board#receiveReorderBoardNavStates
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/BoardReceiveReorderBoardNavStatesOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/sendMessage:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Send a message to a chatroom'
+            operationId: chatroom#receiveSendMessage
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomReceiveSendMessageOKResponseBody'
                         required:
                             - command
                             - timestamp
@@ -376,6 +638,39 @@ paths:
                 - https
             security:
                 - JWT_header_Authorization: []
+    /{channel}/updateBoardInfo:
+        get:
+            tags:
+                - Board
+            summary: '[WebSocket] 更新版資訊'
+            operationId: Board#receiveUpdateBoardInfo
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/BoardReceiveUpdateBoardInfoOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
     /{channel}/updateChatroom:
         get:
             tags:
@@ -442,6 +737,72 @@ paths:
                 - https
             security:
                 - JWT_header_Authorization: []
+    /{channel}/userMutedChatRoom:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Mute User in Chatroom by ID'
+            operationId: chatroom#receiveUserMutedChatRoom
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomReceiveUserMutedChatRoomOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /{channel}/userPinnedChatRoom:
+        get:
+            tags:
+                - chatroom
+            summary: '[WebSocket] Pin User in Chatroom by ID'
+            operationId: chatroom#receiveUserPinnedChatRoom
+            parameters:
+                - name: channel
+                  in: path
+                  description: 使用者識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "101":
+                    description: 此 API 僅用於 WebSocket 協議
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomReceiveUserPinnedChatRoomOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
     /base:
         post:
             tags:
@@ -460,7 +821,6 @@ paths:
                     $ref: '#/definitions/BaseCreateBaseRequestBody'
                     required:
                         - color
-                        - logo
                         - name
             responses:
                 "200":
@@ -553,7 +913,6 @@ paths:
                     $ref: '#/definitions/BaseUpdateBaseInfoRequestBody'
                     required:
                         - color
-                        - logo
                         - name
             responses:
                 "200":
@@ -584,6 +943,36 @@ paths:
                 - https
             security:
                 - JWT_header_Authorization: []
+    /base/list:
+        get:
+            tags:
+                - Base
+            summary: 取得基地列表
+            operationId: Base#GetBaseList
+            parameters:
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/BaseGetBaseListOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/BaseGetBaseListInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
     /base/nav-state/reorder:
         put:
             tags:
@@ -602,7 +991,7 @@ paths:
                     $ref: '#/definitions/BaseReorderBaseNavStatesRequestBody'
                     required:
                         - id
-                        - newIndex
+                        - new_index
             responses:
                 "200":
                     description: 操作成功
@@ -624,22 +1013,34 @@ paths:
                 - https
             security:
                 - JWT_header_Authorization: []
-    /chatrooms:
-        get:
+    /board:
+        post:
             tags:
-                - chatroom
-            summary: List all chatrooms
-            operationId: chatroom#ListChatrooms
+                - Board
+            summary: 創造一個新的版
+            operationId: Board#CreateBoard
             parameters:
                 - name: Authorization
                   in: header
                   required: false
                   type: string
+                - name: CreateBoardRequestBody
+                  in: body
+                  required: true
+                  schema:
+                    $ref: '#/definitions/BoardCreateBoardRequestBody'
+                    required:
+                        - baseID
+                        - parentID
+                        - name
+                        - color
+                        - logo
+                        - position
             responses:
                 "200":
                     description: 操作成功
                     schema:
-                        $ref: '#/definitions/ChatroomListChatroomsOKResponseBody'
+                        $ref: '#/definitions/BoardCreateBoardOKResponseBody'
                         required:
                             - command
                             - timestamp
@@ -649,13 +1050,146 @@ paths:
                 "401":
                     description: Unauthorized response.
                     schema:
-                        $ref: '#/definitions/ChatroomListChatroomsInvalidTokenResponseBody'
+                        $ref: '#/definitions/BoardCreateBoardInvalidTokenResponseBody'
                 "500":
                     description: 伺服器發生錯誤
             schemes:
                 - https
             security:
                 - JWT_header_Authorization: []
+    /board/{id}:
+        delete:
+            tags:
+                - Board
+            summary: 删除指定的版
+            operationId: Board#DeleteBoard
+            parameters:
+                - name: id
+                  in: path
+                  description: 識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/BoardDeleteBoardOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/BoardDeleteBoardInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /board/{id}/nav-state:
+        put:
+            tags:
+                - Board
+            summary: 變更版的順序
+            operationId: Board#ReorderBoardNavStates
+            parameters:
+                - name: id
+                  in: path
+                  description: 識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+                - name: ReorderBoardNavStatesRequestBody
+                  in: body
+                  required: true
+                  schema:
+                    $ref: '#/definitions/BoardReorderBoardNavStatesRequestBody'
+                    required:
+                        - parentID
+                        - position
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/BoardReorderBoardNavStatesOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/BoardReorderBoardNavStatesInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /board/info/{id}:
+        put:
+            tags:
+                - Board
+            summary: 更新版資訊
+            operationId: Board#UpdateBoardInfo
+            parameters:
+                - name: id
+                  in: path
+                  description: 識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+                - name: UpdateBoardInfoRequestBody
+                  in: body
+                  required: true
+                  schema:
+                    $ref: '#/definitions/BoardUpdateBoardInfoRequestBody'
+                    required:
+                        - color
+                        - logo
+                        - name
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/BoardUpdateBoardInfoOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/BoardUpdateBoardInfoInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /chatroom:
         post:
             tags:
                 - chatroom
@@ -672,7 +1206,8 @@ paths:
                   schema:
                     $ref: '#/definitions/ChatroomCreateChatroomRequestBody'
                     required:
-                        - chatroom
+                        - baseId
+                        - title
             responses:
                 "200":
                     description: 操作成功
@@ -694,7 +1229,7 @@ paths:
                 - https
             security:
                 - JWT_header_Authorization: []
-    /chatrooms/{chatroomId}:
+    /chatroom/{chatroomId}:
         put:
             tags:
                 - chatroom
@@ -716,7 +1251,8 @@ paths:
                   schema:
                     $ref: '#/definitions/ChatroomUpdateChatroomRequestBody'
                     required:
-                        - chatroom
+                        - title
+                        - avatar
             responses:
                 "200":
                     description: 操作成功
@@ -741,8 +1277,50 @@ paths:
         delete:
             tags:
                 - chatroom
-            summary: Delete a chatroom by ID
-            operationId: chatroom#DeleteChatroom
+            summary: Remove User from Chatroom by ID
+            operationId: chatroom#RemoveUserFromChatroom
+            parameters:
+                - name: chatroomId
+                  in: path
+                  description: Chatroom identifier
+                  required: true
+                  type: string
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+                - name: RemoveUserFromChatroomRequestBody
+                  in: body
+                  required: true
+                  schema:
+                    $ref: '#/definitions/ChatroomRemoveUserFromChatroomRequestBody'
+                    required:
+                        - userId
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomRemoveUserFromChatroomOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/ChatroomRemoveUserFromChatroomInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/{chatroomId}/add-user:
+        post:
+            tags:
+                - chatroom
+            summary: Add User to Chatroom by ID
+            operationId: chatroom#AddUserToChatroom
             parameters:
                 - name: chatroomId
                   in: path
@@ -757,7 +1335,7 @@ paths:
                 "200":
                     description: 操作成功
                     schema:
-                        $ref: '#/definitions/ChatroomDeleteChatroomOKResponseBody'
+                        $ref: '#/definitions/ChatroomAddUserToChatroomOKResponseBody'
                         required:
                             - command
                             - timestamp
@@ -765,7 +1343,247 @@ paths:
                 "401":
                     description: Unauthorized response.
                     schema:
-                        $ref: '#/definitions/ChatroomDeleteChatroomInvalidTokenResponseBody'
+                        $ref: '#/definitions/ChatroomAddUserToChatroomInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/{chatroomId}/members:
+        get:
+            tags:
+                - chatroom
+            summary: Get chatroom members
+            operationId: chatroom#GetChatroomMembers
+            parameters:
+                - name: chatroomId
+                  in: path
+                  description: Identifier of the chatroom
+                  required: true
+                  type: string
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomGetChatroomMembersOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/ChatroomGetChatroomMembersInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/{chatroomId}/messages:
+        get:
+            tags:
+                - chatroom
+            summary: Retrieve messages for a chatroom
+            operationId: chatroom#GetMessages
+            parameters:
+                - name: page
+                  in: query
+                  description: Page number
+                  required: true
+                  type: integer
+                - name: pageSize
+                  in: query
+                  description: Page size for pagination
+                  required: true
+                  type: integer
+                - name: chatroomId
+                  in: path
+                  description: Identifier of the chatroom
+                  required: true
+                  type: string
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomGetMessagesOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/ChatroomGetMessagesInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+        post:
+            tags:
+                - chatroom
+            summary: Send a message to a chatroom
+            operationId: chatroom#SendMessage
+            parameters:
+                - name: chatroomId
+                  in: path
+                  description: Identifier of the chatroom
+                  required: true
+                  type: string
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+                - name: SendMessageRequestBody
+                  in: body
+                  required: true
+                  schema:
+                    $ref: '#/definitions/ChatroomSendMessageRequestBody'
+                    required:
+                        - type
+                        - data
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomSendMessageOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/ChatroomSendMessageInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/{chatroomId}/user-muted-chatroom:
+        put:
+            tags:
+                - chatroom
+            summary: Mute User in Chatroom by ID
+            operationId: chatroom#UserMutedChatRoom
+            parameters:
+                - name: chatroomId
+                  in: path
+                  description: Chatroom identifier
+                  required: true
+                  type: string
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+                - name: UserMutedChatRoomRequestBody
+                  in: body
+                  required: true
+                  schema:
+                    $ref: '#/definitions/ChatroomUserMutedChatRoomRequestBody'
+                    required:
+                        - mute
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomUserMutedChatRoomOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/ChatroomUserMutedChatRoomInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/{chatroomId}/user-pinned-chatroom:
+        put:
+            tags:
+                - chatroom
+            summary: Pin User in Chatroom by ID
+            operationId: chatroom#UserPinnedChatRoom
+            parameters:
+                - name: chatroomId
+                  in: path
+                  description: Chatroom identifier
+                  required: true
+                  type: string
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+                - name: UserPinnedChatRoomRequestBody
+                  in: body
+                  required: true
+                  schema:
+                    $ref: '#/definitions/ChatroomUserPinnedChatRoomRequestBody'
+                    required:
+                        - pin
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomUserPinnedChatRoomOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/ChatroomUserPinnedChatRoomInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /chatroom/room:
+        get:
+            tags:
+                - chatroom
+            summary: List all chatrooms
+            operationId: chatroom#ListChatrooms
+            parameters:
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/ChatroomListChatroomsOKResponseBody'
+                        required:
+                            - data
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/ChatroomListChatroomsInvalidTokenResponseBody'
                 "500":
                     description: 伺服器發生錯誤
             schemes:
@@ -820,7 +1638,10 @@ paths:
                   schema:
                     $ref: '#/definitions/FolderCreateFolderRequestBody'
                     required:
-                        - folder
+                        - baseId
+                        - parentId
+                        - data
+                        - position
             responses:
                 "200":
                     description: 操作成功
@@ -864,7 +1685,10 @@ paths:
                   schema:
                     $ref: '#/definitions/FolderUpdateFolderRequestBody'
                     required:
-                        - folder
+                        - baseId
+                        - parentId
+                        - data
+                        - position
             responses:
                 "200":
                     description: 操作成功
@@ -914,6 +1738,45 @@ paths:
                     description: Unauthorized response.
                     schema:
                         $ref: '#/definitions/FolderDeleteFolderInvalidTokenResponseBody'
+                "500":
+                    description: 伺服器發生錯誤
+            schemes:
+                - https
+            security:
+                - JWT_header_Authorization: []
+    /listBoard/{parentID}:
+        get:
+            tags:
+                - Board
+            summary: 取得指定父層的子版
+            operationId: Board#ListBoard
+            parameters:
+                - name: parentID
+                  in: path
+                  description: 上一級基地/資料夾的識別碼
+                  required: true
+                  type: string
+                  maxLength: 24
+                  minLength: 24
+                - name: Authorization
+                  in: header
+                  required: false
+                  type: string
+            responses:
+                "200":
+                    description: 操作成功
+                    schema:
+                        $ref: '#/definitions/BoardListBoardOKResponseBody'
+                        required:
+                            - command
+                            - timestamp
+                            - data
+                "400":
+                    description: 參數錯誤
+                "401":
+                    description: Unauthorized response.
+                    schema:
+                        $ref: '#/definitions/BoardListBoardInvalidTokenResponseBody'
                 "500":
                     description: 伺服器發生錯誤
             schemes:
@@ -979,6 +1842,25 @@ paths:
             security:
                 - JWT_header_Authorization: []
 definitions:
+    AddUserResultDataResponseBody:
+        title: 'Mediatype identifier: application/vnd.add-user-result-data+json; view=default'
+        type: object
+        properties:
+            chatroomId:
+                type: string
+                description: Chatroom identifier
+                example: "123456"
+            message:
+                type: string
+                description: Message indicating the result of the operation
+                example: User added successfully
+        description: Result of adding a user to a chatroom (default view)
+        example:
+            chatroomId: "123456"
+            message: User added successfully
+        required:
+            - chatroomId
+            - message
     AuthenticationSignInRequestBody:
         title: AuthenticationSignInRequestBody
         type: object
@@ -999,7 +1881,7 @@ definitions:
             fault:
                 type: boolean
                 description: Is the error a server-side fault?
-                example: false
+                example: true
             id:
                 type: string
                 description: ID is a unique identifier for this particular occurrence of the problem.
@@ -1019,14 +1901,14 @@ definitions:
             timeout:
                 type: boolean
                 description: Is the error a timeout?
-                example: true
+                example: false
         description: SignIn_token_error_Response_Body result type (default view)
         example:
-            fault: false
+            fault: true
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
-            temporary: true
+            temporary: false
             timeout: false
         required:
             - name
@@ -1042,7 +1924,7 @@ definitions:
             fault:
                 type: boolean
                 description: Is the error a server-side fault?
-                example: true
+                example: false
             id:
                 type: string
                 description: ID is a unique identifier for this particular occurrence of the problem.
@@ -1058,18 +1940,18 @@ definitions:
             temporary:
                 type: boolean
                 description: Is the error temporary?
-                example: false
+                example: true
             timeout:
                 type: boolean
                 description: Is the error a timeout?
                 example: false
         description: token 無效 (default view)
         example:
-            fault: false
+            fault: true
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
-            temporary: false
+            temporary: true
             timeout: false
         required:
             - name
@@ -1098,14 +1980,14 @@ definitions:
             data:
                 id: 669071b8a650a662b82285ca
                 info:
-                    baseId: EbZvovBKbFogJeRem5oj2S
+                    base_id: EbZvovBKbFogJeRem5oj2S
                     color: '#FF5733'
                     deleted_at: null
                     id: EbZvovBKbFogJeRem5oj2S
                     logo: http://example.com/logo.png
                     name: 基地 A
-                navState:
-                    baseId: 669071b8a650a662b82285ca
+                nav_state:
+                    base_id: 669071b8a650a662b82285ca
                     deleted_at: "2024-01-01T11:53:54Z"
                     id: 669071b8a650a662b82285ca
                     index: 0
@@ -1150,7 +2032,6 @@ definitions:
             name: 基地 A
         required:
             - color
-            - logo
             - name
     BaseDeleteBaseInvalidTokenResponseBody:
         title: 'Mediatype identifier: application/vnd.goa.error; view=default'
@@ -1175,7 +2056,7 @@ definitions:
             temporary:
                 type: boolean
                 description: Is the error temporary?
-                example: true
+                example: false
             timeout:
                 type: boolean
                 description: Is the error a timeout?
@@ -1222,15 +2103,15 @@ definitions:
             timeout:
                 type: boolean
                 description: Is the error a timeout?
-                example: true
+                example: false
         description: 資源不存在 (default view)
         example:
-            fault: true
+            fault: false
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
-            temporary: false
-            timeout: true
+            temporary: true
+            timeout: false
         required:
             - name
             - id
@@ -1256,7 +2137,7 @@ definitions:
             command:
                 type: deleteBase
             data:
-                baseId: 669071b8a650a662b82285ca
+                base_id: 669071b8a650a662b82285ca
             timestamp: 1719188007000000000
         required:
             - command
@@ -1285,19 +2166,19 @@ definitions:
             temporary:
                 type: boolean
                 description: Is the error temporary?
-                example: false
+                example: true
             timeout:
                 type: boolean
                 description: Is the error a timeout?
-                example: false
+                example: true
         description: 沒有權限 (default view)
         example:
-            fault: false
+            fault: true
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
             temporary: true
-            timeout: true
+            timeout: false
         required:
             - name
             - id
@@ -1305,11 +2186,109 @@ definitions:
             - temporary
             - timeout
             - fault
+    BaseGetBaseListInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: false
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: true
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: true
+        description: token 無效 (default view)
+        example:
+            fault: true
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: false
+            timeout: false
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    BaseGetBaseListOKResponseBody:
+        title: BaseGetBaseListOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/GetBaseListResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: getBaseList
+            data:
+                base_infos:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
+                      color: '#FF5733'
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj2S
+                      logo: http://example.com/logo.png
+                      name: 基地 A
+                    - base_id: EbZvovBKbFogJeRem5oj3S
+                      color: '#FF5733'
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj3S
+                      logo: http://example.com/logo.png
+                      name: 基地 B
+                    - base_id: EbZvovBKbFogJeRem5oj4S
+                      color: '#FF5733'
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj4S
+                      logo: http://example.com/logo.png
+                      name: 基地 C
+                base_nav_states:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj7a
+                      index: 0
+                    - base_id: EbZvovBKbFogJeRem5oj3S
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj7b
+                      index: 1
+                    - base_id: EbZvovBKbFogJeRem5oj4S
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj7c
+                      index: 2
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
     BaseInfoResponseBody:
         title: BaseInfoResponseBody
         type: object
         properties:
-            baseId:
+            base_id:
                 type: string
                 description: 基地識別碼
                 example: 669071b8a650a662b82285ca
@@ -1346,7 +2325,7 @@ definitions:
                 maxLength: 128
         description: 基地資訊
         example:
-            baseId: EbZvovBKbFogJeRem5oj2S
+            base_id: EbZvovBKbFogJeRem5oj2S
             color: '#FF5733'
             deleted_at: null
             id: EbZvovBKbFogJeRem5oj2S
@@ -1354,15 +2333,14 @@ definitions:
             name: 基地 A
         required:
             - id
-            - baseId
+            - base_id
             - color
-            - logo
             - name
     BaseNavStateResponseBody:
         title: BaseNavStateResponseBody
         type: object
         properties:
-            baseId:
+            base_id:
                 type: string
                 description: 基地識別碼
                 example: 669071b8a650a662b82285ca
@@ -1388,13 +2366,13 @@ definitions:
                 minimum: 1
         description: 基地導覽列狀態
         example:
-            baseId: 669071b8a650a662b82285ca
+            base_id: 669071b8a650a662b82285ca
             deleted_at: "2024-01-01T11:53:54Z"
             id: 669071b8a650a662b82285ca
             index: 0
         required:
             - id
-            - baseId
+            - base_id
             - index
     BaseReceiveCreateBaseOKResponseBody:
         title: BaseReceiveCreateBaseOKResponseBody
@@ -1416,14 +2394,14 @@ definitions:
             data:
                 id: 669071b8a650a662b82285ca
                 info:
-                    baseId: EbZvovBKbFogJeRem5oj2S
+                    base_id: EbZvovBKbFogJeRem5oj2S
                     color: '#FF5733'
                     deleted_at: null
                     id: EbZvovBKbFogJeRem5oj2S
                     logo: http://example.com/logo.png
                     name: 基地 A
-                navState:
-                    baseId: 669071b8a650a662b82285ca
+                nav_state:
+                    base_id: 669071b8a650a662b82285ca
                     deleted_at: "2024-01-01T11:53:54Z"
                     id: 669071b8a650a662b82285ca
                     index: 0
@@ -1450,7 +2428,7 @@ definitions:
             command:
                 type: deleteBase
             data:
-                baseId: 669071b8a650a662b82285ca
+                base_id: 669071b8a650a662b82285ca
             timestamp: 1719188007000000000
         required:
             - command
@@ -1468,15 +2446,15 @@ definitions:
                     $ref: '#/definitions/BaseNavStateResponseBody'
                 description: 資料
                 example:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7a
                       index: 0
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7b
                       index: 1
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7c
                       index: 2
@@ -1490,15 +2468,15 @@ definitions:
             command:
                 type: reorderBaseNavState
             data:
-                - baseId: EbZvovBKbFogJeRem5oj2S
+                - base_id: EbZvovBKbFogJeRem5oj2S
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj7a
                   index: 0
-                - baseId: EbZvovBKbFogJeRem5oj3S
+                - base_id: EbZvovBKbFogJeRem5oj3S
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj7b
                   index: 1
-                - baseId: EbZvovBKbFogJeRem5oj4S
+                - base_id: EbZvovBKbFogJeRem5oj4S
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj7c
                   index: 2
@@ -1525,7 +2503,7 @@ definitions:
             command:
                 type: updateBaseInfo
             data:
-                baseId: EbZvovBKbFogJeRem5oj2S
+                base_id: EbZvovBKbFogJeRem5oj2S
                 color: '#FF5733'
                 deleted_at: null
                 id: EbZvovBKbFogJeRem5oj2S
@@ -1566,7 +2544,7 @@ definitions:
                 example: true
         description: token 無效 (default view)
         example:
-            fault: true
+            fault: false
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
@@ -1591,15 +2569,15 @@ definitions:
                     $ref: '#/definitions/BaseNavStateResponseBody'
                 description: 資料
                 example:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7a
                       index: 0
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7b
                       index: 1
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7c
                       index: 2
@@ -1613,15 +2591,15 @@ definitions:
             command:
                 type: reorderBaseNavState
             data:
-                - baseId: EbZvovBKbFogJeRem5oj2S
+                - base_id: EbZvovBKbFogJeRem5oj2S
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj7a
                   index: 0
-                - baseId: EbZvovBKbFogJeRem5oj3S
+                - base_id: EbZvovBKbFogJeRem5oj3S
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj7b
                   index: 1
-                - baseId: EbZvovBKbFogJeRem5oj4S
+                - base_id: EbZvovBKbFogJeRem5oj4S
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj7c
                   index: 2
@@ -1640,7 +2618,7 @@ definitions:
                 example: 669071b8a650a662b82285ca
                 minLength: 24
                 maxLength: 24
-            newIndex:
+            new_index:
                 type: integer
                 description: 新的順序
                 default: 1
@@ -1649,10 +2627,10 @@ definitions:
                 minimum: 1
         example:
             id: 669071b8a650a662b82285ca
-            newIndex: 0
+            new_index: 0
         required:
             - id
-            - newIndex
+            - new_index
     BaseUpdateBaseInfoInvalidTokenResponseBody:
         title: 'Mediatype identifier: application/vnd.goa.error; view=default'
         type: object
@@ -1723,15 +2701,15 @@ definitions:
             timeout:
                 type: boolean
                 description: Is the error a timeout?
-                example: true
+                example: false
         description: 資源不存在 (default view)
         example:
-            fault: true
+            fault: false
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
-            temporary: true
-            timeout: true
+            temporary: false
+            timeout: false
         required:
             - name
             - id
@@ -1757,7 +2735,7 @@ definitions:
             command:
                 type: updateBaseInfo
             data:
-                baseId: EbZvovBKbFogJeRem5oj2S
+                base_id: EbZvovBKbFogJeRem5oj2S
                 color: '#FF5733'
                 deleted_at: null
                 id: EbZvovBKbFogJeRem5oj2S
@@ -1775,7 +2753,7 @@ definitions:
             fault:
                 type: boolean
                 description: Is the error a server-side fault?
-                example: false
+                example: true
             id:
                 type: string
                 description: ID is a unique identifier for this particular occurrence of the problem.
@@ -1791,19 +2769,19 @@ definitions:
             temporary:
                 type: boolean
                 description: Is the error temporary?
-                example: true
+                example: false
             timeout:
                 type: boolean
                 description: Is the error a timeout?
-                example: true
+                example: false
         description: 沒有權限 (default view)
         example:
             fault: false
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
-            temporary: false
-            timeout: false
+            temporary: true
+            timeout: true
         required:
             - name
             - id
@@ -1839,9 +2817,1491 @@ definitions:
             name: 基地 A
         required:
             - color
+            - name
+    BoardCreateBoardInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: false
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: true
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: true
+        description: token 無效 (default view)
+        example:
+            fault: true
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: true
+            timeout: true
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    BoardCreateBoardOKResponseBody:
+        title: BoardCreateBoardOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/CreateBoardResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: createBoard
+            data:
+                id: 669071b8a650a662b82285ca
+                info:
+                    color: '#FF5733'
+                    id: 669071b8a650a662b82285ca
+                    logo: http://example.com/logo.png
+                    name: 版 A
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    BoardCreateBoardRequestBody:
+        title: BoardCreateBoardRequestBody
+        type: object
+        properties:
+            baseID:
+                type: string
+                description: 基地別碼
+                example: 669071b8a650a662b82285ca
+                minLength: 24
+                maxLength: 24
+            color:
+                type: string
+                description: 版颜色
+                example: '#FF5733'
+                minLength: 1
+                maxLength: 16
+            logo:
+                type: string
+                description: 版Logo的 URL
+                example: http://example.com/logo.png
+                minLength: 1
+                maxLength: 1024
+            name:
+                type: string
+                description: 名稱
+                example: 版 A
+                minLength: 1
+                maxLength: 128
+            parentID:
+                type: string
+                description: 上一級基地/資料夾的識別碼
+                example: 669071b8a650a662b82285ca
+                minLength: 24
+                maxLength: 24
+            position:
+                type: integer
+                description: 順序
+                default: 0
+                example: 0
+                format: int64
+        example:
+            baseID: 669071b8a650a662b82285ca
+            color: '#FF5733'
+            logo: http://example.com/logo.png
+            name: 版 A
+            parentID: 669071b8a650a662b82285ca
+            position: 0
+        required:
+            - baseID
+            - parentID
+            - name
+            - color
+            - logo
+            - position
+    BoardDeleteBoardInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: false
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: false
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: true
+        description: token 無效 (default view)
+        example:
+            fault: true
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: true
+            timeout: false
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    BoardDeleteBoardOKResponseBody:
+        title: BoardDeleteBoardOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/DeleteBoardResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: deleteBoard
+            data:
+                boardID: 669071b8a650a662b82285ca
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    BoardListBoardInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: true
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: true
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: true
+        description: token 無效 (default view)
+        example:
+            fault: true
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: true
+            timeout: false
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    BoardListBoardOKResponseBody:
+        title: BoardListBoardOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                type: array
+                items:
+                    $ref: '#/definitions/boardInfoResponseBody'
+                description: 資料
+                example:
+                    - color: '#FF5733'
+                      id: 669071b8a650a662b82285ca
+                      logo: http://example.com/logo.png
+                      name: 版 A
+                    - color: '#FF5733'
+                      id: 669071b8a650a662b82285ca
+                      logo: http://example.com/logo.png
+                      name: 版 A
+                    - color: '#FF5733'
+                      id: 669071b8a650a662b82285ca
+                      logo: http://example.com/logo.png
+                      name: 版 A
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: getListByParentID
+            data:
+                - color: '#FF5733'
+                  id: 669071b8a650a662b82285ca
+                  logo: http://example.com/logo.png
+                  name: 版 A
+                - color: '#FF5733'
+                  id: 669071b8a650a662b82285ca
+                  logo: http://example.com/logo.png
+                  name: 版 A
+                - color: '#FF5733'
+                  id: 669071b8a650a662b82285ca
+                  logo: http://example.com/logo.png
+                  name: 版 A
+                - color: '#FF5733'
+                  id: 669071b8a650a662b82285ca
+                  logo: http://example.com/logo.png
+                  name: 版 A
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    BoardReceiveCreateBoardOKResponseBody:
+        title: BoardReceiveCreateBoardOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/CreateBoardResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: createBoard
+            data:
+                id: 669071b8a650a662b82285ca
+                info:
+                    color: '#FF5733'
+                    id: 669071b8a650a662b82285ca
+                    logo: http://example.com/logo.png
+                    name: 版 A
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    BoardReceiveDeleteBoardOKResponseBody:
+        title: BoardReceiveDeleteBoardOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/DeleteBoardResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: deleteBoard
+            data:
+                boardID: 669071b8a650a662b82285ca
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    BoardReceiveListBoardOKResponseBody:
+        title: BoardReceiveListBoardOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                type: array
+                items:
+                    $ref: '#/definitions/boardInfoResponseBody'
+                description: 資料
+                example:
+                    - color: '#FF5733'
+                      id: 669071b8a650a662b82285ca
+                      logo: http://example.com/logo.png
+                      name: 版 A
+                    - color: '#FF5733'
+                      id: 669071b8a650a662b82285ca
+                      logo: http://example.com/logo.png
+                      name: 版 A
+                    - color: '#FF5733'
+                      id: 669071b8a650a662b82285ca
+                      logo: http://example.com/logo.png
+                      name: 版 A
+                    - color: '#FF5733'
+                      id: 669071b8a650a662b82285ca
+                      logo: http://example.com/logo.png
+                      name: 版 A
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: getListByParentID
+            data:
+                - color: '#FF5733'
+                  id: 669071b8a650a662b82285ca
+                  logo: http://example.com/logo.png
+                  name: 版 A
+                - color: '#FF5733'
+                  id: 669071b8a650a662b82285ca
+                  logo: http://example.com/logo.png
+                  name: 版 A
+                - color: '#FF5733'
+                  id: 669071b8a650a662b82285ca
+                  logo: http://example.com/logo.png
+                  name: 版 A
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    BoardReceiveReorderBoardNavStatesOKResponseBody:
+        title: BoardReceiveReorderBoardNavStatesOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/ReorderBoardNavDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: reorderBoardNavState
+            data:
+                boardID: 669071b8a650a662b82285ca
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    BoardReceiveUpdateBoardInfoOKResponseBody:
+        title: BoardReceiveUpdateBoardInfoOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/boardInfoResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: updateBoardInfo
+            data:
+                color: '#FF5733'
+                id: 669071b8a650a662b82285ca
+                logo: http://example.com/logo.png
+                name: 版 A
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    BoardReorderBoardNavStatesInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: true
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: false
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: false
+        description: token 無效 (default view)
+        example:
+            fault: false
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: false
+            timeout: false
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    BoardReorderBoardNavStatesOKResponseBody:
+        title: BoardReorderBoardNavStatesOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/ReorderBoardNavDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: reorderBoardNavState
+            data:
+                boardID: 669071b8a650a662b82285ca
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    BoardReorderBoardNavStatesRequestBody:
+        title: BoardReorderBoardNavStatesRequestBody
+        type: object
+        properties:
+            parentID:
+                type: string
+                description: 上一級基地/資料夾的識別碼
+                example: 669071b8a650a662b82285ca
+                minLength: 24
+                maxLength: 24
+            position:
+                type: integer
+                description: 新的順序
+                default: 0
+                example: 0
+                format: int64
+        example:
+            parentID: 669071b8a650a662b82285ca
+            position: 0
+        required:
+            - parentID
+            - position
+    BoardUpdateBoardInfoInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: true
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: false
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: false
+        description: token 無效 (default view)
+        example:
+            fault: true
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: false
+            timeout: true
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    BoardUpdateBoardInfoOKResponseBody:
+        title: BoardUpdateBoardInfoOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/boardInfoResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: updateBoardInfo
+            data:
+                color: '#FF5733'
+                id: 669071b8a650a662b82285ca
+                logo: http://example.com/logo.png
+                name: 版 A
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    BoardUpdateBoardInfoRequestBody:
+        title: BoardUpdateBoardInfoRequestBody
+        type: object
+        properties:
+            color:
+                type: string
+                description: 版颜色
+                example: '#FF5733'
+                minLength: 1
+                maxLength: 16
+            logo:
+                type: string
+                description: 版Logo的 URL
+                example: http://example.com/logo.png
+                minLength: 1
+                maxLength: 1024
+            name:
+                type: string
+                description: 名稱
+                example: 版 A
+                minLength: 1
+                maxLength: 128
+        example:
+            color: '#FF5733'
+            logo: http://example.com/logo.png
+            name: 版 A
+        required:
+            - color
             - logo
             - name
+    ChatroomAddUserToChatroomInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: true
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: false
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: false
+        description: token 無效 (default view)
+        example:
+            fault: true
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: false
+            timeout: true
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    ChatroomAddUserToChatroomOKResponseBody:
+        title: ChatroomAddUserToChatroomOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/AddUserResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: addUserToChatroom
+            data:
+                chatroomId: "123456"
+                message: User added successfully
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
     ChatroomCreateChatroomInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: false
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: true
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: true
+        description: token 無效 (default view)
+        example:
+            fault: false
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: true
+            timeout: true
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    ChatroomCreateChatroomOKResponseBody:
+        title: ChatroomCreateChatroomOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/CreateChatroomResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: createChatroom
+            data:
+                avatar: https://example.com/avatar.png
+                baseId: 669c07250b20ee76727169b0
+                boardId: uuid
+                chatroomId: "123456"
+                createdAt: "2024-01-01T11:53:54Z"
+                title: Chat Room 1
+                type: private
+                updatedAt: "2024-01-01T11:53:54Z"
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomCreateChatroomRequestBody:
+        title: ChatroomCreateChatroomRequestBody
+        type: object
+        properties:
+            avatar:
+                type: string
+                description: Chatroom avatar
+                example: https://example.com/avatar.png
+            baseId:
+                type: string
+                description: Base identifier
+                example: base123
+            boardId:
+                type: string
+                description: Board identifier
+                example: board123
+            title:
+                type: string
+                description: Title of the chatroom
+                example: Chat Room 1
+        description: Chatroom information.
+        example:
+            avatar: https://example.com/avatar.png
+            baseId: base123
+            boardId: board123
+            title: Chat Room 1
+        required:
+            - baseId
+            - title
+    ChatroomGetChatroomMembersInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: false
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: true
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: false
+        description: token 無效 (default view)
+        example:
+            fault: false
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: false
+            timeout: true
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    ChatroomGetChatroomMembersOKResponseBody:
+        title: ChatroomGetChatroomMembersOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/GetChatroomMembersResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: getChatroomMembers
+            data:
+                members:
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomGetMessagesInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: false
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: false
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: true
+        description: token 無效 (default view)
+        example:
+            fault: true
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: true
+            timeout: true
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    ChatroomGetMessagesOKResponseBody:
+        title: ChatroomGetMessagesOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/MessagesResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: getMessages
+            data:
+                messages:
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomListChatroomsInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: true
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: true
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: true
+        description: token 無效 (default view)
+        example:
+            fault: true
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: false
+            timeout: true
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    ChatroomListChatroomsOKResponseBody:
+        title: ChatroomListChatroomsOKResponseBody
+        type: object
+        properties:
+            data:
+                type: array
+                items:
+                    $ref: '#/definitions/CreateChatroomResultDataResponseBody'
+                description: List of chatrooms
+                example:
+                    - avatar: https://example.com/avatar.png
+                      baseId: 669c07250b20ee76727169b0
+                      boardId: uuid
+                      chatroomId: "123456"
+                      createdAt: "2024-01-01T11:53:54Z"
+                      title: Chat Room 1
+                      type: private
+                      updatedAt: "2024-01-01T11:53:54Z"
+                    - avatar: https://example.com/avatar.png
+                      baseId: 669c07250b20ee76727169b0
+                      boardId: uuid
+                      chatroomId: "123456"
+                      createdAt: "2024-01-01T11:53:54Z"
+                      title: Chat Room 1
+                      type: private
+                      updatedAt: "2024-01-01T11:53:54Z"
+                    - avatar: https://example.com/avatar.png
+                      baseId: 669c07250b20ee76727169b0
+                      boardId: uuid
+                      chatroomId: "123456"
+                      createdAt: "2024-01-01T11:53:54Z"
+                      title: Chat Room 1
+                      type: private
+                      updatedAt: "2024-01-01T11:53:54Z"
+                    - avatar: https://example.com/avatar.png
+                      baseId: 669c07250b20ee76727169b0
+                      boardId: uuid
+                      chatroomId: "123456"
+                      createdAt: "2024-01-01T11:53:54Z"
+                      title: Chat Room 1
+                      type: private
+                      updatedAt: "2024-01-01T11:53:54Z"
+        example:
+            data:
+                - avatar: https://example.com/avatar.png
+                  baseId: 669c07250b20ee76727169b0
+                  boardId: uuid
+                  chatroomId: "123456"
+                  createdAt: "2024-01-01T11:53:54Z"
+                  title: Chat Room 1
+                  type: private
+                  updatedAt: "2024-01-01T11:53:54Z"
+                - avatar: https://example.com/avatar.png
+                  baseId: 669c07250b20ee76727169b0
+                  boardId: uuid
+                  chatroomId: "123456"
+                  createdAt: "2024-01-01T11:53:54Z"
+                  title: Chat Room 1
+                  type: private
+                  updatedAt: "2024-01-01T11:53:54Z"
+        required:
+            - data
+    ChatroomMemberResultResponseBody:
+        title: ChatroomMemberResultResponseBody
+        type: object
+        properties:
+            avatar:
+                type: string
+                description: Avatar URL of the user
+                example: https://example.com/avatar.jpg
+            nickname:
+                type: string
+                description: Nickname of the user
+                example: JohnDoe
+            userId:
+                type: string
+                description: Identifier of the user
+                example: user123
+        example:
+            avatar: https://example.com/avatar.jpg
+            nickname: JohnDoe
+            userId: user123
+        required:
+            - userId
+            - avatar
+            - nickname
+    ChatroomReceiveAddUserToChatroomOKResponseBody:
+        title: ChatroomReceiveAddUserToChatroomOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/AddUserResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: addUserToChatroom
+            data:
+                chatroomId: "123456"
+                message: User added successfully
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomReceiveCreateChatroomOKResponseBody:
+        title: ChatroomReceiveCreateChatroomOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/CreateChatroomResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: createChatroom
+            data:
+                avatar: https://example.com/avatar.png
+                baseId: 669c07250b20ee76727169b0
+                boardId: uuid
+                chatroomId: "123456"
+                createdAt: "2024-01-01T11:53:54Z"
+                title: Chat Room 1
+                type: private
+                updatedAt: "2024-01-01T11:53:54Z"
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomReceiveGetChatroomMembersOKResponseBody:
+        title: ChatroomReceiveGetChatroomMembersOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/GetChatroomMembersResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: getChatroomMembers
+            data:
+                members:
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomReceiveGetMessagesOKResponseBody:
+        title: ChatroomReceiveGetMessagesOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/MessagesResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: getMessages
+            data:
+                messages:
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomReceiveListChatroomsOKResponseBody:
+        title: ChatroomReceiveListChatroomsOKResponseBody
+        type: object
+        properties:
+            data:
+                type: array
+                items:
+                    $ref: '#/definitions/CreateChatroomResultDataResponseBody'
+                description: List of chatrooms
+                example:
+                    - avatar: https://example.com/avatar.png
+                      baseId: 669c07250b20ee76727169b0
+                      boardId: uuid
+                      chatroomId: "123456"
+                      createdAt: "2024-01-01T11:53:54Z"
+                      title: Chat Room 1
+                      type: private
+                      updatedAt: "2024-01-01T11:53:54Z"
+                    - avatar: https://example.com/avatar.png
+                      baseId: 669c07250b20ee76727169b0
+                      boardId: uuid
+                      chatroomId: "123456"
+                      createdAt: "2024-01-01T11:53:54Z"
+                      title: Chat Room 1
+                      type: private
+                      updatedAt: "2024-01-01T11:53:54Z"
+                    - avatar: https://example.com/avatar.png
+                      baseId: 669c07250b20ee76727169b0
+                      boardId: uuid
+                      chatroomId: "123456"
+                      createdAt: "2024-01-01T11:53:54Z"
+                      title: Chat Room 1
+                      type: private
+                      updatedAt: "2024-01-01T11:53:54Z"
+                    - avatar: https://example.com/avatar.png
+                      baseId: 669c07250b20ee76727169b0
+                      boardId: uuid
+                      chatroomId: "123456"
+                      createdAt: "2024-01-01T11:53:54Z"
+                      title: Chat Room 1
+                      type: private
+                      updatedAt: "2024-01-01T11:53:54Z"
+        example:
+            data:
+                - avatar: https://example.com/avatar.png
+                  baseId: 669c07250b20ee76727169b0
+                  boardId: uuid
+                  chatroomId: "123456"
+                  createdAt: "2024-01-01T11:53:54Z"
+                  title: Chat Room 1
+                  type: private
+                  updatedAt: "2024-01-01T11:53:54Z"
+                - avatar: https://example.com/avatar.png
+                  baseId: 669c07250b20ee76727169b0
+                  boardId: uuid
+                  chatroomId: "123456"
+                  createdAt: "2024-01-01T11:53:54Z"
+                  title: Chat Room 1
+                  type: private
+                  updatedAt: "2024-01-01T11:53:54Z"
+                - avatar: https://example.com/avatar.png
+                  baseId: 669c07250b20ee76727169b0
+                  boardId: uuid
+                  chatroomId: "123456"
+                  createdAt: "2024-01-01T11:53:54Z"
+                  title: Chat Room 1
+                  type: private
+                  updatedAt: "2024-01-01T11:53:54Z"
+        required:
+            - data
+    ChatroomReceiveRemoveUserFromChatroomOKResponseBody:
+        title: ChatroomReceiveRemoveUserFromChatroomOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/RemoveUserResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: removeUserFromChatroom
+            data:
+                chatroomId: "123456"
+                message: User removed successfully
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomReceiveSendMessageOKResponseBody:
+        title: ChatroomReceiveSendMessageOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/MessageResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: sendMessage
+            data:
+                avatar: https://example.com/avatar.png
+                chatroomId: chatroom456
+                createdAt: "2024-01-01T11:53:54Z"
+                data: Hello, world!
+                id: msg123
+                nickname: text
+                senderId: user789
+                type: text
+                updatedAt: "2024-01-01T11:53:54Z"
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomReceiveUpdateChatroomOKResponseBody:
+        title: ChatroomReceiveUpdateChatroomOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/CreateChatroomResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: updateChatroom
+            data:
+                avatar: https://example.com/avatar.png
+                baseId: 669c07250b20ee76727169b0
+                boardId: uuid
+                chatroomId: "123456"
+                createdAt: "2024-01-01T11:53:54Z"
+                title: Chat Room 1
+                type: private
+                updatedAt: "2024-01-01T11:53:54Z"
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomReceiveUserMutedChatRoomOKResponseBody:
+        title: ChatroomReceiveUserMutedChatRoomOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/UserMutedChatroomResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: userMutedChatRoom
+            data:
+                chatroomId: "123456"
+                mute: true
+                userId: user789
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomReceiveUserPinnedChatRoomOKResponseBody:
+        title: ChatroomReceiveUserPinnedChatRoomOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/UserPinnedChatroomResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: userPinnedChatRoom
+            data:
+                chatroomId: "123456"
+                pin: true
+                userId: user789
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomRemoveUserFromChatroomInvalidTokenResponseBody:
         title: 'Mediatype identifier: application/vnd.goa.error; view=default'
         type: object
         properties:
@@ -1876,7 +4336,7 @@ definitions:
             message: parameter 'p' must be an integer
             name: bad_request
             temporary: false
-            timeout: false
+            timeout: true
         required:
             - name
             - id
@@ -1884,14 +4344,14 @@ definitions:
             - temporary
             - timeout
             - fault
-    ChatroomCreateChatroomOKResponseBody:
-        title: ChatroomCreateChatroomOKResponseBody
+    ChatroomRemoveUserFromChatroomOKResponseBody:
+        title: ChatroomRemoveUserFromChatroomOKResponseBody
         type: object
         properties:
             command:
                 $ref: '#/definitions/CommandResponseBody'
             data:
-                $ref: '#/definitions/CreatechatroomresultdataResponseBody'
+                $ref: '#/definitions/RemoveUserResultDataResponseBody'
             timestamp:
                 type: integer
                 description: 時間戳記
@@ -1900,47 +4360,294 @@ definitions:
                 minimum: 1.719188007e+18
         example:
             command:
-                type: createChatroom
+                type: removeUserFromChatroom
             data:
-                avatar: https://example.com/avatar.png
-                baseId: base123
-                boardId: uuid
                 chatroomId: "123456"
-                createdAt: "2024-01-01T00:00:00Z"
-                members:
-                    - Mollitia illum quia aperiam suscipit quis exercitationem.
-                    - Ipsum quis saepe.
-                    - Cum repellat tempora eum.
-                title: Chat Room 1
-                updatedAt: "2024-01-02T00:00:00Z"
+                message: User removed successfully
             timestamp: 1719188007000000000
         required:
             - command
             - timestamp
             - data
-    ChatroomCreateChatroomRequestBody:
-        title: ChatroomCreateChatroomRequestBody
+    ChatroomRemoveUserFromChatroomRequestBody:
+        title: ChatroomRemoveUserFromChatroomRequestBody
         type: object
         properties:
-            chatroom:
-                $ref: '#/definitions/ChatroomRequestBody'
+            userId:
+                type: string
+                description: User identifier
+                example: user789
         example:
-            chatroom:
-                avatar: https://example.com/avatar.png
-                baseId: base123
-                boardId: base123
-                chatroomId: "123456"
-                createdAt: "2024-01-01T00:00:00Z"
-                members:
-                    - Commodi et maxime consectetur neque blanditiis qui.
-                    - Est accusamus autem accusantium.
-                    - Dolore maxime non.
-                    - Odit eligendi velit vitae deleniti quia.
-                title: Chat Room 1
-                updatedAt: "2024-01-02T00:00:00Z"
+            userId: user789
         required:
-            - chatroom
-    ChatroomDeleteChatroomInvalidTokenResponseBody:
+            - userId
+    ChatroomSendMessageInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: false
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: true
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: false
+        description: token 無效 (default view)
+        example:
+            fault: false
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: false
+            timeout: false
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    ChatroomSendMessageOKResponseBody:
+        title: ChatroomSendMessageOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/MessageResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: sendMessage
+            data:
+                avatar: https://example.com/avatar.png
+                chatroomId: chatroom456
+                createdAt: "2024-01-01T11:53:54Z"
+                data: Hello, world!
+                id: msg123
+                nickname: text
+                senderId: user789
+                type: text
+                updatedAt: "2024-01-01T11:53:54Z"
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomSendMessageRequestBody:
+        title: ChatroomSendMessageRequestBody
+        type: object
+        properties:
+            data:
+                type: string
+                description: Content of the message
+                example: Hello, world!
+            type:
+                type: string
+                description: Type of the message
+                example: text
+        example:
+            data: Hello, world!
+            type: text
+        required:
+            - type
+            - data
+    ChatroomUpdateChatroomInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: true
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: true
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: true
+        description: token 無效 (default view)
+        example:
+            fault: true
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: false
+            timeout: true
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    ChatroomUpdateChatroomOKResponseBody:
+        title: ChatroomUpdateChatroomOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/CreateChatroomResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: updateChatroom
+            data:
+                avatar: https://example.com/avatar.png
+                baseId: 669c07250b20ee76727169b0
+                boardId: uuid
+                chatroomId: "123456"
+                createdAt: "2024-01-01T11:53:54Z"
+                title: Chat Room 1
+                type: private
+                updatedAt: "2024-01-01T11:53:54Z"
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomUpdateChatroomRequestBody:
+        title: ChatroomUpdateChatroomRequestBody
+        type: object
+        properties:
+            avatar:
+                type: string
+                description: Chatroom avatar
+                example: https://example.com/avatar.png
+            title:
+                type: string
+                description: Title of the chatroom
+                example: Chat Room 1
+        example:
+            avatar: https://example.com/avatar.png
+            title: Chat Room 1
+        required:
+            - title
+            - avatar
+    ChatroomUserMutedChatRoomInvalidTokenResponseBody:
+        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+        type: object
+        properties:
+            fault:
+                type: boolean
+                description: Is the error a server-side fault?
+                example: true
+            id:
+                type: string
+                description: ID is a unique identifier for this particular occurrence of the problem.
+                example: 123abc
+            message:
+                type: string
+                description: Message is a human-readable explanation specific to this occurrence of the problem.
+                example: parameter 'p' must be an integer
+            name:
+                type: string
+                description: Name is the name of this class of errors.
+                example: bad_request
+            temporary:
+                type: boolean
+                description: Is the error temporary?
+                example: true
+            timeout:
+                type: boolean
+                description: Is the error a timeout?
+                example: false
+        description: token 無效 (default view)
+        example:
+            fault: false
+            id: 123abc
+            message: parameter 'p' must be an integer
+            name: bad_request
+            temporary: false
+            timeout: false
+        required:
+            - name
+            - id
+            - message
+            - temporary
+            - timeout
+            - fault
+    ChatroomUserMutedChatRoomOKResponseBody:
+        title: ChatroomUserMutedChatRoomOKResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/UserMutedChatroomResultDataResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        example:
+            command:
+                type: userMutedChatRoom
+            data:
+                chatroomId: "123456"
+                mute: true
+                userId: user789
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
+    ChatroomUserMutedChatRoomRequestBody:
+        title: ChatroomUserMutedChatRoomRequestBody
+        type: object
+        properties:
+            mute:
+                type: boolean
+                description: Mute
+                example: true
+        example:
+            mute: true
+        required:
+            - mute
+    ChatroomUserPinnedChatRoomInvalidTokenResponseBody:
         title: 'Mediatype identifier: application/vnd.goa.error; view=default'
         type: object
         properties:
@@ -1983,14 +4690,14 @@ definitions:
             - temporary
             - timeout
             - fault
-    ChatroomDeleteChatroomOKResponseBody:
-        title: ChatroomDeleteChatroomOKResponseBody
+    ChatroomUserPinnedChatRoomOKResponseBody:
+        title: ChatroomUserPinnedChatRoomOKResponseBody
         type: object
         properties:
             command:
                 $ref: '#/definitions/CommandResponseBody'
             data:
-                $ref: '#/definitions/CreatechatroomresultdataResponseBody'
+                $ref: '#/definitions/UserPinnedChatroomResultDataResponseBody'
             timestamp:
                 type: integer
                 description: 時間戳記
@@ -1999,507 +4706,28 @@ definitions:
                 minimum: 1.719188007e+18
         example:
             command:
-                type: deleteChatroom
+                type: userPinnedChatRoom
             data:
-                avatar: https://example.com/avatar.png
-                baseId: base123
-                boardId: uuid
                 chatroomId: "123456"
-                createdAt: "2024-01-01T00:00:00Z"
-                members:
-                    - Mollitia illum quia aperiam suscipit quis exercitationem.
-                    - Ipsum quis saepe.
-                    - Cum repellat tempora eum.
-                title: Chat Room 1
-                updatedAt: "2024-01-02T00:00:00Z"
+                pin: true
+                userId: user789
             timestamp: 1719188007000000000
         required:
             - command
             - timestamp
             - data
-    ChatroomListChatroomsInvalidTokenResponseBody:
-        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+    ChatroomUserPinnedChatRoomRequestBody:
+        title: ChatroomUserPinnedChatRoomRequestBody
         type: object
         properties:
-            fault:
+            pin:
                 type: boolean
-                description: Is the error a server-side fault?
+                description: Pin
                 example: true
-            id:
-                type: string
-                description: ID is a unique identifier for this particular occurrence of the problem.
-                example: 123abc
-            message:
-                type: string
-                description: Message is a human-readable explanation specific to this occurrence of the problem.
-                example: parameter 'p' must be an integer
-            name:
-                type: string
-                description: Name is the name of this class of errors.
-                example: bad_request
-            temporary:
-                type: boolean
-                description: Is the error temporary?
-                example: true
-            timeout:
-                type: boolean
-                description: Is the error a timeout?
-                example: false
-        description: token 無效 (default view)
         example:
-            fault: false
-            id: 123abc
-            message: parameter 'p' must be an integer
-            name: bad_request
-            temporary: false
-            timeout: true
+            pin: true
         required:
-            - name
-            - id
-            - message
-            - temporary
-            - timeout
-            - fault
-    ChatroomListChatroomsOKResponseBody:
-        title: ChatroomListChatroomsOKResponseBody
-        type: object
-        properties:
-            command:
-                $ref: '#/definitions/CommandResponseBody'
-            data:
-                type: array
-                items:
-                    $ref: '#/definitions/CreatechatroomresultdataResponseBody'
-                description: 資料
-                example:
-                    - avatar: https://example.com/avatar.png
-                      baseId: base123
-                      boardId: uuid
-                      chatroomId: "123456"
-                      createdAt: "2024-01-01T00:00:00Z"
-                      members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
-                      title: Chat Room 1
-                      updatedAt: "2024-01-02T00:00:00Z"
-                    - avatar: https://example.com/avatar.png
-                      baseId: base123
-                      boardId: uuid
-                      chatroomId: "123456"
-                      createdAt: "2024-01-01T00:00:00Z"
-                      members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
-                      title: Chat Room 1
-                      updatedAt: "2024-01-02T00:00:00Z"
-                    - avatar: https://example.com/avatar.png
-                      baseId: base123
-                      boardId: uuid
-                      chatroomId: "123456"
-                      createdAt: "2024-01-01T00:00:00Z"
-                      members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
-                      title: Chat Room 1
-                      updatedAt: "2024-01-02T00:00:00Z"
-                    - avatar: https://example.com/avatar.png
-                      baseId: base123
-                      boardId: uuid
-                      chatroomId: "123456"
-                      createdAt: "2024-01-01T00:00:00Z"
-                      members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
-                      title: Chat Room 1
-                      updatedAt: "2024-01-02T00:00:00Z"
-            timestamp:
-                type: integer
-                description: 時間戳記
-                example: 1719188007000000000
-                format: int64
-                minimum: 1.719188007e+18
-        example:
-            command:
-                type: listChatrooms
-            data:
-                - avatar: https://example.com/avatar.png
-                  baseId: base123
-                  boardId: uuid
-                  chatroomId: "123456"
-                  createdAt: "2024-01-01T00:00:00Z"
-                  members:
-                    - Mollitia illum quia aperiam suscipit quis exercitationem.
-                    - Ipsum quis saepe.
-                    - Cum repellat tempora eum.
-                  title: Chat Room 1
-                  updatedAt: "2024-01-02T00:00:00Z"
-                - avatar: https://example.com/avatar.png
-                  baseId: base123
-                  boardId: uuid
-                  chatroomId: "123456"
-                  createdAt: "2024-01-01T00:00:00Z"
-                  members:
-                    - Mollitia illum quia aperiam suscipit quis exercitationem.
-                    - Ipsum quis saepe.
-                    - Cum repellat tempora eum.
-                  title: Chat Room 1
-                  updatedAt: "2024-01-02T00:00:00Z"
-            timestamp: 1719188007000000000
-        required:
-            - command
-            - timestamp
-            - data
-    ChatroomReceiveCreateChatroomOKResponseBody:
-        title: ChatroomReceiveCreateChatroomOKResponseBody
-        type: object
-        properties:
-            command:
-                $ref: '#/definitions/CommandResponseBody'
-            data:
-                $ref: '#/definitions/CreatechatroomresultdataResponseBody'
-            timestamp:
-                type: integer
-                description: 時間戳記
-                example: 1719188007000000000
-                format: int64
-                minimum: 1.719188007e+18
-        example:
-            command:
-                type: createChatroom
-            data:
-                avatar: https://example.com/avatar.png
-                baseId: base123
-                boardId: uuid
-                chatroomId: "123456"
-                createdAt: "2024-01-01T00:00:00Z"
-                members:
-                    - Mollitia illum quia aperiam suscipit quis exercitationem.
-                    - Ipsum quis saepe.
-                    - Cum repellat tempora eum.
-                title: Chat Room 1
-                updatedAt: "2024-01-02T00:00:00Z"
-            timestamp: 1719188007000000000
-        required:
-            - command
-            - timestamp
-            - data
-    ChatroomReceiveDeleteChatroomOKResponseBody:
-        title: ChatroomReceiveDeleteChatroomOKResponseBody
-        type: object
-        properties:
-            command:
-                $ref: '#/definitions/CommandResponseBody'
-            data:
-                $ref: '#/definitions/CreatechatroomresultdataResponseBody'
-            timestamp:
-                type: integer
-                description: 時間戳記
-                example: 1719188007000000000
-                format: int64
-                minimum: 1.719188007e+18
-        example:
-            command:
-                type: deleteChatroom
-            data:
-                avatar: https://example.com/avatar.png
-                baseId: base123
-                boardId: uuid
-                chatroomId: "123456"
-                createdAt: "2024-01-01T00:00:00Z"
-                members:
-                    - Mollitia illum quia aperiam suscipit quis exercitationem.
-                    - Ipsum quis saepe.
-                    - Cum repellat tempora eum.
-                title: Chat Room 1
-                updatedAt: "2024-01-02T00:00:00Z"
-            timestamp: 1719188007000000000
-        required:
-            - command
-            - timestamp
-            - data
-    ChatroomReceiveListChatroomsOKResponseBody:
-        title: ChatroomReceiveListChatroomsOKResponseBody
-        type: object
-        properties:
-            command:
-                $ref: '#/definitions/CommandResponseBody'
-            data:
-                type: array
-                items:
-                    $ref: '#/definitions/CreatechatroomresultdataResponseBody'
-                description: 資料
-                example:
-                    - avatar: https://example.com/avatar.png
-                      baseId: base123
-                      boardId: uuid
-                      chatroomId: "123456"
-                      createdAt: "2024-01-01T00:00:00Z"
-                      members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
-                      title: Chat Room 1
-                      updatedAt: "2024-01-02T00:00:00Z"
-                    - avatar: https://example.com/avatar.png
-                      baseId: base123
-                      boardId: uuid
-                      chatroomId: "123456"
-                      createdAt: "2024-01-01T00:00:00Z"
-                      members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
-                      title: Chat Room 1
-                      updatedAt: "2024-01-02T00:00:00Z"
-                    - avatar: https://example.com/avatar.png
-                      baseId: base123
-                      boardId: uuid
-                      chatroomId: "123456"
-                      createdAt: "2024-01-01T00:00:00Z"
-                      members:
-                        - Mollitia illum quia aperiam suscipit quis exercitationem.
-                        - Ipsum quis saepe.
-                        - Cum repellat tempora eum.
-                      title: Chat Room 1
-                      updatedAt: "2024-01-02T00:00:00Z"
-            timestamp:
-                type: integer
-                description: 時間戳記
-                example: 1719188007000000000
-                format: int64
-                minimum: 1.719188007e+18
-        example:
-            command:
-                type: listChatrooms
-            data:
-                - avatar: https://example.com/avatar.png
-                  baseId: base123
-                  boardId: uuid
-                  chatroomId: "123456"
-                  createdAt: "2024-01-01T00:00:00Z"
-                  members:
-                    - Mollitia illum quia aperiam suscipit quis exercitationem.
-                    - Ipsum quis saepe.
-                    - Cum repellat tempora eum.
-                  title: Chat Room 1
-                  updatedAt: "2024-01-02T00:00:00Z"
-                - avatar: https://example.com/avatar.png
-                  baseId: base123
-                  boardId: uuid
-                  chatroomId: "123456"
-                  createdAt: "2024-01-01T00:00:00Z"
-                  members:
-                    - Mollitia illum quia aperiam suscipit quis exercitationem.
-                    - Ipsum quis saepe.
-                    - Cum repellat tempora eum.
-                  title: Chat Room 1
-                  updatedAt: "2024-01-02T00:00:00Z"
-            timestamp: 1719188007000000000
-        required:
-            - command
-            - timestamp
-            - data
-    ChatroomReceiveUpdateChatroomOKResponseBody:
-        title: ChatroomReceiveUpdateChatroomOKResponseBody
-        type: object
-        properties:
-            command:
-                $ref: '#/definitions/CommandResponseBody'
-            data:
-                $ref: '#/definitions/CreatechatroomresultdataResponseBody'
-            timestamp:
-                type: integer
-                description: 時間戳記
-                example: 1719188007000000000
-                format: int64
-                minimum: 1.719188007e+18
-        example:
-            command:
-                type: updateChatroom
-            data:
-                avatar: https://example.com/avatar.png
-                baseId: base123
-                boardId: uuid
-                chatroomId: "123456"
-                createdAt: "2024-01-01T00:00:00Z"
-                members:
-                    - Mollitia illum quia aperiam suscipit quis exercitationem.
-                    - Ipsum quis saepe.
-                    - Cum repellat tempora eum.
-                title: Chat Room 1
-                updatedAt: "2024-01-02T00:00:00Z"
-            timestamp: 1719188007000000000
-        required:
-            - command
-            - timestamp
-            - data
-    ChatroomRequestBody:
-        title: ChatroomRequestBody
-        type: object
-        properties:
-            avatar:
-                type: string
-                description: Chatroom avatar
-                example: https://example.com/avatar.png
-            baseId:
-                type: string
-                description: Base identifier
-                example: base123
-            boardId:
-                type: string
-                description: Board identifier
-                example: base123
-            chatroomId:
-                type: string
-                description: Chatroom identifier
-                example: "123456"
-            createdAt:
-                type: string
-                description: Time of creation
-                example: "2024-01-01T00:00:00Z"
-            members:
-                type: array
-                items:
-                    type: string
-                    example: Molestias rem voluptatibus est et libero autem.
-                description: List of members in the chatroom
-                example:
-                    - Exercitationem a enim praesentium modi dicta.
-                    - Magnam at.
-                    - Aliquam pariatur similique rerum ipsum molestiae nostrum.
-            title:
-                type: string
-                description: Title of the chatroom
-                example: Chat Room 1
-            updatedAt:
-                type: string
-                description: Time of update
-                example: "2024-01-02T00:00:00Z"
-        description: Chatroom information.
-        example:
-            avatar: https://example.com/avatar.png
-            baseId: base123
-            boardId: base123
-            chatroomId: "123456"
-            createdAt: "2024-01-01T00:00:00Z"
-            members:
-                - Aliquid deserunt.
-                - Est est minima nobis architecto quia sit.
-                - Tenetur placeat in.
-            title: Chat Room 1
-            updatedAt: "2024-01-02T00:00:00Z"
-        required:
-            - chatroomId
-            - baseId
-            - title
-            - createdAt
-            - updatedAt
-            - members
-            - avatar
-            - boardId
-    ChatroomUpdateChatroomInvalidTokenResponseBody:
-        title: 'Mediatype identifier: application/vnd.goa.error; view=default'
-        type: object
-        properties:
-            fault:
-                type: boolean
-                description: Is the error a server-side fault?
-                example: false
-            id:
-                type: string
-                description: ID is a unique identifier for this particular occurrence of the problem.
-                example: 123abc
-            message:
-                type: string
-                description: Message is a human-readable explanation specific to this occurrence of the problem.
-                example: parameter 'p' must be an integer
-            name:
-                type: string
-                description: Name is the name of this class of errors.
-                example: bad_request
-            temporary:
-                type: boolean
-                description: Is the error temporary?
-                example: false
-            timeout:
-                type: boolean
-                description: Is the error a timeout?
-                example: false
-        description: token 無效 (default view)
-        example:
-            fault: false
-            id: 123abc
-            message: parameter 'p' must be an integer
-            name: bad_request
-            temporary: false
-            timeout: false
-        required:
-            - name
-            - id
-            - message
-            - temporary
-            - timeout
-            - fault
-    ChatroomUpdateChatroomOKResponseBody:
-        title: ChatroomUpdateChatroomOKResponseBody
-        type: object
-        properties:
-            command:
-                $ref: '#/definitions/CommandResponseBody'
-            data:
-                $ref: '#/definitions/CreatechatroomresultdataResponseBody'
-            timestamp:
-                type: integer
-                description: 時間戳記
-                example: 1719188007000000000
-                format: int64
-                minimum: 1.719188007e+18
-        example:
-            command:
-                type: updateChatroom
-            data:
-                avatar: https://example.com/avatar.png
-                baseId: base123
-                boardId: uuid
-                chatroomId: "123456"
-                createdAt: "2024-01-01T00:00:00Z"
-                members:
-                    - Mollitia illum quia aperiam suscipit quis exercitationem.
-                    - Ipsum quis saepe.
-                    - Cum repellat tempora eum.
-                title: Chat Room 1
-                updatedAt: "2024-01-02T00:00:00Z"
-            timestamp: 1719188007000000000
-        required:
-            - command
-            - timestamp
-            - data
-    ChatroomUpdateChatroomRequestBody:
-        title: ChatroomUpdateChatroomRequestBody
-        type: object
-        properties:
-            chatroom:
-                $ref: '#/definitions/ChatroomRequestBody'
-        example:
-            chatroom:
-                avatar: https://example.com/avatar.png
-                baseId: base123
-                boardId: base123
-                chatroomId: "123456"
-                createdAt: "2024-01-01T00:00:00Z"
-                members:
-                    - Commodi et maxime consectetur neque blanditiis qui.
-                    - Est accusamus autem accusantium.
-                    - Dolore maxime non.
-                    - Odit eligendi velit vitae deleniti quia.
-                title: Chat Room 1
-                updatedAt: "2024-01-02T00:00:00Z"
-        required:
-            - chatroom
+            - pin
     CommandResponseBody:
         title: CommandResponseBody
         type: object
@@ -2507,7 +4735,7 @@ definitions:
             type:
                 type: string
                 description: 類型
-                example: createBase
+                example: deleteBase
                 enum:
                     - sync
                     - createBase
@@ -2516,7 +4744,7 @@ definitions:
                     - updateBaseInfo
         description: 指令
         example:
-            type: createBase
+            type: updateBaseInfo
         required:
             - type
     CreateBaseResultDataResponseBody:
@@ -2531,28 +4759,50 @@ definitions:
                 maxLength: 24
             info:
                 $ref: '#/definitions/BaseInfoResponseBody'
-            navState:
+            nav_state:
                 $ref: '#/definitions/BaseNavStateResponseBody'
         example:
             id: 669071b8a650a662b82285ca
             info:
-                baseId: EbZvovBKbFogJeRem5oj2S
+                base_id: EbZvovBKbFogJeRem5oj2S
                 color: '#FF5733'
                 deleted_at: null
                 id: EbZvovBKbFogJeRem5oj2S
                 logo: http://example.com/logo.png
                 name: 基地 A
-            navState:
-                baseId: 669071b8a650a662b82285ca
+            nav_state:
+                base_id: 669071b8a650a662b82285ca
                 deleted_at: "2024-01-01T11:53:54Z"
                 id: 669071b8a650a662b82285ca
                 index: 0
         required:
             - id
             - info
-            - navState
-    CreatechatroomresultdataResponseBody:
-        title: 'Mediatype identifier: application/vnd.createchatroomresultdata+json; view=default'
+            - nav_state
+    CreateBoardResultDataResponseBody:
+        title: CreateBoardResultDataResponseBody
+        type: object
+        properties:
+            id:
+                type: string
+                description: 識別碼
+                example: 669071b8a650a662b82285ca
+                minLength: 24
+                maxLength: 24
+            info:
+                $ref: '#/definitions/boardInfoResponseBody'
+        example:
+            id: 669071b8a650a662b82285ca
+            info:
+                color: '#FF5733'
+                id: 669071b8a650a662b82285ca
+                logo: http://example.com/logo.png
+                name: 版 A
+        required:
+            - id
+            - info
+    CreateChatroomResultDataResponseBody:
+        title: 'Mediatype identifier: application/vnd.create-chatroom-result-data+json; view=default'
         type: object
         properties:
             avatar:
@@ -2562,7 +4812,7 @@ definitions:
             baseId:
                 type: string
                 description: Base identifier
-                example: base123
+                example: 669c07250b20ee76727169b0
             boardId:
                 type: string
                 description: Board identifier
@@ -2574,48 +4824,40 @@ definitions:
             createdAt:
                 type: string
                 description: Time of creation
-                example: "2024-01-01T00:00:00Z"
-            members:
-                type: array
-                items:
-                    type: string
-                    example: Sit placeat.
-                description: List of members in the chatroom
-                example:
-                    - Minima soluta.
-                    - Provident at.
-                    - Doloremque voluptatibus.
-                    - Commodi laboriosam non cupiditate nulla error.
+                example: "2024-01-01T11:53:54Z"
+                format: date-time
             title:
                 type: string
                 description: Title of the chatroom
                 example: Chat Room 1
+            type:
+                type: string
+                description: Type of the chatroom
+                example: private
             updatedAt:
                 type: string
                 description: Time of update
-                example: "2024-01-02T00:00:00Z"
+                example: "2024-01-01T11:53:54Z"
+                format: date-time
         description: Create Chatroom Result Data (default view)
         example:
             avatar: https://example.com/avatar.png
-            baseId: base123
+            baseId: 669c07250b20ee76727169b0
             boardId: uuid
             chatroomId: "123456"
-            createdAt: "2024-01-01T00:00:00Z"
-            members:
-                - Praesentium qui quis necessitatibus quis velit.
-                - Aperiam consectetur omnis necessitatibus.
-                - Atque eos et saepe.
+            createdAt: "2024-01-01T11:53:54Z"
             title: Chat Room 1
-            updatedAt: "2024-01-02T00:00:00Z"
+            type: private
+            updatedAt: "2024-01-01T11:53:54Z"
         required:
             - chatroomId
             - baseId
             - title
             - createdAt
             - updatedAt
-            - members
             - avatar
             - boardId
+            - type
     CreatefolderresultdataResponseBody:
         title: 'Mediatype identifier: application/vnd.createfolderresultdata+json; view=default'
         type: object
@@ -2671,20 +4913,35 @@ definitions:
             - updatedAt
             - data
             - type
+            - position
     DeleteBaseResultDataResponseBody:
         title: DeleteBaseResultDataResponseBody
         type: object
         properties:
-            baseId:
+            base_id:
                 type: string
                 description: 基地識別碼
                 example: 669071b8a650a662b82285ca
                 minLength: 24
                 maxLength: 24
         example:
-            baseId: 669071b8a650a662b82285ca
+            base_id: 669071b8a650a662b82285ca
         required:
-            - baseId
+            - base_id
+    DeleteBoardResultDataResponseBody:
+        title: DeleteBoardResultDataResponseBody
+        type: object
+        properties:
+            boardID:
+                type: string
+                description: 版識別碼
+                example: 669071b8a650a662b82285ca
+                minLength: 24
+                maxLength: 24
+        example:
+            boardID: 669071b8a650a662b82285ca
+        required:
+            - boardID
     FolderCreateFolderInvalidTokenResponseBody:
         title: 'Mediatype identifier: application/vnd.goa.error; view=default'
         type: object
@@ -2712,14 +4969,14 @@ definitions:
             timeout:
                 type: boolean
                 description: Is the error a timeout?
-                example: false
+                example: true
         description: token 無效 (default view)
         example:
-            fault: true
+            fault: false
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
-            temporary: true
+            temporary: false
             timeout: true
         required:
             - name
@@ -2765,22 +5022,33 @@ definitions:
         title: FolderCreateFolderRequestBody
         type: object
         properties:
-            folder:
-                $ref: '#/definitions/FolderRequestBody'
+            baseId:
+                type: string
+                description: Base identifier
+                example: base123
+            data:
+                $ref: '#/definitions/FolderDataRequestBody'
+            parentId:
+                type: string
+                description: Parent identifier
+                example: parent123
+            position:
+                type: number
+                description: Position of the folder
+                example: 1
+                format: double
         example:
-            folder:
-                baseId: base123
-                createdAt: "2024-01-01T00:00:00Z"
-                data:
-                    color: red
-                    name: My Folder
-                folderId: "123456"
-                parentId: parent123
-                position: 1
-                type: type123
-                updatedAt: "2024-01-02T00:00:00Z"
+            baseId: base123
+            data:
+                color: red
+                name: My Folder
+            parentId: parent123
+            position: 1
         required:
-            - folder
+            - baseId
+            - parentId
+            - data
+            - position
     FolderDataRequestBody:
         title: FolderDataRequestBody
         type: object
@@ -2853,8 +5121,8 @@ definitions:
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
-            temporary: true
-            timeout: false
+            temporary: false
+            timeout: true
         required:
             - name
             - id
@@ -2902,7 +5170,7 @@ definitions:
             fault:
                 type: boolean
                 description: Is the error a server-side fault?
-                example: true
+                example: false
             id:
                 type: string
                 description: ID is a unique identifier for this particular occurrence of the problem.
@@ -2918,18 +5186,18 @@ definitions:
             temporary:
                 type: boolean
                 description: Is the error temporary?
-                example: false
+                example: true
             timeout:
                 type: boolean
                 description: Is the error a timeout?
                 example: false
         description: token 無效 (default view)
         example:
-            fault: false
+            fault: true
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
-            temporary: true
+            temporary: false
             timeout: true
         required:
             - name
@@ -2950,26 +5218,6 @@ definitions:
                     $ref: '#/definitions/CreatefolderresultdataResponseBody'
                 description: 資料
                 example:
-                    - baseId: base123
-                      createdAt: "2024-01-01T00:00:00Z"
-                      data:
-                        color: red
-                        name: My Folder
-                      folderId: "123456"
-                      parentId: parent123
-                      position: 1
-                      type: type123
-                      updatedAt: "2024-01-02T00:00:00Z"
-                    - baseId: base123
-                      createdAt: "2024-01-01T00:00:00Z"
-                      data:
-                        color: red
-                        name: My Folder
-                      folderId: "123456"
-                      parentId: parent123
-                      position: 1
-                      type: type123
-                      updatedAt: "2024-01-02T00:00:00Z"
                     - baseId: base123
                       createdAt: "2024-01-01T00:00:00Z"
                       data:
@@ -3143,6 +5391,26 @@ definitions:
                       position: 1
                       type: type123
                       updatedAt: "2024-01-02T00:00:00Z"
+                    - baseId: base123
+                      createdAt: "2024-01-01T00:00:00Z"
+                      data:
+                        color: red
+                        name: My Folder
+                      folderId: "123456"
+                      parentId: parent123
+                      position: 1
+                      type: type123
+                      updatedAt: "2024-01-02T00:00:00Z"
+                    - baseId: base123
+                      createdAt: "2024-01-01T00:00:00Z"
+                      data:
+                        color: red
+                        name: My Folder
+                      folderId: "123456"
+                      parentId: parent123
+                      position: 1
+                      type: type123
+                      updatedAt: "2024-01-02T00:00:00Z"
             timestamp:
                 type: integer
                 description: 時間戳記
@@ -3153,6 +5421,16 @@ definitions:
             command:
                 type: listFolders
             data:
+                - baseId: base123
+                  createdAt: "2024-01-01T00:00:00Z"
+                  data:
+                    color: red
+                    name: My Folder
+                  folderId: "123456"
+                  parentId: parent123
+                  position: 1
+                  type: type123
+                  updatedAt: "2024-01-02T00:00:00Z"
                 - baseId: base123
                   createdAt: "2024-01-01T00:00:00Z"
                   data:
@@ -3221,61 +5499,6 @@ definitions:
             - command
             - timestamp
             - data
-    FolderRequestBody:
-        title: FolderRequestBody
-        type: object
-        properties:
-            baseId:
-                type: string
-                description: Base identifier
-                example: base123
-            createdAt:
-                type: string
-                description: Time of creation
-                example: "2024-01-01T00:00:00Z"
-            data:
-                $ref: '#/definitions/FolderDataRequestBody'
-            folderId:
-                type: string
-                description: Folder identifier
-                example: "123456"
-            parentId:
-                type: string
-                description: Parent identifier
-                example: parent123
-            position:
-                type: number
-                description: Position of the folder
-                example: 1
-                format: double
-            type:
-                type: string
-                description: Type of the folder
-                example: type123
-            updatedAt:
-                type: string
-                description: Time of update
-                example: "2024-01-02T00:00:00Z"
-        description: Folder information.
-        example:
-            baseId: base123
-            createdAt: "2024-01-01T00:00:00Z"
-            data:
-                color: red
-                name: My Folder
-            folderId: "123456"
-            parentId: parent123
-            position: 1
-            type: type123
-            updatedAt: "2024-01-02T00:00:00Z"
-        required:
-            - folderId
-            - baseId
-            - parentId
-            - createdAt
-            - updatedAt
-            - data
-            - type
     FolderUpdateFolderInvalidTokenResponseBody:
         title: 'Mediatype identifier: application/vnd.goa.error; view=default'
         type: object
@@ -3283,7 +5506,7 @@ definitions:
             fault:
                 type: boolean
                 description: Is the error a server-side fault?
-                example: true
+                example: false
             id:
                 type: string
                 description: ID is a unique identifier for this particular occurrence of the problem.
@@ -3306,12 +5529,12 @@ definitions:
                 example: false
         description: token 無效 (default view)
         example:
-            fault: true
+            fault: false
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
-            temporary: false
-            timeout: false
+            temporary: true
+            timeout: true
         required:
             - name
             - id
@@ -3356,96 +5579,400 @@ definitions:
         title: FolderUpdateFolderRequestBody
         type: object
         properties:
-            folder:
-                $ref: '#/definitions/FolderRequestBody'
+            baseId:
+                type: string
+                description: Base identifier
+                example: base123
+            data:
+                $ref: '#/definitions/FolderDataRequestBody'
+            parentId:
+                type: string
+                description: Parent identifier
+                example: parent123
+            position:
+                type: number
+                description: Position of the folder
+                example: 1
+                format: double
         example:
-            folder:
-                baseId: base123
-                createdAt: "2024-01-01T00:00:00Z"
-                data:
-                    color: red
-                    name: My Folder
-                folderId: "123456"
-                parentId: parent123
-                position: 1
-                type: type123
-                updatedAt: "2024-01-02T00:00:00Z"
+            baseId: base123
+            data:
+                color: red
+                name: My Folder
+            parentId: parent123
+            position: 1
         required:
-            - folder
-    SyncPayloadDataResponseBody:
-        title: SyncPayloadDataResponseBody
+            - baseId
+            - parentId
+            - data
+            - position
+    GetBaseListResultDataResponseBody:
+        title: GetBaseListResultDataResponseBody
         type: object
         properties:
-            baseInfos:
+            base_infos:
                 type: array
                 items:
                     $ref: '#/definitions/BaseInfoResponseBody'
                 example:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj2S
                       logo: http://example.com/logo.png
                       name: 基地 A
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj3S
                       logo: http://example.com/logo.png
                       name: 基地 B
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj4S
                       logo: http://example.com/logo.png
                       name: 基地 C
-            baseNavStates:
+            base_nav_states:
                 type: array
                 items:
                     $ref: '#/definitions/BaseNavStateResponseBody'
                 example:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7a
                       index: 0
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7b
                       index: 1
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7c
                       index: 2
         example:
-            baseInfos:
-                - baseId: EbZvovBKbFogJeRem5oj2S
+            base_infos:
+                - base_id: EbZvovBKbFogJeRem5oj2S
                   color: '#FF5733'
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj2S
                   logo: http://example.com/logo.png
                   name: 基地 A
-                - baseId: EbZvovBKbFogJeRem5oj3S
+                - base_id: EbZvovBKbFogJeRem5oj3S
                   color: '#FF5733'
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj3S
                   logo: http://example.com/logo.png
                   name: 基地 B
-                - baseId: EbZvovBKbFogJeRem5oj4S
+                - base_id: EbZvovBKbFogJeRem5oj4S
                   color: '#FF5733'
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj4S
                   logo: http://example.com/logo.png
                   name: 基地 C
-            baseNavStates:
-                - baseId: EbZvovBKbFogJeRem5oj2S
+            base_nav_states:
+                - base_id: EbZvovBKbFogJeRem5oj2S
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj7a
                   index: 0
-                - baseId: EbZvovBKbFogJeRem5oj3S
+                - base_id: EbZvovBKbFogJeRem5oj3S
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj7b
                   index: 1
-                - baseId: EbZvovBKbFogJeRem5oj4S
+                - base_id: EbZvovBKbFogJeRem5oj4S
+                  deleted_at: null
+                  id: EbZvovBKbFogJeRem5oj7c
+                  index: 2
+        required:
+            - base_infos
+            - base_nav_states
+    GetChatroomMembersResultDataResponseBody:
+        title: 'Mediatype identifier: application/vnd.get-chatroom-members-result-data+json; view=default'
+        type: object
+        properties:
+            members:
+                type: array
+                items:
+                    $ref: '#/definitions/ChatroomMemberResultResponseBody'
+                description: List of chatroom members
+                example:
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+                    - avatar: https://example.com/avatar.jpg
+                      nickname: JohnDoe
+                      userId: user123
+        description: Result of getting chatroom members (default view)
+        example:
+            members:
+                - avatar: https://example.com/avatar.jpg
+                  nickname: JohnDoe
+                  userId: user123
+                - avatar: https://example.com/avatar.jpg
+                  nickname: JohnDoe
+                  userId: user123
+                - avatar: https://example.com/avatar.jpg
+                  nickname: JohnDoe
+                  userId: user123
+        required:
+            - members
+    MessageResponseBody:
+        title: 'Mediatype identifier: application/vnd.message+json; view=default'
+        type: object
+        properties:
+            chatroomId:
+                type: string
+                description: Identifier of the chatroom
+                example: chatroom456
+            createdAt:
+                type: string
+                description: Time of creation
+                example: "2024-01-01T11:53:54Z"
+                format: date-time
+            data:
+                type: string
+                description: Content of the message
+                example: Hello, world!
+            id:
+                type: string
+                description: Unique identifier for the message
+                example: msg123
+            senderId:
+                type: string
+                description: Identifier of the sender
+                example: user789
+            type:
+                type: string
+                description: Type of the message
+                example: text
+            updatedAt:
+                type: string
+                description: Time of update
+                example: "2024-01-01T11:53:54Z"
+                format: date-time
+        description: Message data (default view)
+        example:
+            chatroomId: chatroom456
+            createdAt: "2024-01-01T11:53:54Z"
+            data: Hello, world!
+            id: msg123
+            senderId: user789
+            type: text
+            updatedAt: "2024-01-01T11:53:54Z"
+        required:
+            - id
+            - chatroomId
+            - senderId
+            - type
+            - data
+            - createdAt
+            - updatedAt
+    MessagesResponseBody:
+        title: 'Mediatype identifier: application/vnd.messages+json; view=default'
+        type: object
+        properties:
+            messages:
+                type: array
+                items:
+                    $ref: '#/definitions/messageResultResponseBody'
+                description: List of messages
+                example:
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+                    - command:
+                        type: message
+                      data:
+                        avatar: https://example.com/avatar.png
+                        chatroomId: chatroom456
+                        createdAt: "2024-01-01T11:53:54Z"
+                        data: Hello, world!
+                        id: msg123
+                        nickname: text
+                        senderId: user789
+                        type: text
+                        updatedAt: "2024-01-01T11:53:54Z"
+                      timestamp: 1719188007000000000
+        description: List of messages (default view)
+        example:
+            messages:
+                - command:
+                    type: message
+                  data:
+                    avatar: https://example.com/avatar.png
+                    chatroomId: chatroom456
+                    createdAt: "2024-01-01T11:53:54Z"
+                    data: Hello, world!
+                    id: msg123
+                    nickname: text
+                    senderId: user789
+                    type: text
+                    updatedAt: "2024-01-01T11:53:54Z"
+                  timestamp: 1719188007000000000
+                - command:
+                    type: message
+                  data:
+                    avatar: https://example.com/avatar.png
+                    chatroomId: chatroom456
+                    createdAt: "2024-01-01T11:53:54Z"
+                    data: Hello, world!
+                    id: msg123
+                    nickname: text
+                    senderId: user789
+                    type: text
+                    updatedAt: "2024-01-01T11:53:54Z"
+                  timestamp: 1719188007000000000
+                - command:
+                    type: message
+                  data:
+                    avatar: https://example.com/avatar.png
+                    chatroomId: chatroom456
+                    createdAt: "2024-01-01T11:53:54Z"
+                    data: Hello, world!
+                    id: msg123
+                    nickname: text
+                    senderId: user789
+                    type: text
+                    updatedAt: "2024-01-01T11:53:54Z"
+                  timestamp: 1719188007000000000
+        required:
+            - messages
+    RemoveUserResultDataResponseBody:
+        title: 'Mediatype identifier: application/vnd.remove-user-result-data+json; view=default'
+        type: object
+        properties:
+            chatroomId:
+                type: string
+                description: Chatroom identifier
+                example: "123456"
+            message:
+                type: string
+                description: Message indicating the result of the operation
+                example: User removed successfully
+        description: Result of removing a user from a chatroom (default view)
+        example:
+            chatroomId: "123456"
+            message: User removed successfully
+        required:
+            - chatroomId
+            - message
+    ReorderBoardNavDataResponseBody:
+        title: ReorderBoardNavDataResponseBody
+        type: object
+        properties:
+            boardID:
+                type: string
+                description: 版識別碼
+                example: 669071b8a650a662b82285ca
+                minLength: 24
+                maxLength: 24
+        example:
+            boardID: 669071b8a650a662b82285ca
+        required:
+            - boardID
+    SyncPayloadDataResponseBody:
+        title: SyncPayloadDataResponseBody
+        type: object
+        properties:
+            base_infos:
+                type: array
+                items:
+                    $ref: '#/definitions/BaseInfoResponseBody'
+                example:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
+                      color: '#FF5733'
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj2S
+                      logo: http://example.com/logo.png
+                      name: 基地 A
+                    - base_id: EbZvovBKbFogJeRem5oj3S
+                      color: '#FF5733'
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj3S
+                      logo: http://example.com/logo.png
+                      name: 基地 B
+                    - base_id: EbZvovBKbFogJeRem5oj4S
+                      color: '#FF5733'
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj4S
+                      logo: http://example.com/logo.png
+                      name: 基地 C
+            base_nav_states:
+                type: array
+                items:
+                    $ref: '#/definitions/BaseNavStateResponseBody'
+                example:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj7a
+                      index: 0
+                    - base_id: EbZvovBKbFogJeRem5oj3S
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj7b
+                      index: 1
+                    - base_id: EbZvovBKbFogJeRem5oj4S
+                      deleted_at: null
+                      id: EbZvovBKbFogJeRem5oj7c
+                      index: 2
+        example:
+            base_infos:
+                - base_id: EbZvovBKbFogJeRem5oj2S
+                  color: '#FF5733'
+                  deleted_at: null
+                  id: EbZvovBKbFogJeRem5oj2S
+                  logo: http://example.com/logo.png
+                  name: 基地 A
+                - base_id: EbZvovBKbFogJeRem5oj3S
+                  color: '#FF5733'
+                  deleted_at: null
+                  id: EbZvovBKbFogJeRem5oj3S
+                  logo: http://example.com/logo.png
+                  name: 基地 B
+                - base_id: EbZvovBKbFogJeRem5oj4S
+                  color: '#FF5733'
+                  deleted_at: null
+                  id: EbZvovBKbFogJeRem5oj4S
+                  logo: http://example.com/logo.png
+                  name: 基地 C
+            base_nav_states:
+                - base_id: EbZvovBKbFogJeRem5oj2S
+                  deleted_at: null
+                  id: EbZvovBKbFogJeRem5oj7a
+                  index: 0
+                - base_id: EbZvovBKbFogJeRem5oj3S
+                  deleted_at: null
+                  id: EbZvovBKbFogJeRem5oj7b
+                  index: 1
+                - base_id: EbZvovBKbFogJeRem5oj4S
                   deleted_at: null
                   id: EbZvovBKbFogJeRem5oj7c
                   index: 2
@@ -3467,35 +5994,35 @@ definitions:
             command:
                 type: sync
             data:
-                baseInfos:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                base_infos:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj2S
                       logo: http://example.com/logo.png
                       name: 基地 A
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj3S
                       logo: http://example.com/logo.png
                       name: 基地 B
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj4S
                       logo: http://example.com/logo.png
                       name: 基地 C
-                baseNavStates:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                base_nav_states:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7a
                       index: 0
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7b
                       index: 1
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7c
                       index: 2
@@ -3511,7 +6038,7 @@ definitions:
             fault:
                 type: boolean
                 description: Is the error a server-side fault?
-                example: false
+                example: true
             id:
                 type: string
                 description: ID is a unique identifier for this particular occurrence of the problem.
@@ -3527,7 +6054,7 @@ definitions:
             temporary:
                 type: boolean
                 description: Is the error temporary?
-                example: true
+                example: false
             timeout:
                 type: boolean
                 description: Is the error a timeout?
@@ -3538,8 +6065,8 @@ definitions:
             id: 123abc
             message: parameter 'p' must be an integer
             name: bad_request
-            temporary: false
-            timeout: false
+            temporary: true
+            timeout: true
         required:
             - name
             - id
@@ -3565,35 +6092,35 @@ definitions:
             command:
                 type: sync
             data:
-                baseInfos:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                base_infos:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj2S
                       logo: http://example.com/logo.png
                       name: 基地 A
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj3S
                       logo: http://example.com/logo.png
                       name: 基地 B
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       color: '#FF5733'
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj4S
                       logo: http://example.com/logo.png
                       name: 基地 C
-                baseNavStates:
-                    - baseId: EbZvovBKbFogJeRem5oj2S
+                base_nav_states:
+                    - base_id: EbZvovBKbFogJeRem5oj2S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7a
                       index: 0
-                    - baseId: EbZvovBKbFogJeRem5oj3S
+                    - base_id: EbZvovBKbFogJeRem5oj3S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7b
                       index: 1
-                    - baseId: EbZvovBKbFogJeRem5oj4S
+                    - base_id: EbZvovBKbFogJeRem5oj4S
                       deleted_at: null
                       id: EbZvovBKbFogJeRem5oj7c
                       index: 2
@@ -3614,6 +6141,128 @@ definitions:
                 minimum: 1.719188007e+18
         example:
             lastTimestamp: 1719188007000000000
+    UserMutedChatroomResultDataResponseBody:
+        title: 'Mediatype identifier: application/vnd.user-muted-chatroom-result-data+json; view=default'
+        type: object
+        properties:
+            chatroomId:
+                type: string
+                description: Chatroom identifier
+                example: "123456"
+            mute:
+                type: boolean
+                description: Mute
+                example: true
+            userId:
+                type: string
+                description: User identifier
+                example: user789
+        description: Result of muting a user in a chatroom (default view)
+        example:
+            chatroomId: "123456"
+            mute: true
+            userId: user789
+        required:
+            - chatroomId
+            - userId
+            - mute
+    UserPinnedChatroomResultDataResponseBody:
+        title: 'Mediatype identifier: application/vnd.user-pinned-chatroom-result-data+json; view=default'
+        type: object
+        properties:
+            chatroomId:
+                type: string
+                description: Chatroom identifier
+                example: "123456"
+            pin:
+                type: boolean
+                description: Pin status
+                example: true
+            userId:
+                type: string
+                description: User identifier
+                example: user789
+        description: Result of pinning a user in a chatroom (default view)
+        example:
+            chatroomId: "123456"
+            pin: true
+            userId: user789
+        required:
+            - chatroomId
+            - userId
+            - pin
+    boardInfoResponseBody:
+        title: boardInfoResponseBody
+        type: object
+        properties:
+            color:
+                type: string
+                description: 版颜色
+                example: '#FF5733'
+                minLength: 1
+                maxLength: 16
+            id:
+                type: string
+                description: 識別碼
+                example: 669071b8a650a662b82285ca
+                minLength: 24
+                maxLength: 24
+            logo:
+                type: string
+                description: 版Logo的 URL
+                example: http://example.com/logo.png
+                minLength: 1
+                maxLength: 1024
+            name:
+                type: string
+                description: 名稱
+                example: 版 A
+                minLength: 1
+                maxLength: 128
+        description: 版資訊
+        example:
+            color: '#FF5733'
+            id: 669071b8a650a662b82285ca
+            logo: http://example.com/logo.png
+            name: 版 A
+        required:
+            - id
+            - color
+            - logo
+            - name
+    messageResultResponseBody:
+        title: messageResultResponseBody
+        type: object
+        properties:
+            command:
+                $ref: '#/definitions/CommandResponseBody'
+            data:
+                $ref: '#/definitions/MessageResponseBody'
+            timestamp:
+                type: integer
+                description: 時間戳記
+                example: 1719188007000000000
+                format: int64
+                minimum: 1.719188007e+18
+        description: WebSocket 的通用資料負載
+        example:
+            command:
+                type: message
+            data:
+                avatar: https://example.com/avatar.png
+                chatroomId: chatroom456
+                createdAt: "2024-01-01T11:53:54Z"
+                data: Hello, world!
+                id: msg123
+                nickname: text
+                senderId: user789
+                type: text
+                updatedAt: "2024-01-01T11:53:54Z"
+            timestamp: 1719188007000000000
+        required:
+            - command
+            - timestamp
+            - data
 securityDefinitions:
     JWT_header_Authorization:
         type: apiKey

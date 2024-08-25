@@ -2687,5 +2687,230 @@
     "en": "I can find a photo of myself to show you XD.",
     "zh": "我可以找我的照片給你看XD",
     "tag": "Personal"
+  },
+  {
+    "index": 446,
+    "en": "I also hope we can have a day off tomorrow.",
+    "zh": "我也希望明天可以放假",
+    "tag": "Personal"
+  },
+  {
+    "index": 447,
+    "en": "Are you sure about that XD? I've been looking forward to it for a long time.",
+    "zh": "你要確定耶XD? 我期待很久了",
+    "tag": "Personal"
+  },
+  {
+    "index": 448,
+    "en": "Never underestimate the power of the Taiwanese government.",
+    "zh": "永遠別小看台灣政府的力量",
+    "tag": "Political"
+  },
+  {
+    "index": 449,
+    "en": "You can work on the side project after work and fix it during office hours.",
+    "zh": "你下班去做sideproject,上班再修就好",
+    "tag": "Work"
+  },
+  {
+    "index": 450,
+    "en": "Update the chatroom folder structure and modify the API logic.",
+    "zh": "更新聊天室資料夾結構與修改api邏輯",
+    "tag": "Work"
+  },
+  {
+    "index": 451,
+    "en": "Maintain code maintainability and spend more time on code optimization.",
+    "zh": "保持程式碼的可維護性，花更多的時間在程式碼最佳化上。",
+    "tag": "Work"
+  },
+  {
+    "index": 452,
+    "en": "Implement and maintain important functions, such as the lottery site, games, forums, galleries, security verification, and user information.",
+    "zh": "實作與維護重要功能(包含開獎現場/遊戲/論壇/圖庫/安全驗證/使用者資料)",
+    "tag": "Work"
+  },
+  {
+    "index": 453,
+    "en": "Ensure that all teams are involved in meetings and documentation when new requirements arise.",
+    "zh": "確保出現新需求時所有團隊都參與會議和記錄。",
+    "tag": "Work"
+  },
+  {
+    "index": 454,
+    "en": "Clearly define roles and responsibilities to accelerate work progress and address client needs.",
+    "zh": "明確的分工合作,加速工作進度與解決業主需求",
+    "tag": "Work"
+  },
+  {
+    "index": 455,
+    "en": "How do you comment about your supervisor?",
+    "zh": "如何評價你的上司？",
+    "tag": "Work"
+  },
+  {
+    "index": 456,
+    "en": "Clear Work Instructions? Easy to communicate with? Team spirit? Fairness?",
+    "zh": "明確的工作指導？可以方便的溝通？團隊氛圍？公平性？",
+    "tag": "Work"
+  },
+  {
+    "index": 457,
+    "en": "Implement clear work guidelines and actively improve team processes.",
+    "zh": "實施明確的工作指導,積極改善團隊流程",
+    "tag": "Work"
+  },
+  {
+    "index": 458,
+    "en": "No worries, I don't know either. You are not alone.",
+    "zh": "沒事 我也不會 你不孤單",
+    "tag": "Personal"
+  },
+  {
+    "index": 459,
+    "en": "To encapsulate the user() function for common use.",
+    "zh": "將user()統一封裝FN共用",
+    "tag": "Work"
+  },
+  {
+    "index": 460,
+    "en": "Add try-catch to prevent data errors.",
+    "zh": "新增try catch防止資料錯誤",
+    "tag": "Work"
+  },
+  {
+    "index": 461,
+    "en": "UI is not deployed to UAT and currently only to SIT.",
+    "zh": "ui沒有部署到uat目前只有到sit",
+    "tag": "Work"
+  },
+  {
+    "index": 462,
+    "en": "If you think it's ok, I will deploy it to UAT.",
+    "zh": "你如果覺得ok我會在部署到uat",
+    "tag": "Work"
+  },
+  {
+    "index": 463,
+    "en": "There are many things that UAT has not deployed yet.",
+    "zh": "很多東西uat還未部署上去",
+    "tag": "Work"
+  },
+  {
+    "index": 464,
+    "en": "You can use SIT test.",
+    "zh": "你可以使用sit測試",
+    "tag": "Work"
+  },
+  {
+    "index": 465,
+    "en": "Move the icon's position according to Jeena's request.",
+    "zh": "根據jeena的要求移動icon的位置",
+    "tag": "Work"
+  },
+  {
+    "index": 466,
+    "en": "Is the deployment going smoothly?",
+    "zh": "部署還順利嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 467,
+    "en": "I heard from MC that you optimized the new deployment process.",
+    "zh": "我聽mc說你有優化新部署流程",
+    "tag": "Work"
+  },
+  {
+    "index": 468,
+    "en": "Do you need me to revise this tutorial document?",
+    "zh": "有需要我改這份教學文件嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 469,
+    "en": "If you find anything that needs to be changed or is unclear, let me know and I will make the necessary revisions.",
+    "zh": "嗯,你如果覺得哪裡需要改或不清楚跟我說,我會去改",
+    "tag": "Work"
+  },
+  {
+    "index": 470,
+    "en": "I'm okay with either. Whatever you think is more convenient.",
+    "zh": "我都可以,看你覺得哪個比較方便",
+    "tag": "Personal"
+  },
+  {
+    "index": 471,
+    "en": "That's a great approach. I'll consider it for future optimizations as well.",
+    "zh": "很好的做法,我以後也參考優化一下",
+    "tag": "Work"
+  },
+  {
+    "index": 472,
+    "en": "I would like to confirm the requirements.",
+    "zh": "我想確認一下這張單需求",
+    "tag": "Work"
+  },
+  {
+    "index": 473,
+    "en": "A birthday of a very cute girl.",
+    "zh": "一個很可愛的女生的生日",
+    "tag": "Personal"
+  },
+  {
+    "index": 474,
+    "en": "What functionalities does your backend need to have?",
+    "zh": "你後端要做什麼功能?",
+    "tag": "Work"
+  },
+  {
+    "index": 475,
+    "en": "Didn't we agree to practice English together? QQ",
+    "zh": "我們不是說好要一起練英文嗎？QQ",
+    "tag": "Personal"
+  },
+  {
+    "index": 476,
+    "en": "So, after you finish writing the backend, would you still want to write more?",
+    "zh": "所以你寫後端後還會想寫嗎？@@",
+    "tag": "Work"
+  },
+  {
+    "index": 477,
+    "en": "Hey, do you know who is responsible for the backend? I'd like to contact them to insert some data.",
+    "zh": "cy,想問你知道這個後端是誰負責嗎@@? 我去找他塞資料好了",
+    "tag": "Work"
+  },
+  {
+    "index": 478,
+    "en": "If the app isn't updated, please let me know.",
+    "zh": "如果app沒更新,請跟我說",
+    "tag": "Work"
+  },
+  {
+    "index": 479,
+    "en": "Please let me know if there are any specific changes needed, and I will make the necessary adjustments.",
+    "zh": "Ok,如果有具體的改動再麻煩告知我,我配合修改",
+    "tag": "Work"
+  },
+  {
+    "index": 480,
+    "en": "Hi, could you insert game records into my account from the back end? I need them for testing.",
+    "zh": "hi,請問您這邊可以從後端塞遊戲紀錄進我的帳號嗎?我才能測試 謝謝",
+    "tag": "Work"
+  },
+  {
+    "index": 481,
+    "en": "Your microphone has no sound.",
+    "zh": "你的麥克風沒有聲音",
+    "tag": "Technical"
+  },
+  {
+    "index": 482,
+    "en": "Add feature to send notifications to all chatroom users.",
+    "zh": "新增推播給所有聊天室使用者功能",
+    "tag": "Work"
   }
+  
+  
+  
 ]
