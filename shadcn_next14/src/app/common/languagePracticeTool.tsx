@@ -28,4 +28,25 @@ export const copyText = (item: any, configOptions: any, showCustomToast: Functio
 
 
 
-
+export const handleShowMode = (
+  showFavoritesListOnly: boolean,
+  databaseHasBeenLoaded: boolean,
+  query: string,
+  showCustomToast: (message: string) => void,
+  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+) => {
+  console.log(
+    "%c useEffect+showFavoritesListOnly",
+    "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+  );
+  
+  if (databaseHasBeenLoaded) {
+    showCustomToast(showFavoritesListOnly ? "最愛模式" : "全部模式");
+    const event = {
+      target: {
+        value: query,
+      },
+    };
+    handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
+  }
+};

@@ -19,7 +19,7 @@ import toast, {
 import OptionsModal from "./optionsModal";
 import { useOptions } from "./optionsContext";
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
-import { copyText } from '../common/languagePracticeTool';
+import { copyText,handleShowMode } from '../common/languagePracticeTool';
 
 import { scrollToTop,handleScroll,checkDuplicates } from "../common/languageComponent";
 
@@ -46,20 +46,15 @@ const SearchList: React.FC = () => {
     databaseHasBeenLoaded,
     setDatabaseHasBeenLoaded,
   } = useOptions();
+  
   useEffect(() => {
-    console.log(
-      "%c useEffect+showFavoritesListOnly",
-      "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+    handleShowMode(
+      configOptions.showFavoritesListOnly,
+      databaseHasBeenLoaded,
+      query,
+      showCustomToast,
+      handleInputChange
     );
-    if (databaseHasBeenLoaded) {
-      showCustomToast(configOptions.showFavoritesListOnly ? "最愛模式" : "全部模式");
-      const event = {
-        target: {
-          value: query,
-        },
-      };
-      handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
-    }
   }, [configOptions.showFavoritesListOnly]);
 
   const toggleStarred = (index: number) => {

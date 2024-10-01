@@ -25,7 +25,7 @@ import { useOptions } from "./redux/optionsReducer";
 import { scrollToTop,handleScroll } from "../common/languageComponent";
 
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
-import { copyText } from '../common/languagePracticeTool';
+import { copyText,handleShowMode } from '../common/languagePracticeTool';
 
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import '../common/languageComponent.css'; 
@@ -75,19 +75,13 @@ const SearchList: React.FC = () => {
   }, [favorites]);
 
   useEffect(() => {
-    console.log(
-      "%c useEffect+showFavoritesListOnly",
-      "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+    handleShowMode(
+      configOptions.showFavoritesListOnly,
+      databaseHasBeenLoaded,
+      query,
+      showCustomToast,
+      handleInputChange
     );
-    if (databaseHasBeenLoaded) {
-      showCustomToast(configOptions.showFavoritesListOnly ? "最愛模式" : "全部模式");
-      const event = {
-        target: {
-          value: query,
-        },
-      };
-      handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
-    }
   }, [configOptions.showFavoritesListOnly]);
 
   const toggleStarred = (index: number) => {
