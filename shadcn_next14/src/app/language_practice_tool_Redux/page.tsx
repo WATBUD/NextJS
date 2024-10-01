@@ -1,5 +1,5 @@
 import React from 'react';
-import ClientApp from './ClientApp'; 
+import ClientApp from './client-app'; 
 import { Metadata } from 'next';
 import { CommonMetadata }  from '../common/languageComponent';
 
