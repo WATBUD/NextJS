@@ -2909,8 +2909,383 @@
     "en": "Add feature to send notifications to all chatroom users.",
     "zh": "新增推播給所有聊天室使用者功能",
     "tag": "Work"
+  },
+{
+    "index": 483,
+    "en": "Add a 'lint:error' script to the package.json file.",
+    "zh": "將“lint:error”腳本加入到 package.json 檔案中。",
+    "tag": "Work"
+  },
+  {
+    "index": 484,
+    "en": "Modify the TypeScript-style code in lotterHistoryData.js/slider.js to resolve issues when applied in JavaScript.",
+    "zh": "修改lotterHistoryData.js/slider.js ts寫法用在js的問題。",
+    "tag": "Work"
+  },
+  {
+    "index": 485,
+    "en": "Add segmented loading functionality to the API.",
+    "zh": "新增api分段加載功能。",
+    "tag": "Work"
+  },
+  {
+    "index": 486,
+    "en": "Remove field [NotificationOn] from the struct.",
+    "zh": "移除結構中的NotificationOn欄位。",
+    "tag": "Work"
+  },
+  {
+    "index": 487,
+    "en": "Remove the loop calling BroadcastToUsers and change it to a single input.",
+    "zh": "移除迴圈呼叫BroadcastToUsers改成一次性輸入。",
+    "tag": "Work"
+  },
+  {
+    "index": 488,
+    "en": "I’m at an age that is well-suited for being with you.",
+    "zh": "我是很適合跟你在一起的年齡。",
+    "tag": "Personal"
+  },
+  {
+    "index": 489,
+    "en": "Modify the shard's dependency injection and move it to the index file.",
+    "zh": "修改shard的依賴注入移到index檔案。",
+    "tag": "Work"
+  },
+  {
+    "index": 490,
+    "en": "Is this feature designed to open the mobile browser directly, or do we need to set up a page for it?",
+    "zh": "這個功能是為了直接開啟手機瀏覽器而設計的，還是需要我們為其設定一個頁面？",
+    "tag": "Work"
+  },
+  {
+    "index": 491,
+    "en": "Do we also need to have a return and a title?",
+    "zh": "那一樣要有返回跟標題嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 492,
+    "en": "D is an ordered representation of a BSON document.",
+    "zh": "D是BSON文件的一種有序表示方式。",
+    "tag": "Work"
+  },
+  {
+    "index": 493,
+    "en": "This type should be used when the order of the elements matters.",
+    "zh": "當元素的順序很重要時，應該使用這種類型。",
+    "tag": "Work"
+  },
+  {
+    "index": 494,
+    "en": "If the order of the elements does not matter, an M should be used instead.",
+    "zh": "如果元素的順序不重要，則應使用M代替。",
+    "tag": "Work"
+  },
+  {
+    "index": 495,
+    "en": "A D should not be constructed with duplicate key names, as that can cause undefined server behavior.",
+    "zh": "D應該避免使用重複的鍵名，因為這可能會導致伺服器行為異常。",
+    "tag": "Work"
+  },
+  {
+    "index": 496,
+    "en": "Refactor GetUserChatrooms using MongoDB's aggregation pipeline for data composition.",
+    "zh": "使用MongoDB的聚合管道重構GetUserChatrooms以進行資料組合。",
+    "tag": "Work"
+  },
+  {
+    "index": 497,
+    "en": "Sorry to bother you, but do you have multiple agent accounts on the SMH platform? I need them for testing.",
+    "zh": "打擾下,請問smh平台你有很多代理的帳號嗎?我需要做測試。",
+    "tag": "Work"
+  },
+  {
+    "index": 498,
+    "en": "Hi L, do you have any SMH agent account in SIT/UAT that can borrow me to do a testing? Thank you.",
+    "zh": "你好，L，你在SIT/UAT有SMH代理帳戶可以借我來做測試嗎？謝謝。",
+    "tag": "Work"
+  },
+  {
+    "index": 499,
+    "en": "Refactor user avatar logic and user authentication logic.",
+    "zh": "重構使用者頭像邏輯與user檢查帳密邏輯。",
+    "tag": "Work"
+  },
+  {
+    "index": 500,
+    "en": "Improved clarity of dependency management across the application.",
+    "zh": "提高整體應用程式依賴關係清晰度。",
+    "tag": "Work"
+  },
+  {
+    "index": 501,
+    "en": "Updated services and controllers to use the new DI setup.",
+    "zh": "更新服務和控制器使用新的DI設定。",
+    "tag": "Work"
+  },
+  {
+    "index": 502,
+    "en": "It seems like I won’t be able to avoid getting involved.",
+    "zh": "我應該是跑不掉要參與。",
+    "tag": "Personal"
+  },
+  {
+    "index": 503,
+    "en": "What I know so far is that MC is working on infrastructure development and deciding which project to use as the foundation.",
+    "zh": "到目前為止我所知道的是MC正在處理基礎設施開發，並選擇使用哪個專案作為基礎。",
+    "tag": "Work"
+  },
+  {
+    "index": 504,
+    "en": "He said he will give me an update next week to decide when to start the development.",
+    "zh": "他說下週會給我消息決定何時開發。",
+    "tag": "Work"
+  },
+  {
+    "index": 505,
+    "en": "I heard this project is really rushed.",
+    "zh": "聽說這個案子很趕。",
+    "tag": "Work"
+  },
+  {
+    "index": 506,
+    "en": "So I probably won't be too happy about it.",
+    "zh": "所以我應該是不會開心XD。",
+    "tag": "Personal"
+  },
+  {
+    "index": 507,
+    "en": "Especially since I have to handle both SMH and this one at the same time.",
+    "zh": "畢竟要同時做smh跟這個。",
+    "tag": "Work"
+  },
+  {
+    "index": 508,
+    "en": "JavaScript, because in my nine-year career, every job has involved JavaScript in some capacity. I also use JavaScript for side projects after work or on weekends.",
+    "zh": "JavaScript，因為在我九年的職業生涯中，每項工作都以某種方式涉及JavaScript。我也會在下班後或週末使用JavaScript進行業餘專案。",
+    "tag": "Work"
+  },
+  {
+    "index": 509,
+    "en": "I researched mathematical algorithms and created custom RGB effects for these devices, offering features that are different from those available on the market.",
+    "zh": "我研究了數學演算法並為這些設備創建了自訂RGB效果，提供了與市場上可用的功能不同的功能。",
+    "tag": "Work"
+  },
+  {
+    "index": 510,
+    "en": "It’s sad, but I’m not surprised.",
+    "zh": "是很難過，但我不意外。",
+    "tag": "Personal"
+  },
+  {
+    "index": 511,
+    "en": "I've called the API, but it's returning a 404 error.",
+    "zh": "我有呼叫了api會404錯誤。",
+    "tag": "Work"
+  },
+  {
+    "index": 512,
+    "en": "Anna, the world needs you to step up and save it!",
+    "zh": "Anna需要你出來拯救世界了。",
+    "tag": "Personal"
+  },
+  {
+    "index": 513,
+    "en": "May I ask which domain this API will be deployed to?",
+    "zh": "請問這個api會部署到哪一個domain?",
+    "tag": "Work"
+  },
+  {
+    "index": 514,
+    "en": "Currently, we are using https://www.google.com/",
+    "zh": "目前我們是使用https://www.google.com/",
+    "tag": "Work"
+  },
+  {
+    "index": 515,
+    "en": "Could you please let me know who I can contact to get access opened?",
+    "zh": "您能否告訴我可以聯絡誰來開通存取權限？",
+    "tag": "Work"
+  },
+  {
+    "index": 516,
+    "en": "You can start developing this API while waiting for the opening.",
+    "zh": "在等待開通的過程中，您可以先開始開發這個API。",
+    "tag": "Work"
+  },
+  {
+    "index": 517,
+    "en": "Can you add an entry for the countdown timer to the create button?",
+    "zh": "可以在創建按鈕上添加倒計時器的條目嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 518,
+    "en": "Let’s also add a button to display the card details.",
+    "zh": "讓我們也添加一個按鈕來顯示卡片詳情。",
+    "tag": "Work"
+  },
+  {
+    "index": 519,
+    "en": "You can move on to your next task after you finish this one.",
+    "zh": "在完成這項工作後，您可以進入下一個任務。",
+    "tag": "Work"
+  },
+  {
+    "index": 520,
+    "en": "You can focus on other areas after clearing this issue.",
+    "zh": "在解決此問題後，您可以專注於其他領域。",
+    "tag": "Work"
+  },
+  {
+    "index": 521,
+    "en": "In addition to fixing bugs, I can also work on optimizing the database performance.",
+    "zh": "除了修復錯誤外，我還可以致力於優化資料庫性能。",
+    "tag": "Work"
+  },
+  {
+    "index": 522,
+    "en": "What kind of performance improvements can I expect?",
+    "zh": "我可以期待什麼樣的性能改善？",
+    "tag": "Work"
+  },
+  {
+    "index": 523,
+    "en": "Is it possible to reduce the loading time of our API responses?",
+    "zh": "是否有可能減少我們API響應的加載時間？",
+    "tag": "Work"
+  },
+  {
+    "index": 524,
+    "en": "I’ll review our database queries to see if any optimizations can be made.",
+    "zh": "我會檢查我們的數據庫查詢，以查看是否可以進行優化。",
+    "tag": "Work"
+  },
+  {
+    "index": 525,
+    "en": "Our API will receive many requests simultaneously, and it needs to handle them efficiently.",
+    "zh": "我們的API將會同時接收到許多請求，並且需要有效地處理它們。",
+    "tag": "Work"
+  },
+  {
+    "index": 526,
+    "en": "Can you suggest any tools for monitoring our API performance?",
+    "zh": "您能建議任何工具來監控我們的API性能嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 527,
+    "en": "We can use tools like Postman or Swagger for testing our API.",
+    "zh": "我們可以使用Postman或Swagger等工具來測試我們的API。",
+    "tag": "Work"
+  },
+  {
+    "index": 528,
+    "en": "Can you set up unit tests for our new features?",
+    "zh": "您能為我們的新功能設置單元測試嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 529,
+    "en": "I will ensure that all new code is covered by tests before it gets deployed.",
+    "zh": "我會確保所有新代碼在部署之前都有測試覆蓋。",
+    "tag": "Work"
+  },
+  {
+    "index": 530,
+    "en": "Let’s conduct a code review session before the next deployment.",
+    "zh": "讓我們在下次部署之前進行一次代碼審查會議。",
+    "tag": "Work"
+  },
+  {
+    "index": 531,
+    "en": "Our team can provide feedback on your implementation to improve it further.",
+    "zh": "我們團隊可以對您的實現提供反饋，以進一步改進。",
+    "tag": "Work"
+  },
+  {
+    "index": 532,
+    "en": "Let’s set up a schedule for our weekly meetings to discuss progress.",
+    "zh": "讓我們設定每週會議的時間表以討論進展。",
+    "tag": "Work"
+  },
+  {
+    "index": 533,
+    "en": "I’ll send you the meeting invite as soon as we finalize the schedule.",
+    "zh": "一旦我們確定了時間表，我會馬上發送會議邀請給您。",
+    "tag": "Work"
+  },
+  {
+    "index": 534,
+    "en": "It’s crucial that everyone stays updated on the project’s status.",
+    "zh": "每個人都能保持專案狀態的更新是至關重要的。",
+    "tag": "Work"
+  },
+  {
+    "index": 535,
+    "en": "Make sure to document any changes made to the codebase.",
+    "zh": "確保記錄對代碼庫所做的任何更改。",
+    "tag": "Work"
+  },
+  {
+    "index": 536,
+    "en": "We will establish a knowledge base for our project to assist future team members.",
+    "zh": "我們將為專案建立一個知識庫，以幫助未來的團隊成員。",
+    "tag": "Work"
+  },
+  {
+    "index": 537,
+    "en": "It’s important to maintain a clean and organized code structure.",
+    "zh": "保持乾淨有序的代碼結構是很重要的。",
+    "tag": "Work"
+  },
+  {
+    "index": 538,
+    "en": "Can you help me to understand the workflow better?",
+    "zh": "您能幫我更好地理解工作流程嗎？",
+    "tag": "Work"
+  },
+  {
+    "index": 539,
+    "en": "Let’s ensure that all team members are on the same page regarding project goals.",
+    "zh": "讓我們確保所有團隊成員對專案目標有相同的理解。",
+    "tag": "Work"
+  },
+  {
+    "index": 540,
+    "en": "I appreciate your help with this project, it means a lot to me.",
+    "zh": "感謝您對這個項目的幫助，這對我來說意義重大。",
+    "tag": "Personal"
+  },
+  {
+    "index": 541,
+    "en": "Are there any specific areas of concern that we need to address?",
+    "zh": "我們是否需要解決任何特定的問題？",
+    "tag": "Work"
+  },
+  {
+    "index": 542,
+    "en": "Let’s create a list of action items from our meeting today.",
+    "zh": "讓我們從今天的會議中創建一個行動項目清單。",
+    "tag": "Work"
+  },
+  {
+    "index": 543,
+    "en": "Please reach out if you have any questions or need assistance.",
+    "zh": "如有任何問題或需要協助，請隨時聯繫我。",
+    "tag": "Work"
+  },
+  {
+    "index": 544,
+    "en": "Let’s make sure to celebrate our achievements, no matter how small.",
+    "zh": "讓我們確保慶祝我們的成就，不管它們多麼微小。",
+    "tag": "Work"
+  },
+  {
+    "index": 545,
+    "en": "It’s been a pleasure working with you.",
+    "zh": "與您合作很愉快。",
+    "tag": "Personal"
   }
-  
-  
-  
 ]
