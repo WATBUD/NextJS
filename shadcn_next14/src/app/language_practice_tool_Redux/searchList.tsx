@@ -25,6 +25,8 @@ import { useOptions } from "./redux/optionsReducer";
 import { scrollToTop,handleScroll } from "../common/languageComponent";
 
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
+import { copyText } from '../common/languagePracticeTool';
+
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import '../common/languageComponent.css'; 
 const SearchList: React.FC = () => {
@@ -156,36 +158,6 @@ const SearchList: React.FC = () => {
     handleScroll();
   }, []);
 
-  const copyText = (item:any) => {
-    
-    const text =
-    !configOptions.copyTheTextAbove && !configOptions.copyTheTextBelow
-    ? 'No copy conditions selected\n(未選擇複製條件)'
-    : configOptions.copyTheTextAbove && configOptions.copyTheTextBelow
-    ? item.en + "\n" + item.zh
-    : configOptions.copyTheTextBelow
-    ? item.zh
-    : configOptions.copyTheTextAbove
-    ? item.en
-    : 'No copy conditions selected';
-
-    if(text.includes('未選擇複製條件')){
-      showCustomToast(text);
-    }
-    else{
-      const textArea = document.createElement("textarea");
-      textArea.value = text;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textArea);
-      //toast.success('Successfully created!');
-      showCustomToast(text);
-      showCustomToast("Copied");
-    }
-    //navigator.clipboard.writeText(text);
-
-  };
 
   return (
     <div className="w-full flex flex-col items-center mr-5">
@@ -268,7 +240,7 @@ const SearchList: React.FC = () => {
                     <button
                       className="ml-2"
                       onClick={() => {
-                        copyText(item);
+                        copyText(item,configOptions,showCustomToast);
                       }}
                     >
                       <DocumentDuplicateIconSolid className="h-6 w-6 fill-current text-gray-200" />
