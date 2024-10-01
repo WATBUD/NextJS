@@ -1171,18 +1171,6 @@
   },
   {
     "index": 196,
-    "en": "Let's chat later.",
-    "zh": "我們稍後再聊吧。",
-    "tag": "Communication"
-  },
-  {
-    "index": 195,
-    "en": "We don't use this term.",
-    "zh": "我們不使用這個術語。",
-    "tag": "Communication"
-  },
-  {
-    "index": 196,
     "en": "I want to learn English because I need to use it for my work.",
     "zh": "我想學英文是因為我工作會需要用。",
     "tag": "Learning"
@@ -3287,5 +3275,11 @@
     "en": "It’s been a pleasure working with you.",
     "zh": "與您合作很愉快。",
     "tag": "Personal"
-  }
+  },
+  {
+    "index": 546,
+    "en": "Let's chat later.",
+    "zh": "我們稍後再聊吧。",
+    "tag": "Communication"
+  },
 ]
