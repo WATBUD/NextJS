@@ -19,9 +19,9 @@ import toast, {
 import OptionsModal from "./optionsModal";
 import { useOptions } from "./optionsContext";
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
-import { copyText,handleShowMode } from '../common/languagePracticeTool';
+import { copyText,handleShowMode,handleScroll,scrollToTop,handleInputChangeShared  } from '../common/languagePracticeTool';
 
-import { scrollToTop,handleScroll,checkDuplicates } from "../common/languageComponent";
+import { checkDuplicates } from "../common/languageComponent";
 
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import '../common/languageComponent.css'; 
@@ -46,7 +46,7 @@ const SearchList: React.FC = () => {
     databaseHasBeenLoaded,
     setDatabaseHasBeenLoaded,
   } = useOptions();
-  
+
   useEffect(() => {
     handleShowMode(
       configOptions.showFavoritesListOnly,
@@ -108,19 +108,6 @@ const SearchList: React.FC = () => {
         console.error((error as Error).message);
       });
     }
-    // setTimeout(() => {
-     
-    //   // console.log(
-    //   //   "%c useEffect+init",
-    //   //   "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-    //   //   "storedBlockedList:",
-    //   //   storedBlockedList
-    //   // );
-    //   // const storedBlockedList = localStorage.getItem('favorites');
-    //   // if (storedBlockedList) {
-    //   //   setFavorites(JSON.parse(storedBlockedList));
-    //   // }
-    // }, 500);
     handleScroll();
   }, []);
   return (
@@ -147,7 +134,17 @@ const SearchList: React.FC = () => {
               type="text"
               placeholder="Search..."
               value={query}
-              onChange={handleInputChange}
+              onChange={(event) => {
+                handleInputChangeShared(
+                  event,
+                  language_data_sheet,
+                  favorites,
+                  configOptions,
+                  setQuery,
+                  setFilteredData,
+                  showCustomToast
+                );
+              }}
               className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             />
           </div>

@@ -21,11 +21,8 @@ import toast, {
 import OptionsModal from "./optionsModal";
 import { useOptions } from "./redux/optionsReducer";
 
-
-import { scrollToTop,handleScroll } from "../common/languageComponent";
-
+import { copyText,handleShowMode,handleScroll,scrollToTop,handleInputChangeShared  } from '../common/languagePracticeTool';
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
-import { copyText,handleShowMode } from '../common/languagePracticeTool';
 
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import '../common/languageComponent.css'; 
@@ -135,20 +132,6 @@ const SearchList: React.FC = () => {
         console.error((error as Error).message);
       });
     }
-    // setTimeout(() => {
-     
-    //   // console.log(
-    //   //   "%c useEffect+init",
-    //   //   "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-    //   //   "storedBlockedList:",
-    //   //   storedBlockedList
-    //   // );
-    //   // const storedBlockedList = localStorage.getItem('favorites');
-    //   // if (storedBlockedList) {
-    //   //   setFavorites(JSON.parse(storedBlockedList));
-    //   // }
-    // }, 500);
-
     handleScroll();
   }, []);
 
@@ -157,7 +140,9 @@ const SearchList: React.FC = () => {
     <div className="w-full flex flex-col items-center mr-5">
       <div
         id="MainScreenUI"
-        className={`flex flex-col items-center bg-transparent${!showOptionUI ? " show" : ""}`}
+        className={`flex flex-col items-center bg-transparent${
+          !showOptionUI ? " show" : ""
+        }`}
       >
         <div
           id="navbar"
@@ -172,8 +157,7 @@ const SearchList: React.FC = () => {
                   "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
                   showOptionUI
                 );
-                setShowOptionUI(true)
-              
+                setShowOptionUI(true);
               }}
               className="rounded-md px-3 py-2 bg-blue-500 text-white shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             >
@@ -185,7 +169,17 @@ const SearchList: React.FC = () => {
               type="text"
               placeholder="Search..."
               value={query}
-              onChange={handleInputChange}
+              onChange={(event) => {
+                handleInputChangeShared(
+                  event,
+                  language_data_sheet,
+                  favorites,
+                  configOptions,
+                  setQuery,
+                  setFilteredData,
+                  showCustomToast
+                );
+              }}
               className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             />
           </div>
@@ -197,7 +191,7 @@ const SearchList: React.FC = () => {
                 id="scrollToTopButton"
                 onClick={scrollToTop}
                 className="fixed bottom-8 self-end hidden rounded-md px-3 py-2 text-yellow-50  shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-                style={{backgroundColor:'rgba(45, 114, 210,0.3)'}}
+                style={{ backgroundColor: "rgba(45, 114, 210,0.3)" }}
               >
                 <ChevronDoubleUpIcon className="h-6 w-6 fill-current text-yellow-50 mr-2" />
                 Top
@@ -213,7 +207,11 @@ const SearchList: React.FC = () => {
                   >
                     {/* <StarIcon className="size-6 text-blue-500" /> */}
                     <StarIconOutline
-                      className={`size-6 ${favorites.includes(item.index) ? "fill-current text-yellow-400" : "stroke-current text-gray-400"}`}
+                      className={`size-6 ${
+                        favorites.includes(item.index)
+                          ? "fill-current text-yellow-400"
+                          : "stroke-current text-gray-400"
+                      }`}
                     />
                     {/* <StarIconSolid className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
                   </button>
@@ -234,7 +232,7 @@ const SearchList: React.FC = () => {
                     <button
                       className="ml-2"
                       onClick={() => {
-                        copyText(item,configOptions,showCustomToast);
+                        copyText(item, configOptions, showCustomToast);
                       }}
                     >
                       <DocumentDuplicateIconSolid className="h-6 w-6 fill-current text-gray-200" />

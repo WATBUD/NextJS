@@ -59,56 +59,6 @@ export const checkDuplicates = () => {
 
 
 
-export const scrollToTop = () => {
-
-    const mainScreenUI = document.getElementById("MainScreenUI");
-
-    if(mainScreenUI){
-      const scrollDuration = 300;
-      const scrollStep = -mainScreenUI.scrollTop / (scrollDuration / 15);
-  
-      const scrollInterval = setInterval(() => {
-        if (mainScreenUI.scrollTop !== 0) {
-          mainScreenUI.scrollBy(0, scrollStep);
-        } else {
-          clearInterval(scrollInterval); 
-        }
-      }, 15);
-    }
-
-};
-
-export const handleScroll = () => {
-    //document.title = "language_practice_tool";
-    const _handleScroll = () => {
-        const mainScreenUI = document.getElementById("MainScreenUI");
-        const scrollToTopButton = document.getElementById("scrollToTopButton");
-        if (mainScreenUI && scrollToTopButton) {
-          // console.log(
-          //   "%c handleScroll",
-          //   "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-          //   "mainScreenUI.scrollTop:",
-          //   mainScreenUI.scrollTop
-          // );
-          if (scrollToTopButton) {
-            if (mainScreenUI.scrollTop > 200) {
-              scrollToTopButton.style.display = "flex";
-            } else {
-              scrollToTopButton.style.display = "none";
-            }
-          }
-        }
-      };
-  
-      const mainScreenUI = document.getElementById('MainScreenUI');
-      if (mainScreenUI) {
-        mainScreenUI.addEventListener('scroll', _handleScroll);
-  
-        return () => {
-          mainScreenUI.removeEventListener('scroll', handleScroll);
-        };
-      }
-};
 
 
 
