@@ -46,14 +46,15 @@ const SearchList: React.FC = () => {
     databaseHasBeenLoaded,
     setDatabaseHasBeenLoaded,
   } = useOptions();
-
   useEffect(() => {
     handleShowMode(
       configOptions.showFavoritesListOnly,
       databaseHasBeenLoaded,
       query,
-      showCustomToast,
-      handleInputChange
+      favorites,
+      configOptions,
+      setQuery,
+      setFilteredData
     );
   }, [configOptions.showFavoritesListOnly]);
 
@@ -64,26 +65,6 @@ const SearchList: React.FC = () => {
     } else {
       setFavorites([...favorites, index]);
       showCustomToast("已收藏");
-    }
-  };
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(
-      "%c handleInputChange",
-      "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-      "event:",
-      event,
-    );
-    const newQuery = event.target.value;
-    setQuery(newQuery);
-    const filtered = language_data_sheet.filter(
-      (item) =>
-        (item.en.toLowerCase().includes(newQuery.toLowerCase()) ||
-          item.zh.toLowerCase().includes(newQuery.toLowerCase())) &&
-        (!configOptions.showFavoritesListOnly || favorites.includes(item.index)),
-    );
-    setFilteredData(filtered);
-    if (filtered.length <= 0 && configOptions.showFavoritesListOnly) {
-      showCustomToast("最愛模式:無收藏名單");
     }
   };
 
@@ -137,12 +118,10 @@ const SearchList: React.FC = () => {
               onChange={(event) => {
                 handleInputChangeShared(
                   event,
-                  language_data_sheet,
                   favorites,
                   configOptions,
                   setQuery,
-                  setFilteredData,
-                  showCustomToast
+                  setFilteredData
                 );
               }}
               className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
@@ -193,7 +172,7 @@ const SearchList: React.FC = () => {
                     <button
                       className="ml-2"
                       onClick={() => {
-                        copyText(item,configOptions,showCustomToast);
+                        copyText(item,configOptions);
                       }}
                     >
                       <DocumentDuplicateIconSolid className="h-6 w-6 fill-current text-gray-200" />

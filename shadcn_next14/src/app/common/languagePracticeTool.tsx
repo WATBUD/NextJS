@@ -1,4 +1,9 @@
-export const copyText = (item: any, configOptions: any, showCustomToast: Function) => {
+
+import language_data_sheet from "../common/language_data_sheet.json";
+import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
+
+
+export const copyText = (item: any, configOptions: any) => {
     
   const text =
   !configOptions.copyTheTextAbove && !configOptions.copyTheTextBelow
@@ -25,15 +30,14 @@ export const copyText = (item: any, configOptions: any, showCustomToast: Functio
   }
 };
 
-
-
-
 export const handleShowMode = (
   showFavoritesListOnly: boolean,
   databaseHasBeenLoaded: boolean,
   query: string,
-  showCustomToast: (message: string) => void,
-  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  favorites: number[],
+  configOptions: any,
+  setQuery: (query: string) => void,
+  setFilteredData: (filteredData: any[]) => void,
 ) => {
   console.log(
     "%c useEffect+showFavoritesListOnly",
@@ -42,23 +46,27 @@ export const handleShowMode = (
   
   if (databaseHasBeenLoaded) {
     showCustomToast(showFavoritesListOnly ? "最愛模式" : "全部模式");
-    const event = {
+    const event:any = {
       target: {
         value: query,
       },
     };
-    handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
+    handleInputChangeShared(
+      event,
+      favorites,
+      configOptions,
+      setQuery,
+      setFilteredData
+    );
   }
 };
 
 export const handleInputChangeShared = (
   event: React.ChangeEvent<HTMLInputElement>,
-  language_data_sheet: any[],
   favorites: number[],
   configOptions: any,
   setQuery: (query: string) => void,
   setFilteredData: (filteredData: any[]) => void,
-  showCustomToast: (message: string) => void
 ) => {
   console.log(
     "%c handleInputChange",
@@ -83,13 +91,6 @@ export const handleInputChangeShared = (
     showCustomToast("最愛模式:無收藏名單");
   }
 };
-
-
-
-
-
-
-
 
 export const scrollToTop = () => {
 
