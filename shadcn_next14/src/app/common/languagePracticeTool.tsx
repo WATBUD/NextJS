@@ -1,4 +1,7 @@
 import language_data_sheet from "../common/language_data_sheet.json";
+import language_data_tag from "../common/language_data_tag.json";
+
+
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
 
 export const copyText = (item: any, configOptions: any) => {
@@ -76,8 +79,18 @@ export const handleInputChangeShared = (
   const newQuery = event.target.value;
   setQuery(newQuery);
   
-  
-  const filtered = language_data_sheet.filter((item) => {
+  let mergedData = language_data_sheet.map(item => ({...item, tag: ''}));
+  language_data_tag.forEach((tagItem, index) => {
+    if (mergedData[index]) {
+      mergedData[index].tag = tagItem.tag;
+    }
+  });
+  console.log(
+    "%c mergedData",
+    "color:#DDDD00;font-family:system-ui;font-size:2rem;font-weight:bold",
+    mergedData
+  );
+  const filtered = mergedData.filter((item) => {
     return Object.values(item.translations).some((translation: string) => 
       translation.toLowerCase().includes(newQuery.toLowerCase())
     ) && (!configOptions.showFavoritesListOnly || favorites.includes(item.index));
