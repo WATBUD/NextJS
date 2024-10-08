@@ -80,11 +80,24 @@ export const handleInputChangeShared = (
   setQuery(newQuery);
   
   let mergedData = language_data_sheet.map(item => ({...item, tag: ''}));
+  const missingIndexes: number[] = []; 
+
   language_data_tag.forEach((tagItem, index) => {
     if (mergedData[index]) {
-      mergedData[index].tag = tagItem.tag;
+        mergedData[index].tag = tagItem.tag;
+    } else {
+        missingIndexes.push(tagItem.index);
     }
   });
+
+  if (missingIndexes.length > 0) {
+    console.log(
+        "%c Missing indexes in mergedData:",
+        "color:#FF0000;font-family:system-ui;font-size:1.5rem;font-weight:bold",
+        missingIndexes
+    );
+  }
+
   console.log(
     "%c mergedData",
     "color:#DDDD00;font-family:system-ui;font-size:2rem;font-weight:bold",
