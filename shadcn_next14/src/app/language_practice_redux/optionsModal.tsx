@@ -3,6 +3,7 @@ import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { showCustomToast } from "../common/sharedFunction";
 
 import { useOptions } from "./redux/optionsReducer";
+import LanguageSelector from "./languageSelector"; // 引入新的組件
 
 const OptionsModal = () => {
   const {
@@ -17,6 +18,7 @@ const OptionsModal = () => {
 
   return (
     <div className={`OptionsModal${showOptionUI ? " show" : ""}`}>
+      
       <div className="bg-[#fffdfdde] max-w-[500px] w-[100%] h-[100%] rounded-lg shadow-lg p-4 flex flex-col items-center">
         <div className="flex items-center mb-10 bg-[#0000] w-[100%]">
           <button
@@ -34,7 +36,7 @@ const OptionsModal = () => {
           </button>
           <h1 className="text-lg font-semibold flex-grow ml-3">Options</h1>
         </div>
-
+        <LanguageSelector />
         <div className="flex items-center mb-4">
           <input
             type="checkbox"
@@ -86,8 +88,6 @@ const OptionsModal = () => {
             Copy the text below{' '}
           </label>
         </div>
-
-
 
         <div className="flex justify-end">
           <button

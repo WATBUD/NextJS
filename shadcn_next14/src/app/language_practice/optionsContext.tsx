@@ -2,7 +2,6 @@
 "use client"
 
 // OptionsContext.tsx
-import toast, { Renderable, Toast, Toaster, ValueFunction } from 'react-hot-toast';
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 
 import React, { createContext, useContext, useState,useEffect, PropsWithChildren } from 'react';
@@ -74,7 +73,6 @@ export const OptionsProvider: React.FC<PropsWithChildren<{}>> = ({ children }) =
   );
 };
 
-// 自定義 hook 來使用 Context
 export const useOptions = () => {
   const context = useContext(OptionsContext);
   if (!context) {

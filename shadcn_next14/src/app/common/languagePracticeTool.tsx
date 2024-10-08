@@ -1,7 +1,5 @@
-
 import language_data_sheet from "../common/language_data_sheet.json";
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
-
 
 export const copyText = (item: any, configOptions: any) => {
     
@@ -9,11 +7,11 @@ export const copyText = (item: any, configOptions: any) => {
   !configOptions.copyTheTextAbove && !configOptions.copyTheTextBelow
   ? 'No copy conditions selected\n(未選擇複製條件)'
   : configOptions.copyTheTextAbove && configOptions.copyTheTextBelow
-  ? item.en + "\n" + item.zh
+  ? item.translations.en + "\n" + item.translations.zh
   : configOptions.copyTheTextBelow
-  ? item.zh
+  ? item.translations.zh
   : configOptions.copyTheTextAbove
-  ? item.en
+  ? item.translations.en
   : 'No copy conditions selected';
 
   if (text.includes('未選擇複製條件')) {
@@ -78,15 +76,19 @@ export const handleInputChangeShared = (
   const newQuery = event.target.value;
   setQuery(newQuery);
   
-  const filtered = language_data_sheet.filter(
-    (item) =>
-      (item.en.toLowerCase().includes(newQuery.toLowerCase()) ||
-        item.zh.toLowerCase().includes(newQuery.toLowerCase())) &&
-      (!configOptions.showFavoritesListOnly || favorites.includes(item.index))
+  
+  const filtered = language_data_sheet.filter((item) => {
+    return Object.values(item.translations).some((translation: string) => 
+      translation.toLowerCase().includes(newQuery.toLowerCase())
+    ) && (!configOptions.showFavoritesListOnly || favorites.includes(item.index));
+  });
+  console.log(
+    "%c languagePracticeTool_filtered",
+    "color:#DDDD00;font-family:system-ui;font-size:2rem;font-weight:bold",
+    "filtered:",
+    filtered
   );
-  
   setFilteredData(filtered);
-  
   if (filtered.length <= 0 && configOptions.showFavoritesListOnly) {
     showCustomToast("最愛模式:無收藏名單");
   }
@@ -142,3 +144,42 @@ export const handleScroll = () => {
       };
     }
 };
+
+export const toggleStarred = (
+  index: number,
+  favorites: number[],
+  setFavorites: (favorites: number[]) => void,
+  showCustomToast: (message: string) => void
+) => {
+  if (favorites.includes(index)) {
+    setFavorites(favorites.filter((item) => item !== index));
+    showCustomToast("已取消收藏");
+  } else {
+    setFavorites([...favorites, index]);
+    showCustomToast("已收藏");
+  }
+};
+
+export const checkDuplicates = () => {
+  const zhMap = new Map();
+  const duplicates: { zh: string; indices: any[]; }[] = [];
+  
+  language_data_sheet.forEach((item: { translations: { zh: string }; index: any; }) => {
+    const zhTranslation = item.translations.zh; // 獲取 zh 翻譯
+    if (zhMap.has(zhTranslation) && zhMap.get(zhTranslation) !== item.index) {
+      duplicates.push({
+        zh: zhTranslation,
+        indices: [zhMap.get(zhTranslation), item.index]
+      });
+    } else {
+      zhMap.set(zhTranslation, item.index);
+    }
+  });
+  
+  console.log(
+    "%c checkDuplicates",
+    "color:#DDDD00;font-family:system-ui;font-size:2rem;font-weight:bold",
+    "duplicates:",
+    duplicates
+  );
+}

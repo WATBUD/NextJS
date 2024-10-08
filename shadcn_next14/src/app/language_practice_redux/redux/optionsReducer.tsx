@@ -1,10 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { RootState, AppDispatch } from './store'; 
-import { set_indexedDB_Data, get_indexedDB_data } from "../../common/indexedDBUtils";
-
 export interface OptionsState {
   showOptionUI: boolean;
   databaseHasBeenLoaded: boolean;

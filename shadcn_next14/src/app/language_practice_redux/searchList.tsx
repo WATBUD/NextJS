@@ -11,7 +11,6 @@ SpeakerWaveIcon,
 ChevronDoubleUpIcon
 } from "@heroicons/react/24/solid";
 import React, { useState, useEffect, useRef, useContext } from "react";
-import language_data_sheet from "../common/language_data_sheet.json";
 import toast, {
   Renderable,
   Toast,
@@ -21,16 +20,14 @@ import toast, {
 import OptionsModal from "./optionsModal";
 import { useOptions } from "./redux/optionsReducer";
 
-import { copyText,handleShowMode,handleScroll,scrollToTop,handleInputChangeShared  } from '../common/languagePracticeTool';
+import { copyText,handleShowMode,handleScroll,scrollToTop,handleInputChangeShared,toggleStarred  } from '../common/languagePracticeTool';
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
 
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import '../common/languageComponent.css'; 
 const SearchList: React.FC = () => {
   const [query, setQuery] = useState<string>("");
-  const [filteredData, setFilteredData] = useState<
-    { en: string; zh: string; index: number; tag: string }[]
-  >([]);
+  const [filteredData, setFilteredData] = useState<any[]>([]);
   // const [tt, sett] = useState<boolean>(false);
   // useEffect(() => {
   //   console.log(
@@ -83,15 +80,6 @@ const SearchList: React.FC = () => {
     );
   }, [configOptions.showFavoritesListOnly]);
 
-  const toggleStarred = (index: number) => {
-    if (favorites.includes(index)) {
-      setFavorites(favorites.filter((item: any) => item !== index));
-      showCustomToast("已取消收藏");
-    } else {
-      setFavorites([...favorites, index]);
-      showCustomToast("已收藏");
-    }
-  };
   useEffect(() => {
     if(!databaseHasBeenLoaded){
       Promise.all([
@@ -177,12 +165,12 @@ const SearchList: React.FC = () => {
               </button>
               {filteredData.map((item) => (
                 <li
-                  key={item.zh}
+                  key={item.translations.zh}
                   className="flex w-[100%] items-center border-b border-gray-300 py-2"
                 >
                   <button
                     className="mr-5 bg-[#0000]"
-                    onClick={() => toggleStarred(item.index)}
+                    onClick={() => toggleStarred(item.index, favorites, setFavorites, showCustomToast)}
                   >
                     {/* <StarIcon className="size-6 text-blue-500" /> */}
                     <StarIconOutline
@@ -195,15 +183,15 @@ const SearchList: React.FC = () => {
                     {/* <StarIconSolid className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
                   </button>
                   <div className="break-word flex-grow-[1] bg-[#0000]">
-                    {item.en}
+                    {item.translations.en}
                     <br />
-                    {item.zh}
+                    {item.translations.zh}
                   </div>
                   <div className="flex justify-end flex-grow-[1]">
                     <button
                       className=""
                       onClick={() => {
-                        translateTextAndSpeak(item.en);
+                        translateTextAndSpeak(item.translations.en);
                       }}
                     >
                       <SpeakerWaveIcon className="h-6 w-6 fill-current text-gray-200" />
