@@ -5,7 +5,7 @@ const nextConfig = {
     swcMinify:true,
     compiler: {
         //removeConsole: process.env.NODE_ENV === "production",
-        removeConsole: true,
+        removeConsole: false,
 
     },
     async rewrites() {
@@ -13,11 +13,7 @@ const nextConfig = {
         {
           source: '/resume/index',
           destination: '/resume/index.html',
-        },
-        {
-          source: '/mai_today_swagger/index',
-          destination: '/mai_today_swagger/index.html',
-        },
+        }
       ]
     }
 

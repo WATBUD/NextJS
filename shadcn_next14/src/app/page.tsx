@@ -16,7 +16,6 @@ const links = [
   { href: '/stockDashboard', text: 'stockDashboard' },
   { href: '/payments', text: 'payments' },
   { href: '/resume/index', text: 'personalResume' },
-  { href: '/mai_today_swagger/index', text: 'mai_today_swagger' },
   { href: '/language_practice', text: 'language_practice' },
   { href: '/language_practice_redux', text: 'language_practice_redux' }
 
