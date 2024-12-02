@@ -18,7 +18,7 @@ import toast, {
 import OptionsModal from "./optionsModal";
 import { useOptions } from "./optionsContext";
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
-import { copyText,handleShowMode,handleScroll,scrollToTop,handleInputChangeShared,toggleStarred,checkDuplicates  } from '../common/languagePracticeTool';
+import { copyText,handleShowMode,handleScroll,scrollToTop,handleInputChange,toggleStarred,checkDuplicates  } from '../common/languagePracticeTool';
 
 import { get_indexedDB_data } from "../common/indexedDBUtils";
 import '../common/languageComponent.css'; 
@@ -100,7 +100,7 @@ const SearchList: React.FC = () => {
               placeholder="Search..."
               value={query}
               onChange={(event) => {
-                handleInputChangeShared(
+                handleInputChange(
                   event,
                   favorites,
                   configOptions,

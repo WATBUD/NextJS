@@ -20,23 +20,16 @@ import toast, {
 import OptionsModal from "./optionsModal";
 import { useOptions } from "./redux/optionsReducer";
 
-import { copyText,handleShowMode,handleScroll,scrollToTop,handleInputChangeShared,toggleStarred  } from '../common/languagePracticeTool';
+import { copyText,handleScroll,scrollToTop  } from '../common/languagePracticeTool';
+import { handleShowMode, handleInputChange,toggleStarred } from './redux/optionsReducer';
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
 
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import '../common/languageComponent.css'; 
+import { useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
 const SearchList: React.FC = () => {
-  const [query, setQuery] = useState<string>("");
-  const [filteredData, setFilteredData] = useState<any[]>([]);
-  // const [tt, sett] = useState<boolean>(false);
-  // useEffect(() => {
-  //   console.log(
-  //     "%c useEffect+tt",
-  //     "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
-  //     "tt:",
-  //     tt
-  //   );
-  // }, [tt]);
   const {
     showOptionUI,
     databaseHasBeenLoaded,
@@ -46,7 +39,10 @@ const SearchList: React.FC = () => {
     setDatabaseHasBeenLoaded,
     setConfigOptions,
     setShowOptionUI,
+    filteredData,
   } = useOptions();
+
+  const query = useSelector((state: { options: { query: string } }) => state.options.query);
 
   useEffect(() => {
     console.log(
@@ -67,17 +63,13 @@ const SearchList: React.FC = () => {
       set_indexedDB_Data("favorites", "data", favorites, () => {});
     } 
   }, [favorites]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    handleShowMode(
-      configOptions.showFavoritesListOnly,
-      databaseHasBeenLoaded,
-      query,
-      favorites,
-      configOptions,
-      setQuery,
-      setFilteredData
-    );
+    dispatch(handleShowMode({
+      showFavoritesListOnly: configOptions.showFavoritesListOnly,
+      databaseHasBeenLoaded
+    }));
   }, [configOptions.showFavoritesListOnly]);
 
   useEffect(() => {
@@ -138,15 +130,7 @@ const SearchList: React.FC = () => {
               type="text"
               placeholder="Search..."
               value={query}
-              onChange={(event) => {
-                handleInputChangeShared(
-                  event,
-                  favorites,
-                  configOptions,
-                  setQuery,
-                  setFilteredData
-                );
-              }}
+              onChange={(e) => dispatch(handleInputChange(e.target.value))}
               className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             />
           </div>
@@ -170,7 +154,7 @@ const SearchList: React.FC = () => {
                 >
                   <button
                     className="mr-5 bg-[#0000]"
-                    onClick={() => toggleStarred(item.index, favorites, setFavorites, showCustomToast)}
+                    onClick={() => dispatch(toggleStarred(item.index))}
                   >
                     {/* <StarIcon className="size-6 text-blue-500" /> */}
                     <StarIconOutline

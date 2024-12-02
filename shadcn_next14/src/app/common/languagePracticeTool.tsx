@@ -52,7 +52,7 @@ export const handleShowMode = (
         value: query,
       },
     };
-    handleInputChangeShared(
+    handleInputChange(
       event,
       favorites,
       configOptions,
@@ -62,7 +62,7 @@ export const handleShowMode = (
   }
 };
 
-export const handleInputChangeShared = (
+export const handleInputChange = (
   event: React.ChangeEvent<HTMLInputElement>,
   favorites: number[],
   configOptions: any,
