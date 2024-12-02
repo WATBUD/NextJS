@@ -2,8 +2,7 @@
 import type { Metadata } from "next";
 import SearchList from './searchList';
 
-import { OptionsProvider } from './optionsContext'; // 导入 OptionsProvider
-
+import { OptionsProvider } from './optionsContext';
 import { CommonMetadata }  from '../common/languageComponent';
 
 export const metadata: Metadata = CommonMetadata;

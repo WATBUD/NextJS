@@ -18,7 +18,7 @@ const links = [
   { href: '/language_practice_redux', text: 'language_practice_redux' }
 ];
 
-export function NavigationTable() {
+export default function NavigationTable() {
   return (
     <Table>
       <TableHeader>
