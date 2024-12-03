@@ -40,9 +40,8 @@ const SearchList: React.FC = () => {
     setConfigOptions,
     setShowOptionUI,
     filteredData,
+    query,
   } = useOptions();
-
-  const query = useSelector((state: { options: { query: string } }) => state.options.query);
 
   useEffect(() => {
     console.log(
@@ -66,10 +65,7 @@ const SearchList: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(handleShowMode({
-      showFavoritesListOnly: configOptions.showFavoritesListOnly,
-      databaseHasBeenLoaded
-    }));
+    dispatch(handleShowMode());
   }, [configOptions.showFavoritesListOnly]);
 
   useEffect(() => {

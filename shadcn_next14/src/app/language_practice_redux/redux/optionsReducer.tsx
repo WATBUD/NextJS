@@ -52,16 +52,12 @@ const optionsSlice = createSlice({
       state.favorites = action.payload;
     },
     handleShowMode: (
-      state,
-      action: PayloadAction<{
-        showFavoritesListOnly: boolean;
-        databaseHasBeenLoaded: boolean;
-      }>
+      state
     ) => {
-      const { showFavoritesListOnly, databaseHasBeenLoaded} = action.payload;
+      //const { showFavoritesListOnly} = action.payload;
 
-      if (databaseHasBeenLoaded) {
-        showCustomToast(showFavoritesListOnly ? "最愛模式" : "全部模式");
+      if (state.databaseHasBeenLoaded) {
+        showCustomToast(state.configOptions.showFavoritesListOnly ? "最愛模式" : "全部模式");
         const event: any = {
           target: {
             value: state.query,
@@ -132,11 +128,9 @@ const optionsSlice = createSlice({
       const favorites = state.favorites;
 
       if (favorites.includes(index)) {
-        // 如果已經存在，則移除
         state.favorites = favorites.filter(fav => fav !== index);
         showCustomToast("已移除最愛");
       } else {
-        // 如果不存在，則添加
         state.favorites.push(index);
         showCustomToast("已添加至最愛");
       }
@@ -150,33 +144,50 @@ const optionsSlice = createSlice({
 export const { setShowOptionUI, setDatabaseHasBeenLoaded, setConfigOptions, updateConfigOptions, setFavorites, handleShowMode, handleInputChange, toggleStarred, setQuery } = optionsSlice.actions;
 
 export default optionsSlice.reducer;
-
+type OptionsActions = {
+  [Key in keyof typeof optionsSlice.actions]: (
+    payload: Parameters<(typeof optionsSlice.actions)[Key]>[0]
+  ) => void;
+};
 export const useOptions = () => {
   const dispatch = useDispatch<AppDispatch>();
   const optionsState = useSelector((state: RootState) => state.options);
 
-  const dispatchSetShowOptionUI = (value: boolean) => {
-    dispatch(setShowOptionUI(value));
-  };
+  // const dispatchSetShowOptionUI = (value: boolean) => {
+  //   dispatch(setShowOptionUI(value));
+  // };
 
-  const dispatchSetDatabaseHasBeenLoaded = (value: boolean) => {
-    dispatch(setDatabaseHasBeenLoaded(value));
-  };
+  // const dispatchSetDatabaseHasBeenLoaded = (value: boolean) => {
+  //   dispatch(setDatabaseHasBeenLoaded(value));
+  // };
 
-  const dispatchSetConfigOptions = (configOptions: OptionsState['configOptions']) => {
-    dispatch(setConfigOptions(configOptions));
-  };
+  // const dispatchSetConfigOptions = (configOptions: OptionsState['configOptions']) => {
+  //   dispatch(setConfigOptions(configOptions));
+  // };
 
 
-  const dispatchSetFavorites = (favorites: number[]) => {
-    dispatch(setFavorites(favorites));
-  };
+  // const dispatchSetFavorites = (favorites: number[]) => {
+  //   dispatch(setFavorites(favorites));
+  // };
 
+  const actions: OptionsActions = Object.keys(optionsSlice.actions).reduce(
+    (accumulator, actionName) => {
+      accumulator[actionName as keyof OptionsActions] = (payload) =>
+        dispatch((optionsSlice.actions as any)[actionName](payload));
+      return accumulator;
+    },
+    {} as OptionsActions
+  );
+  // {
+  //   setOptionA: (payload) => dispatch(optionsSlice.actions.setOptionA(payload)),
+  //   setOptionB: (payload) => dispatch(optionsSlice.actions.setOptionB(payload)),
+  // }
   return {
     ...optionsState,
-    setShowOptionUI: dispatchSetShowOptionUI,
-    setDatabaseHasBeenLoaded: dispatchSetDatabaseHasBeenLoaded,
-    setConfigOptions: dispatchSetConfigOptions,
-    setFavorites: dispatchSetFavorites,
+    ...actions,
+    // setShowOptionUI: dispatchSetShowOptionUI,
+    // setDatabaseHasBeenLoaded: dispatchSetDatabaseHasBeenLoaded,
+    // setConfigOptions: dispatchSetConfigOptions,
+    // setFavorites: dispatchSetFavorites,
   };
 };
