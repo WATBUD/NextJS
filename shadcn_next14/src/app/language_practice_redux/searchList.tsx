@@ -57,7 +57,7 @@ const SearchList: React.FC = () => {
   useEffect(() => {
     dispatch(handleShowMode());
   }, [configOptions.showFavoritesListOnly]);
-  
+
   useEffect(() => {
     console.log(
       "%c useEffect+optionsState.favorites",
@@ -133,7 +133,7 @@ const SearchList: React.FC = () => {
         </div>
         <div className="max-w-[980px] w-[86%] flex flex-col items-center">
           {queryString!=null && (
-            <ul className="flex flex-col mt-2 bg-[#0000]">
+            <ul className="flex flex-col mt-2 bg-[#0000] w-[100%]">
               <button
                 id="scrollToTopButton"
                 onClick={scrollToTop}
