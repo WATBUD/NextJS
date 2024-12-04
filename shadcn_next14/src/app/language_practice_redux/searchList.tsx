@@ -40,7 +40,7 @@ const SearchList: React.FC = () => {
     setConfigOptions,
     setShowOptionUI,
     filteredData,
-    query,
+    queryString,
   } = useOptions();
 
   useEffect(() => {
@@ -52,7 +52,12 @@ const SearchList: React.FC = () => {
       set_indexedDB_Data("favorites", "configOptions", configOptions, () => {});
     }
   }, [configOptions]);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(handleShowMode());
+  }, [configOptions.showFavoritesListOnly]);
+  
   useEffect(() => {
     console.log(
       "%c useEffect+optionsState.favorites",
@@ -62,11 +67,6 @@ const SearchList: React.FC = () => {
       set_indexedDB_Data("favorites", "data", favorites, () => {});
     } 
   }, [favorites]);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(handleShowMode());
-  }, [configOptions.showFavoritesListOnly]);
 
   useEffect(() => {
     if(!databaseHasBeenLoaded){
@@ -125,14 +125,14 @@ const SearchList: React.FC = () => {
             <input
               type="text"
               placeholder="Search..."
-              value={query}
+              value={queryString}
               onChange={(e) => dispatch(handleInputChange(e.target.value))}
               className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             />
           </div>
         </div>
         <div className="max-w-[980px] w-[86%] flex flex-col items-center">
-          {query && (
+          {queryString!=null && (
             <ul className="flex flex-col mt-2 bg-[#0000]">
               <button
                 id="scrollToTopButton"

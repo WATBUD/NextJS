@@ -15,7 +15,7 @@ export interface OptionsState {
     showFavoritesListOnly: boolean;
   };
   favorites: number[];
-  query: string;
+  queryString: string;
   filteredData: any[];
 }
 
@@ -28,7 +28,7 @@ const initialState: OptionsState = {
     showFavoritesListOnly: false,
   },
   favorites: [],
-  query: '',
+  queryString: '',
   filteredData: [],
 };
 
@@ -51,79 +51,96 @@ const optionsSlice = createSlice({
     setFavorites(state, action: PayloadAction<number[]>) {
       state.favorites = action.payload;
     },
+    setQuery: (state, action: PayloadAction<string>) => {
+      state.queryString = action.payload;
+    },
     handleShowMode: (
       state
     ) => {
       //const { showFavoritesListOnly} = action.payload;
-
+      console.log(
+        "%c handleShowMode",
+        "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+        "state:",
+        JSON.parse(JSON.stringify(state)),
+      );
+      
       if (state.databaseHasBeenLoaded) {
         showCustomToast(state.configOptions.showFavoritesListOnly ? "最愛模式" : "全部模式");
-        const event: any = {
-          target: {
-            value: state.query,
-          },
-        };
-        handleInputChange(event.target.value);
+        optionsSlice.caseReducers.applyFilter(state);
       }
     },
-  handleInputChange: (state, action: PayloadAction<string>) => {
-    
+   handleInputChange: (state, action: PayloadAction<string>) => {
     console.log(
       "%c handleInputChange",
       "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
       "action:",
       action,
     );
+    state.queryString =action.payload;
+    optionsSlice.caseReducers.applyFilter(state);
+   },
+   applyFilter: (state) => {
+    // 過濾邏輯提取到共用函數
+    const inputQueryString = state.queryString.trim();
+    let mergedData = language_data_sheet.map((item) => ({
+      ...item,
+      tag: "",
+    }));
+    const missingIndexes: number[] = [];
 
-      const newQuery = action.payload;
+    language_data_tag.forEach((tagItem, index) => {
+      if (mergedData[index]) {
+        mergedData[index].tag = tagItem.tag;
+      } else {
+        missingIndexes.push(tagItem.index);
+      }
+    });
 
-      state.query = newQuery;
+    if (missingIndexes.length > 0) {
+      console.log(
+        "%c Missing indexes in mergedData:",
+        "color:#FF0000;font-family:system-ui;font-size:1.5rem;font-weight:bold",
+        missingIndexes
+      );
+    }
 
-      let mergedData = language_data_sheet.map(item => ({ ...item, tag: '' }));
-      const missingIndexes: number[] = [];
+    console.log(
+      "%c mergedData",
+      "color:#DDDD00;font-family:system-ui;font-size:2rem;font-weight:bold",
+      mergedData
+    );
 
-      language_data_tag.forEach((tagItem, index) => {
-        if (mergedData[index]) {
-          mergedData[index].tag = tagItem.tag;
-        } else {
-          missingIndexes.push(tagItem.index);
-        }
-      });
-
-      if (missingIndexes.length > 0) {
-        console.log(
-          "%c Missing indexes in mergedData:",
-          "color:#FF0000;font-family:system-ui;font-size:1.5rem;font-weight:bold",
-          missingIndexes
-        );
+    const filtered = mergedData.filter((item) => {
+      if (inputQueryString.length === 0) {
+        return state.configOptions.showFavoritesListOnly
+          ? state.favorites.includes(item.index)
+          : true;
       }
 
-      console.log(
-        "%c mergedData",
-        "color:#DDDD00;font-family:system-ui;font-size:2rem;font-weight:bold",
-        mergedData
+      return (
+        Object.values(item.translations).some((translation: string) =>
+          translation.toLowerCase().includes(inputQueryString.toLowerCase())
+        ) &&
+        (!state.configOptions.showFavoritesListOnly ||
+          state.favorites.includes(item.index))
       );
+    });
 
-      const filtered = mergedData.filter((item) => {
-        return Object.values(item.translations).some((translation: string) =>
-          translation.toLowerCase().includes(newQuery.toLowerCase())
-        ) && (!state.configOptions.showFavoritesListOnly || state.favorites.includes(item.index));
-      });
+    console.log(
+      "%c languagePracticeTool_filtered",
+      "color:#DDDD00;font-family:system-ui;font-size:2rem;font-weight:bold",
+      "filtered:",
+      filtered
+    );
 
-      console.log(
-        "%c languagePracticeTool_filtered",
-        "color:#DDDD00;font-family:system-ui;font-size:2rem;font-weight:bold",
-        "filtered:",
-        filtered
-      );
+    state.filteredData = filtered;
 
-      state.filteredData = filtered;
-
-      if (filtered.length <= 0 && state.configOptions.showFavoritesListOnly) {
-        showCustomToast("最愛模式:無收藏名單");
-      }
-    },
-    toggleStarred: (state, action: PayloadAction<number>) => {
+    if (filtered.length <= 0 && state.configOptions.showFavoritesListOnly) {
+      showCustomToast("最愛模式:無收藏名單");
+    }
+  },
+   toggleStarred: (state, action: PayloadAction<number>) => {
       const index = action.payload;
       const favorites = state.favorites;
 
@@ -134,10 +151,7 @@ const optionsSlice = createSlice({
         state.favorites.push(index);
         showCustomToast("已添加至最愛");
       }
-    },
-    setQuery: (state, action: PayloadAction<string>) => {
-      state.query = action.payload;
-    },
+   },
   },
 });
 

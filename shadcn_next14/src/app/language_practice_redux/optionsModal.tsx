@@ -9,9 +9,7 @@ const OptionsModal = () => {
   const {
     showOptionUI,
     configOptions,
-    favorites,
     setShowOptionUI,
-    setDatabaseHasBeenLoaded,
     setConfigOptions,
     setFavorites,
   } = useOptions();
