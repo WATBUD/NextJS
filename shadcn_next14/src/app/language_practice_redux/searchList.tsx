@@ -26,8 +26,6 @@ import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction'
 
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import '../common/languageComponent.css'; 
-import { useSelector } from "react-redux";
-
 import { useDispatch } from "react-redux";
 const SearchList: React.FC = () => {
   const {

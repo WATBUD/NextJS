@@ -1,17 +1,15 @@
+"use client"; // This marks the component as a client component
 import React from 'react';
-import ClientApp from './client-app'; 
-import { Metadata } from 'next';
-import { CommonMetadata }  from '../common/languageComponent';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import SearchList from './searchList';
 
-export const metadata: Metadata = CommonMetadata;
-
-
-const Page = () => {
+const LanguagePracticeRedux = () => {
   return (
-    <div>
-      <ClientApp />
-    </div>
+    <Provider store={store}>
+      <SearchList />
+    </Provider>
   );
 };
 
-export default Page;
+export default LanguagePracticeRedux;
