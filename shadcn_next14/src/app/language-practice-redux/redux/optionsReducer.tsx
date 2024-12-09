@@ -13,6 +13,7 @@ export interface OptionsState {
     copyTheTextBelow: boolean;
     copyTheTextAbove: boolean;
     showFavoritesListOnly: boolean;
+    selectedLanguages: string[];
   };
   favorites: number[];
   queryString: string;
@@ -26,6 +27,7 @@ const initialState: OptionsState = {
     copyTheTextBelow: true,
     copyTheTextAbove: true,
     showFavoritesListOnly: false,
+    selectedLanguages: ["en", "zh"],
   },
   favorites: [],
   queryString: '',
@@ -36,11 +38,33 @@ const optionsSlice = createSlice({
   name: 'options',
   initialState,
   reducers: {
+    initializeConfigOptions(state, action: PayloadAction<Partial<OptionsState['configOptions']>>) {
+      if (action.payload) {
+        if (typeof action.payload.copyTheTextBelow === 'boolean') {
+          state.configOptions.copyTheTextBelow = action.payload.copyTheTextBelow;
+        }
+        if (typeof action.payload.copyTheTextAbove === 'boolean') {
+          state.configOptions.copyTheTextAbove = action.payload.copyTheTextAbove;
+        }
+        if (typeof action.payload.showFavoritesListOnly === 'boolean') {
+          state.configOptions.showFavoritesListOnly = action.payload.showFavoritesListOnly;
+        }
+        if (Array.isArray(action.payload.selectedLanguages)) {
+          state.configOptions.selectedLanguages = action.payload.selectedLanguages;
+        }
+      }
+      state.databaseHasBeenLoaded = true;
+    },
     setShowOptionUI(state, action: PayloadAction<boolean>) {
       state.showOptionUI = action.payload;
     },
     setDatabaseHasBeenLoaded(state, action: PayloadAction<boolean>) {
       state.databaseHasBeenLoaded = action.payload;
+    },
+    batchUpdateConfigOptions(state, action: PayloadAction<Partial<OptionsState['configOptions']>>) {
+      Object.entries(action.payload).forEach(([key, value]) => {
+        (state.configOptions as any)[key] = value;
+      });
     },
     setConfigOptions(state, action: PayloadAction<OptionsState['configOptions']>) {
       state.configOptions = action.payload;
@@ -67,6 +91,7 @@ const optionsSlice = createSlice({
       
       if (state.databaseHasBeenLoaded) {
         showCustomToast(state.configOptions.showFavoritesListOnly ? "最愛模式" : "全部模式");
+        
         optionsSlice.caseReducers.applyFilter(state);
       }
     },
@@ -81,7 +106,6 @@ const optionsSlice = createSlice({
     optionsSlice.caseReducers.applyFilter(state);
    },
    applyFilter: (state) => {
-    // 過濾邏輯提取到共用函數
     const inputQueryString = state.queryString.trim();
     let mergedData = language_data_sheet.map((item) => ({
       ...item,
@@ -155,9 +179,12 @@ const optionsSlice = createSlice({
   },
 });
 
-export const { setShowOptionUI, setDatabaseHasBeenLoaded, setConfigOptions, updateConfigOptions, setFavorites, handleShowMode, handleInputChange, toggleStarred, setQuery } = optionsSlice.actions;
+export const { initializeConfigOptions,setShowOptionUI, setDatabaseHasBeenLoaded, setConfigOptions, updateConfigOptions, setFavorites, handleShowMode, handleInputChange, toggleStarred, setQuery } = optionsSlice.actions;
 
 export default optionsSlice.reducer;
+
+
+
 type OptionsActions = {
   [Key in keyof typeof optionsSlice.actions]: (
     payload: Parameters<(typeof optionsSlice.actions)[Key]>[0]
@@ -166,24 +193,6 @@ type OptionsActions = {
 export const useOptions = () => {
   const dispatch = useDispatch<AppDispatch>();
   const optionsState = useSelector((state: RootState) => state.options);
-
-  // const dispatchSetShowOptionUI = (value: boolean) => {
-  //   dispatch(setShowOptionUI(value));
-  // };
-
-  // const dispatchSetDatabaseHasBeenLoaded = (value: boolean) => {
-  //   dispatch(setDatabaseHasBeenLoaded(value));
-  // };
-
-  // const dispatchSetConfigOptions = (configOptions: OptionsState['configOptions']) => {
-  //   dispatch(setConfigOptions(configOptions));
-  // };
-
-
-  // const dispatchSetFavorites = (favorites: number[]) => {
-  //   dispatch(setFavorites(favorites));
-  // };
-
   const actions: OptionsActions = Object.keys(optionsSlice.actions).reduce(
     (accumulator, actionName) => {
       accumulator[actionName as keyof OptionsActions] = (payload) =>
@@ -192,16 +201,8 @@ export const useOptions = () => {
     },
     {} as OptionsActions
   );
-  // {
-  //   setOptionA: (payload) => dispatch(optionsSlice.actions.setOptionA(payload)),
-  //   setOptionB: (payload) => dispatch(optionsSlice.actions.setOptionB(payload)),
-  // }
   return {
     ...optionsState,
     ...actions,
-    // setShowOptionUI: dispatchSetShowOptionUI,
-    // setDatabaseHasBeenLoaded: dispatchSetDatabaseHasBeenLoaded,
-    // setConfigOptions: dispatchSetConfigOptions,
-    // setFavorites: dispatchSetFavorites,
   };
 };

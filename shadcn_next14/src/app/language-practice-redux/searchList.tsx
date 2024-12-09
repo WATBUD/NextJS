@@ -31,6 +31,8 @@ const SearchList: React.FC = () => {
   const {
     showOptionUI,
     databaseHasBeenLoaded,
+    initializeConfigOptions,
+    batchUpdateConfigOptions,
     configOptions,
     favorites,
     setFavorites,
@@ -72,11 +74,13 @@ const SearchList: React.FC = () => {
         get_indexedDB_data("favorites", "configOptions"),
         get_indexedDB_data("favorites", "data")
       ])
-      .then(([configOptionsData, favoritesData]) => {
-        if (configOptionsData !== undefined) {
-          console.log("favorites/configOptions retrieved successfully:", configOptionsData);
-          setConfigOptions(configOptionsData);
+      .then(([prevConfigOptions, favoritesData]) => {
+        if (prevConfigOptions !== undefined) {
+          console.log("configOptions retrieved successfully:", prevConfigOptions);
+          initializeConfigOptions(prevConfigOptions);
+
         }
+        
         if (favoritesData !== undefined) {
           console.log("favorites/data retrieved successfully:", favoritesData);
           setFavorites(favoritesData);
@@ -89,7 +93,15 @@ const SearchList: React.FC = () => {
     }
     handleScroll();
   }, []);
-
+  const highlightText = (text: string, query: string) => {
+    if (!query) return text; 
+    const parts = text.split(new RegExp(`(${query})`, "gi")); 
+    return parts.map((part, index) => 
+      part.toLowerCase() === query.toLowerCase() ? (
+        <span key={index} style={{ backgroundColor: "#ff0" }}>{part}</span> 
+      ) : part
+    );
+  };
 
   return (
     <div className="w-full flex flex-col items-center mr-5">
@@ -143,7 +155,7 @@ const SearchList: React.FC = () => {
               </button>
               {filteredData.map((item) => (
                 <li
-                  key={item.translations.zh}
+                  // key={item.translations.zh}
                   className="flex w-[100%] items-center border-b border-gray-300 py-2"
                 >
                   <button
@@ -161,9 +173,9 @@ const SearchList: React.FC = () => {
                     {/* <StarIconSolid className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
                   </button>
                   <div className="break-word flex-grow-[1] bg-[#0000]">
-                    {item.translations.en}
-                    <br />
-                    {item.translations.zh}
+                    <div>{highlightText(item.translations[configOptions.selectedLanguages[0]], queryString)}</div>
+                    {/* <br /> */}
+                    <div>{highlightText(item.translations[configOptions.selectedLanguages[1]], queryString)}</div>
                   </div>
                   <div className="flex justify-end flex-grow-[1]">
                     <button
