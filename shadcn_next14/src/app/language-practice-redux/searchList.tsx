@@ -117,7 +117,7 @@ const SearchList: React.FC = () => {
           id="navbar"
           className="max-w-[980px] w-[86%] mb-2 flex flex-col sticky top-0 z-2"
         >
-          <div className="mb-2 flex w-full items-center justify-between">
+          <div className="mb-2 mt-3 flex w-full items-center justify-between">
             <h1 className="self-center text-2xl font-bold">Sentence Search</h1>
             <button
               onClick={() => {
