@@ -4,7 +4,7 @@ import GoogleAd from "@/components/google-ad";
 export default function Home() {
   return (
     <>
-      {/* <LanguagePracticeRedux /> */}
+      <LanguagePracticeRedux />
       <GoogleAd
         adClient="ca-pub-5036446798216533" 
         adSlot="8349991289" 
