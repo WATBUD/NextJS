@@ -155,9 +155,9 @@ const SearchList: React.FC = () => {
                 <ChevronDoubleUpIcon className="h-6 w-6 fill-current text-yellow-50 mr-2" />
                 Top
               </button>
-              {filteredData.map((item) => (
+              {filteredData.map((item,index) => (
                 <li
-                  // key={item.translations.zh}
+                  key={index}
                   className="flex w-[100%] items-center border-b border-gray-300 py-2"
                 >
                   <button
