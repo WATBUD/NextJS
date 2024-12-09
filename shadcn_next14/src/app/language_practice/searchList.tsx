@@ -18,7 +18,7 @@ import toast, {
 import OptionsModal from "./optionsModal";
 import { useOptions } from "./optionsContext";
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
-import { copyText,handleShowMode,handleScroll,scrollToTop,handleInputChange,toggleStarred,checkDuplicates  } from '../common/languagePracticeTool';
+import { copyText,handleScroll,scrollToTop,toggleStarred,checkDuplicates  } from '../common/languagePracticeTool';
 
 import { get_indexedDB_data } from "../common/indexedDBUtils";
 import '../common/languageComponent.css'; 
@@ -41,15 +41,7 @@ const SearchList: React.FC = () => {
     setDatabaseHasBeenLoaded,
   } = useOptions();
   useEffect(() => {
-    handleShowMode(
-      configOptions.showFavoritesListOnly,
-      databaseHasBeenLoaded,
-      query,
-      favorites,
-      configOptions,
-      setQuery,
-      setFilteredData
-    );
+
   }, [configOptions.showFavoritesListOnly]);
 
   useEffect(() => {
@@ -100,13 +92,6 @@ const SearchList: React.FC = () => {
               placeholder="Search..."
               value={query}
               onChange={(event) => {
-                handleInputChange(
-                  event,
-                  favorites,
-                  configOptions,
-                  setQuery,
-                  setFilteredData
-                );
               }}
               className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             />

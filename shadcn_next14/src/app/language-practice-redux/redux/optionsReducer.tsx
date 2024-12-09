@@ -38,6 +38,14 @@ const optionsSlice = createSlice({
   name: 'options',
   initialState,
   reducers: {
+    resetState(state) {
+      // Reset all fields except showOptionUI
+      //state.databaseHasBeenLoaded = false;
+      state.configOptions = initialState.configOptions; // Resets to the initial config options
+      state.favorites = [];
+      state.queryString = '';
+      state.filteredData = [];
+    },
     initializeConfigOptions(state, action: PayloadAction<Partial<OptionsState['configOptions']>>) {
       if (action.payload) {
         if (typeof action.payload.copyTheTextBelow === 'boolean') {
@@ -179,7 +187,7 @@ const optionsSlice = createSlice({
   },
 });
 
-export const { initializeConfigOptions,setShowOptionUI, setDatabaseHasBeenLoaded, setConfigOptions, updateConfigOptions, setFavorites, handleShowMode, handleInputChange, toggleStarred, setQuery } = optionsSlice.actions;
+export const { resetState,initializeConfigOptions,setShowOptionUI, setDatabaseHasBeenLoaded, setConfigOptions, updateConfigOptions, setFavorites, handleShowMode, handleInputChange, toggleStarred, setQuery } = optionsSlice.actions;
 
 export default optionsSlice.reducer;
 

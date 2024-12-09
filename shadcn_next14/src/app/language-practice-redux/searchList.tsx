@@ -21,7 +21,6 @@ import OptionsModal from "./optionsModal";
 import { useOptions } from "./redux/optionsReducer";
 
 import { copyText,handleScroll,scrollToTop  } from '../common/languagePracticeTool';
-import { handleShowMode, handleInputChange,toggleStarred } from './redux/optionsReducer';
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
 
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
@@ -31,8 +30,11 @@ const SearchList: React.FC = () => {
   const {
     showOptionUI,
     databaseHasBeenLoaded,
+    handleInputChange,
     initializeConfigOptions,
     batchUpdateConfigOptions,
+    handleShowMode,
+    toggleStarred,
     configOptions,
     favorites,
     setFavorites,
@@ -55,7 +57,7 @@ const SearchList: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(handleShowMode());
+    handleShowMode();
   }, [configOptions.showFavoritesListOnly]);
 
   useEffect(() => {
@@ -136,7 +138,7 @@ const SearchList: React.FC = () => {
               type="text"
               placeholder="Search..."
               value={queryString}
-              onChange={(e) => dispatch(handleInputChange(e.target.value))}
+              onChange={(e) => handleInputChange(e.target.value)}
               className="w-[100%] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             />
           </div>
@@ -160,7 +162,7 @@ const SearchList: React.FC = () => {
                 >
                   <button
                     className="mr-5 bg-[#0000]"
-                    onClick={() => dispatch(toggleStarred(item.index))}
+                    onClick={() => toggleStarred(item.index)}
                   >
                     {/* <StarIcon className="size-6 text-blue-500" /> */}
                     <StarIconOutline

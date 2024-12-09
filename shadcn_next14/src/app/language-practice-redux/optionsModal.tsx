@@ -10,6 +10,7 @@ const OptionsModal = () => {
   const {
     showOptionUI,
     configOptions,
+    resetState,
     setShowOptionUI,
     setConfigOptions,
     setFavorites,
@@ -103,7 +104,7 @@ const OptionsModal = () => {
           <button
             className="options-btn"
             onClick={() => {
-              setShowOptionUI(!showOptionUI);
+              resetState();
             }}
           >
             Factory Reset
