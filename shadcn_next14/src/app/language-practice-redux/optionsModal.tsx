@@ -1,6 +1,7 @@
 import React from "react";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { showCustomToast } from "../common/sharedFunction";
+import './options-css.css';
 
 import { useOptions } from "./redux/optionsReducer";
 import LanguageSelector from "./languageSelector"; // 引入新的組件
@@ -89,7 +90,7 @@ const OptionsModal = () => {
 
         <div className="flex justify-end">
           <button
-            className="px-4 py-2 mb-4 mt-4 bg-blue-500 text-white rounded-md"
+            className="options-btn"
             onClick={() => {
               setFavorites([]);
               showCustomToast("Clear my favorites");
@@ -98,10 +99,19 @@ const OptionsModal = () => {
             Clear my favorites
           </button>
         </div>
-
         <div className="flex justify-end">
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2"
+            className="options-btn"
+            onClick={() => {
+              setShowOptionUI(!showOptionUI);
+            }}
+          >
+            Factory Reset
+          </button>
+        </div>
+        <div className="flex justify-end">
+          <button
+            className="options-btn"
             onClick={() => {
               setShowOptionUI(!showOptionUI);
             }}
