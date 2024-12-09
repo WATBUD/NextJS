@@ -62,18 +62,19 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
-      ) : null
-      // (
-      //   <div
-      //   style={{
-      //     width: '100%', // Set width to 100%
-      //     textAlign: 'center', // Center the content horizontally
-      //     margin: '0 auto', // Center the div within its parent
-      //   }}
-      // >
-      //   Loading ad...
-      // </div>
-      // )
+      ) : 
+      //null
+      (
+        <div
+        style={{
+          width: '100%', // Set width to 100%
+          textAlign: 'center', // Center the content horizontally
+          margin: '0 auto', // Center the div within its parent
+        }}
+      >
+        Loading ad...
+      </div>
+      )
       
       }
     </>
