@@ -15,7 +15,7 @@ const links = [
   { href: '/payments', text: 'payments' },
   { href: '/resume/index', text: 'personalResume' },
   { href: '/language_practice', text: 'language_practice' },
-  { href: '/language_practice_redux', text: 'language_practice_redux' }
+  { href: '/language-practice-redux', text: 'language-practice-redux' }
 ];
 
 export default function NavigationTable() {
