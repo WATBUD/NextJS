@@ -13,14 +13,11 @@ const fontSans = FontSans({
   variable: "--font-sans",
 })
 
-
-
-
 export const metadata: Metadata = {
   title: "LanguageTool",
   description: `
-  這是一個語言學習工具，提供多語翻譯功能，類似題字卡記事本，並加入了按鈕語音翻譯以及自定義複製語系文字等功能，幫助您輕鬆學習不同語言。作者會不斷更新和改善這個工  具，希望大家都能體驗到更好的產品 英文
-  This is a language learning tool that offers multi-language translation features, similar to flashcards and a notepad. It also includes voice   translation buttons and the ability to customize and copy text in different languages, helping you easily learn various languages. The author is   committed to continuously updating and improving this tool, and hopes everyone can experience a better product.
+  這是一個語言學習工具，提供多語翻譯=>提字卡/記事本/語音翻譯/自定義複製語系功能，幫助您輕鬆學習不同語言。作者工作繁忙但會不斷更新與改善這個工具，致力於讓大家都能體驗到更好的產品
+  This is a language learning tool that offers multi-language translations, flashcards, a notebook, voice translation, and customizable copy language features to help you learn different languages effortlessly. Despite a busy schedule, the developer is committed to continuously updating and improving the tool to provide everyone with a better experience.
   `,
 };
 
