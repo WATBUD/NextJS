@@ -42,7 +42,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         if (status === 'done') {
           setIsAdVisible(true);
         }
-      }, 500);
+      }, 5000);
 
     });
 
@@ -66,8 +66,8 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
             display: 'block',
             width: '100%',
             height: isAdVisible?height:'0px', // 測試高度
-            maxHeight: isAdVisible&&height?'auto':'0px', // 測試高度
-            backgroundColor: '#f4f4f4', // 預設背景以區分是否有內容
+            maxHeight: isAdVisible?height:'0px', // 測試高度
+            backgroundColor: '#0000', // 預設背景以區分是否有內容
             ...adStyle,
           }}
           data-ad-client={adClient}
@@ -75,7 +75,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
-      {!isAdVisible && <div className='text-center'>No Ads Available</div>}
+      {/* {!isAdVisible && <div className='text-center'>No Ads Available</div>} */}
     </>
   );
 };
