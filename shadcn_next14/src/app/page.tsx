@@ -27,12 +27,14 @@ export default function Home() {
     <>
       <GoogleAd
         adClient="ca-pub-5036446798216533" 
-        adSlot="8349991289" 
+        adSlot="5708359962" 
         adStyle={{
-          //flex:1,
-          height: height, // You can adjust this value to your needs
+          display:"inline-block",
+          width:"720px",
+          height:"90px",
+          //height: height, // You can adjust this value to your needs
           overflow: 'hidden', // To hide anything exceeding maxHeight
-          display: "block",
+          //display: "block",
           margin: "0",
           textAlign: "center",
           backgroundColor: '#0000'

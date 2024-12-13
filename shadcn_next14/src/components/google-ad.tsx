@@ -8,74 +8,57 @@ type GoogleAdProps = {
 };
 
 const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
-  const [isAdLoaded, setIsAdLoaded] = useState(false); // State to track if the ad is loaded
+  const [isAdLoaded, setIsAdLoaded] = useState(false);
 
   useEffect(() => {
-    // Initialize Google AdSense
+    const adContainer = document.querySelector('.adsbygoogle');
+    if (!adContainer || adContainer.hasAttribute('data-adsbygoogle-status')) {
+      return; // 如果廣告已初始化，直接返回
+    }
+
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (e) {
-      console.error("AdSense initialization error:", e); // Log any initialization errors
+      console.error('AdSense initialization error:', e);
     }
 
-    // Use MutationObserver to detect changes in the ad container
-    const adContainer = document.querySelector('.adsbygoogle');
-    if (adContainer) {
-      const observer = new MutationObserver(() => {
-        // Check if the ad content has loaded (typically an iframe is added to the container)
-        const adContent = adContainer.querySelector('iframe');
-        if (adContent) {
-          setIsAdLoaded(true); // Set state to true when ad is loaded
-        }
-      });
+    const observer = new MutationObserver(() => {
+      const adContent = adContainer.querySelector('iframe');
+      if (adContent) {
+        setIsAdLoaded(true);
+      }
+    });
 
-      // Start observing changes in the ad container
-      observer.observe(adContainer, {
-        childList: true, // Observe changes to child elements
-        subtree: true, // Observe changes to all descendant elements
-      });
+    observer.observe(adContainer, {
+      childList: true,
+      subtree: true,
+    });
 
-      // Clean up the observer when the component is unmounted
-      return () => {
-        observer.disconnect();
-      };
-    }
+    return () => observer.disconnect();
   }, []);
 
   return (
     <>
-      {/* Load Google Ads script asynchronously */}
       <Script
         async
         src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`}
         crossOrigin="anonymous"
         strategy="afterInteractive"
       />
-      
-      {/* Conditionally render ad content based on whether it's loaded */}
-      {isAdLoaded ? (
-        <ins
-          className="adsbygoogle"
-          style={adStyle || { display: 'block' }}
-          data-ad-client={adClient}
-          data-ad-slot={adSlot}
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
-      ) : null
-      // (
-      //   <div
-      //   style={{
-      //     width: '100%', // Set width to 100%
-      //     textAlign: 'center', // Center the content horizontally
-      //     margin: '0 auto', // Center the div within its parent
-      //   }}
-      // >
-      //   Loading ad...
-      // </div>
-      // )
-      
-      }
+      <ins
+        className="adsbygoogle"
+        style={{
+          display: isAdLoaded ? 'block' : 'inline-block', // 載入前使用 inline-block 確保尺寸計算
+          visibility: isAdLoaded ? 'visible' : 'hidden', // 隱藏內容但保留尺寸
+          width: '100%', // 確保有足夠的寬度可供計算
+          //height: isAdLoaded ? '90px':'0px', 
+          ...adStyle,
+        }}
+        data-ad-client={adClient}
+        data-ad-slot={adSlot}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
     </>
   );
 };
