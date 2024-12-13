@@ -69,16 +69,16 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         style={{
           maxWidth:"100%",
           overflow: 'hidden', // To hide anything exceeding maxHeight
-          position: 'absolute',
-          zIndex: 100,
-          //width:"100%",
+          // position: 'absolute',
+          // zIndex: 100,
+          display: 'block',
           //position: "fixed",
-          /* margin-top: 0.3rem; */
           width: "100%",
-          height: "100%",
+          ///maxHeight: 90,
           // display: isAdLoaded ? 'inline-block' : 'inline-block', // 載入前使用 inline-block 確保尺寸計算
           //visibility: isAdLoaded ? 'visible' : 'hidden', // 隱藏內容但保留尺寸
-          // height: isAdLoaded ? height:'0px', 
+          //height: isAdLoaded ? 0px:'0px', 
+          maxHeight: isAdLoaded ? height:'0px', 
           // margin: "0",
           // textAlign: "center",
           backgroundColor: '#0000',

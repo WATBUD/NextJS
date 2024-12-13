@@ -8,11 +8,6 @@ const LanguagePracticeRedux = () => {
   return (
     <Provider store={store}>
       <SearchList />
-      <GoogleAd
-        adClient="ca-pub-5036446798216533" 
-        adSlot="4679744551" 
-        />
-
     </Provider>
   );
 };
