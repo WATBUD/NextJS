@@ -66,9 +66,9 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
             display: 'block',
             overflow: 'hidden',
             width: '100%',
-            height: isAdVisible?height:'0px', // 測試高度
-            maxHeight: isAdVisible?'auto':'0px', // 測試高度
-            backgroundColor: '#0000', // 預設背景以區分是否有內容
+            height: isAdVisible?height:'0px', 
+            maxHeight: isAdVisible?height:'0px', 
+            backgroundColor: '#0000', 
             ...adStyle,
           }}
           data-ad-client={adClient}
