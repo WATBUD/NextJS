@@ -9,20 +9,7 @@ type GoogleAdProps = {
 
 const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
   const [isAdLoaded, setIsAdLoaded] = useState(false);
-  const [isAdVisible, setIsAdVisible] = useState(false); // 新增狀態來控制區塊顯示
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setHeight(window.innerHeight * 0.08); // 設置廣告高度為螢幕高度的 10%
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const [isAdVisible, setIsAdVisible] = useState(false);
 
   useEffect(() => {
     const adContainer = document.querySelector('.adsbygoogle');
@@ -40,16 +27,26 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
       const adIframe = adContainer.querySelector('iframe');
       if (adIframe) {
         setIsAdLoaded(true);
-
-        // 檢查 iframe 是否有內容（高度不為 0）
+      
+        console.log(
+          "%c MutationObserver+adIframe",
+          "color:#003Dff;font-family:system-ui;font-size:2rem;font-weight:bold",
+          "adIframe:",
+          adIframe,
+          // "adIframe.clientHeight",
+          // adIframe.clientHeight,
+        );
+        // 檢查 iframe 是否顯示內容
         setTimeout(() => {
-          const adHeight = adIframe.clientHeight || 0;
-          if (adHeight > 0) {
-            setIsAdVisible(true); // 顯示區塊
+          const iframeDoc = adIframe?.contentDocument || adIframe?.contentWindow?.document;
+          const hasAdContent = (iframeDoc?.body?.innerHTML?.trim().length ?? 0) > 0
+          if (hasAdContent) {
+            setIsAdVisible(true);
           } else {
-            setIsAdVisible(false); // 隱藏區塊
+            console.warn('AdSense iframe is empty.');
+            setIsAdVisible(false);
           }
-        }, 1000); // 延遲檢查避免初始化過早
+        }, 2000); // 延遲檢查
       }
     });
 
@@ -65,16 +62,14 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         crossOrigin="anonymous"
         strategy="lazyOnload"
       />
-      {isAdVisible && ( // 根據 `isAdVisible` 狀態控制顯示
+      {isAdVisible && (
         <ins
           className="adsbygoogle"
           style={{
-            maxWidth: '100%',
-            overflow: 'hidden',
             display: 'block',
             width: '100%',
-            maxHeight: isAdLoaded ? height : '0px',
-            backgroundColor: '#0000',
+            height: '100px', // 測試高度
+            backgroundColor: '#f4f4f4', // 預設背景以區分是否有內容
             ...adStyle,
           }}
           data-ad-client={adClient}
@@ -83,6 +78,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           data-full-width-responsive="true"
         />
       )}
+      {/* {!isAdVisible && <div>目前無法載入廣告，請稍後再試。</div>} */}
     </>
   );
 };
