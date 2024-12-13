@@ -32,7 +32,7 @@ export default function Home() {
           display:"inline-block",
           width:"720px",
           //height:"90px",
-          //height: height, // You can adjust this value to your needs
+          height: height, // You can adjust this value to your needs
           overflow: 'hidden', // To hide anything exceeding maxHeight
           //display: "block",
         }}
