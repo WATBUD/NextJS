@@ -11,12 +11,11 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
   const [isAdLoaded, setIsAdLoaded] = useState(false);
   const [isAdVisible, setIsAdVisible] = useState(false);
   const [height, setHeight] = useState(0);
+  const isMobile = window.innerWidth <= 768; // 假設 768px 以下為行動裝置
 
   useEffect(() => {
     const handleResize = () => {
-      const isMobile = window.innerWidth <= 768; // 假設 768px 以下為行動裝置
-      setIsAdVisible(isMobile); // 只在行動裝置上顯示廣告
-      setHeight(isMobile ? window.innerHeight * 0.08 : 0); // 行動裝置廣告高度為螢幕的 8%
+      setHeight(window.innerHeight * 0.08); // 設置廣告高度為螢幕高度的 10%
     };
 
     handleResize();
@@ -44,7 +43,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         if (status === 'done') {
           setIsAdVisible(true);
         }
-      }, 1500);
+      }, 3000);
 
     });
 
@@ -69,7 +68,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
             overflow: 'hidden',
             width: '100%',
             height: isAdVisible?height:'0px', 
-            maxHeight: isAdVisible?height:'0px', 
+            maxHeight: isAdVisible&&isMobile?height:'0px', 
             backgroundColor: '#0000', 
             ...adStyle,
           }}
