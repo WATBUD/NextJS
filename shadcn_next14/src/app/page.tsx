@@ -6,18 +6,16 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   return (
     <>
-      <GoogleAd
+      {/* <GoogleAd
         adClient="ca-pub-5036446798216533" 
         adSlot="4679744551" 
         adStyle={{
-          display:"block",
-          width:"720px",
+          //width:"720px",
           //height:"90px",
           //height: height, // You can adjust this value to your needs
-          overflow: 'hidden', // To hide anything exceeding maxHeight
           //display: "block",
         }}
-        />
+        /> */}
       <LanguagePracticeRedux />
     </>
   );

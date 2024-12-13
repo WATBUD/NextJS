@@ -68,12 +68,20 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         className="adsbygoogle"
         style={{
           maxWidth:"100%",
-          display: isAdLoaded ? 'block' : 'inline-block', // 載入前使用 inline-block 確保尺寸計算
+          overflow: 'hidden', // To hide anything exceeding maxHeight
+          position: 'absolute',
+          zIndex: 100,
+          //width:"100%",
+          //position: "fixed",
+          /* margin-top: 0.3rem; */
+          width: "100%",
+          height: "100%",
+          // display: isAdLoaded ? 'inline-block' : 'inline-block', // 載入前使用 inline-block 確保尺寸計算
           //visibility: isAdLoaded ? 'visible' : 'hidden', // 隱藏內容但保留尺寸
-          height: isAdLoaded ? height:'0px', 
+          // height: isAdLoaded ? height:'0px', 
           // margin: "0",
           // textAlign: "center",
-          // backgroundColor: '#0000',
+          backgroundColor: '#0000',
           ...adStyle,
         }}
         data-ad-client={adClient}
