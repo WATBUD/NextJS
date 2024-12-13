@@ -24,33 +24,15 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
     }
 
     const observer = new MutationObserver(() => {
-      const adIframe = adContainer.querySelector('iframe');
-      if (adIframe) {
-        setIsAdLoaded(true);
-      
-        console.log(
-          "%c MutationObserver+adIframe",
-          "color:#003Dff;font-family:system-ui;font-size:2rem;font-weight:bold",
-          "adIframe:",
-          adIframe,
-          // "adIframe.clientHeight",
-          // adIframe.clientHeight,
-        );
-        // 檢查 iframe 是否顯示內容
-        setTimeout(() => {
-          const iframeDoc = adIframe?.contentDocument || adIframe?.contentWindow?.document;
-          const hasAdContent = (iframeDoc?.body?.innerHTML?.trim().length ?? 0) > 0
-          if (hasAdContent) {
-            setIsAdVisible(true);
-          } else {
-            console.warn('AdSense iframe is empty.');
-            setIsAdVisible(false);
-          }
-        }, 2000); // 延遲檢查
+      const status = adContainer.getAttribute('data-adsbygoogle-status');
+      if (status === 'done') {
+        setIsAdVisible(true);
       }
     });
 
-    observer.observe(adContainer, { childList: true, subtree: true });
+    //observer.observe(adContainer, { childList: true, subtree: true });
+    observer.observe(adContainer, { attributes: true });
+
     return () => observer.disconnect();
   }, []);
 
@@ -78,7 +60,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           data-full-width-responsive="true"
         />
       )}
-      {/* {!isAdVisible && <div>目前無法載入廣告，請稍後再試。</div>} */}
+      {!isAdVisible && <div className='text-center'>No Ads Available</div>}
     </>
   );
 };
