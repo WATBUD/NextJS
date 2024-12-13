@@ -25,9 +25,12 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
 
     const observer = new MutationObserver(() => {
       const status = adContainer.getAttribute('data-adsbygoogle-status');
-      if (status === 'done') {
-        setIsAdVisible(true);
-      }
+      setTimeout(() => {
+        if (status === 'done') {
+          setIsAdVisible(true);
+        }
+      }, 500);
+
     });
 
     //observer.observe(adContainer, { childList: true, subtree: true });
@@ -44,13 +47,13 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         crossOrigin="anonymous"
         strategy="lazyOnload"
       />
-      {isAdVisible && (
         <ins
           className="adsbygoogle"
           style={{
             display: 'block',
             width: '100%',
-            height: '100px', // 測試高度
+            //height: isAdVisible?'0px':'0px', // 測試高度
+            maxHeight: isAdVisible?'auto':'0px', // 測試高度
             backgroundColor: '#f4f4f4', // 預設背景以區分是否有內容
             ...adStyle,
           }}
@@ -59,7 +62,6 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
-      )}
       {!isAdVisible && <div className='text-center'>No Ads Available</div>}
     </>
   );
