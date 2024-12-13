@@ -9,7 +9,25 @@ type GoogleAdProps = {
 
 const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
   const [isAdLoaded, setIsAdLoaded] = useState(false);
+  const [height, setHeight] = useState(0);
 
+  useEffect(() => {
+    // Only run on the client side
+    const handleResize = () => {
+      setHeight(window.innerHeight * 0.08); // 10% of the screen height
+    };
+
+    // Set initial height
+    handleResize();
+
+    // Add event listener to handle window resizing
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   useEffect(() => {
     const adContainer = document.querySelector('.adsbygoogle');
     if (!adContainer || adContainer.hasAttribute('data-adsbygoogle-status')) {
@@ -50,8 +68,8 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         style={{
           maxWidth:"100%",
           display: isAdLoaded ? 'block' : 'inline-block', // 載入前使用 inline-block 確保尺寸計算
-          visibility: isAdLoaded ? 'visible' : 'hidden', // 隱藏內容但保留尺寸
-          height: isAdLoaded ? '90px':'0px', 
+          //visibility: isAdLoaded ? 'visible' : 'hidden', // 隱藏內容但保留尺寸
+          height: isAdLoaded ? height:'0px', 
           // margin: "0",
           // textAlign: "center",
           // backgroundColor: '#0000',
