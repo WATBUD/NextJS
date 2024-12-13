@@ -31,13 +31,10 @@ export default function Home() {
         adStyle={{
           display:"inline-block",
           width:"720px",
-          height:"90px",
+          //height:"90px",
           //height: height, // You can adjust this value to your needs
           overflow: 'hidden', // To hide anything exceeding maxHeight
           //display: "block",
-          margin: "0",
-          textAlign: "center",
-          backgroundColor: '#0000'
         }}
         />
       <LanguagePracticeRedux />

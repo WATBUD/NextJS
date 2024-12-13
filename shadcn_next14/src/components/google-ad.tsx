@@ -52,6 +52,9 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           display: isAdLoaded ? 'block' : 'inline-block', // 載入前使用 inline-block 確保尺寸計算
           visibility: isAdLoaded ? 'visible' : 'hidden', // 隱藏內容但保留尺寸
           height: isAdLoaded ? '90px':'0px', 
+          // margin: "0",
+          // textAlign: "center",
+          // backgroundColor: '#0000',
           ...adStyle,
         }}
         data-ad-client={adClient}
