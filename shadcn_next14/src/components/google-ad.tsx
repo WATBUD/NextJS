@@ -11,11 +11,12 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
   const [isAdLoaded, setIsAdLoaded] = useState(false);
   const [isAdVisible, setIsAdVisible] = useState(false);
   const [height, setHeight] = useState(0);
-  const isMobile = window.innerWidth <= 768; // 假設 768px 以下為行動裝置
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setHeight(window.innerHeight * 0.08); // 設置廣告高度為螢幕高度的 10%
+      setHeight(window.innerHeight * 0.08); 
+      setIsMobile(window.innerWidth <= 768);
     };
 
     handleResize();
