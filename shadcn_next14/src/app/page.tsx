@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <GoogleAd
         adClient="ca-pub-5036446798216533" 
-        adSlot="5708359962" 
+        adSlot="4679744551" 
         adStyle={{
           display:"block",
           width:"720px",
