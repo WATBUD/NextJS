@@ -42,7 +42,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         if (status === 'done') {
           setIsAdVisible(true);
         }
-      }, 5000);
+      }, 3000);
 
     });
 
@@ -64,9 +64,10 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           className="adsbygoogle"
           style={{
             display: 'block',
+            overflow: 'hidden',
             width: '100%',
             height: isAdVisible?height:'0px', // 測試高度
-            maxHeight: isAdVisible?height:'0px', // 測試高度
+            maxHeight: isAdVisible?'auto':'0px', // 測試高度
             backgroundColor: '#0000', // 預設背景以區分是否有內容
             ...adStyle,
           }}
