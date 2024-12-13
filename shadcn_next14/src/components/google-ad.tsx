@@ -10,6 +10,19 @@ type GoogleAdProps = {
 const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
   const [isAdLoaded, setIsAdLoaded] = useState(false);
   const [isAdVisible, setIsAdVisible] = useState(false);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setHeight(window.innerHeight * 0.08); // 設置廣告高度為螢幕高度的 10%
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const adContainer = document.querySelector('.adsbygoogle');
@@ -52,8 +65,8 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           style={{
             display: 'block',
             width: '100%',
-            //height: isAdVisible?'0px':'0px', // 測試高度
-            maxHeight: isAdVisible?'auto':'0px', // 測試高度
+            height: isAdVisible?height:'0px', // 測試高度
+            maxHeight: isAdVisible&&height?'auto':'0px', // 測試高度
             backgroundColor: '#f4f4f4', // 預設背景以區分是否有內容
             ...adStyle,
           }}
