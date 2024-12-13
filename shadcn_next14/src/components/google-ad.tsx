@@ -46,8 +46,8 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
 
     });
 
-    //observer.observe(adContainer, { childList: true, subtree: true });
-    observer.observe(adContainer, { attributes: true });
+    observer.observe(adContainer, { childList: true, subtree: true });
+    // observer.observe(adContainer, { attributes: true });
 
     return () => observer.disconnect();
   }, []);
