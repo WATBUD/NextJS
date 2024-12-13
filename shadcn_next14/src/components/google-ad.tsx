@@ -61,7 +61,8 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         async
         src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`}
         crossOrigin="anonymous"
-        strategy="afterInteractive"
+       //strategy="afterInteractive"
+        strategy="lazyOnload"
       />
       <ins
         className="adsbygoogle"
