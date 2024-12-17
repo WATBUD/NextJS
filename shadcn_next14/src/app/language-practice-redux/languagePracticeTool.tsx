@@ -1,5 +1,4 @@
-import language_data_sheet from "../common/language_data_sheet.json";
-import language_data_tag from "../common/language_data_tag.json";
+import language_data_sheet from "./language_data_sheet.json";
 
 
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
@@ -120,3 +119,5 @@ export const checkDuplicates = () => {
     duplicates
   );
 }
+
+

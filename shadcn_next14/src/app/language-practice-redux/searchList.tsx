@@ -20,11 +20,11 @@ import toast, {
 import OptionsModal from "./optionsModal";
 import { useOptions } from "./redux/optionsReducer";
 
-import { copyText,handleScroll,scrollToTop  } from '../common/languagePracticeTool';
+import { copyText,handleScroll,scrollToTop  } from './languagePracticeTool';
 import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
 
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
-import '../common/languageComponent.css'; 
+import './languageComponent.css'; 
 import { useDispatch } from "react-redux";
 const SearchList: React.FC = () => {
   const {

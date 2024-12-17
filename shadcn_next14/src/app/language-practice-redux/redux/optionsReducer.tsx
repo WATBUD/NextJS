@@ -3,8 +3,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from './store'; 
 import { showCustomToast } from '../../common/sharedFunction';
-import language_data_sheet from "../../common/language_data_sheet.json";
-import language_data_tag from "../../common/language_data_tag.json";
+import language_data_sheet from "../language_data_sheet.json";
+import language_data_tag from "../language_data_tag.json";
 
 export interface OptionsState {
   showOptionUI: boolean;
