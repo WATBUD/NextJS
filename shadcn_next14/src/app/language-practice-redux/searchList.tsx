@@ -115,7 +115,12 @@ const SearchList: React.FC = () => {
       >
         <div
           id="navbar"
-          className="max-w-[980px] w-[86%] mb-2 flex flex-col sticky top-0 z-2"
+          className="max-w-[980px] w-[86%] mb-2 flex flex-col sticky top-0 z-2 rounded-lg py-2"
+          style={{
+            background: "rgba(255, 255, 255, 0)",
+            backdropFilter: "blur(10px)", // blur
+            WebkitBackdropFilter: "blur(10px)", // Safari Support
+          }}
         >
           <div className="mb-2 mt-3 flex w-full items-center justify-between">
             <h1 className="self-center text-2xl font-bold">Sentence Search</h1>
@@ -144,7 +149,7 @@ const SearchList: React.FC = () => {
           </div>
         </div>
         <div className="max-w-[980px] w-[86%] flex flex-col items-center">
-          {queryString!=null && (
+          {queryString != null && (
             <ul className="flex flex-col mt-2 bg-[#0000] w-[100%]">
               <button
                 id="scrollToTopButton"
@@ -155,7 +160,7 @@ const SearchList: React.FC = () => {
                 <ChevronDoubleUpIcon className="h-6 w-6 fill-current text-yellow-50 mr-2" />
                 Top
               </button>
-              {filteredData.map((item,index) => (
+              {filteredData.map((item, index) => (
                 <li
                   key={index}
                   className="flex w-[100%] items-center border-b border-gray-300 py-2"
@@ -175,9 +180,19 @@ const SearchList: React.FC = () => {
                     {/* <StarIconSolid className={`size-6 ${favorites.includes(item.index) ? 'text-yellow-400 fill-current' : 'text-gray-400 stroke-current'}`} /> */}
                   </button>
                   <div className="break-word flex-grow-[1] bg-[#0000]">
-                    <div>{highlightText(item.translations[configOptions.selectedLanguages[0]], queryString)}</div>
+                    <div>
+                      {highlightText(
+                        item.translations[configOptions.selectedLanguages[0]],
+                        queryString
+                      )}
+                    </div>
                     {/* <br /> */}
-                    <div>{highlightText(item.translations[configOptions.selectedLanguages[1]], queryString)}</div>
+                    <div>
+                      {highlightText(
+                        item.translations[configOptions.selectedLanguages[1]],
+                        queryString
+                      )}
+                    </div>
                   </div>
                   <div className="flex justify-end flex-grow-[1]">
                     <button
