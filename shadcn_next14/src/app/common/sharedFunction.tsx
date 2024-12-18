@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-"use client"
+
+// "use client"
+import { useEffect, useState } from 'react';
 import toast, { Renderable, Toast, Toaster, ValueFunction } from 'react-hot-toast';
 export const showCustomToast = (text: string) => {
   toast(text, {
@@ -40,7 +42,30 @@ export function translateTextAndSpeak(text: string='') {
   speechSynthesis.speak(utterance_input);
 }
 
+export const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+    };
+
+    checkMobile(); // 初次檢查
+    window.addEventListener('resize', checkMobile); // 監聽視窗大小變化
+
+    return () => {
+      window.removeEventListener('resize', checkMobile); // 清理監聽器
+    };
+  }, []);
+
+  console.log(
+    "%c sharedFunction useIsMobile",
+    "color:#BB3D00;font-family:system-ui;font-size:2rem;font-weight:bold",
+    "isMobile",
+    isMobile
+  );
+  return isMobile;
+};
 
 
 
