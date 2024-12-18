@@ -57,11 +57,11 @@ export default function Home() {
             backgroundColor: '#0000',
             zIndex: 9999,
             bottom: "0",
-            // left: "0",
-            // flexDirection: "row",
             justifyContent  : "center",
             alignItems: "center",
             width: "100%",
+            maxHeight: "45px",
+            overflow: "hidden",
           }}
         >
           <GoogleAdPC adClient="ca-pub-5036446798216533" adStyle={{
