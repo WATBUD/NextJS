@@ -55,16 +55,11 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
 
   return (
     <>
-      {/* <Script
-        async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`}
-        crossOrigin="anonymous"
-        strategy="lazyOnload"
-      /> */}
+
         <ins
           className="adsbygoogle"
           style={{
-            display: 'inline-block',
+            display: 'block',
             overflow: 'hidden',
             // width: '120px',
             // height: '720px', 

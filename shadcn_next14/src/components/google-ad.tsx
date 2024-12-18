@@ -67,7 +67,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           style={{
             position: 'fixed',
             zIndex: 9999,
-            display: 'inline-block',
+            display: 'block',
             overflow: 'hidden',
             width: '100%',
             height: isAdVisible?height:'0px', 

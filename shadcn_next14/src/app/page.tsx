@@ -2,6 +2,7 @@
 import LanguagePracticeRedux from "../app/language-practice-redux/page";
 import GoogleAd from "@/components/google-ad";
 import GoogleAdPC from "@/components/google-ad-pc";
+import Script from 'next/script';
 
 import {useIsMobile} from './common/sharedFunction';
 
