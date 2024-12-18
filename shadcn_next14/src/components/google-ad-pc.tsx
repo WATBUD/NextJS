@@ -59,6 +59,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         <ins
           className="adsbygoogle"
           style={{
+            position: 'fixed',
             display: 'block',
             overflow: 'hidden',
             bottom: '0',
