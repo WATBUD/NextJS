@@ -56,12 +56,12 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
 
   return (
     <>
-      <Script
+      {/* <Script
         async
         src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`}
         crossOrigin="anonymous"
         strategy="lazyOnload"
-      />
+      /> */}
         <ins
           className="adsbygoogle"
           style={{

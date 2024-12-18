@@ -15,6 +15,23 @@ export default function Home() {
           style={{
             position: "fixed",
             backgroundColor: '#0000',
+            zIndex: 9999,
+            // bottom: "0",
+            // left: "0",
+            // width: "100%",
+            height: "100%",
+          }}
+        >
+          <GoogleAdPC adClient="ca-pub-5036446798216533" adSlot="2939969664" />
+        </div>
+      )}
+      {!isMobile && (
+        <div
+          style={{
+            position: "fixed",
+            backgroundColor: '#000',
+            zIndex: 9999,
+            right: "0",
             // bottom: "0",
             // left: "0",
             // width: "100%",
