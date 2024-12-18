@@ -154,7 +154,7 @@ const SearchList: React.FC = () => {
               <button
                 id="scrollToTopButton"
                 onClick={scrollToTop}
-                className="fixed bottom-8 self-end hidden rounded-md px-3 py-2 text-yellow-50  shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                className="fixed bottom-[8vh] self-end hidden rounded-md px-3 py-2 text-yellow-50  shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                 style={{ backgroundColor: "rgba(45, 114, 210,0.3)" }}
               >
                 <ChevronDoubleUpIcon className="h-6 w-6 fill-current text-yellow-50 mr-2" />

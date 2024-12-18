@@ -42,11 +42,11 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
       if (status === 'done') {
         setIsAdVisible(true);
       }
-      // setTimeout(() => {
-      //   if (status === 'done') {
-      //     setIsAdVisible(true);
-      //   }
-      // }, 2000);
+      setTimeout(() => {
+        if (status === 'done') {
+          setIsAdVisible(true);
+        }
+      }, 1000);
 
     });
 
