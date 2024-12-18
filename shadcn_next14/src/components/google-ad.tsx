@@ -9,7 +9,6 @@ type GoogleAdProps = {
 import {useIsMobile} from '../app/common/sharedFunction';
 
 const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
-  const isMobile = useIsMobile();
   const [isAdVisible, setIsAdVisible] = useState(false);
   const [height, setHeight] = useState(0);
 
@@ -75,7 +74,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
             bottom: '0',
             width: '100%',
             height: isAdVisible?height:'0px', 
-            maxHeight: isAdVisible&&isMobile?height:'0px', 
+            maxHeight: isAdVisible?height:'0px', 
             backgroundColor: '#0000', 
             ...adStyle,
           }}
