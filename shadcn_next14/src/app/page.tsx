@@ -16,7 +16,6 @@ export default function Home() {
             backgroundColor: '#0000',
             zIndex: 9999,
             left: "0",
-            height: "100%",
           }}
         >
           <GoogleAdPC adClient="ca-pub-5036446798216533" adStyle={{
@@ -29,10 +28,9 @@ export default function Home() {
         <div
           style={{
             position: "fixed",
-            backgroundColor: '#0000',
+            backgroundColor: '#000',
             zIndex: 9999,
             right: "0",
-            height: "100%",
           }}
         >
           <GoogleAdPC adClient="ca-pub-5036446798216533" adStyle={{
@@ -42,7 +40,7 @@ export default function Home() {
             }} adSlot="2939969664" />
         </div>
       )}
-      <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" />
+      {/* <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" /> */}
       <LanguagePracticeRedux />
       {/* {!isMobile && (
         <div
