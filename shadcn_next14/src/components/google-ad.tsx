@@ -39,11 +39,14 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
 
     const observer = new MutationObserver(() => {
       const status = adContainer.getAttribute('data-adsbygoogle-status');
-      setTimeout(() => {
-        if (status === 'done') {
-          setIsAdVisible(true);
-        }
-      }, 2000);
+      if (status === 'done') {
+        setIsAdVisible(true);
+      }
+      // setTimeout(() => {
+      //   if (status === 'done') {
+      //     setIsAdVisible(true);
+      //   }
+      // }, 2000);
 
     });
 
