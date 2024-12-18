@@ -74,7 +74,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
             bottom: '0',
             width: '100%',
             height: isAdVisible?height:'0px', 
-            maxHeight: isAdVisible?height:'0px', 
+            maxHeight: height, 
             backgroundColor: '#0000', 
             ...adStyle,
           }}
