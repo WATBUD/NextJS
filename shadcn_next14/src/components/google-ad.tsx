@@ -63,7 +63,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         async
         src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`}
         crossOrigin="anonymous"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
         <ins
           className="adsbygoogle"
@@ -81,7 +81,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           }}
           data-ad-client={adClient}
           data-ad-slot={adSlot}
-          data-ad-format="auto"
+          // data-ad-format="auto"
           data-full-width-responsive="true"
         />
       {/* {!isAdVisible && <div className='text-center'>No Ads Available</div>} */}
