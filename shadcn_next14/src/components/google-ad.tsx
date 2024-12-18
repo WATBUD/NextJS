@@ -6,17 +6,16 @@ type GoogleAdProps = {
   adSlot: string;
   adStyle?: React.CSSProperties;
 };
+import {useIsMobile} from '../app/common/sharedFunction';
 
 const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
-  const [isAdLoaded, setIsAdLoaded] = useState(false);
+  const isMobile = useIsMobile();
   const [isAdVisible, setIsAdVisible] = useState(false);
   const [height, setHeight] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setHeight(window.innerHeight * 0.08); 
-      setIsMobile(window.innerWidth <= 768);
+      setHeight(window.innerHeight * 1); 
     };
 
     handleResize();
@@ -65,12 +64,15 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         <ins
           className="adsbygoogle"
           style={{
+            position: 'fixed',
+            zIndex: 9999,
+            bottom: '0',
             display: 'block',
             overflow: 'hidden',
             width: '100%',
             height: isAdVisible?height:'0px', 
             maxHeight: isAdVisible&&isMobile?height:'0px', 
-            backgroundColor: '#0000', 
+            backgroundColor: '#000', 
             ...adStyle,
           }}
           data-ad-client={adClient}
