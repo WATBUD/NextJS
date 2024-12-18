@@ -54,14 +54,13 @@ export default function Home() {
             bottom: "0",
             justifyContent  : "center",
             alignItems: "center",
+            width: "100%",
           }}
         >
           <GoogleAdPC adClient="ca-pub-5036446798216533" adStyle={{
-            
             width: '728px',
             height: '45px', 
-            maxHeight: '100%', 
-            
+            maxHeight: '45px', 
             }} adSlot="1239843369" />
         </div>
       )}
