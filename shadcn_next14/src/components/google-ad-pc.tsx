@@ -14,7 +14,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setHeight(window.innerHeight * 0.1); 
+      setHeight(window.innerHeight * 0.08); 
     };
 
     handleResize();
@@ -59,7 +59,6 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         <ins
           className="adsbygoogle"
           style={{
-            position: 'fixed',
             display: 'block',
             overflow: 'hidden',
             bottom: '0',
