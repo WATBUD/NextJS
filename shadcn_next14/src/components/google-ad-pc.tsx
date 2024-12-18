@@ -70,7 +70,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
             width: '120px',
             height: '720px', 
             maxHeight: '100%', 
-            backgroundColor: '#000', 
+            backgroundColor: '#0000', 
             ...adStyle,
           }}
           data-ad-client={adClient}

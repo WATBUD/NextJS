@@ -14,7 +14,7 @@ export default function Home() {
         <div
           style={{
             position: "fixed",
-            backgroundColor: '#f00',
+            backgroundColor: '#0000',
             // bottom: "0",
             // left: "0",
             // width: "100%",
