@@ -9,7 +9,6 @@ export default function Home() {
   const isMobile = useIsMobile();
   return (
     <>
-      <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" />
       {!isMobile && (
         <div
           style={{
@@ -42,6 +41,8 @@ export default function Home() {
         </div>
       )}
       <LanguagePracticeRedux />
+      <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" />
+
     </>
   );
 }
