@@ -16,9 +16,7 @@ export default function Home() {
             position: "fixed",
             backgroundColor: '#0000',
             zIndex: 9999,
-            // bottom: "0",
-            // left: "0",
-            // width: "100%",
+            left: "0",
             height: "100%",
           }}
         >
@@ -35,9 +33,6 @@ export default function Home() {
             backgroundColor: '#0000',
             zIndex: 9999,
             right: "0",
-            // bottom: "0",
-            // left: "0",
-            // width: "100%",
             height: "100%",
           }}
         >
