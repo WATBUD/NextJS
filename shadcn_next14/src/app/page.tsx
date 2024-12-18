@@ -9,6 +9,7 @@ export default function Home() {
   const isMobile = useIsMobile();
   return (
     <>
+      <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" />
       {!isMobile && (
         <div
           style={{
@@ -21,8 +22,11 @@ export default function Home() {
             height: "100%",
           }}
         >
-          <GoogleAdPC adClient="ca-pub-5036446798216533" adSlot="2939969664" />
-        </div>
+          <GoogleAdPC adClient="ca-pub-5036446798216533" adStyle={{
+            width: '120px',
+            height: '720px', 
+            maxHeight: '100%', 
+            }} adSlot="2939969664" />        </div>
       )}
       {!isMobile && (
         <div
@@ -37,11 +41,36 @@ export default function Home() {
             height: "100%",
           }}
         >
-          <GoogleAdPC adClient="ca-pub-5036446798216533" adSlot="2939969664" />
+          <GoogleAdPC adClient="ca-pub-5036446798216533" adStyle={{
+            width: '120px',
+            height: '720px', 
+            maxHeight: '100%', 
+            }} adSlot="2939969664" />
         </div>
       )}
       <LanguagePracticeRedux />
-      <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" />
+      {!isMobile && (
+        <div
+          style={{
+            position: "fixed",
+            display: 'flex',
+            backgroundColor: '#0000',
+            zIndex: 9999,
+            bottom: "0",
+            // left: "0",
+            // flexDirection: "row",
+            justifyContent  : "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <GoogleAdPC adClient="ca-pub-5036446798216533" adStyle={{
+            width: '728px',
+            height: '90px', 
+            maxHeight: '100%', 
+            }} adSlot="1239843369" />
+        </div>
+      )}
 
     </>
   );

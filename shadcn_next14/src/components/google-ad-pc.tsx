@@ -11,12 +11,10 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
   const [isAdLoaded, setIsAdLoaded] = useState(false);
   const [isAdVisible, setIsAdVisible] = useState(false);
   const [height, setHeight] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       setHeight(window.innerHeight * 0.08); 
-      setIsMobile(window.innerWidth <= 768);
     };
 
     handleResize();
@@ -67,9 +65,9 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           style={{
             display: 'inline-block',
             overflow: 'hidden',
-            width: '120px',
-            height: '720px', 
-            maxHeight: '100%', 
+            // width: '120px',
+            // height: '720px', 
+            // maxHeight: '100%', 
             backgroundColor: '#0000', 
             ...adStyle,
           }}
