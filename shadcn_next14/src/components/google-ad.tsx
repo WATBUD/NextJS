@@ -46,7 +46,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         if (status === 'done') {
           setIsAdVisible(true);
         }
-      }, 1500);
+      }, 1000);
 
     });
 
@@ -70,12 +70,12 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           style={{
             position: 'fixed',
             zIndex: 9999,
-            display: 'block',
+            display: 'inline-block',
             overflow: 'hidden',
             bottom: '0',
             width: '100%',
             height: isAdVisible?height:'0px', 
-            maxHeight: isAdVisible&&isMobile?'5vh':'0px', 
+            maxHeight: isAdVisible&&isMobile?height:'0px', 
             backgroundColor: '#0000', 
             ...adStyle,
           }}

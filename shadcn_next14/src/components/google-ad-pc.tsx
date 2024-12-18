@@ -30,11 +30,11 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
       return;
     }
 
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error('AdSense initialization error:', e);
-    }
+    // try {
+    //   (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // } catch (e) {
+    //   console.error('AdSense initialization error:', e);
+    // }
 
     const observer = new MutationObserver(() => {
       const status = adContainer.getAttribute('data-adsbygoogle-status');
