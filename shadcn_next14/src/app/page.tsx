@@ -44,7 +44,7 @@ export default function Home() {
       )}
       <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" />
       <LanguagePracticeRedux />
-      {!isMobile && (
+      {/* {!isMobile && (
         <div
           style={{
             position: "fixed",
@@ -63,7 +63,7 @@ export default function Home() {
             width: '728px',
             }} adSlot="1239843369" />
         </div>
-      )}
+      )} */}
 
     </>
   );
