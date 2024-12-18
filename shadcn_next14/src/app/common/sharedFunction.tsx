@@ -47,7 +47,7 @@ export const useIsMobile = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+      setIsMobile(window.matchMedia('(max-width: 1240px)').matches);
     };
 
     checkMobile(); // 初次檢查
