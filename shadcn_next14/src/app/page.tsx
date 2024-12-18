@@ -43,7 +43,7 @@ export default function Home() {
         </div>
       )}
       <LanguagePracticeRedux />
-      {!isMobile && (
+      {/* {!isMobile && (
         <div
           style={{
             position: "fixed",
@@ -64,7 +64,7 @@ export default function Home() {
             maxHeight: '45px', 
             }} adSlot="1239843369" />
         </div>
-      )}
+      )} */}
 
     </>
   );
