@@ -39,7 +39,7 @@ export default function Home() {
             adClient={adClient}
             adStyle={{
               position: "fixed",
-              backgroundColor: "#000",
+              backgroundColor: "#0000",
               zIndex: 9999,
               left: "0",
               width: "120px",
