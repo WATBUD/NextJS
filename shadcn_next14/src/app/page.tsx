@@ -37,7 +37,7 @@ export default function Home() {
           backgroundColor: "#0000",
           zIndex: 9999,
           overflow: "hidden",
-          bottom: 0,
+          //bottom: 0,
           // bottom: isMobile ? "-30vh" : "-20vh",
           justifyContent: "center",
           alignItems: "center",
