@@ -87,28 +87,6 @@ export default function Home() {
         />
       )}
       <LanguagePracticeRedux />
-      {/* {!isMobile && (
-        <div
-          style={{
-            position: "fixed",
-            display: 'flex',
-            backgroundColor: '#0000',
-            zIndex: 9999,
-            bottom: "0",
-            justifyContent  : "center",
-            alignItems: "center",
-            width: "100%",
-            height: '45px', 
-            maxHeight: '45px', 
-          }}
-        >
-          <GoogleAdPC adClient={adClient} adStyle={{
-            width: '728px',
-            height: '45px', 
-            maxHeight: '45px', 
-            }} adSlot="1239843369" />
-        </div>
-      )} */}
     </>
   );
 }

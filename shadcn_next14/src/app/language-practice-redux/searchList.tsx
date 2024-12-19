@@ -21,12 +21,12 @@ import OptionsModal from "./optionsModal";
 import { useOptions } from "./redux/optionsReducer";
 
 import { copyText,handleScroll,scrollToTop  } from './languagePracticeTool';
-import { showCustomToast,translateTextAndSpeak } from '../common/sharedFunction';
-
+import { useIsMobile,translateTextAndSpeak } from '../common/sharedFunction';
 import { set_indexedDB_Data, get_indexedDB_data } from "../common/indexedDBUtils";
 import './languageComponent.css'; 
 import { useDispatch } from "react-redux";
 const SearchList: React.FC = () => {
+  const isMobile = useIsMobile();
   const {
     showOptionUI,
     databaseHasBeenLoaded,
@@ -154,8 +154,12 @@ const SearchList: React.FC = () => {
               <button
                 id="scrollToTopButton"
                 onClick={scrollToTop}
-                className="fixed bottom-[8vh] self-end hidden rounded-md px-3 py-2 text-yellow-50  shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-                style={{ backgroundColor: "rgba(45, 114, 210,0.3)" }}
+                className="fixed self-end hidden rounded-md px-3 py-2 text-yellow-50  
+                shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                style={{
+                  backgroundColor: "rgba(45, 114, 210,0.3)",
+                  bottom: isMobile ? "8vh" : "13vh",
+                }}
               >
                 <ChevronDoubleUpIcon className="h-6 w-6 fill-current text-yellow-50 mr-2" />
                 Top
