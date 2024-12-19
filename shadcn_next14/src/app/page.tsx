@@ -34,26 +34,21 @@ export default function Home() {
       >
       <GoogleAd adClient={adClient} adSlot="4679744551" />
       </div>
-      {/* {!isMobile && (
-        <div
-          style={{
-            position: "fixed",
-            backgroundColor: "#0000",
-            zIndex: 9999,
-            left: "0",
-          }}
-        >
+      {!isMobile && (
           <GoogleAdPC
             adClient={adClient}
             adStyle={{
+              position: "fixed",
+              backgroundColor: "#000",
+              zIndex: 9999,
+              left: "0",
               width: "120px",
               height: "1200px",
               maxHeight: '100%',
             }}
             adSlot="2939969664"
           />
-        </div>
-      )} */}
+      )}
       {/* {!isMobile && (
         <div
           style={{
