@@ -70,7 +70,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         strategy="lazyOnload"
       />
         <ins
-          className="adsbygoogle"
+          className="adsbygoogle max-w-[980px] w-[100%] mr-[0.8vw]"
           style={{
             // position: 'fixed',
             // zIndex: 9999,
@@ -78,11 +78,11 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
             overflow: 'hidden',
             // bottom: '0',
             //width: '45vw',
-            width: '100%',
+            // width: '100%',
             height: isAdVisible?height:'0px', 
             maxHeight: height, 
-            maxWidth: '980px',
-            backgroundColor: '#000', 
+            //maxWidth: '980px',
+            backgroundColor: '#0000', 
             ...adStyle,
           }}
           data-ad-client={adClient}
