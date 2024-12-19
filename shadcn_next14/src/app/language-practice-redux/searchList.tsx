@@ -158,7 +158,7 @@ const SearchList: React.FC = () => {
                 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                 style={{
                   backgroundColor: "rgba(45, 114, 210,0.3)",
-                  bottom: isMobile ? "8vh" : "13vh",
+                  bottom: isMobile ? "10vh" : "20vh",
                 }}
               >
                 <ChevronDoubleUpIcon className="h-6 w-6 fill-current text-yellow-50 mr-2" />
