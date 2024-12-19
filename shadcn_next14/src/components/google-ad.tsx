@@ -66,7 +66,8 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
   return (
     <>
         <ins
-          className="adsbygoogle max-w-[980px] w-[100%] mr-[0.8vw]"
+          className="adsbygoogle max-w-[980px] w-[100%]" 
+          //mr-[0.8vw]
           style={{
             // position: 'fixed',
             // zIndex: 9999,
