@@ -35,26 +35,24 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
     } catch (e) {
       console.error('AdSense initialization error:', e);
     }
-
+    
     const observer = new MutationObserver(() => {
       const status = adContainer.getAttribute('data-adsbygoogle-status');
+      
       if (status === 'done') {
         setIsAdVisible(true);
+        setHeight(window.innerHeight * 0.08); // Set ad height based on window height (adjust if needed)
+        observer.disconnect(); // Stop observing after the ad has been successfully loaded
       }
-      setTimeout(() => {
-        if (status === 'done') {
-          setIsAdVisible(true);
-          setHeight(window.innerHeight * 0.08); 
-        }
-      }, 5000);
-
     });
-
-    observer.observe(adContainer, { childList: true, subtree: true });
-    // observer.observe(adContainer, { attributes: true });
+    
+    observer.observe(adContainer, { attributes: true, attributeFilter: ['data-adsbygoogle-status'] });
+    
+    // Return cleanup function
     return () => {
       observer.disconnect();
     };
+    
   }, []);
 
   return (
