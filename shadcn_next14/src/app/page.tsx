@@ -42,16 +42,14 @@ export default function Home() {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          height: "50px",
-          maxHeight: "50px",
         }}
       >
         <GoogleAd
           adClient={adClient}
           adStyle={{
-            width: "50px",
+            width: "1200px",
             height: "50px",
-            //maxWidth: '980px',
+            maxWidth: '980px',
           }}
           adSlot="1239843369"
         />
