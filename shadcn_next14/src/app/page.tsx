@@ -16,6 +16,7 @@ export default function Home() {
             display: 'flex',
             backgroundColor: '#0000',
             zIndex: 9999,
+            overflow: 'hidden',
             bottom: "0",
             justifyContent  : "center",
             alignItems: "center",
