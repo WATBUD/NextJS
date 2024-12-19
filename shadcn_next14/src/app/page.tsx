@@ -24,9 +24,9 @@ export default function Home() {
             backgroundColor: "#0000",
             zIndex: 9999,
             bottom: "0",
-            width: "100%",
-            height: "45px",
-            maxHeight: "45px",
+            width: "980px",
+            height: "50px",
+            maxHeight: "50px",
           }}
           adSlot="4767523822"
       />
