@@ -10,7 +10,22 @@ export default function Home() {
   const isMobile = useIsMobile();
   return (
     <>
+      <div
+          style={{
+            position: "fixed",
+            display: 'flex',
+            backgroundColor: '#0000',
+            zIndex: 9999,
+            bottom: "0",
+            justifyContent  : "center",
+            alignItems: "center",
+            width: "100%",
+            height: '45px', 
+            maxHeight: '45px', 
+          }}
+      >
       <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" />
+      </div>
       {/* {!isMobile && (
         <div
           style={{
