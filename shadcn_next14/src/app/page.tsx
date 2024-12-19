@@ -32,12 +32,12 @@ export default function Home() {
       /> */}
       <div
         style={{
-          position: "fixed",
+          position: "absolute",
           display: "flex",
-          backgroundColor: "#0000",
-          zIndex: 111,
+          backgroundColor: "#000",
+          zIndex: 9999,
           overflow: "hidden",
-          bottom: isMobile?"-30vh":"-20vh",
+          bottom: 0,
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
