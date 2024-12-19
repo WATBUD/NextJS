@@ -8,8 +8,15 @@ import {useIsMobile} from './common/sharedFunction';
 
 export default function Home() {
   const isMobile = useIsMobile();
+  const adClient = "ca-pub-5036446798216533";
   return (
     <>
+      <Script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`}
+        crossOrigin="anonymous"
+        strategy="lazyOnload"
+      />
       <div
           style={{
             position: "fixed",
@@ -25,7 +32,7 @@ export default function Home() {
             maxHeight: '45px', 
           }}
       >
-      <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" />
+      <GoogleAd adClient={adClient} adSlot="4679744551" />
       </div>
       {!isMobile && (
         <div
@@ -37,7 +44,7 @@ export default function Home() {
           }}
         >
           <GoogleAdPC
-            adClient="ca-pub-5036446798216533"
+            adClient={adClient}
             adStyle={{
               width: "120px",
               height: "1200px",
@@ -57,7 +64,7 @@ export default function Home() {
           }}
         >
           <GoogleAdPC
-            adClient="ca-pub-5036446798216533"
+            adClient={adClient}
             adStyle={{
               width: "120px",
               height: "1200px",
@@ -83,7 +90,7 @@ export default function Home() {
             maxHeight: '45px', 
           }}
         >
-          <GoogleAdPC adClient="ca-pub-5036446798216533" adStyle={{
+          <GoogleAdPC adClient={adClient} adStyle={{
             width: '728px',
             height: '45px', 
             maxHeight: '45px', 
