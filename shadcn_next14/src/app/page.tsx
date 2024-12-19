@@ -46,6 +46,7 @@ export default function Home() {
         }}
       >
         <GoogleAd
+          isMobile={isMobile}
           adClient={adClient}
           adStyle={{
             width: "1200px",
