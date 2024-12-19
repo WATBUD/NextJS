@@ -20,8 +20,8 @@ export default function Home() {
             justifyContent  : "center",
             alignItems: "center",
             width: "100%",
-            height: '45px', 
-            maxHeight: '45px', 
+            // height: '45px', 
+            // maxHeight: '45px', 
           }}
       >
       <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" />
