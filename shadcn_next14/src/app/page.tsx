@@ -18,7 +18,7 @@ export default function Home() {
             zIndex: 9999,
             overflow: 'hidden',
             bottom: "0",
-            justifyContent  : "center",
+            justifyContent:"center",
             alignItems: "center",
             width: "100%",
             height: '45px', 
