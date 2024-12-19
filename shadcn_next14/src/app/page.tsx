@@ -17,7 +17,20 @@ export default function Home() {
         crossOrigin="anonymous"
         strategy="lazyOnload"
       />
-      <div
+      <GoogleAdPC
+          adClient={adClient}
+          adStyle={{
+            position: "fixed",
+            backgroundColor: "#0000",
+            zIndex: 9999,
+            bottom: "0",
+            width: "100%",
+            height: "45px",
+            maxHeight: "45px",
+          }}
+          adSlot="4767523822"
+      />
+      {/* <div
         style={{
           position: "fixed",
           display: "flex",
@@ -33,7 +46,7 @@ export default function Home() {
         }}
       >
         <GoogleAd adClient={adClient} adSlot="4767523822" />
-      </div>
+      </div> */}
       {!isMobile && (
         <GoogleAdPC
           adClient={adClient}
