@@ -50,6 +50,7 @@ export default function Home() {
             width: "1200px",
             height: "50px",
             maxWidth: '980px',
+            marginTop: '95vh',
           }}
           adSlot="1239843369"
         />

@@ -85,7 +85,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
           data-ad-client={adClient}
           data-ad-slot={adSlot}
           data-ad-format="auto"
-          data-full-width-responsive="false"
+          data-full-width-responsive="true"
         />
       {/* {!isAdVisible && <div className='text-center'>No Ads Available</div>} */}
     </>
