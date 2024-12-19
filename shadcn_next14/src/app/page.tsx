@@ -54,7 +54,7 @@ export default function Home() {
           />{" "}
         </div>
       )}
-      {!isMobile && (
+      {/* {!isMobile && (
         <div
           style={{
             position: "fixed",
@@ -73,7 +73,7 @@ export default function Home() {
             adSlot="2939969664"
           />
         </div>
-      )}
+      )} */}
       <LanguagePracticeRedux />
       {/* {!isMobile && (
         <div
