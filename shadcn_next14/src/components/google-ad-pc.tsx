@@ -30,11 +30,11 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
       return;
     }
 
-    // try {
-    //   (window.adsbygoogle = window.adsbygoogle || []).push({});
-    // } catch (e) {
-    //   console.error('AdSense initialization error:', e);
-    // }
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error('AdSense initialization error:', e);
+    }
 
     const observer = new MutationObserver(() => {
       const status = adContainer.getAttribute('data-adsbygoogle-status');
@@ -42,7 +42,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         if (status === 'done') {
           setIsAdVisible(true);
         }
-      }, 3000);
+      }, 150);
 
     });
 
@@ -59,12 +59,9 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
         <ins
           className="adsbygoogle"
           style={{
-            display: 'block',
+            display: 'inline-block',
             overflow: 'hidden',
-            // width: '120px',
-            // height: '720px', 
-            // maxHeight: '100%', 
-            backgroundColor: '#0000', 
+            //backgroundColor: '#000', 
             ...adStyle,
           }}
           data-ad-client={adClient}
