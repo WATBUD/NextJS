@@ -77,11 +77,12 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
             display: 'inline-block',
             overflow: 'hidden',
             // bottom: '0',
-            width: '45vw',
-            // width: '100%',
+            //width: '45vw',
+            width: '100%',
             height: isAdVisible?height:'0px', 
             maxHeight: height, 
-            backgroundColor: '#0000', 
+            maxWidth: '980px',
+            backgroundColor: '#000', 
             ...adStyle,
           }}
           data-ad-client={adClient}
