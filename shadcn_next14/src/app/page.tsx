@@ -37,6 +37,7 @@ export default function Home() {
           backgroundColor: "#0000",
           zIndex: 9999,
           overflow: "hidden",
+          marginTop: '95vh',
           //bottom: 0,
           // bottom: isMobile ? "-30vh" : "-20vh",
           justifyContent: "center",
@@ -50,7 +51,6 @@ export default function Home() {
             width: "1200px",
             height: "50px",
             maxWidth: '980px',
-            marginTop: '95vh',
           }}
           adSlot="1239843369"
         />
