@@ -32,7 +32,7 @@ export default function Home() {
           maxHeight: "45px",
         }}
       >
-        <GoogleAd adClient={adClient} adSlot="4679744551" />
+        <GoogleAd adClient={adClient} adSlot="4767523822" />
       </div>
       {!isMobile && (
         <GoogleAdPC
