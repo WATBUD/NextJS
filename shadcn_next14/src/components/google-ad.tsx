@@ -44,6 +44,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
       setTimeout(() => {
         if (status === 'done') {
           setIsAdVisible(true);
+          setHeight(window.innerHeight * 0.08); 
         }
       }, 5000);
 
