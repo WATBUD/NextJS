@@ -18,57 +18,52 @@ export default function Home() {
         strategy="lazyOnload"
       />
       <div
-          style={{
-            position: "fixed",
-            display: 'flex',
-            backgroundColor: '#0000',
-            zIndex: 111,
-            overflow: 'hidden',
-            bottom: "-30vh",
-            justifyContent:"center",
-            alignItems: "center",
-            width: "100%",
-            height: '45px', 
-            maxHeight: '45px', 
-          }}
+        style={{
+          position: "fixed",
+          display: "flex",
+          backgroundColor: "#0000",
+          zIndex: 111,
+          overflow: "hidden",
+          bottom: isMobile?"-30vh":"-20vh",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "45px",
+          maxHeight: "45px",
+        }}
       >
-      <GoogleAd adClient={adClient} adSlot="4679744551" />
+        <GoogleAd adClient={adClient} adSlot="4679744551" />
       </div>
       {!isMobile && (
-          <GoogleAdPC
-            adClient={adClient}
-            adStyle={{
-              position: "fixed",
-              backgroundColor: "#0000",
-              zIndex: 9999,
-              left: "0",
-              width: "120px",
-              height: "1200px",
-              maxHeight: '100%',
-            }}
-            adSlot="2939969664"
-          />
+        <GoogleAdPC
+          adClient={adClient}
+          adStyle={{
+            position: "fixed",
+            backgroundColor: "#0000",
+            zIndex: 9999,
+            left: "0",
+            width: "120px",
+            height: "1200px",
+            maxHeight: "100%",
+          }}
+          adSlot="2939969664"
+        />
       )}
-      {/* {!isMobile && (
-        <div
-          style={{
+      {!isMobile && (
+        <GoogleAdPC
+          adClient={adClient}
+          adStyle={{
             position: "fixed",
             backgroundColor: "#0000",
             zIndex: 9999,
             right: "0",
+            width: "120px",
+            height: "1200px",
+            maxHeight: "100%",
           }}
-        >
-          <GoogleAdPC
-            adClient={adClient}
-            adStyle={{
-              width: "120px",
-              height: "1200px",
-              maxHeight: '100%',
-            }}
-            adSlot="2939969664"
-          />
-        </div>
-      )} */}
+          adSlot="8132887911"
+        />
+      )}
       <LanguagePracticeRedux />
       {/* {!isMobile && (
         <div
