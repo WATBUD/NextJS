@@ -15,7 +15,7 @@ export default function Home() {
             position: "fixed",
             display: 'flex',
             backgroundColor: '#0000',
-            zIndex: 9999,
+            zIndex: 111,
             overflow: 'hidden',
             bottom: "0",
             justifyContent:"center",
@@ -27,7 +27,7 @@ export default function Home() {
       >
       <GoogleAd adClient="ca-pub-5036446798216533" adSlot="4679744551" />
       </div>
-      {/* {!isMobile && (
+      {!isMobile && (
         <div
           style={{
             position: "fixed",
@@ -40,8 +40,8 @@ export default function Home() {
             adClient="ca-pub-5036446798216533"
             adStyle={{
               width: "120px",
-              height: "720px",
-              //maxHeight: '100%',
+              height: "1200px",
+              maxHeight: '100%',
             }}
             adSlot="2939969664"
           />{" "}
@@ -60,13 +60,13 @@ export default function Home() {
             adClient="ca-pub-5036446798216533"
             adStyle={{
               width: "120px",
-              height: "720px",
-              //maxHeight: '100%',
+              height: "1200px",
+              maxHeight: '100%',
             }}
             adSlot="2939969664"
           />
         </div>
-      )} */}
+      )}
       <LanguagePracticeRedux />
       {/* {!isMobile && (
         <div

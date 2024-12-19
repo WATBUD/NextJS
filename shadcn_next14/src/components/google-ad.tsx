@@ -14,7 +14,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setHeight(window.innerHeight * 0.08); 
+      setHeight(window.innerHeight * 0.05); 
     };
 
     handleResize();
@@ -41,15 +41,17 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
       
       if (status === 'done') {
         setIsAdVisible(true);
-        setHeight(window.innerHeight * 0.08); // Set ad height based on window height (adjust if needed)
-        const adContainers = document.querySelectorAll('.adsbygoogle') as NodeListOf<HTMLElement>;
+        // const adContainers = document.querySelectorAll('.adsbygoogle') as NodeListOf<HTMLElement>;
 
-        adContainers.forEach((adContainer) => {
-          adContainer.style.height = 'auto';
-          adContainer.style.maxHeight = '45px';
-        });
+        // adContainers.forEach((adContainer) => {
+        //   adContainer.style.height = 'auto';
+        //   adContainer.style.maxHeight = '45px';
+        // });
         observer.disconnect(); // Stop observing after the ad has been successfully loaded
       }
+      setTimeout(() => {
+        setHeight(window.innerHeight * 0.05); 
+      }, 100);
     });
     
     observer.observe(adContainer, { attributes: true, attributeFilter: ['data-adsbygoogle-status'] });
@@ -79,10 +81,11 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
             // bottom: '0',
             //width: '45vw',
             // width: '100%',
-            height: isAdVisible?height:'0px', 
-            maxHeight: height, 
+            //height: '100%',
+            // height: isAdVisible?height:'0px', 
+            maxHeight: "0px", 
             //maxWidth: '980px',
-            backgroundColor: '#0000', 
+            backgroundColor: '#000', 
             ...adStyle,
           }}
           data-ad-client={adClient}
