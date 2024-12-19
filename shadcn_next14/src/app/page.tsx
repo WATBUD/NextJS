@@ -38,7 +38,7 @@ export default function Home() {
           zIndex: 9999,
           overflow: "hidden",
           //bottom: 0,
-          bottom: isMobile?"-30vh":"-20vh",
+          bottom: isMobile ? "-30vh" : "-20vh",
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
@@ -46,7 +46,15 @@ export default function Home() {
           maxHeight: "50px",
         }}
       >
-        <GoogleAd adClient={adClient} adSlot="1239843369" />
+        <GoogleAd
+          adClient={adClient}
+          adStyle={{
+            width: "50px",
+            height: "50px",
+            //maxWidth: '980px',
+          }}
+          adSlot="1239843369"
+        />
       </div>
       {!isMobile && (
         <GoogleAdPC
