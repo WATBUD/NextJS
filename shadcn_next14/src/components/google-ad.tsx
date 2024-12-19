@@ -72,7 +72,7 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
             display: 'inline-block',
             overflow: 'hidden',
             // bottom: '0',
-            width: "fit-content",
+            width: 'auto',
             //width: '100%',
             height: isAdVisible?height:'0px', 
             maxHeight: height, 
