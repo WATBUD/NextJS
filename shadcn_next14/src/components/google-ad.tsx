@@ -42,6 +42,12 @@ const GoogleAd: React.FC<GoogleAdProps> = ({ adClient, adSlot, adStyle }) => {
       if (status === 'done') {
         setIsAdVisible(true);
         setHeight(window.innerHeight * 0.08); // Set ad height based on window height (adjust if needed)
+        const adContainers = document.querySelectorAll('.adsbygoogle') as NodeListOf<HTMLElement>;
+
+        adContainers.forEach((adContainer) => {
+          adContainer.style.height = 'auto';
+          adContainer.style.maxHeight = '45px';
+        });
         observer.disconnect(); // Stop observing after the ad has been successfully loaded
       }
     });
