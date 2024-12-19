@@ -34,7 +34,7 @@ export default function Home() {
       >
       <GoogleAd adClient={adClient} adSlot="4679744551" />
       </div>
-      {!isMobile && (
+      {/* {!isMobile && (
         <div
           style={{
             position: "fixed",
@@ -53,7 +53,7 @@ export default function Home() {
             adSlot="2939969664"
           />{" "}
         </div>
-      )}
+      )} */}
       {/* {!isMobile && (
         <div
           style={{
