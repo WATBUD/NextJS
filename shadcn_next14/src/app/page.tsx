@@ -24,7 +24,7 @@ export default function Home() {
             backgroundColor: '#0000',
             zIndex: 111,
             overflow: 'hidden',
-            bottom: "-20vh",
+            bottom: "-30vh",
             justifyContent:"center",
             alignItems: "center",
             width: "100%",
